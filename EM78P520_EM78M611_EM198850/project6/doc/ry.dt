@@ -1,0 +1,42 @@
+;---------------------------------------------------------------
+SampingRyTiming:
+	BANK                4
+	MOV                 A,@0B11111011
+	MOV                 P9IOCR,A            ; P97-P93:Input; P92:output; P91-P90:Input
+	BS                  P8IOCR,Leakresis    ; input
+	BS                  P8IOCR,Reference    ; input
+	;MOV                 A,P8IOCR
+	;AND                 A,@0B00111111
+	;OR                  A,@0B11000000
+	;MOV                 P8IOCR,A
+	BANK                0
+	;BS                  PORT9,LeftYAxis
+	;BS                  PORT9,LeftXAxis
+	BS                  PORT9,RightYAxis    ; Set P92 HIGH
+	;BS                  PORT9,RightXAxis
+	;BS                  PORT8,Reference    ; Set P87
+	;BS                  PORT8,Leakresis    ; Set P86
+
+	CLR                 IMR                ; Disable Timier1/TCC
+	BANK                2
+	MOV                 A,@IOCheckRate     ; N=, Auto reload
+	MOV                 T2PD,A
+	BS                  T2CR,T2EN          ; START
+	CLR                 IOcheckTimeCNT
+	BANK                0
+	JBS                 PORT8,Leakresis
+	JMP                 $-1
+	;MOV                 A,@0B10000001
+	;MOV                 IMR,A             ; Enable Timier1/TCC
+	BANK                2
+	BC                  T2CR,T2EN          ; START
+	MOV                 A,IOcheckTimeCNT
+	CALL                IO_Data_Operation
+	MOV                 KEY_RIGHT_Y,A       ; right y Axis
+	;COM                 KEY_RIGHT_Y
+	BANK                0
+	MOV                 A,@0B10000001
+	MOV                 IMR,A             ; Enable Timier1/TCC
+	NOP
+	RET
+	NOP

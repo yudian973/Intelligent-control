@@ -1,0 +1,19 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+Include Sub Directories=1
+Project Tagfile=
+Project Wordfile=
+Filter=
+Create Tagfile=0
+Project Directory=D:\EM78P520_EM78M611_EM198850\project4\program4
+[Files]
+0=CONFIG.H
+1=M611ManageFunc.asm
+2=M611rxP40.asm
+3=M611rxP40.H
+4=M611SkipFreqFunc.asm
+5=M611USBDescData.asm
+6=M611USBDriver.asm

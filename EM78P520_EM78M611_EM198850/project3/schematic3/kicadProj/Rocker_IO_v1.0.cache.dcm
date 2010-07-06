@@ -1,0 +1,32 @@
+EESchema-DOCLIB  Version 2.0  2009-11-20 15:51:46
+#
+$CMP C
+D Condensateur non polarise
+$ENDCMP
+#
+$CMP CONN_12
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP CONN_5
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP CONN_6
+D ymbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP R
+D Resistance
+K R DEV
+$ENDCMP
+#
+$CMP Rocker
+D Potentionmetre
+K RV
+$ENDCMP
+#
+#End Doc Library

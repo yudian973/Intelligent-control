@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0  2009-8-3 10:07:22
+#
+$CMP CONN_12
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP Rocker
+D Potentionmetre
+K RV
+$ENDCMP
+#
+#End Doc Library

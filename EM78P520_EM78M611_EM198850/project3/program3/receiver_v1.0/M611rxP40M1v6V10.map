@@ -1,0 +1,3564 @@
+****************************************
+------------- Free ROM Size ------------
+Start=0XA    , End=0X4F   , Size=70
+Start=0X1D4  , End=0X1FF  , Size=44
+Start=0X295  , End=0X2FF  , Size=107
+Start=0X321  , End=0X3FF  , Size=223
+Start=0X5E4  , End=0X7FF  , Size=540
+Start=0X8F8  , End=0XBFF  , Size=776
+Start=0XC3B  , End=0XCFF  , Size=197
+Start=0XD9D  , End=0XDFF  , Size=99
+Start=0XE9D  , End=0XEFF  , Size=99
+Start=0XF9D  , End=0XFFF  , Size=99
+Start=0X10EC , End=0X10FF , Size=20
+Start=0X113B , End=0X114F , Size=21
+Start=0X13B7 , End=0X13FF , Size=73
+Start=0X1710 , End=0X17FF , Size=240
+
+----------------------------------------
+EM78M611E       |        ROM Size        
+----------------+-----------------------
+Total           |  6144 x 13 bits(100.0%)
+Used            |  3536 x 13 bits( 57.6%)
+Free            |  2608 x 13 bits( 42.4%)
+----------------------------------------
+****************************************
+The Checksum is -- 0x304F
+****************************************
+--------------- ROM Code ---------------
+000000: 1471  	JMP                 MCU_RESET
+000001: 0054  	PUSH                              ; save ACC,R3,R4
+000002: 0754  	SWAP                A_TEMP         ;A_TEMP
+000003: 0703  	SWAPA               0X03           ;STATUS           ;SAVE STATUS(R3)
+000004: 0056  	MOV                 STATUS_TEMP,A  ;STATUS_TEMP,A
+000005: 0704  	SWAPA               0X04           ;RSR              ;SAVE RSR(R4)
+000006: 0055  	MOV                 RSR_TEMP,A     ;RSR_TEMP,A
+000007: 00C3  	CLR                 0X03           ;STATUS           ;SELECT PAGE0
+000008: 00C4  	CLR                 RSR
+000009: 1450  	JMP                 TCC_INT_STATE
+000050: 0000  	NOP
+000051: 0C4F  	JBC                 ISR,EP0IF
+000052: 1461  	JMP                 USB_EP0_INT
+000053: 0CCF  	JBC                 ISR,USBRIF
+000054: 1467  	JMP                 USB_RESET_INT
+000055: 0C0F  	JBC                 ISR,TCCIF
+000056: 1459  	JMP                 RF_CYCLE_INT
+000057: 0C8F  	JBC                 ISR,USBSIF
+000058: 1465  	JMP                 USB_SUSPEND_INT
+000059: 18D1  	MOV                 A,@(256-47)  ; N=47,P=64,f=6MHz ==> T=1ms
+00005A: 0041  	MOV                 TCC,A
+00005B: 080F  	BC                  ISR,TCCIF
+00005C: 055B  	INC                 ComuClock    ; 1ms intrrupt and the master timing
+00005D: 0557  	INC                 SystemTimeCNT
+00005E: 1880  	MOV                 A,@0X80      ; (test)P57 exchange when intrrupt
+00005F: 0345  	XOR                 PORT5,A
+000060: 146B  	JMP                 INT_RET
+000061: 0BC3  	PAGE                4
+000062: 0983  	          BC        0X03,6
+000063: 0943  	          BC        0X03,5
+000064: 1550  	JMP                 READ_COMMAND ; EP0 Intrrupt flag,wating for Host'CMD
+000065: 088F  	BC                  ISR,USBSIF
+000066: 146B  	JMP                 INT_RET
+000067: 1801  	MOV                 A,@0X01
+000068: 0079  	MOV                 PROTOCOL_TEMP,A
+000069: 08CF  	BC                  ISR,USBRIF
+00006A: 146B  	JMP                 INT_RET
+00006B: 0716  	POP                              ; restore ACC,R3,R4
+00006C: 0043  	MOV                 0X03,A         ;STATUS,A
+00006D: 0715  	SWAPA               RSR_TEMP       ;RSR_TEMP       ;R4
+00006E: 0044  	MOV                 0X04,A         ;RSR,A
+00006F: 0714  	SWAPA               A_TEMP         ;A_TEMP
+000070: 0013  	RETI
+000071: 0011  	DISI
+000072: 18C8  	MOV                 A,@200          ; delay 20ms
+000073: 0BC3  	PAGE                5
+000074: 0983  	          BC        0X03,6
+000075: 0B43  	          BS        0X03,5
+000076: 12C0  	CALL                DELAY_X100US
+000077: 09C3  	PAGE                0
+000078: 0983                BC        0X03,6
+000079: 0943                BC        0X03,5
+00007A: 0000  	NOP
+00007B: 00CC  	ClrRamBank
+00007C: 00CD  	CLR     RD
+00007D: 00D0  	CLR     0X10
+00007E: 182F  	MOV     A,@0X2F
+00007F: 0050  	MOV     0X10,A
+000080: 1811  	MOV     A,@0X11
+000081: 0044  	MOV     RSR,A
+000082: 00C0  	CLR     R0
+000083: 0544  	INC     RSR
+000084: 05D0  	DJZ     0X10
+000085: 1482  	JMP     $-3        ;CLRLOOPU1
+000086: 00C0      CLR     R0
+000087: 1820  	MOV     A,@0X20
+000088: 0050  	MOV     0X10,A
+000089: 1860  	MOV     A,@0X60
+00008A: 0044  	MOV     RSR,A
+00008B: 00C0  	CLR     R0
+00008C: 0544  	INC     RSR
+00008D: 05D0  	DJZ     0X10
+00008E: 148B  	JMP     $-3             ;CLRLOOPU2
+00008F: 00C0  	CLR     R0
+000090: 1820  	MOV     A,@0X20
+000091: 0050  	MOV     0X10,A
+000092: 18A0  	MOV     A,@0XA0
+000093: 0044  	MOV     RSR,A
+000094: 00C0  	CLR     R0
+000095: 0544  	INC     RSR
+000096: 05D0  	DJZ     0X10
+000097: 1494  	JMP     $-3            ;CLRLOOPU3
+000098: 00C0  	CLR     R0
+000099: 1811  	MOV     A,@0X11
+00009A: 004D  	MOV     RD,A
+00009B: 00CE  	CLR     RE
+00009C: 1801  	MOV     A,@1
+00009D: 004D  	MOV     RD,A
+00009E: 1800  	MOV     A,@0X00
+00009F: 004E  	MOV     RE,A
+0000A0: 004E  	MOV     RE,A
+0000A1: 004E  	MOV     RE,A
+0000A2: 004E  	MOV     RE,A
+0000A3: 004E  	MOV     RE,A
+0000A4: 004E  	MOV     RE,A
+0000A5: 004E  	MOV     RE,A
+0000A6: 004E  	MOV     RE,A
+0000A7: 0B4C  	BS      RC,5
+0000A8: 0000  	NOP
+0000A9: 1830  	MOV                 A,@00110000B    ;set P50 D+/CLOCK, P51 D-/DATA pins input
+0000AA: 0007  	IOW                 IOC7
+0000AB: 0000  	NOP
+0000AC: 1804  	MOV                 A,@00000100B
+0000AD: 0009  	IOW                 IOC9
+0000AE: 0000  	NOP
+0000AF: 1800  	MOV                 A,@00000000B
+0000B0: 0008  	IOW                 IOC8
+0000B1: 0000  	NOP
+0000B2: 1820  	MOV                 A,@00100000B    ;SET P55 INPUT
+0000B3: 0005  	IOW                 IOC5
+0000B4: 0000  	NOP
+0000B5: 1861  	MOV                 A,@01100001B	;SPI_MISO/PKT_FLAG/FIFO_FLAG -> input port
+0000B6: 0006  	IOW                 IOC6
+0000B7: 0000  	NOP
+0000B8: 18F3  	MOV                 A,@11110011B	;PULL HIGH PORT92,PORT93
+0000B9: 000D  	IOW                 IOCD
+0000BA: 0000  	NOP
+0000BB: 18D0  	MOV                 A,@11010000B	;Disable WDT,PORT (PULL HIGH)
+0000BC: 000E  	IOW                 IOCE
+0000BD: 0000  	NOP
+0000BE: 1801  	MOV                 A,@00000001B	;USB Mode
+0000BF: 000A  	IOW                 IOCA
+0000C0: 0000  	NOP
+0000C1: 1868  	MOV                 A,@01101000B		; Disable WDT, TCC clock source is Main CLK   1:64
+0000C2: 0002  	CONTW				                    ; TCC 1MS overflow
+0000C3: 00C1  	CLR                 TCC                 ; Clear TCC
+0000C4: 00CF  	CLR                 ISR                 ; interrupt flag
+0000C5: 1803  	MOV                 A,@00000011B
+0000C6: 000F  	IOW                 IMR                 ; enable EP0 interrupt / enable TCC interrupt
+0000C7: 0000  	NOP
+0000C8: 0BC3  	PAGE                5
+0000C9: 0983  	          BC        0X03,6
+0000CA: 0B43  	          BS        0X03,5
+0000CB: 0000  	NOP
+0000CC: 10BD  	CALL                EM198850_RESET          ;initial RF
+0000CD: 0000  	NOP
+0000CE: 09C3  	PAGE                0
+0000CF: 0983                BC        0X03,6
+0000D0: 0943                BC        0X03,5
+0000D1: 0B06  	BS                  SPI_SS/16,SPI_SS%16                    ; Disable RF
+0000D2: 1800  	MOV                 A,@0X00
+0000D3: 0055  	MOV                 DataAddressInEEPROM,A
+0000D4: 1860  	MOV                 A,@0X60
+0000D5: 0054  	MOV                 DataAddressInMCU,A
+0000D6: 0414  	mREAD               DataAddressInEEPROM,@0,DataAddressInMCU,@16
+0000D7: 0044          MOV     R4,A
+0000D8: 09C4                BC        0X04,7
+0000D9: 0984                BC        0X04,6
+0000DA: 1810          MOV     A,@k
+0000DB: 0053          MOV     r_acc3,A
+0000DC: 1300  	          CALL      ADDRESS
+0000DD: 0615          RRCA    DataAddressInEEPROM
+0000DE: 1980          OR      A,@READ
+0000DF: 0051          MOV     r_acc1,A      ;高二位为写命令，低六位为地址
+0000E0: 1808          MOV     A,@8            ;向93C46写一个字节，控制数
+0000E1: 130F  	          CALL      ADDRESS
+0000E2: 0886          BC      SPI_CLK/16,SPI_CLK%16
+0000E3: 0E15          JBS     DataAddressInEEPROM,0        ;写入8BIT模式时的地址最低位
+0000E4: 08C6          BC      SPI_MOSI/16,SPI_MOSI%16
+0000E5: 0C15          JBC     DataAddressInEEPROM,0
+0000E6: 0AC6          BS      SPI_MOSI/16,SPI_MOSI%16
+0000E7: 14E8          JMP     $+1
+0000E8: 0A86          BS      SPI_CLK/16,SPI_CLK%16
+0000E9: 0555          INC     DataAddressInEEPROM          ;地址加1
+0000EA: 08C6          BC      SPI_MOSI/16,SPI_MOSI%16
+0000EB: 14EC          JMP     $+1
+0000EC: 0886          BC      SPI_CLK/16,SPI_CLK%16
+0000ED: 14EE          JMP     $+1
+0000EE: 14EF          JMP     $+1
+0000EF: 0A86          BS      SPI_CLK/16,SPI_CLK%16
+0000F0: 1808          MOV     A,@8
+0000F1: 0052          MOV     r_acc2,A
+0000F2: 0886          BC      SPI_CLK/16,SPI_CLK%16
+0000F3: 0000          NOP
+0000F4: 0000          NOP
+0000F5: 0C06          JBC     SPI_MISO/16,SPI_MISO%16
+0000F6: 0A03          BS      STATUS,C
+0000F7: 0E06          JBS     SPI_MISO/16,SPI_MISO%16
+0000F8: 0803          BC      STATUS,C
+0000F9: 06C0          RLC     R0
+0000FA: 0A86          BS      SPI_CLK/16,SPI_CLK%16
+0000FB: 14FC          JMP     $+1
+0000FC: 05D2          DJZ     r_acc2
+0000FD: 14F2          JMP     $Read_Data2
+0000FE: 0544          INC     R4
+0000FF: 0000          NOP
+000100: 0985          BC      AT93C46_CS/16,AT93C46_CS%16
+000101: 05D3          DJZ     r_acc3
+000102: 14DC          JMP     $Write_Data
+000103: 0985  	BC                  AT93C46_CS/16,AT93C46_CS%16            ; Disable 93C46
+000104: 11C8  	CALL                PAGE0BANK0                             ; Save ID
+000105: 0421  	MOV                 A,RX_IDH_Buffer
+000106: 11CB  	CALL                PAGE0BANK1
+000107: 0061  	MOV                 RX_IDH,A
+000108: 11C8  	CALL                PAGE0BANK0
+000109: 0422  	MOV                 A,RX_IDL_Buffer
+00010A: 11CB  	CALL                PAGE0BANK1
+00010B: 0062  	MOV                 RX_IDL,A
+00010C: 11C8  	CALL                PAGE0BANK0
+00010D: 0427  	MOV                 A,TX1_ID_Buffer
+00010E: 11CB  	CALL                PAGE0BANK1
+00010F: 0067  	MOV                 TX1_ID,A
+000110: 11C8  	CALL                PAGE0BANK0
+000111: 0428  	MOV                 A,TX2_ID_Buffer
+000112: 11CB  	CALL                PAGE0BANK1
+000113: 0068  	MOV                 TX2_ID,A
+000114: 11C8  	CALL                PAGE0BANK0
+000115: 0429  	MOV                 A,TX3_ID_Buffer
+000116: 11CB  	CALL                PAGE0BANK1
+000117: 0069  	MOV                 TX3_ID,A
+000118: 11C8  	CALL                PAGE0BANK0
+000119: 042A  	MOV                 A,TX4_ID_Buffer
+00011A: 11CB  	CALL                PAGE0BANK1
+00011B: 006A  	MOV                 TX4_ID,A
+00011C: 11C8  	CALL                PAGE0BANK0
+00011D: 042B  	MOV                 A,TX5_ID_Buffer
+00011E: 11CB  	CALL                PAGE0BANK1
+00011F: 006B  	MOV                 TX5_ID,A
+000120: 11C8  	CALL                PAGE0BANK0
+000121: 042C  	MOV                 A,TX6_ID_Buffer
+000122: 11CB  	CALL                PAGE0BANK1
+000123: 006C  	MOV                 TX6_ID,A
+000124: 11CB  	CALL                PAGE0BANK1
+000125: 0421  	MOV                 A,RX_IDH
+000126: 0322  	XOR                 A,RX_IDL
+000127: 0E83  	JBS                 STATUS,Z
+000128: 152D  	JMP                 Run_Start  ;if RX_IDH==RX_IDL should jump
+000129: 0422  	MOV                 A,RX_IDL
+00012A: 1BFF  	XOR                 A,@0XFF
+00012B: 0C83  	JBC                 STATUS,Z   ;if RX_IDH==RX==0xff set EEpromWRStatusFlag
+00012C: 0ADE  	BS                  EEpromWRStatusFlag/16,EEpromWRStatusFlag%16
+00012D: 0CDE  	JBC                 EEpromWRStatusFlag/16,EEpromWRStatusFlag%16
+00012E: 1168  	CALL                Rand_ID_Function
+00012F: 0BC3  	PAGE                5
+000130: 0983  	          BC        0X03,6
+000131: 0B43  	          BS        0X03,5
+000132: 1287  	CALL                CHANGE_ADDRESS_VALUE
+000133: 1275  	CALL                RF_FREQ_SET	
+000134: 09C3  	PAGE                0
+000135: 0983                BC        0X03,6
+000136: 0943                BC        0X03,5
+000137: 11C8  	CALL                PAGE0BANK0
+000138: 0000  	NOP
+000139: 0010  	ENI
+00013A: 00DB  	CLR                 ComuClock
+00013B: 00DE  	CLR                 CommuStatusFlag
+00013C: 00DF  	CLR                 GeneralStatusFlag
+00013D: 00E3  	CLR                 CHN_FLAG
+00013E: 00D0  	CLR                 TEMP
+00013F: 11CB  	CALL                PAGE0BANK1
+000140: 0B5F  	BS                  KeyStatusFlag/16,KeyStatusFlag%16
+000141: 18FF  	MOV                 A,@0XFF
+000142: 0075  	MOV                 KeystokeFlag_Befor,A
+000143: 0076  	MOV                 KeystokeTimeCNT,A
+000144: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16
+000145: 1279  	CALL                SearchLinkMode_Set
+000146: 0808  	BC                  PORT8,0
+000147: 18D1   	MOV                 A,@(256-47)  ; N=94,P=64,f=6MHz ==> T=1ms
+000148: 0041  	MOV                 TCC,A        ; TCC reload by PKT pull high
+000149: 00DB  	CLR                 ComuClock
+00014A: 1880  	MOV                 A,@0X80      ; (test)P57 exchange when intrrupt
+00014B: 0345  	XOR                 PORT5,A
+00014C: 0000   	NOP
+00014D: 0004  	WDTC
+00014E: 0BC3  	PAGE                4
+00014F: 0983  	          BC        0X03,6
+000150: 0943  	          BC        0X03,5
+000151: 12FC  	CALL                USB_MAIN
+000152: 09C3   	PAGE                0
+000153: 0983                BC        0X03,6
+000154: 0943                BC        0X03,5
+000155: 1200  	CALL                SYNC_COM_TX
+000156: 09C3  	PAGE                1
+000157: 0983  	          BC        0X03,6
+000158: 0B43  	          BS        0X03,5
+000159: 1000   	CALL                RX1_FUNCTION
+00015A: 1077   	CALL                RX2_FUNCTION
+00015B: 10EE   	CALL                RX3_FUNCTION
+00015C: 1163   	CALL                RX4_FUNCTION
+00015D: 09C3   	PAGE                2
+00015E: 0B83  	          BS        0X03,6
+00015F: 0943  	          BC        0X03,5
+000160: 1000   	CALL                RX5_FUNCTION
+000161: 1076   	CALL                RX6_FUNCTION
+000162: 09C3  	PAGE                0
+000163: 0983                BC        0X03,6
+000164: 0943                BC        0X03,5
+000165: 154D  	JMP                 MAIN
+000166: 0000  	NOP
+000167: 154D  	JMP                 MAIN
+000168: 1802  	MOV                 A,@2
+000169: 0051  	MOV                 TEMP1,A
+00016A: 1861  	MOV                 A,@0X61
+00016B: 0052  	MOV                 TEMP2,A
+00016C: 11A3  	CALL                RAND_FUCTION  ; Creat RX_IDH,RX_IDL
+00016D: 11CB  	CALL                PAGE0BANK1
+00016E: 18F0  	MOV                 A,@0XF0       ; synthesize TX_IDx
+00016F: 02A2  	AND                 A,RX_IDL
+000170: 0067  	MOV                 TX1_ID,A
+000171: 0068  	MOV                 TX2_ID,A
+000172: 0069  	MOV                 TX3_ID,A
+000173: 006A  	MOV                 TX4_ID,A
+000174: 006B  	MOV                 TX5_ID,A
+000175: 006C  	MOV                 TX6_ID,A
+000176: 1801  	MOV                 A,@0X01
+000177: 03E7  	ADD                 TX1_ID,A
+000178: 1802  	MOV                 A,@0X02
+000179: 03E8  	ADD                 TX2_ID,A
+00017A: 1803  	MOV                 A,@0X03
+00017B: 03E9  	ADD                 TX3_ID,A
+00017C: 1804  	MOV                 A,@0X04
+00017D: 03EA  	ADD                 TX4_ID,A
+00017E: 1805  	MOV                 A,@0X05
+00017F: 03EB  	ADD                 TX5_ID,A
+000180: 1806  	MOV                 A,@0X06
+000181: 03EC  	ADD                 TX6_ID,A
+000182: 11CB  	CALL                PAGE0BANK1   ; write ID to buffer
+000183: 0421  	MOV                 A,RX_IDH
+000184: 11C8  	CALL                PAGE0BANK0
+000185: 0061  	MOV                 RX_IDH_Buffer,A
+000186: 11CB  	CALL                PAGE0BANK1
+000187: 0422  	MOV                 A,RX_IDL
+000188: 11C8  	CALL                PAGE0BANK0
+000189: 0062  	MOV                 RX_IDL_Buffer,A
+00018A: 11CB  	CALL                PAGE0BANK1
+00018B: 0427  	MOV                 A,TX1_ID
+00018C: 11C8  	CALL                PAGE0BANK0
+00018D: 0067  	MOV                 TX1_ID_Buffer,A
+00018E: 11CB  	CALL                PAGE0BANK1
+00018F: 0428  	MOV                 A,TX2_ID
+000190: 11C8  	CALL                PAGE0BANK0
+000191: 0068  	MOV                 TX2_ID_Buffer,A
+000192: 11CB  	CALL                PAGE0BANK1
+000193: 0429  	MOV                 A,TX3_ID
+000194: 11C8  	CALL                PAGE0BANK0
+000195: 0069  	MOV                 TX3_ID_Buffer,A
+000196: 11CB  	CALL                PAGE0BANK1
+000197: 042A  	MOV                 A,TX4_ID
+000198: 11C8  	CALL                PAGE0BANK0
+000199: 006A  	MOV                 TX4_ID_Buffer,A
+00019A: 11CB  	CALL                PAGE0BANK1
+00019B: 042B  	MOV                 A,TX5_ID
+00019C: 11C8  	CALL                PAGE0BANK0
+00019D: 006B  	MOV                 TX5_ID_Buffer,A
+00019E: 11CB  	CALL                PAGE0BANK1
+00019F: 042C  	MOV                 A,TX6_ID
+0001A0: 11C8  	CALL                PAGE0BANK0
+0001A1: 006C  	MOV                 TX6_ID_Buffer,A
+0001A2: 0012  	RET
+0001A3: 0050  	MOV                 TEMP,A
+0001A4: 0412  	MOV                 A,TEMP2
+0001A5: 03D0  	ADD                 TEMP,A        ; save latest data as current seed
+0001A6: 00C4  	CLR                 RSR
+0001A7: 0400  	MOV                 A,R0
+0001A8: 03D0  	ADD                 TEMP,A          ; seed
+0001A9: 11BC  	CALL                ArithmeticIns
+0001AA: 0544  	INC                 RSR
+0001AB: 0404  	MOV                 A,RSR
+0001AC: 1A40  	AND                 A,@0X40         ; adding form 0x00 to bank 0
+0001AD: 1B40  	XOR                 A,@0X40
+0001AE: 0E83  	JBS                 STATUS,Z
+0001AF: 15A7  	JMP                 RAND_SEED_LOOP1
+0001B0: 0400  	MOV                 A,R0
+0001B1: 03D0  	ADD                 TEMP,A          ; next seed
+0001B2: 0412  	MOV                 A,TEMP2
+0001B3: 0044  	MOV                 RSR,A
+0001B4: 0410  	MOV                 A,TEMP
+0001B5: 0040  	MOV                 R0,A
+0001B6: 11BC  	CALL                ArithmeticIns
+0001B7: 0552  	INC                 TEMP2
+0001B8: 05D1  	DJZ                 TEMP1
+0001B9: 15B2  	JMP                 RAND_DATA_LOOP1:
+0001BA: 0000  	NOP
+0001BB: 0012  	RET
+0001BC: 06D0  	RLC         TEMP          ; X*Y+1 MOD Z
+0001BD: 06D0  	RLC         TEMP
+0001BE: 06D0  	RLC         TEMP
+0001BF: 0550  	INC         TEMP
+0001C0: 0650  	RRC         TEMP
+0001C1: 0650  	RRC         TEMP
+0001C2: 0650  	RRC         TEMP
+0001C3: 0E03  	JBS         STATUS,C
+0001C4: 0810  	BC          TEMP,0
+0001C5: 0C03  	JBC         STATUS,C
+0001C6: 0A10  	BS          TEMP,0
+0001C7: 0012  	RET
+0001C8: 09C4  		BC              0X04,7
+0001C9: 0984  		BC              0X04,6
+0001CA: 0012  	RET
+0001CB: 09C4  		BC              0X04,7
+0001CC: 0B84  		BS              0X04,6
+0001CD: 0012  	RET
+0001CE: 0BC4  		BS              0X04,7
+0001CF: 0984  		BC              0X04,6
+0001D0: 0012  	RET
+0001D1: 0BC4  		BS              0X04,7
+0001D2: 0B84  		BS              0X04,6
+0001D3: 0012  	RET
+000200: 0000  	NOP
+000201: 0004  	WDTC
+000202: 0BC3  	PAGE                5
+000203: 0983  	          BC        0X03,6
+000204: 0B43  	          BS        0X03,5
+000205: 1275  	CALL                RF_FREQ_SET
+000206: 0BC3  	PAGE                4
+000207: 0983  	          BC        0X03,6
+000208: 0943  	          BC        0X03,5
+000209: 1000   	CALL                Communicate_USB_Function
+00020A: 09C3   	PAGE                0
+00020B: 0983                BC        0X03,6
+00020C: 0943                BC        0X03,5
+00020D: 041B  	MOV                 A,ComuClock                  ; ComuClock == 6 will continue
+00020E: 1D05  	SUB                 A,@5
+00020F: 0C03  	JBC                 STATUS,C
+000210: 160D  	JMP                 $-3
+000211: 11C8  	CALL                PAGE0BANK0
+000212: 1800  	MOV                 A,@0X00                      ;PID_DATA
+000213: 0060  	MOV                 PID_DATA_Buffer,A
+000214: 11CB  	CALL                PAGE0BANK1
+000215: 0421  	MOV                 A,RX_IDH			         ;RX_IDH
+000216: 11C8  	CALL                PAGE0BANK0
+000217: 0061  	MOV                 RX_IDH_Buffer,A
+000218: 11CB  	CALL                PAGE0BANK1
+000219: 0422  	MOV                 A,RX_IDL                     ;RX_IDL
+00021A: 11C8  	CALL                PAGE0BANK0
+00021B: 0062  	MOV                 RX_IDL_Buffer,A
+00021C: 11CB  	CALL                PAGE0BANK1
+00021D: 0423  	MOV                 A,CHN_FLAG                   ;CHN_FLAG
+00021E: 11C8  	CALL                PAGE0BANK0
+00021F: 0063  	MOV                 CHN_FLAG_Buffer,A
+000220: 041E  	MOV                 A,CommuStatusFlag            ;CommuStatusFlag
+000221: 0064  	MOV                 CommuStatusFlag_Buffer,A
+000222: 11CB  	CALL                PAGE0BANK1
+000223: 0424  	MOV                 A,DirectionCtrl              ;DirectionCtrl
+000224: 11C8  	CALL                PAGE0BANK0
+000225: 0065  	MOV                 DirectionCtrl_Buffer,A
+000226: 11CB  	CALL                PAGE0BANK1
+000227: 1806  	MOV                 A,@TotalGamepads             ;N_CHN=(TotalGamepads << 4) | CH_NO
+000228: 0065  	MOV                 N_CHN,A
+000229: 0765  	SWAP                N_CHN
+00022A: 0433  	MOV                 A,CH_NO
+00022B: 0265  	OR                  N_CHN,A
+00022C: 0425  	MOV                 A,N_CHN                      ;CH_NO,  ;Current freqency NUM
+00022D: 11C8  	CALL                PAGE0BANK0
+00022E: 0066  	MOV                 N_CHN_Buffer,A
+00022F: 041E  	MOV                 A,CommuStatusFlag            ;CommuStatusFlag
+000230: 0064  	MOV                 CommuStatusFlag_Buffer,A
+000231: 11CB  	CALL                PAGE0BANK1
+000232: 0424  	MOV                 A,DirectionCtrl              ;DirectionCtrl
+000233: 11C8  	CALL                PAGE0BANK0
+000234: 0065  	MOV                 DirectionCtrl_Buffer,A
+000235: 11CB  	CALL                PAGE0BANK1
+000236: 0427  	MOV                 A,TX1_ID                     ;TX1_ID
+000237: 11C8  	CALL                PAGE0BANK0
+000238: 0067  	MOV                 TX1_ID_Buffer,A
+000239: 11CB  	CALL                PAGE0BANK1
+00023A: 0428  	MOV                 A,TX2_ID                     ;TX2_ID
+00023B: 11C8  	CALL                PAGE0BANK0
+00023C: 0068  	MOV                 TX2_ID_Buffer,A
+00023D: 11CB  	CALL                PAGE0BANK1
+00023E: 0429  	MOV                 A,TX3_ID                     ;TX3_ID
+00023F: 11C8  	CALL                PAGE0BANK0
+000240: 0069  	MOV                 TX3_ID_Buffer,A
+000241: 11CB  	CALL                PAGE0BANK1
+000242: 042A  	MOV                 A,TX4_ID                     ;TX4_ID
+000243: 11C8  	CALL                PAGE0BANK0
+000244: 006A  	MOV                 TX4_ID_Buffer,A
+000245: 11CB  	CALL                PAGE0BANK1
+000246: 042B  	MOV                 A,TX5_ID                     ;TX5_ID
+000247: 11C8  	CALL                PAGE0BANK0
+000248: 006B  	MOV                 TX5_ID_Buffer,A
+000249: 11CB  	CALL                PAGE0BANK1
+00024A: 042C  	MOV                 A,TX6_ID                     ;TX6_ID
+00024B: 11C8  	CALL                PAGE0BANK0
+00024C: 006C  	MOV                 TX6_ID_Buffer,A
+00024D: 11C8  	CALL                PAGE0BANK0
+00024E: 0430  	MOV                 A,GS_XPoint_LOW_Buffer
+00024F: 11CB  	CALL                PAGE0BANK1
+000250: 0079  	MOV                 GS_XPoint_LOW,A
+000251: 11C8  	CALL                PAGE0BANK0
+000252: 0431  	MOV                 A,GS_YPoint_LOW_Buffer
+000253: 11CB  	CALL                PAGE0BANK1
+000254: 007A  	MOV                 GS_YPoint_LOW,A
+000255: 11C8  	CALL                PAGE0BANK0
+000256: 0432  	MOV                 A,GS_ZPoint_LOW_Buffer
+000257: 11CB  	CALL                PAGE0BANK1
+000258: 007B  	MOV                 GS_ZPoint_LOW,A
+000259: 11C8  	CALL                PAGE0BANK0
+00025A: 0433  	MOV                 A,GS_Point_HIGH_Buffer
+00025B: 11CB  	CALL                PAGE0BANK1
+00025C: 007C  	MOV                 GS_Point_HIGH,A
+00025D: 11C8  	CALL                PAGE0BANK0
+00025E: 0434  	MOV                 A,CMOS_XPoint_LOW_Buffer
+00025F: 11CB  	CALL                PAGE0BANK1
+000260: 007D  	MOV                 CMOS_XPoint_LOW,A
+000261: 11C8  	CALL                PAGE0BANK0
+000262: 0435  	MOV                 A,CMOS_YPoint_LOW_Buffer
+000263: 11CB  	CALL                PAGE0BANK1
+000264: 007E  	MOV                 CMOS_YPoint_LOW,A
+000265: 11C8  	CALL                PAGE0BANK0
+000266: 0436  	MOV                 A,CMOS_Point_HIGH_Buffer
+000267: 11CB  	CALL                PAGE0BANK1
+000268: 007F  	MOV                 CMOS_Point_HIGH,A
+000269: 0BC3  	PAGE                5
+00026A: 0983  	          BC        0X03,6
+00026B: 0B43  	          BS        0X03,5
+00026C: 1190  	CALL                Enter_TX_Buffer_NACK
+00026D: 1171  	CALL                Reset_RF_FIFO		
+00026E: 115F  	CALL                Write_FIFO_RAM
+00026F: 09C3  	PAGE                0
+000270: 0983                BC        0X03,6
+000271: 0943                BC        0X03,5
+000272: 18D1  	MOV                 A,@(256-47)               ; N=47,P=64,f=4MHz ==> T=1ms
+000273: 0041  	MOV                 TCC,A                     ; TCC reload by PKT pull high
+000274: 1880  	MOV                 A,@0X80                   ; (test)P57 exchange when intrrupt
+000275: 0345  	XOR                 PORT5,A
+000276: 00DB  	CLR                 ComuClock                 ; ComuClock = 0
+000277: 0000  	NOP
+000278: 0012  	RET
+000279: 0A1E  	BS                  SearchStatusFlag/16,SearchStatusFlag%16            ;set search mode
+00027A: 085E  	BC                  NormalStatusFlag/16,NormalStatusFlag%16            ;Clear normal mode
+00027B: 08DE  	BC                  EEpromWRStatusFlag/16,EEpromWRStatusFlag%16
+00027C: 0B1E  	BS                  LinkModeFlag/16,LinkModeFlag%16
+00027D: 095E  	BC                  ForceLinkModeFlag/16,ForceLinkModeFlag%16
+00027E: 099E  	BC                  FccTestModeFlag/16,FccTestModeFlag%16
+00027F: 0012  	RET
+000280: 081E  	BC                  SearchStatusFlag/16,SearchStatusFlag%16            ;set search mode
+000281: 0A5E  	BS                  NormalStatusFlag/16,NormalStatusFlag%16            ;Clear normal mode
+000282: 08DE  	BC                  EEpromWRStatusFlag/16,EEpromWRStatusFlag%16
+000283: 0B1E  	BS                  LinkModeFlag/16,LinkModeFlag%16
+000284: 095E  	BC                  ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000285: 099E  	BC                  FccTestModeFlag/16,FccTestModeFlag%16
+000286: 0012  	RET
+000287: 0A1E  	BS                  SearchStatusFlag/16,SearchStatusFlag%16            ;set search mode
+000288: 085E  	BC                  NormalStatusFlag/16,NormalStatusFlag%16            ;Clear normal mode
+000289: 08DE  	BC                  EEpromWRStatusFlag/16,EEpromWRStatusFlag%16
+00028A: 091E  	BC                  LinkModeFlag/16,LinkModeFlag%16
+00028B: 0B5E  	BS                  ForceLinkModeFlag/16,ForceLinkModeFlag%16
+00028C: 099E  	BC                  FccTestModeFlag/16,FccTestModeFlag%16
+00028D: 0012  	RET
+00028E: 081E  	BC                  SearchStatusFlag/16,SearchStatusFlag%16            ;set search mode
+00028F: 0A5E  	BS                  NormalStatusFlag/16,NormalStatusFlag%16            ;Clear normal mode
+000290: 08DE  	BC                  EEpromWRStatusFlag/16,EEpromWRStatusFlag%16
+000291: 091E  	BC                  LinkModeFlag/16,LinkModeFlag%16
+000292: 095E  	BC                  ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000293: 0B9E  	BS                  FccTestModeFlag/16,FccTestModeFlag%16
+000294: 0012  	RET
+000300: 09C4  		BANK    @0
+000301: 0984                BC        0X04,6
+000302: 0985          BC      AT93C46_CS/16,AT93C46_CS%16
+000303: 0886          BC      SPI_CLK/16,SPI_CLK%16
+000304: 08C6          BC      SPI_MOSI/16,SPI_MOSI%16
+000305: 1706          JMP     $+1
+000306: 1707          JMP     $+1
+000307: 0B85          BS      AT93C46_CS/16,AT93C46_CS%16
+000308: 1709          JMP     $+1
+000309: 170A          JMP     $+1
+00030A: 0AC6          BS      SPI_MOSI/16,SPI_MOSI%16       ;PORT6,SPI_MOSI;
+00030B: 170C          JMP     $+1
+00030C: 170D          JMP     $+1
+00030D: 0A86          BS      SPI_CLK/16,SPI_CLK%16
+00030E: 0012          RET
+00030F: 0059  	MOV     DataShiftCounter,A
+000310: 09C4  	BANK    @0
+000311: 0984                BC        0X04,6
+000312: 0886  	BC      SPI_CLK/16,SPI_CLK%16
+000313: 1714  	JMP     $+1
+000314: 0803  	bc      status,c
+000315: 06D1  	RLC     r_acc1        ;要写入的数据
+000316: 0E03  	JBS     STATUS,C
+000317: 08C6  	BC      SPI_MOSI/16,SPI_MOSI%16
+000318: 0C03  	JBC     STATUS,C
+000319: 0AC6  	BS      SPI_MOSI/16,SPI_MOSI%16
+00031A: 0000  	NOP
+00031B: 0000  	NOP
+00031C: 0A86  	BS      SPI_CLK/16,SPI_CLK%16
+00031D: 171E  	JMP     $+1
+00031E: 05D9  	DJZ     DataShiftCounter
+00031F: 1712  	JMP     Rl_Comd1
+000320: 0012  	RET                   ;    return
+000400: 0004  	WDTC
+000401: 0BC3  	PAGE                5
+000402: 0983  	          BC        0X03,6
+000403: 0B43  	          BS        0X03,5
+000404: 122B  	CALL                Enter_StandbyI_Mode
+000405: 1171  	CALL                RESET_RF_FIFO
+000406: 11D2  	CALL                ENTER_RX_BUFFER_ACK
+000407: 09C3  	PAGE                1
+000408: 0983  	          BC        0X03,6
+000409: 0B43  	          BS        0X03,5
+00040A: 041B  	MOV                 A,ComuClock                  ;ComuClock == 8 will continue
+00040B: 1D07  	SUB                 A,@7
+00040C: 0E03  	JBS                 STATUS,C
+00040D: 1450  	JMP                 Rx1_Detect_Timeout           ; RX1,Timeout but have not received TX data
+00040E: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16	     ; 1:TX data receive finished  0:wating PKT pull high
+00040F: 140A  	JMP                 RX1_DETECT_LOOP
+000410: 0000  	NOP
+000411: 0BC3  	PAGE                5
+000412: 0983  	          BC        0X03,6
+000413: 0B43  	          BS        0X03,5
+000414: 114C  	CALL                READ_FIFO_RAM
+000415: 122B  	CALL                Enter_StandbyI_Mode	
+000416: 09C3  	PAGE                1
+000417: 0983  	          BC        0X03,6
+000418: 0B43  	          BS        0X03,5
+000419: 11DB  	CALL                PAGE1BANK1
+00041A: 0421  	MOV                 A,RX_IDH
+00041B: 11D8  	CALL                PAGE1BANK0
+00041C: 0361  	XOR                 RX_IDH_Buffer,A
+00041D: 0E83  	JBS                 STATUS,Z
+00041E: 145B  	JMP                 LoseFrameStatus_RxTxID1_Error
+00041F: 11DB  	CALL                PAGE1BANK1
+000420: 0422  	MOV                 A,RX_IDL
+000421: 11D8  	CALL                PAGE1BANK0
+000422: 0362  	XOR                 RX_IDL_Buffer,A
+000423: 0E83  	JBS                 STATUS,Z
+000424: 145B  	JMP                 LoseFrameStatus_RxTxID1_Error
+000425: 11DB  	CALL                PAGE1BANK1
+000426: 0427  	MOV                 A,TX1_ID
+000427: 11D8  	CALL                PAGE1BANK0
+000428: 0366  	XOR                 TX_ID_Buffer,A
+000429: 0E83  	JBS                 STATUS,Z
+00042A: 145B  	JMP                 LoseFrameStatus_RxTxID1_Error
+00042B: 11D8  	CALL                PAGE1BANK0                       ; Save data from buffer to local
+00042C: 0427  	MOV                 A,DataA_Buffer
+00042D: 11DE  	CALL                PAGE1BANK2
+00042E: 0060  	MOV                 TX1_DATA1,A
+00042F: 11D8  	CALL                PAGE1BANK0
+000430: 0428  	MOV                 A,DataB_Buffer
+000431: 11DE  	CALL                PAGE1BANK2
+000432: 0061  	MOV                 TX1_DATA2,A
+000433: 11D8  	CALL                PAGE1BANK0
+000434: 0429  	MOV                 A,DataC_Buffer
+000435: 11DE  	CALL                PAGE1BANK2
+000436: 0062  	MOV                 TX1_DATA3,A
+000437: 11D8  	CALL                PAGE1BANK0
+000438: 042A  	MOV                 A,DataD_Buffer
+000439: 11DE  	CALL                PAGE1BANK2
+00043A: 0063  	MOV                 TX1_DATA4,A
+00043B: 11D8  	CALL                PAGE1BANK0
+00043C: 042B  	MOV                 A,DataE_Buffer
+00043D: 11DE  	CALL                PAGE1BANK2
+00043E: 0064  	MOV                 TX1_DATA5,A
+00043F: 11D8  	CALL                PAGE1BANK0
+000440: 042C  	MOV                 A,DataF_Buffer
+000441: 11DE  	CALL                PAGE1BANK2
+000442: 0065  	MOV                 TX1_DATA6,A
+000443: 11D8  	CALL                PAGE1BANK0
+000444: 042D  	MOV                 A,DataG_Buffer
+000445: 11DE  	CALL                PAGE1BANK2
+000446: 0066  	MOV                 TX1_DATA7,A
+000447: 11DB  	CALL                PAGE1BANK1
+000448: 0A23  	BS                  CHN_FLAG,0
+000449: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+00044A: 1468  	JMP                 EP1_REPORT_RX1
+00044B: 0C2E  	JBC                 CHN_FLAG_TEMP,0                           ; CHN_FLAG rising edge
+00044C: 146F  	JMP                 Clear_RX1_LossframeCNT
+00044D: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16             ;
+00044E: 00D7  	CLR                 SystemTimeCNT
+00044F: 146F  	JMP                 Clear_RX1_LossframeCNT
+000450: 11DB  	CALL                PAGE1BANK1
+000451: 0E23  	JBS                 CHN_FLAG,0                                ; Lossframe Status
+000452: 146F  	JMP                 Clear_RX1_LossframeCNT                    ; if not SearchStatus,it must be in NormalStatus
+000453: 0438  	MOV                 A,RX1_LossframeCNT                        ; result = constant - variable
+000454: 1D03  	SUB                 A,@3                                      ;   | result > 0   c=1  variable less than constant
+000455: 0C03  	JBC                 STATUS,C	                              ;   | result < 0   c=0  variable more than constant
+000456: 1466  	JMP                 Increase_RX1_LossframeCNT
+000457: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000458: 146F  	JMP                 Clear_RX1_LossframeCNT
+000459: 0823  	BC                  CHN_FLAG,0
+00045A: 146F  	JMP                 Clear_RX1_LossframeCNT
+00045B: 11DB  	CALL                PAGE1BANK1
+00045C: 0E23  	JBS                 CHN_FLAG,0
+00045D: 146F  	JMP                 Clear_RX1_LossframeCNT
+00045E: 0438  	MOV                 A,RX1_LossframeCNT                                   ; 5 times lossframe
+00045F: 1D05  	SUB                 A,@5
+000460: 0C03  	JBC                 STATUS,C
+000461: 1466  	JMP                 Increase_RX1_LossframeCNT
+000462: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000463: 146F  	JMP                 Clear_RX1_LossframeCNT
+000464: 0823  	BC                  CHN_FLAG,0
+000465: 146F  	JMP                 Clear_RX1_LossframeCNT
+000466: 0578  	INC                 RX1_LossframeCNT
+000467: 1470  	JMP                 RX1_Over_Judge
+000468: 0BC3  	PAGE                4
+000469: 0983  	          BC        0X03,6
+00046A: 0943  	          BC        0X03,5
+00046B: 1314  	CALL                EP1_Report_1st
+00046C: 09C3  	PAGE                1
+00046D: 0983  	          BC        0X03,6
+00046E: 0B43  	          BS        0X03,5
+00046F: 00F8  	CLR                 RX1_LossframeCNT
+000470: 041B  	MOV                 A,ComuClock                  ; ComuClock == 8 will continue
+000471: 1D07  	SUB                 A,@7
+000472: 0C03  	JBC                 STATUS,C
+000473: 1470  	JMP                 $-3
+000474: 0B06  	BS                  SPI_SS/16,SPI_SS%16          ; Dissable RF
+000475: 0000  	NOP
+000476: 0012  	RET
+000477: 0004  	WDTC
+000478: 0BC3  	PAGE                5
+000479: 0983  	          BC        0X03,6
+00047A: 0B43  	          BS        0X03,5
+00047B: 1171  	CALL                RESET_RF_FIFO
+00047C: 11D2  	CALL                ENTER_RX_BUFFER_ACK
+00047D: 09C3  	PAGE                1
+00047E: 0983  	          BC        0X03,6
+00047F: 0B43  	          BS        0X03,5
+000480: 041B  	MOV                 A,ComuClock                  ;ComuClock == 16 will continue
+000481: 1D0F  	SUB                 A,@15
+000482: 0E03  	JBS                 STATUS,C
+000483: 14C7  	JMP                 RX2_Detect_Timeout           ; RX2,Timeout but have not received TX data
+000484: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16	     ; 1:TX data receive finished  0:wating PKT pull high
+000485: 1480  	JMP                 RX2_DETECT_LOOP
+000486: 0000  	NOP
+000487: 0BC3  	PAGE                5
+000488: 0983  	          BC        0X03,6
+000489: 0B43  	          BS        0X03,5
+00048A: 114C  	CALL                READ_FIFO_RAM
+00048B: 122B  	CALL                Enter_StandbyI_Mode	
+00048C: 09C3  	PAGE                1
+00048D: 0983  	          BC        0X03,6
+00048E: 0B43  	          BS        0X03,5
+00048F: 0000  	NOP
+000490: 11DB  	CALL                PAGE1BANK1
+000491: 0421  	MOV                 A,RX_IDH
+000492: 11D8  	CALL                PAGE1BANK0
+000493: 0361  	XOR                 RX_IDH_Buffer,A
+000494: 0E83  	JBS                 STATUS,Z
+000495: 14D2  	JMP                 LoseFrameStatus_RxTxID2_Error
+000496: 11DB  	CALL                PAGE1BANK1
+000497: 0422  	MOV                 A,RX_IDL
+000498: 11D8  	CALL                PAGE1BANK0
+000499: 0362  	XOR                 RX_IDL_Buffer,A
+00049A: 0E83  	JBS                 STATUS,Z
+00049B: 14D2  	JMP                 LoseFrameStatus_RxTxID2_Error
+00049C: 11DB  	CALL                PAGE1BANK1
+00049D: 0428  	MOV                 A,TX2_ID
+00049E: 11D8  	CALL                PAGE1BANK0
+00049F: 0366  	XOR                 TX_ID_Buffer,A
+0004A0: 0E83  	JBS                 STATUS,Z
+0004A1: 14D2  	JMP                 LoseFrameStatus_RxTxID2_Error
+0004A2: 11D8  	CALL                PAGE1BANK0                       ; Save data from buffer to local
+0004A3: 0427  	MOV                 A,DataA_Buffer
+0004A4: 11DE  	CALL                PAGE1BANK2
+0004A5: 0068  	MOV                 TX2_DATA1,A
+0004A6: 11D8  	CALL                PAGE1BANK0
+0004A7: 0428  	MOV                 A,DataB_Buffer
+0004A8: 11DE  	CALL                PAGE1BANK2
+0004A9: 0069  	MOV                 TX2_DATA2,A
+0004AA: 11D8  	CALL                PAGE1BANK0
+0004AB: 0429  	MOV                 A,DataC_Buffer
+0004AC: 11DE  	CALL                PAGE1BANK2
+0004AD: 006A  	MOV                 TX2_DATA3,A
+0004AE: 11D8  	CALL                PAGE1BANK0
+0004AF: 042A  	MOV                 A,DataD_Buffer
+0004B0: 11DE  	CALL                PAGE1BANK2
+0004B1: 006B  	MOV                 TX2_DATA4,A
+0004B2: 11D8  	CALL                PAGE1BANK0
+0004B3: 042B  	MOV                 A,DataE_Buffer
+0004B4: 11DE  	CALL                PAGE1BANK2
+0004B5: 006C  	MOV                 TX2_DATA5,A
+0004B6: 11D8  	CALL                PAGE1BANK0
+0004B7: 042C  	MOV                 A,DataF_Buffer
+0004B8: 11DE  	CALL                PAGE1BANK2
+0004B9: 006D  	MOV                 TX2_DATA6,A
+0004BA: 11D8  	CALL                PAGE1BANK0
+0004BB: 042D  	MOV                 A,DataG_Buffer
+0004BC: 11DE  	CALL                PAGE1BANK2
+0004BD: 006E  	MOV                 TX2_DATA7,A
+0004BE: 11DB  	CALL                PAGE1BANK1
+0004BF: 0A63  	BS                  CHN_FLAG,1
+0004C0: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0004C1: 14DF  	JMP                 EP1_REPORT_RX2
+0004C2: 0C6E  	JBC                 CHN_FLAG_TEMP,1                           ; CHN_FLAG rising edge
+0004C3: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004C4: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16             ;
+0004C5: 00D7  	CLR                 SystemTimeCNT
+0004C6: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004C7: 11DB  	CALL                PAGE1BANK1
+0004C8: 0E63  	JBS                 CHN_FLAG,1                                ;Lossframe Status
+0004C9: 14E6  	JMP                 Clear_RX2_LossframeCNT                    ;if not SearchStatus,it must be in NormalStatus
+0004CA: 0439  	MOV                 A,RX2_LossframeCNT                        ; result = constant - variable
+0004CB: 1D03  	SUB                 A,@3                                      ;   | result > 0   c=1  variable less than constant
+0004CC: 0C03  	JBC                 STATUS,C	                              ;   | result < 0   c=0  variable more than constant
+0004CD: 14DD  	JMP                 Increase_RX2_LossframeCNT
+0004CE: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0004CF: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004D0: 0863  	BC                  CHN_FLAG,1
+0004D1: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004D2: 11DB  	CALL                PAGE1BANK1
+0004D3: 0E63  	JBS                 CHN_FLAG,1
+0004D4: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004D5: 0439  	MOV                 A,RX2_LossframeCNT                                   ; 5 times lossframe
+0004D6: 1D05  	SUB                 A,@5
+0004D7: 0C03  	JBC                 STATUS,C
+0004D8: 14DD  	JMP                 Increase_RX2_LossframeCNT
+0004D9: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0004DA: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004DB: 0863  	BC                  CHN_FLAG,1
+0004DC: 14E6  	JMP                 Clear_RX2_LossframeCNT
+0004DD: 0579  	INC                 RX2_LossframeCNT
+0004DE: 14E7  	JMP                 RX2_Over_Judge
+0004DF: 0BC3  	PAGE                4
+0004E0: 0983  	          BC        0X03,6
+0004E1: 0943  	          BC        0X03,5
+0004E2: 132F  	CALL                EP1_Report_2nd
+0004E3: 09C3  	PAGE                1
+0004E4: 0983  	          BC        0X03,6
+0004E5: 0B43  	          BS        0X03,5
+0004E6: 00F9  	CLR                 RX2_LossframeCNT
+0004E7: 041B  	MOV                 A,ComuClock       ;ComuClock == 16 will continue
+0004E8: 1D0F  	SUB                 A,@15
+0004E9: 0C03  	JBC                 STATUS,C
+0004EA: 14E7  	JMP                 $-3
+0004EB: 0B06  	BS                  SPI_SS/16,SPI_SS%16          ; Dissable RF
+0004EC: 0000  	NOP
+0004ED: 0012  	RET
+0004EE: 0BC3  	PAGE                5
+0004EF: 0983  	          BC        0X03,6
+0004F0: 0B43  	          BS        0X03,5
+0004F1: 1171  	CALL                RESET_RF_FIFO
+0004F2: 11D2  	CALL                ENTER_RX_BUFFER_ACK
+0004F3: 09C3  	PAGE                1
+0004F4: 0983  	          BC        0X03,6
+0004F5: 0B43  	          BS        0X03,5
+0004F6: 041B  	MOV                 A,ComuClock                  ;ComuClock == 24 will continue
+0004F7: 1D17  	SUB                 A,@23
+0004F8: 0E03  	JBS                 STATUS,C
+0004F9: 153C  	JMP                 RX3_Detect_Timeout           ; RX3,Timeout but have not received TX data
+0004FA: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16	     ; 1:TX data receive finished  0:wating PKT pull high
+0004FB: 14F6  	JMP                 RX3_DETECT_LOOP
+0004FC: 0000  	NOP
+0004FD: 0BC3  	PAGE                5
+0004FE: 0983  	          BC        0X03,6
+0004FF: 0B43  	          BS        0X03,5
+000500: 114C  	CALL                READ_FIFO_RAM
+000501: 122B  	CALL                Enter_StandbyI_Mode	
+000502: 09C3  	PAGE                1
+000503: 0983  	          BC        0X03,6
+000504: 0B43  	          BS        0X03,5
+000505: 11DB  	CALL                PAGE1BANK1
+000506: 0421  	MOV                 A,RX_IDH
+000507: 11D8  	CALL                PAGE1BANK0
+000508: 0361  	XOR                 RX_IDH_Buffer,A
+000509: 0E83  	JBS                 STATUS,Z
+00050A: 1547  	JMP                 LoseFrameStatus_RxTxID3_Error
+00050B: 11DB  	CALL                PAGE1BANK1
+00050C: 0422  	MOV                 A,RX_IDL
+00050D: 11D8  	CALL                PAGE1BANK0
+00050E: 0362  	XOR                 RX_IDL_Buffer,A
+00050F: 0E83  	JBS                 STATUS,Z
+000510: 1547  	JMP                 LoseFrameStatus_RxTxID3_Error
+000511: 11DB  	CALL                PAGE1BANK1
+000512: 0429  	MOV                 A,TX3_ID
+000513: 11D8  	CALL                PAGE1BANK0
+000514: 0366  	XOR                 TX_ID_Buffer,A
+000515: 0E83  	JBS                 STATUS,Z
+000516: 1547  	JMP                 LoseFrameStatus_RxTxID3_Error
+000517: 11D8  	CALL                PAGE1BANK0                       ; Save data from buffer to local
+000518: 0427  	MOV                 A,DataA_Buffer
+000519: 11DE  	CALL                PAGE1BANK2
+00051A: 0070  	MOV                 TX3_DATA1,A
+00051B: 11D8  	CALL                PAGE1BANK0
+00051C: 0428  	MOV                 A,DataB_Buffer
+00051D: 11DE  	CALL                PAGE1BANK2
+00051E: 0071  	MOV                 TX3_DATA2,A
+00051F: 11D8  	CALL                PAGE1BANK0
+000520: 0429  	MOV                 A,DataC_Buffer
+000521: 11DE  	CALL                PAGE1BANK2
+000522: 0072  	MOV                 TX3_DATA3,A
+000523: 11D8  	CALL                PAGE1BANK0
+000524: 042A  	MOV                 A,DataD_Buffer
+000525: 11DE  	CALL                PAGE1BANK2
+000526: 0073  	MOV                 TX3_DATA4,A
+000527: 11D8  	CALL                PAGE1BANK0
+000528: 042B  	MOV                 A,DataE_Buffer
+000529: 11DE  	CALL                PAGE1BANK2
+00052A: 0074  	MOV                 TX3_DATA5,A
+00052B: 11D8  	CALL                PAGE1BANK0
+00052C: 042C  	MOV                 A,DataF_Buffer
+00052D: 11DE  	CALL                PAGE1BANK2
+00052E: 0075  	MOV                 TX3_DATA6,A
+00052F: 11D8  	CALL                PAGE1BANK0
+000530: 042D  	MOV                 A,DataG_Buffer
+000531: 11DE  	CALL                PAGE1BANK2
+000532: 0076  	MOV                 TX3_DATA7,A
+000533: 11DB  	CALL                PAGE1BANK1
+000534: 0AA3  	BS                  CHN_FLAG,2
+000535: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000536: 1554  	JMP                 EP1_REPORT_RX3
+000537: 0CAE  	JBC                 CHN_FLAG_TEMP,2                           ; CHN_FLAG rising edge
+000538: 155B  	JMP                 Clear_RX3_LossframeCNT
+000539: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16             ;
+00053A: 00D7  	CLR                 SystemTimeCNT
+00053B: 155B  	JMP                 Clear_RX3_LossframeCNT
+00053C: 11DB  	CALL                PAGE1BANK1
+00053D: 0EA3  	JBS                 CHN_FLAG,2                                ;Lossframe Status
+00053E: 155B  	JMP                 Clear_RX3_LossframeCNT                    ;if not SearchStatus,it must be in NormalStatus
+00053F: 043A  	MOV                 A,RX3_LossframeCNT                        ; result = constant - variable
+000540: 1D03  	SUB                 A,@3                                      ;   | result > 0   c=1  variable less than constant
+000541: 0C03  	JBC                 STATUS,C	                              ;   | result < 0   c=0  variable more than constant
+000542: 1552  	JMP                 Increase_RX3_LossframeCNT
+000543: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000544: 155B  	JMP                 Clear_RX3_LossframeCNT
+000545: 08A3  	BC                  CHN_FLAG,2
+000546: 155B  	JMP                 Clear_RX3_LossframeCNT
+000547: 11DB  	CALL                PAGE1BANK1
+000548: 0EA3  	JBS                 CHN_FLAG,2
+000549: 155B  	JMP                 Clear_RX3_LossframeCNT
+00054A: 043A  	MOV                 A,RX3_LossframeCNT                                   ; 5 times lossframe
+00054B: 1D05  	SUB                 A,@5
+00054C: 0C03  	JBC                 STATUS,C
+00054D: 1552  	JMP                 Increase_RX3_LossframeCNT
+00054E: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+00054F: 155B  	JMP                 Clear_RX3_LossframeCNT
+000550: 08A3  	BC                  CHN_FLAG,2
+000551: 155B  	JMP                 Clear_RX3_LossframeCNT
+000552: 057A  	INC                 RX3_LossframeCNT
+000553: 155C  	JMP                 RX3_Over_Judge
+000554: 0BC3  	PAGE                4
+000555: 0983  	          BC        0X03,6
+000556: 0943  	          BC        0X03,5
+000557: 134B  	CALL                EP1_Report_3rd
+000558: 09C3  	PAGE                1
+000559: 0983  	          BC        0X03,6
+00055A: 0B43  	          BS        0X03,5
+00055B: 00FA  	CLR                 RX3_LossframeCNT
+00055C: 041B  	MOV                 A,ComuClock       ;ComuClock == 24 will continue
+00055D: 1D17  	SUB                 A,@23
+00055E: 0C03  	JBC                 STATUS,C
+00055F: 155C  	JMP                 $-3
+000560: 0B06  	BS                  SPI_SS/16,SPI_SS%16          ; Dissable RF
+000561: 0000  	NOP
+000562: 0012  	RET
+000563: 0BC3  	PAGE                5
+000564: 0983  	          BC        0X03,6
+000565: 0B43  	          BS        0X03,5
+000566: 1171  	CALL                RESET_RF_FIFO
+000567: 11D2  	CALL                ENTER_RX_BUFFER_ACK
+000568: 09C3  	PAGE                1
+000569: 0983  	          BC        0X03,6
+00056A: 0B43  	          BS        0X03,5
+00056B: 041B  	MOV                 A,ComuClock                  ;ComuClock == 32 will continue
+00056C: 1D1F  	SUB                 A,@31
+00056D: 0E03  	JBS                 STATUS,C
+00056E: 15B1  	JMP                 RX4_Detect_Timeout           ; RX4,Timeout but have not received TX data
+00056F: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16	     ; 1:TX data receive finished  0:wating PKT pull high
+000570: 156B  	JMP                 RX4_DETECT_LOOP
+000571: 0000  	NOP
+000572: 0BC3  	PAGE                5
+000573: 0983  	          BC        0X03,6
+000574: 0B43  	          BS        0X03,5
+000575: 114C  	CALL                READ_FIFO_RAM
+000576: 122B  	CALL                Enter_StandbyI_Mode	
+000577: 09C3  	PAGE                1
+000578: 0983  	          BC        0X03,6
+000579: 0B43  	          BS        0X03,5
+00057A: 11DB  	CALL                PAGE1BANK1
+00057B: 0421  	MOV                 A,RX_IDH
+00057C: 11D8  	CALL                PAGE1BANK0
+00057D: 0361  	XOR                 RX_IDH_Buffer,A
+00057E: 0E83  	JBS                 STATUS,Z
+00057F: 15BC  	JMP                 LoseFrameStatus_RxTxID4_Error
+000580: 11DB  	CALL                PAGE1BANK1
+000581: 0422  	MOV                 A,RX_IDL
+000582: 11D8  	CALL                PAGE1BANK0
+000583: 0362  	XOR                 RX_IDL_Buffer,A
+000584: 0E83  	JBS                 STATUS,Z
+000585: 15BC  	JMP                 LoseFrameStatus_RxTxID4_Error
+000586: 11DB  	CALL                PAGE1BANK1
+000587: 042A  	MOV                 A,TX4_ID
+000588: 11D8  	CALL                PAGE1BANK0
+000589: 0366  	XOR                 TX_ID_Buffer,A
+00058A: 0E83  	JBS                 STATUS,Z
+00058B: 15BC  	JMP                 LoseFrameStatus_RxTxID4_Error
+00058C: 11D8  	CALL                PAGE1BANK0                       ; Save data from buffer to local
+00058D: 0427  	MOV                 A,DataA_Buffer
+00058E: 11DE  	CALL                PAGE1BANK2
+00058F: 0078  	MOV                 TX4_DATA1,A
+000590: 11D8  	CALL                PAGE1BANK0
+000591: 0428  	MOV                 A,DataB_Buffer
+000592: 11DE  	CALL                PAGE1BANK2
+000593: 0079  	MOV                 TX4_DATA2,A
+000594: 11D8  	CALL                PAGE1BANK0
+000595: 0429  	MOV                 A,DataC_Buffer
+000596: 11DE  	CALL                PAGE1BANK2
+000597: 007A  	MOV                 TX4_DATA3,A
+000598: 11D8  	CALL                PAGE1BANK0
+000599: 042A  	MOV                 A,DataD_Buffer
+00059A: 11DE  	CALL                PAGE1BANK2
+00059B: 007B  	MOV                 TX4_DATA4,A
+00059C: 11D8  	CALL                PAGE1BANK0
+00059D: 042B  	MOV                 A,DataE_Buffer
+00059E: 11DE  	CALL                PAGE1BANK2
+00059F: 007C  	MOV                 TX4_DATA5,A
+0005A0: 11D8  	CALL                PAGE1BANK0
+0005A1: 042C  	MOV                 A,DataF_Buffer
+0005A2: 11DE  	CALL                PAGE1BANK2
+0005A3: 007D  	MOV                 TX4_DATA6,A
+0005A4: 11D8  	CALL                PAGE1BANK0
+0005A5: 042D  	MOV                 A,DataG_Buffer
+0005A6: 11DE  	CALL                PAGE1BANK2
+0005A7: 007E  	MOV                 TX4_DATA7,A
+0005A8: 11DB  	CALL                PAGE1BANK1
+0005A9: 0AE3  	BS                  CHN_FLAG,3
+0005AA: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0005AB: 15C9  	JMP                 EP1_REPORT_RX4
+0005AC: 0CEE  	JBC                 CHN_FLAG_TEMP,3                           ; CHN_FLAG rising edge
+0005AD: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005AE: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16             ;
+0005AF: 00D7  	CLR                 SystemTimeCNT
+0005B0: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005B1: 11DB  	CALL                PAGE1BANK1
+0005B2: 0EE3  	JBS                 CHN_FLAG,3                                ;Lossframe Status
+0005B3: 15D0  	JMP                 Clear_RX4_LossframeCNT                    ;if not SearchStatus,it must be in NormalStatus
+0005B4: 043B  	MOV                 A,RX4_LossframeCNT                        ; result = constant - variable
+0005B5: 1D03  	SUB                 A,@3                                      ;   | result > 0   c=1  variable less than constant
+0005B6: 0C03  	JBC                 STATUS,C	                              ;   | result < 0   c=0  variable more than constant
+0005B7: 15C7  	JMP                 Increase_RX4_LossframeCNT
+0005B8: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0005B9: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005BA: 08E3  	BC                  CHN_FLAG,3
+0005BB: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005BC: 11DB  	CALL                PAGE1BANK1
+0005BD: 0EE3  	JBS                 CHN_FLAG,3
+0005BE: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005BF: 043B  	MOV                 A,RX4_LossframeCNT                                   ; 5 times lossframe
+0005C0: 1D05  	SUB                 A,@5
+0005C1: 0C03  	JBC                 STATUS,C
+0005C2: 15C7  	JMP                 Increase_RX4_LossframeCNT
+0005C3: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0005C4: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005C5: 08E3  	BC                  CHN_FLAG,3
+0005C6: 15D0  	JMP                 Clear_RX4_LossframeCNT
+0005C7: 057B  	INC                 RX4_LossframeCNT
+0005C8: 15D1  	JMP                 RX4_Over_Judge
+0005C9: 0BC3  	PAGE                4
+0005CA: 0983  	          BC        0X03,6
+0005CB: 0943  	          BC        0X03,5
+0005CC: 1366  	CALL                EP1_Report_4th
+0005CD: 09C3  	PAGE                1
+0005CE: 0983  	          BC        0X03,6
+0005CF: 0B43  	          BS        0X03,5
+0005D0: 00FB  	CLR                 RX4_LossframeCNT
+0005D1: 041B  	MOV                 A,ComuClock       ;ComuClock == 32 will continue
+0005D2: 1D1F  	SUB                 A,@31
+0005D3: 0C03  	JBC                 STATUS,C
+0005D4: 15D1  	JMP                 $-3
+0005D5: 0B06  	BS                  SPI_SS/16,SPI_SS%16          ; Dissable RF
+0005D6: 0000  	NOP
+0005D7: 0012  	RET
+0005D8: 09C4  		BC              0X04,7
+0005D9: 0984  		BC              0X04,6
+0005DA: 0012  	RET
+0005DB: 09C4  		BC              0X04,7
+0005DC: 0B84  		BS              0X04,6
+0005DD: 0012  	RET
+0005DE: 0BC4  		BS              0X04,7
+0005DF: 0984  		BC              0X04,6
+0005E0: 0012  	RET
+0005E1: 0BC4  		BS              0X04,7
+0005E2: 0B84  		BS              0X04,6
+0005E3: 0012  	RET
+000800: 0BC3  	PAGE                5
+000801: 0983  	          BC        0X03,6
+000802: 0B43  	          BS        0X03,5
+000803: 1171  	CALL                RESET_RF_FIFO
+000804: 11D2  	CALL                ENTER_RX_BUFFER_ACK
+000805: 09C3  	PAGE                2
+000806: 0B83  	          BS        0X03,6
+000807: 0943  	          BC        0X03,5
+000808: 041B  	MOV                 A,ComuClock                  ;ComuClock == 40 will continue
+000809: 1D27  	SUB                 A,@39
+00080A: 0E03  	JBS                 STATUS,C
+00080B: 144F  	JMP                 RX5_Detect_Timeout           ; RX5,Timeout but have not received TX data
+00080C: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16	     ; 1:TX data receive finished  0:wating PKT pull high
+00080D: 1408  	JMP                 RX5_DETECT_LOOP
+00080E: 0000  	NOP
+00080F: 0BC3  	PAGE                5
+000810: 0983  	          BC        0X03,6
+000811: 0B43  	          BS        0X03,5
+000812: 114C  	CALL                READ_FIFO_RAM
+000813: 122B  	CALL                Enter_StandbyI_Mode	
+000814: 09C3  	PAGE                2
+000815: 0B83  	          BS        0X03,6
+000816: 0943  	          BC        0X03,5
+000817: 0000  	NOP
+000818: 10EF  	CALL                PAGE2BANK1
+000819: 0421  	MOV                 A,RX_IDH
+00081A: 10EC  	CALL                PAGE2BANK0
+00081B: 0361  	XOR                 RX_IDH_Buffer,A
+00081C: 0E83  	JBS                 STATUS,Z
+00081D: 145A  	JMP                 LoseFrameStatus_RxTxID5_Error
+00081E: 10EF  	CALL                PAGE2BANK1
+00081F: 0422  	MOV                 A,RX_IDL
+000820: 10EC  	CALL                PAGE2BANK0
+000821: 0362  	XOR                 RX_IDL_Buffer,A
+000822: 0E83  	JBS                 STATUS,Z
+000823: 145A  	JMP                 LoseFrameStatus_RxTxID5_Error
+000824: 10EF  	CALL                PAGE2BANK1
+000825: 042B  	MOV                 A,TX5_ID
+000826: 10EC  	CALL                PAGE2BANK0
+000827: 0366  	XOR                 TX_ID_Buffer,A
+000828: 0E83  	JBS                 STATUS,Z
+000829: 145A  	JMP                 LoseFrameStatus_RxTxID5_Error
+00082A: 10EC  	CALL                PAGE2BANK0                       ; Save data from buffer to local
+00082B: 0427  	MOV                 A,DataA_Buffer
+00082C: 10F5  	CALL                PAGE2BANK3
+00082D: 0060  	MOV                 TX5_DATA1,A
+00082E: 10EC  	CALL                PAGE2BANK0
+00082F: 0428  	MOV                 A,DataB_Buffer
+000830: 10F5  	CALL                PAGE2BANK3
+000831: 0061  	MOV                 TX5_DATA2,A
+000832: 10EC  	CALL                PAGE2BANK0
+000833: 0429  	MOV                 A,DataC_Buffer
+000834: 10F5  	CALL                PAGE2BANK3
+000835: 0062  	MOV                 TX5_DATA3,A
+000836: 10EC  	CALL                PAGE2BANK0
+000837: 042A  	MOV                 A,DataD_Buffer
+000838: 10F5  	CALL                PAGE2BANK3
+000839: 0063  	MOV                 TX5_DATA4,A
+00083A: 10EC  	CALL                PAGE2BANK0
+00083B: 042B  	MOV                 A,DataE_Buffer
+00083C: 10F5  	CALL                PAGE2BANK3
+00083D: 0064  	MOV                 TX5_DATA5,A
+00083E: 10EC  	CALL                PAGE2BANK0
+00083F: 042C  	MOV                 A,DataF_Buffer
+000840: 10F5  	CALL                PAGE2BANK3
+000841: 0065  	MOV                 TX5_DATA6,A
+000842: 10EC  	CALL                PAGE2BANK0
+000843: 042D  	MOV                 A,DataG_Buffer
+000844: 10F5  	CALL                PAGE2BANK3
+000845: 0066  	MOV                 TX5_DATA7,A
+000846: 10EF  	CALL                PAGE2BANK1
+000847: 0B23  	BS                  CHN_FLAG,4
+000848: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000849: 1467  	JMP                 EP1_REPORT_RX5
+00084A: 0D2E  	JBC                 CHN_FLAG_TEMP,4                           ; CHN_FLAG rising edge
+00084B: 146E  	JMP                 Clear_RX5_LossframeCNT
+00084C: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16             ;
+00084D: 00D7  	CLR                 SystemTimeCNT
+00084E: 146E  	JMP                 Clear_RX5_LossframeCNT
+00084F: 10EF  	CALL                PAGE2BANK1
+000850: 0F23  	JBS                 CHN_FLAG,4                                ;Lossframe Status
+000851: 146E  	JMP                 Clear_RX5_LossframeCNT                    ;if not SearchStatus,it must be in NormalStatus
+000852: 043C  	MOV                 A,RX5_LossframeCNT                        ; result = constant - variable
+000853: 1D03  	SUB                 A,@3                                      ;   | result > 0   c=1  variable less than constant
+000854: 0C03  	JBC                 STATUS,C	                              ;   | result < 0   c=0  variable more than constant
+000855: 1465  	JMP                 Increase_RX5_LossframeCNT
+000856: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000857: 146E  	JMP                 Clear_RX5_LossframeCNT
+000858: 0923  	BC                  CHN_FLAG,4
+000859: 146E  	JMP                 Clear_RX5_LossframeCNT
+00085A: 10EF  	CALL                PAGE2BANK1
+00085B: 0F23  	JBS                 CHN_FLAG,4
+00085C: 146E  	JMP                 Clear_RX5_LossframeCNT
+00085D: 043C  	MOV                 A,RX5_LossframeCNT                                   ; 5 times lossframe
+00085E: 1D05  	SUB                 A,@5
+00085F: 0C03  	JBC                 STATUS,C
+000860: 1465  	JMP                 Increase_RX5_LossframeCNT
+000861: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+000862: 146E  	JMP                 Clear_RX5_LossframeCNT
+000863: 0923  	BC                  CHN_FLAG,4
+000864: 146E  	JMP                 Clear_RX5_LossframeCNT
+000865: 057C  	INC                 RX5_LossframeCNT
+000866: 146F  	JMP                 RX5_Over_Judge
+000867: 0BC3  	PAGE                4
+000868: 0983  	          BC        0X03,6
+000869: 0943  	          BC        0X03,5
+00086A: 1381  	CALL                EP1_Report_5th
+00086B: 09C3  	PAGE                2
+00086C: 0B83  	          BS        0X03,6
+00086D: 0943  	          BC        0X03,5
+00086E: 00FC  	CLR                 RX5_LossframeCNT
+00086F: 041B  	MOV                 A,ComuClock       ;ComuClock == 40 will continue
+000870: 1D27  	SUB                 A,@39
+000871: 0C03  	JBC                 STATUS,C
+000872: 146F  	JMP                 $-3
+000873: 0B06  	BS                  SPI_SS/16,SPI_SS%16          ; Dissable RF
+000874: 0000  	NOP
+000875: 0012  	RET
+000876: 0BC3  	PAGE                5
+000877: 0983  	          BC        0X03,6
+000878: 0B43  	          BS        0X03,5
+000879: 1171  	CALL                RESET_RF_FIFO
+00087A: 11D2  	CALL                ENTER_RX_BUFFER_ACK
+00087B: 09C3  	PAGE                2
+00087C: 0B83  	          BS        0X03,6
+00087D: 0943  	          BC        0X03,5
+00087E: 041B  	MOV                 A,ComuClock                  ;ComuClock == 48 will continue
+00087F: 1D2F  	SUB                 A,@47
+000880: 0E03  	JBS                 STATUS,C
+000881: 14C4  	JMP                 RX6_Detect_Timeout           ; RX6,Timeout but have not received TX data
+000882: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16	     ; 1:TX data receive finished  0:wating PKT pull high
+000883: 147E  	JMP                 RX6_DETECT_LOOP
+000884: 0000  	NOP
+000885: 0BC3  	PAGE                5
+000886: 0983  	          BC        0X03,6
+000887: 0B43  	          BS        0X03,5
+000888: 114C  	CALL                READ_FIFO_RAM
+000889: 122B  	CALL                Enter_StandbyI_Mode	
+00088A: 09C3  	PAGE                2
+00088B: 0B83  	          BS        0X03,6
+00088C: 0943  	          BC        0X03,5
+00088D: 10EF  	CALL                PAGE2BANK1
+00088E: 0421  	MOV                 A,RX_IDH
+00088F: 10EC  	CALL                PAGE2BANK0
+000890: 0361  	XOR                 RX_IDH_Buffer,A
+000891: 0E83  	JBS                 STATUS,Z
+000892: 14CF  	JMP                 LoseFrameStatus_RxTxID6_Error
+000893: 10EF  	CALL                PAGE2BANK1
+000894: 0422  	MOV                 A,RX_IDL
+000895: 10EC  	CALL                PAGE2BANK0
+000896: 0362  	XOR                 RX_IDL_Buffer,A
+000897: 0E83  	JBS                 STATUS,Z
+000898: 14CF  	JMP                 LoseFrameStatus_RxTxID6_Error
+000899: 10EF  	CALL                PAGE2BANK1
+00089A: 042C  	MOV                 A,TX6_ID
+00089B: 10EC  	CALL                PAGE2BANK0
+00089C: 0366  	XOR                 TX_ID_Buffer,A
+00089D: 0E83  	JBS                 STATUS,Z
+00089E: 14CF  	JMP                 LoseFrameStatus_RxTxID6_Error
+00089F: 10EC  	CALL                PAGE2BANK0                       ; Save data from buffer to local
+0008A0: 0427  	MOV                 A,DataA_Buffer
+0008A1: 10F5  	CALL                PAGE2BANK3
+0008A2: 0068  	MOV                 TX6_DATA1,A
+0008A3: 10EC  	CALL                PAGE2BANK0
+0008A4: 0428  	MOV                 A,DataB_Buffer
+0008A5: 10F5  	CALL                PAGE2BANK3
+0008A6: 0069  	MOV                 TX6_DATA2,A
+0008A7: 10EC  	CALL                PAGE2BANK0
+0008A8: 0429  	MOV                 A,DataC_Buffer
+0008A9: 10F5  	CALL                PAGE2BANK3
+0008AA: 006A  	MOV                 TX6_DATA3,A
+0008AB: 10EC  	CALL                PAGE2BANK0
+0008AC: 042A  	MOV                 A,DataD_Buffer
+0008AD: 10F5  	CALL                PAGE2BANK3
+0008AE: 006B  	MOV                 TX6_DATA4,A
+0008AF: 10EC  	CALL                PAGE2BANK0
+0008B0: 042B  	MOV                 A,DataE_Buffer
+0008B1: 10F5  	CALL                PAGE2BANK3
+0008B2: 006C  	MOV                 TX6_DATA5,A
+0008B3: 10EC  	CALL                PAGE2BANK0
+0008B4: 042C  	MOV                 A,DataF_Buffer
+0008B5: 10F5  	CALL                PAGE2BANK3
+0008B6: 006D  	MOV                 TX6_DATA6,A
+0008B7: 10EC  	CALL                PAGE2BANK0
+0008B8: 042D  	MOV                 A,DataG_Buffer
+0008B9: 10F5  	CALL                PAGE2BANK3
+0008BA: 006E  	MOV                 TX6_DATA7,A
+0008BB: 10EF  	CALL                PAGE2BANK1
+0008BC: 0B63  	BS                  CHN_FLAG,5
+0008BD: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0008BE: 14DC  	JMP                 EP1_REPORT_RX6
+0008BF: 0D6E  	JBC                 CHN_FLAG_TEMP,5                           ; CHN_FLAG rising edge
+0008C0: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008C1: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16             ;
+0008C2: 00D7  	CLR                 SystemTimeCNT
+0008C3: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008C4: 10EF  	CALL                PAGE2BANK1
+0008C5: 0F63  	JBS                 CHN_FLAG,5                                ;Lossframe Status
+0008C6: 14E3  	JMP                 Clear_RX6_LossframeCNT                    ;if not SearchStatus,it must be in NormalStatus
+0008C7: 043D  	MOV                 A,RX6_LossframeCNT                        ; result = constant - variable
+0008C8: 1D03  	SUB                 A,@3                                   ;   | result > 0   c=1  variable less than constant
+0008C9: 0C03  	JBC                 STATUS,C	                              ;   | result < 0   c=0  variable more than constant
+0008CA: 14DA  	JMP                 Increase_RX6_LossframeCNT
+0008CB: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0008CC: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008CD: 0963  	BC                  CHN_FLAG,5
+0008CE: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008CF: 10EF  	CALL                PAGE2BANK1
+0008D0: 0F63  	JBS                 CHN_FLAG,5
+0008D1: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008D2: 043D  	MOV                 A,RX6_LossframeCNT                                   ; 5 times lossframe
+0008D3: 1D05  	SUB                 A,@5
+0008D4: 0C03  	JBC                 STATUS,C
+0008D5: 14DA  	JMP                 Increase_RX6_LossframeCNT
+0008D6: 0D5E  	JBC                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+0008D7: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008D8: 0963  	BC                  CHN_FLAG,5
+0008D9: 14E3  	JMP                 Clear_RX6_LossframeCNT
+0008DA: 057D  	INC                 RX6_LossframeCNT
+0008DB: 14E4  	JMP                 RX6_Over_Judge
+0008DC: 0BC3  	PAGE                4
+0008DD: 0983  	          BC        0X03,6
+0008DE: 0943  	          BC        0X03,5
+0008DF: 139C  	CALL                EP1_Report_6th
+0008E0: 09C3  	PAGE                2
+0008E1: 0B83  	          BS        0X03,6
+0008E2: 0943  	          BC        0X03,5
+0008E3: 00FD  	CLR                 RX6_LossframeCNT
+0008E4: 041B  	MOV                 A,ComuClock       ;ComuClock == 48 will continue
+0008E5: 1D2F  	SUB                 A,@47
+0008E6: 0C03  	JBC                 STATUS,C
+0008E7: 14E4  	JMP                 $-3
+0008E8: 0B06  	BS                  SPI_SS/16,SPI_SS%16          ; Dissable RF
+0008E9: 00DB  	CLR                 ComuClock
+0008EA: 0000  	NOP
+0008EB: 0012  	RET
+0008EC: 09C4  		BC              0X04,7
+0008ED: 0984  		BC              0X04,6
+0008EE: 0012  	RET
+0008EF: 09C4  		BC              0X04,7
+0008F0: 0B84  		BS              0X04,6
+0008F1: 0012  	RET
+0008F2: 0BC4  		BS              0X04,7
+0008F3: 0984  		BC              0X04,6
+0008F4: 0012  	RET
+0008F5: 0BC4  		BS              0X04,7
+0008F6: 0B84  		BS              0X04,6
+0008F7: 0012  	RET
+000C00: 0020  		TBL
+000C01: 1C12  		RETL	@0X12;01	bLength
+000C02: 1C01  		RETL	@0X01;02	bDescriptorType
+000C03: 1C10  		RETL	@0X10;03	bcdUSB
+000C04: 1C01  		RETL	@0X01;04
+000C05: 1C00  		RETL	@0X00;05	bDeviceCalss
+000C06: 1C00  		RETL	@0X00;06	bDeviceSubClass
+000C07: 1C00  		RETL	@0X00;07	bDeviceProtocol
+000C08: 1C08  		RETL	@0X08;08	bMaxPacketSize0 ,MCU point0 byte length
+000C09: 1CF3  		RETL	@0XF3;09	idVendor 0X04F3
+000C0A: 1C04  		RETL	@0X04;0A
+000C0B: 1C1F  		RETL	@0X1F;0B	idProduct (joystick:0x0f1f)
+000C0C: 1C0F  		RETL	@0X0F;0C
+000C0D: 1C70  		RETL	@0X70;0D	bcdDevice v1.7.0
+000C0E: 1C01  		RETL	@0X01;0E
+000C0F: 1C01  		RETL	@0X01;0F	iManufacturer
+000C10: 1C02  		RETL	@0X02;10	iProduct
+000C11: 1C03  		RETL	@0X03;11	iSerialNumber
+000C12: 1C01  		RETL	@0X01;12	bNumConfigurations
+000C13: 0020  		TBL
+000C14: 1C09  		RETL	@0X09;01	bLength
+000C15: 1C02  		RETL	@0X02;02	bDescritorType
+000C16: 1C22  		RETL	@0X22;03	wTotalLength
+000C17: 1C00  		RETL	@0X00;04
+000C18: 1C01  		RETL	@0X01;05	bConfigurationValue
+000C19: 1C01  		RETL	@0X01;06	bNumInterfaces
+000C1A: 1C00  		RETL	@0X00;07	iConfiguration
+000C1B: 1C80  		RETL	@0X80;08	bmAttributes
+000C1C: 1C32  		RETL	@0X32;09	bMaxPower ,Imax=100mA
+000C1D: 1C09  		RETL	@0X09;0A	bLength
+000C1E: 1C04  		RETL	@0X04;0B	bDescriptorType
+000C1F: 1C00  		RETL	@0X00;0C	bInterfaceNumber
+000C20: 1C00  		RETL	@0X00;0D	bAlternateSetting
+000C21: 1C01  		RETL	@0X01;0E	bNumEndpoints
+000C22: 1C03  		RETL	@0X03;0F	bInterfaceClass (Class:HID)
+000C23: 1C00  		RETL	@0X00;10	bInterfaceSubClass (BOOT DEVICE)
+000C24: 1C00  		RETL	@0X00;11	bInterfaceProtocol (joystick)
+000C25: 1C00  		RETL	@0X00;12	iConfiguration
+000C26: 1C09  		RETL	@0X09            ;13    bLength
+000C27: 1C21  		RETL	@0X21            ;14    bDescriptorType
+000C28: 1C10  		RETL	@0X10            ;15    bcdHID
+000C29: 1C01  		RETL	@0X01            ;16
+000C2A: 1C21  		RETL	@0X21            ;17    bCountryCode
+000C2B: 1C01  		RETL	@0X01            ;18    bNumDescriptors
+000C2C: 1C22  		RETL	@0X22            ;19    bDescriptorType. report descriptor:0x22, physics descriptor:0x23
+000C2D: 1CD4  		RETL	@(End_HID_Report_Table1-Begin_HID_Report_Table1)+(End_HID_Report_Table2-Begin_HID_Report_Table2)+(End_HID_Report_Table3-Begin_HID_Report_Table3)-0X100
+000C2E: 1C01  		RETL	@0X01            ;1B    ;0X01
+000C2F: 1C07  		RETL	@0X07;1C	bLength
+000C30: 1C05  		RETL	@0X05;1D	bDescriptorType
+000C31: 1C81  		RETL	@0X81;1E	bEndpointAddress
+000C32: 1C03  		RETL	@0X03;1F	bmAttributes
+000C33: 1C08  		RETL	@0X08;20	wMaxPackerSize
+000C34: 1C00  		RETL	@0X00;21
+000C35: 1C05  		RETL	@0X05;22	bInterval    ;change 20ms
+000C36: 0020  		TBL
+000C37: 1C04  		RETL	@0X04;01	bLength
+000C38: 1C03  		RETL	@0X03;02	bdescriptorType
+000C39: 1C09  		RETL	@0X09;03
+000C3A: 1C04  		RETL	@0X04;04	END OF LANGUAGES
+000D00: 0020  		TBL
+000D01: 1C05  	RETL @0X05    ;USAGE PAGE
+000D02: 1C01  	RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+000D03: 1C09  	RETL @0X09    ;USAGE
+000D04: 1C04  	RETL @0X04    ;(JOYSTICK)
+000D05: 1CA1  		RETL @0XA1    ;COLLECTION
+000D06: 1C01  		RETL @0X01    ;(APPLICATION)
+000D07: 1C85  		RETL @0X85    ;REPORT ID
+000D08: 1C01  		RETL @0X01
+000D09: 1CA1  			RETL	@0XA1    ;Collection
+000D0A: 1C02  			RETL	@0X02    ;Logical
+000D0B: 1C09  			RETL	@0X09    ;USAGE
+000D0C: 1C30  			RETL	@0X30    ;(X)
+000D0D: 1C09  			RETL	@0X09    ;USAGE
+000D0E: 1C31  			RETL	@0X31    ;(Y)
+000D0F: 1C09  			RETL	@0X09    ;USAGE
+000D10: 1C35  			RETL	@0X35    ;(Rz)
+000D11: 1C09  			RETL	@0X09    ;USAGE
+000D12: 1C32  			RETL	@0X32    ;(Z)
+000D13: 1C15  			RETL	@0X15    ;LOGICAL_MINIMUN
+000D14: 1C00  			RETL	@0X00    ;(0)
+000D15: 1C26  			RETL	@0X26    ;LOGICAL_MAXIMUM
+000D16: 1CFF  			RETL	@0XFF    ;(FF)
+000D17: 1C00  			RETL	@0X00
+000D18: 1C35  			RETL	@0X35    ;PHYSICAL MINIMUM
+000D19: 1C00  			RETL	@0X00    ;(0)
+000D1A: 1C46  			RETL	@0X46    ;PHYSICAL MAXIMUM
+000D1B: 1CFF  			RETL	@0XFF    ;(FF)
+000D1C: 1C00  			RETL	@0X00
+000D1D: 1C75  			RETL	@0X75    ;REPORT_SIZE
+000D1E: 1C08  			RETL	@0X08    ;(8)
+000D1F: 1C95  			RETL	@0X95    ;REPORT_COUNT
+000D20: 1C04  			RETL	@0X04    ;(4)
+000D21: 1C81  			RETL	@0X81    ;INPUT
+000D22: 1C02  			RETL	@0X02    ;(Data Ary,Abs)
+000D23: 1C05  			RETL @0X05    ;USAGE_PAGE
+000D24: 1C09  			RETL @0X09    ;(Button)
+000D25: 1C19  			RETL @0X19    ;USAGE MINIMUN
+000D26: 1C01  			RETL @0X01    ;(BUTTON 1)
+000D27: 1C29  			RETL @0X29    ;USAGE MAXIMUM
+000D28: 1C10  			RETL @0X10    ;(BUTTON 16)
+000D29: 1C25  			RETL @0X25    ;LOGICAL MAXIMUM
+000D2A: 1C01  			RETL @0X01    ;(1)
+000D2B: 1C45  			RETL @0X45    ;PHYSICAL MAXIMUM
+000D2C: 1C01  			RETL @0X01    ;(1)
+000D2D: 1C75  			RETL @0X75    ;REPORT_SIZE
+000D2E: 1C01  			RETL @0X01    ;(1)
+000D2F: 1C95  			RETL @0X95    ;REPORT_COUNT
+000D30: 1C10  			RETL @0X10    ;(16)
+000D31: 1C81  			RETL @0X81    ;INPUT
+000D32: 1C02  			RETL @0X02    ;(Data Ary,Abs)
+000D33: 1C06  			RETL @0X06
+000D34: 1C01  			RETL @0X01
+000D35: 1C00  			RETL @0X00
+000D36: 1C09  			RETL @0X09    ;USAGE
+000D37: 1C39  			RETL @0X39    ;(Hat Switch)
+000D38: 1C75  			RETL @0X75    ;REPORT_SIZE
+000D39: 1C04  			RETL @0X04    ;(4)
+000D3A: 1C95  			RETL @0X95    ;REPORT_COUNT
+000D3B: 1C01  			RETL @0X01    ;(1)
+000D3C: 1C25  			RETL @0X25    ;LOGICAL_MAX
+000D3D: 1C07  			RETL @0X07    ;(7)
+000D3E: 1C46  			RETL @0X46    ;PHYSICAL_MAX
+000D3F: 1C3B  			RETL @0X3B    ;(315)
+000D40: 1C01  			RETL @0X01
+000D41: 1C65  			RETL @0X65    ;UNIT
+000D42: 1C14  			RETL @0X14    ;(Eng Rot:Angular Pos)
+000D43: 1C81  			RETL @0X81    ;INPUT
+000D44: 1C42  			RETL @0X42    ;(Data,Var,Abs,Null)
+000D45: 1C65  			RETL @0X65    ;UNIT
+000D46: 1C00  			RETL @0X00    ;(None)
+000D47: 1C75  			RETL @0X75    ;REPORT_SIZE
+000D48: 1C04  			RETL @0X04    ;(4)
+000D49: 1C95  			RETL @0X95    ;REPORT_COUNT
+000D4A: 1C01  			RETL @0X01    ;(1)
+000D4B: 1C81  			RETL @0X81    ;INPUT
+000D4C: 1C01  			RETL @0X01    ;(Const,Var,Abs)
+000D4D: 1CC0  			RETL @0XC0    ;END COLLECTION
+000D4E: 1CC0    RETL @0XC0              ;78;END COLLECTION
+000D4F: 1C05  	RETL @0X05    ;USAGE PAGE
+000D50: 1C01  	RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+000D51: 1C09  	RETL @0X09    ;USAGE
+000D52: 1C04  	RETL @0X04    ;(JOYSTICK)
+000D53: 1CA1  		RETL @0XA1    ;COLLECTION
+000D54: 1C01  		RETL @0X01    ;(APPLICATION)
+000D55: 1C85  		RETL @0X85    ;REPORT ID
+000D56: 1C02  		RETL @0X02
+000D57: 1CA1  			RETL	@0XA1    ;Collection
+000D58: 1C02  			RETL	@0X02    ;Logical
+000D59: 1C09  			RETL	@0X09    ;USAGE
+000D5A: 1C30  			RETL	@0X30    ;(X)
+000D5B: 1C09  			RETL	@0X09    ;USAGE
+000D5C: 1C31  			RETL	@0X31    ;(Y)
+000D5D: 1C09  			RETL	@0X09    ;USAGE
+000D5E: 1C35  			RETL	@0X35    ;(Rz)
+000D5F: 1C09  			RETL	@0X09    ;USAGE
+000D60: 1C32  			RETL	@0X32    ;(Z)
+000D61: 1C15  			RETL	@0X15    ;LOGICAL_MINIMUN
+000D62: 1C00  			RETL	@0X00    ;(0)
+000D63: 1C26  			RETL	@0X26    ;LOGICAL_MAXIMUM
+000D64: 1CFF  			RETL	@0XFF    ;(FF)
+000D65: 1C00  			RETL	@0X00
+000D66: 1C35  			RETL	@0X35    ;PHYSICAL MINIMUM
+000D67: 1C00  			RETL	@0X00    ;(0)
+000D68: 1C46  			RETL	@0X46    ;PHYSICAL MAXIMUM
+000D69: 1CFF  			RETL	@0XFF    ;(FF)
+000D6A: 1C00  			RETL	@0X00
+000D6B: 1C75  			RETL	@0X75    ;REPORT_SIZE
+000D6C: 1C08  			RETL	@0X08    ;(8)
+000D6D: 1C95  			RETL	@0X95    ;REPORT_COUNT
+000D6E: 1C04  			RETL	@0X04    ;(4)
+000D6F: 1C81  			RETL	@0X81    ;INPUT
+000D70: 1C02  			RETL	@0X02    ;(Data Ary,Abs)
+000D71: 1C05  			RETL @0X05    ;USAGE_PAGE
+000D72: 1C09  			RETL @0X09    ;(Button)
+000D73: 1C19  			RETL @0X19    ;USAGE MINIMUN
+000D74: 1C01  			RETL @0X01    ;(BUTTON 1)
+000D75: 1C29  			RETL @0X29    ;USAGE MAXIMUM
+000D76: 1C10  			RETL @0X10    ;(BUTTON 16)
+000D77: 1C25  			RETL @0X25    ;LOGICAL MAXIMUM
+000D78: 1C01  			RETL @0X01    ;(1)
+000D79: 1C45  			RETL @0X45    ;PHYSICAL MAXIMUM
+000D7A: 1C01  			RETL @0X01    ;(1)
+000D7B: 1C75  			RETL @0X75    ;REPORT_SIZE
+000D7C: 1C01  			RETL @0X01    ;(1)
+000D7D: 1C95  			RETL @0X95    ;REPORT_COUNT
+000D7E: 1C10  			RETL @0X10    ;(16)
+000D7F: 1C81  			RETL @0X81    ;INPUT
+000D80: 1C02  			RETL @0X02    ;(Data Ary,Abs)
+000D81: 1C06  			RETL @0X06
+000D82: 1C01  			RETL @0X01
+000D83: 1C00  			RETL @0X00
+000D84: 1C09  			RETL @0X09    ;USAGE
+000D85: 1C39  			RETL @0X39    ;(Hat Switch)
+000D86: 1C75  			RETL @0X75    ;REPORT_SIZE
+000D87: 1C04  			RETL @0X04    ;(4)
+000D88: 1C95  			RETL @0X95    ;REPORT_COUNT
+000D89: 1C01  			RETL @0X01    ;(1)
+000D8A: 1C25  			RETL @0X25    ;LOGICAL_MAX
+000D8B: 1C07  			RETL @0X07    ;(7)
+000D8C: 1C46  			RETL @0X46    ;PHYSICAL_MAX
+000D8D: 1C3B  			RETL @0X3B    ;(315)
+000D8E: 1C01  			RETL @0X01
+000D8F: 1C65  			RETL @0X65    ;UNIT
+000D90: 1C14  			RETL @0X14    ;(Eng Rot:Angular Pos)
+000D91: 1C81  			RETL @0X81    ;INPUT
+000D92: 1C42  			RETL @0X42    ;(Data,Var,Abs,Null)
+000D93: 1C65  			RETL @0X65    ;UNIT
+000D94: 1C00  			RETL @0X00    ;(None)
+000D95: 1C75  			RETL @0X75    ;REPORT_SIZE
+000D96: 1C04  			RETL @0X04    ;(4)
+000D97: 1C95  			RETL @0X95    ;REPORT_COUNT
+000D98: 1C01  			RETL @0X01    ;(1)
+000D99: 1C81  			RETL @0X81    ;INPUT
+000D9A: 1C01  			RETL @0X01    ;(Const,Var,Abs)
+000D9B: 1CC0  			RETL @0XC0    ;END COLLECTION
+000D9C: 1CC0  	RETL @0XC0              ;78;END COLLECTION
+000E00: 0020  		TBL
+000E01: 1C05  		RETL @0X05    ;USAGE PAGE
+000E02: 1C01  		RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+000E03: 1C09  		RETL @0X09    ;USAGE
+000E04: 1C04  		RETL @0X04    ;(JOYSTICK)
+000E05: 1CA1  		RETL @0XA1    ;COLLECTION
+000E06: 1C01  		RETL @0X01    ;(APPLICATION)
+000E07: 1C85  		RETL @0X85    ;REPORT ID
+000E08: 1C03  		RETL @0X03
+000E09: 1CA1  			RETL	@0XA1    ;Collection
+000E0A: 1C02  			RETL	@0X02    ;Logical
+000E0B: 1C09  			RETL	@0X09    ;USAGE
+000E0C: 1C30  			RETL	@0X30    ;(X)
+000E0D: 1C09  			RETL	@0X09    ;USAGE
+000E0E: 1C31  			RETL	@0X31    ;(Y)
+000E0F: 1C09  			RETL	@0X09    ;USAGE
+000E10: 1C35  			RETL	@0X35    ;(Rz)
+000E11: 1C09  			RETL	@0X09    ;USAGE
+000E12: 1C32  			RETL	@0X32    ;(Z)
+000E13: 1C15  			RETL	@0X15    ;LOGICAL_MINIMUN
+000E14: 1C00  			RETL	@0X00    ;(0)
+000E15: 1C26  			RETL	@0X26    ;LOGICAL_MAXIMUM
+000E16: 1CFF  			RETL	@0XFF    ;(FF)
+000E17: 1C00  			RETL	@0X00
+000E18: 1C35  			RETL	@0X35    ;PHYSICAL MINIMUM
+000E19: 1C00  			RETL	@0X00    ;(0)
+000E1A: 1C46  			RETL	@0X46    ;PHYSICAL MAXIMUM
+000E1B: 1CFF  			RETL	@0XFF    ;(FF)
+000E1C: 1C00  			RETL	@0X00
+000E1D: 1C75  			RETL	@0X75    ;REPORT_SIZE
+000E1E: 1C08  			RETL	@0X08    ;(8)
+000E1F: 1C95  			RETL	@0X95    ;REPORT_COUNT
+000E20: 1C04  			RETL	@0X04    ;(4)
+000E21: 1C81  			RETL	@0X81    ;INPUT
+000E22: 1C02  			RETL	@0X02    ;(Data Ary,Abs)
+000E23: 1C05  			RETL @0X05    ;USAGE_PAGE
+000E24: 1C09  			RETL @0X09    ;(Button)
+000E25: 1C19  			RETL @0X19    ;USAGE MINIMUN
+000E26: 1C01  			RETL @0X01    ;(BUTTON 1)
+000E27: 1C29  			RETL @0X29    ;USAGE MAXIMUM
+000E28: 1C10  			RETL @0X10    ;(BUTTON 16)
+000E29: 1C25  			RETL @0X25    ;LOGICAL MAXIMUM
+000E2A: 1C01  			RETL @0X01    ;(1)
+000E2B: 1C45  			RETL @0X45    ;PHYSICAL MAXIMUM
+000E2C: 1C01  			RETL @0X01    ;(1)
+000E2D: 1C75  			RETL @0X75    ;REPORT_SIZE
+000E2E: 1C01  			RETL @0X01    ;(1)
+000E2F: 1C95  			RETL @0X95    ;REPORT_COUNT
+000E30: 1C10  			RETL @0X10    ;(16)
+000E31: 1C81  			RETL @0X81    ;INPUT
+000E32: 1C02  			RETL @0X02    ;(Data Ary,Abs)
+000E33: 1C06  			RETL @0X06
+000E34: 1C01  			RETL @0X01
+000E35: 1C00  			RETL @0X00
+000E36: 1C09  			RETL @0X09    ;USAGE
+000E37: 1C39  			RETL @0X39    ;(Hat Switch)
+000E38: 1C75  			RETL @0X75    ;REPORT_SIZE
+000E39: 1C04  			RETL @0X04    ;(4)
+000E3A: 1C95  			RETL @0X95    ;REPORT_COUNT
+000E3B: 1C01  			RETL @0X01    ;(1)
+000E3C: 1C25  			RETL @0X25    ;LOGICAL_MAX
+000E3D: 1C07  			RETL @0X07    ;(7)
+000E3E: 1C46  			RETL @0X46    ;PHYSICAL_MAX
+000E3F: 1C3B  			RETL @0X3B    ;(315)
+000E40: 1C01  			RETL @0X01
+000E41: 1C65  			RETL @0X65    ;UNIT
+000E42: 1C14  			RETL @0X14    ;(Eng Rot:Angular Pos)
+000E43: 1C81  			RETL @0X81    ;INPUT
+000E44: 1C42  			RETL @0X42    ;(Data,Var,Abs,Null)
+000E45: 1C65  			RETL @0X65    ;UNIT
+000E46: 1C00  			RETL @0X00    ;(None)
+000E47: 1C75  			RETL @0X75    ;REPORT_SIZE
+000E48: 1C04  			RETL @0X04    ;(4)
+000E49: 1C95  			RETL @0X95    ;REPORT_COUNT
+000E4A: 1C01  			RETL @0X01    ;(1)
+000E4B: 1C81  			RETL @0X81    ;INPUT
+000E4C: 1C01  			RETL @0X01    ;(Const,Var,Abs)
+000E4D: 1CC0  			RETL @0XC0    ;END COLLECTION
+000E4E: 1CC0  	RETL @0XC0              ;78;END COLLECTION
+000E4F: 1C05  	RETL @0X05    ;USAGE PAGE
+000E50: 1C01  	RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+000E51: 1C09  	RETL @0X09    ;USAGE
+000E52: 1C04  	RETL @0X04    ;(JOYSTICK)
+000E53: 1CA1  		RETL @0XA1    ;COLLECTION
+000E54: 1C01  		RETL @0X01    ;(APPLICATION)
+000E55: 1C85  		RETL @0X85    ;REPORT ID
+000E56: 1C04  		RETL @0X04
+000E57: 1CA1  			RETL	@0XA1    ;Collection
+000E58: 1C02  			RETL	@0X02    ;Logical
+000E59: 1C09  			RETL	@0X09    ;USAGE
+000E5A: 1C30  			RETL	@0X30    ;(X)
+000E5B: 1C09  			RETL	@0X09    ;USAGE
+000E5C: 1C31  			RETL	@0X31    ;(Y)
+000E5D: 1C09  			RETL	@0X09    ;USAGE
+000E5E: 1C35  			RETL	@0X35    ;(Rz)
+000E5F: 1C09  			RETL	@0X09    ;USAGE
+000E60: 1C32  			RETL	@0X32    ;(Z)
+000E61: 1C15  			RETL	@0X15    ;LOGICAL_MINIMUN
+000E62: 1C00  			RETL	@0X00    ;(0)
+000E63: 1C26  			RETL	@0X26    ;LOGICAL_MAXIMUM
+000E64: 1CFF  			RETL	@0XFF    ;(FF)
+000E65: 1C00  			RETL	@0X00
+000E66: 1C35  			RETL	@0X35    ;PHYSICAL MINIMUM
+000E67: 1C00  			RETL	@0X00    ;(0)
+000E68: 1C46  			RETL	@0X46    ;PHYSICAL MAXIMUM
+000E69: 1CFF  			RETL	@0XFF    ;(FF)
+000E6A: 1C00  			RETL	@0X00
+000E6B: 1C75  			RETL	@0X75    ;REPORT_SIZE
+000E6C: 1C08  			RETL	@0X08    ;(8)
+000E6D: 1C95  			RETL	@0X95    ;REPORT_COUNT
+000E6E: 1C04  			RETL	@0X04    ;(4)
+000E6F: 1C81  			RETL	@0X81    ;INPUT
+000E70: 1C02  			RETL	@0X02    ;(Data Ary,Abs)
+000E71: 1C05  			RETL @0X05    ;USAGE_PAGE
+000E72: 1C09  			RETL @0X09    ;(Button)
+000E73: 1C19  			RETL @0X19    ;USAGE MINIMUN
+000E74: 1C01  			RETL @0X01    ;(BUTTON 1)
+000E75: 1C29  			RETL @0X29    ;USAGE MAXIMUM
+000E76: 1C10  			RETL @0X10    ;(BUTTON 16)
+000E77: 1C25  			RETL @0X25    ;LOGICAL MAXIMUM
+000E78: 1C01  			RETL @0X01    ;(1)
+000E79: 1C45  			RETL @0X45    ;PHYSICAL MAXIMUM
+000E7A: 1C01  			RETL @0X01    ;(1)
+000E7B: 1C75  			RETL @0X75    ;REPORT_SIZE
+000E7C: 1C01  			RETL @0X01    ;(1)
+000E7D: 1C95  			RETL @0X95    ;REPORT_COUNT
+000E7E: 1C10  			RETL @0X10    ;(16)
+000E7F: 1C81  			RETL @0X81    ;INPUT
+000E80: 1C02  			RETL @0X02    ;(Data Ary,Abs)
+000E81: 1C06  			RETL @0X06
+000E82: 1C01  			RETL @0X01
+000E83: 1C00  			RETL @0X00
+000E84: 1C09  			RETL @0X09    ;USAGE
+000E85: 1C39  			RETL @0X39    ;(Hat Switch)
+000E86: 1C75  			RETL @0X75    ;REPORT_SIZE
+000E87: 1C04  			RETL @0X04    ;(4)
+000E88: 1C95  			RETL @0X95    ;REPORT_COUNT
+000E89: 1C01  			RETL @0X01    ;(1)
+000E8A: 1C25  			RETL @0X25    ;LOGICAL_MAX
+000E8B: 1C07  			RETL @0X07    ;(7)
+000E8C: 1C46  			RETL @0X46    ;PHYSICAL_MAX
+000E8D: 1C3B  			RETL @0X3B    ;(315)
+000E8E: 1C01  			RETL @0X01
+000E8F: 1C65  			RETL @0X65    ;UNIT
+000E90: 1C14  			RETL @0X14    ;(Eng Rot:Angular Pos)
+000E91: 1C81  			RETL @0X81    ;INPUT
+000E92: 1C42  			RETL @0X42    ;(Data,Var,Abs,Null)
+000E93: 1C65  			RETL @0X65    ;UNIT
+000E94: 1C00  			RETL @0X00    ;(None)
+000E95: 1C75  			RETL @0X75    ;REPORT_SIZE
+000E96: 1C04  			RETL @0X04    ;(4)
+000E97: 1C95  			RETL @0X95    ;REPORT_COUNT
+000E98: 1C01  			RETL @0X01    ;(1)
+000E99: 1C81  			RETL @0X81    ;INPUT
+000E9A: 1C01  			RETL @0X01    ;(Const,Var,Abs)
+000E9B: 1CC0  			RETL @0XC0    ;END COLLECTION
+000E9C: 1CC0  	RETL @0XC0              ;78;END COLLECTION
+000F00: 0020  		TBL
+000F01: 1C05  	RETL @0X05    ;USAGE PAGE
+000F02: 1C01  	RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+000F03: 1C09  	RETL @0X09    ;USAGE
+000F04: 1C04  	RETL @0X04    ;(JOYSTICK)
+000F05: 1CA1  		RETL @0XA1    ;COLLECTION
+000F06: 1C01  		RETL @0X01    ;(APPLICATION)
+000F07: 1C85  		RETL @0X85    ;REPORT ID
+000F08: 1C05  		RETL @0X05
+000F09: 1CA1  			RETL	@0XA1    ;Collection
+000F0A: 1C02  			RETL	@0X02    ;Logical
+000F0B: 1C09  			RETL	@0X09    ;USAGE
+000F0C: 1C30  			RETL	@0X30    ;(X)
+000F0D: 1C09  			RETL	@0X09    ;USAGE
+000F0E: 1C31  			RETL	@0X31    ;(Y)
+000F0F: 1C09  			RETL	@0X09    ;USAGE
+000F10: 1C35  			RETL	@0X35    ;(Rz)
+000F11: 1C09  			RETL	@0X09    ;USAGE
+000F12: 1C32  			RETL	@0X32    ;(Z)
+000F13: 1C15  			RETL	@0X15    ;LOGICAL_MINIMUN
+000F14: 1C00  			RETL	@0X00    ;(0)
+000F15: 1C26  			RETL	@0X26    ;LOGICAL_MAXIMUM
+000F16: 1CFF  			RETL	@0XFF    ;(FF)
+000F17: 1C00  			RETL	@0X00
+000F18: 1C35  			RETL	@0X35    ;PHYSICAL MINIMUM
+000F19: 1C00  			RETL	@0X00    ;(0)
+000F1A: 1C46  			RETL	@0X46    ;PHYSICAL MAXIMUM
+000F1B: 1CFF  			RETL	@0XFF    ;(FF)
+000F1C: 1C00  			RETL	@0X00
+000F1D: 1C75  			RETL	@0X75    ;REPORT_SIZE
+000F1E: 1C08  			RETL	@0X08    ;(8)
+000F1F: 1C95  			RETL	@0X95    ;REPORT_COUNT
+000F20: 1C04  			RETL	@0X04    ;(4)
+000F21: 1C81  			RETL	@0X81    ;INPUT
+000F22: 1C02  			RETL	@0X02    ;(Data Ary,Abs)
+000F23: 1C05  			RETL @0X05    ;USAGE_PAGE
+000F24: 1C09  			RETL @0X09    ;(Button)
+000F25: 1C19  			RETL @0X19    ;USAGE MINIMUN
+000F26: 1C01  			RETL @0X01    ;(BUTTON 1)
+000F27: 1C29  			RETL @0X29    ;USAGE MAXIMUM
+000F28: 1C10  			RETL @0X10    ;(BUTTON 16)
+000F29: 1C25  			RETL @0X25    ;LOGICAL MAXIMUM
+000F2A: 1C01  			RETL @0X01    ;(1)
+000F2B: 1C45  			RETL @0X45    ;PHYSICAL MAXIMUM
+000F2C: 1C01  			RETL @0X01    ;(1)
+000F2D: 1C75  			RETL @0X75    ;REPORT_SIZE
+000F2E: 1C01  			RETL @0X01    ;(1)
+000F2F: 1C95  			RETL @0X95    ;REPORT_COUNT
+000F30: 1C10  			RETL @0X10    ;(16)
+000F31: 1C81  			RETL @0X81    ;INPUT
+000F32: 1C02  			RETL @0X02    ;(Data Ary,Abs)
+000F33: 1C06  			RETL @0X06
+000F34: 1C01  			RETL @0X01
+000F35: 1C00  			RETL @0X00
+000F36: 1C09  			RETL @0X09    ;USAGE
+000F37: 1C39  			RETL @0X39    ;(Hat Switch)
+000F38: 1C75  			RETL @0X75    ;REPORT_SIZE
+000F39: 1C04  			RETL @0X04    ;(4)
+000F3A: 1C95  			RETL @0X95    ;REPORT_COUNT
+000F3B: 1C01  			RETL @0X01    ;(1)
+000F3C: 1C25  			RETL @0X25    ;LOGICAL_MAX
+000F3D: 1C07  			RETL @0X07    ;(7)
+000F3E: 1C46  			RETL @0X46    ;PHYSICAL_MAX
+000F3F: 1C3B  			RETL @0X3B    ;(315)
+000F40: 1C01  			RETL @0X01
+000F41: 1C65  			RETL @0X65    ;UNIT
+000F42: 1C14  			RETL @0X14    ;(Eng Rot:Angular Pos)
+000F43: 1C81  			RETL @0X81    ;INPUT
+000F44: 1C42  			RETL @0X42    ;(Data,Var,Abs,Null)
+000F45: 1C65  			RETL @0X65    ;UNIT
+000F46: 1C00  			RETL @0X00    ;(None)
+000F47: 1C75  			RETL @0X75    ;REPORT_SIZE
+000F48: 1C04  			RETL @0X04    ;(4)
+000F49: 1C95  			RETL @0X95    ;REPORT_COUNT
+000F4A: 1C01  			RETL @0X01    ;(1)
+000F4B: 1C81  			RETL @0X81    ;INPUT
+000F4C: 1C01  			RETL @0X01    ;(Const,Var,Abs)
+000F4D: 1CC0  			RETL @0XC0    ;END COLLECTION
+000F4E: 1CC0  	RETL @0XC0              ;78;END COLLECTION
+000F4F: 1C05  	RETL @0X05    ;USAGE PAGE
+000F50: 1C01  	RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+000F51: 1C09  	RETL @0X09    ;USAGE
+000F52: 1C04  	RETL @0X04    ;(JOYSTICK)
+000F53: 1CA1  		RETL @0XA1    ;COLLECTION
+000F54: 1C01  		RETL @0X01    ;(APPLICATION)
+000F55: 1C85  		RETL @0X85    ;REPORT ID
+000F56: 1C06  		RETL @0X06
+000F57: 1CA1  			RETL	@0XA1    ;Collection
+000F58: 1C02  			RETL	@0X02    ;Logical
+000F59: 1C09  			RETL	@0X09    ;USAGE
+000F5A: 1C30  			RETL	@0X30    ;(X)
+000F5B: 1C09  			RETL	@0X09    ;USAGE
+000F5C: 1C31  			RETL	@0X31    ;(Y)
+000F5D: 1C09  			RETL	@0X09    ;USAGE
+000F5E: 1C35  			RETL	@0X35    ;(Rz)
+000F5F: 1C09  			RETL	@0X09    ;USAGE
+000F60: 1C32  			RETL	@0X32    ;(Z)
+000F61: 1C15  			RETL	@0X15    ;LOGICAL_MINIMUN
+000F62: 1C00  			RETL	@0X00    ;(0)
+000F63: 1C26  			RETL	@0X26    ;LOGICAL_MAXIMUM
+000F64: 1CFF  			RETL	@0XFF    ;(FF)
+000F65: 1C00  			RETL	@0X00
+000F66: 1C35  			RETL	@0X35    ;PHYSICAL MINIMUM
+000F67: 1C00  			RETL	@0X00    ;(0)
+000F68: 1C46  			RETL	@0X46    ;PHYSICAL MAXIMUM
+000F69: 1CFF  			RETL	@0XFF    ;(FF)
+000F6A: 1C00  			RETL	@0X00
+000F6B: 1C75  			RETL	@0X75    ;REPORT_SIZE
+000F6C: 1C08  			RETL	@0X08    ;(8)
+000F6D: 1C95  			RETL	@0X95    ;REPORT_COUNT
+000F6E: 1C04  			RETL	@0X04    ;(4)
+000F6F: 1C81  			RETL	@0X81    ;INPUT
+000F70: 1C02  			RETL	@0X02    ;(Data Ary,Abs)
+000F71: 1C05  			RETL @0X05    ;USAGE_PAGE
+000F72: 1C09  			RETL @0X09    ;(Button)
+000F73: 1C19  			RETL @0X19    ;USAGE MINIMUN
+000F74: 1C01  			RETL @0X01    ;(BUTTON 1)
+000F75: 1C29  			RETL @0X29    ;USAGE MAXIMUM
+000F76: 1C10  			RETL @0X10    ;(BUTTON 16)
+000F77: 1C25  			RETL @0X25    ;LOGICAL MAXIMUM
+000F78: 1C01  			RETL @0X01    ;(1)
+000F79: 1C45  			RETL @0X45    ;PHYSICAL MAXIMUM
+000F7A: 1C01  			RETL @0X01    ;(1)
+000F7B: 1C75  			RETL @0X75    ;REPORT_SIZE
+000F7C: 1C01  			RETL @0X01    ;(1)
+000F7D: 1C95  			RETL @0X95    ;REPORT_COUNT
+000F7E: 1C10  			RETL @0X10    ;(16)
+000F7F: 1C81  			RETL @0X81    ;INPUT
+000F80: 1C02  			RETL @0X02    ;(Data Ary,Abs)
+000F81: 1C06  			RETL @0X06
+000F82: 1C01  			RETL @0X01
+000F83: 1C00  			RETL @0X00
+000F84: 1C09  			RETL @0X09    ;USAGE
+000F85: 1C39  			RETL @0X39    ;(Hat Switch)
+000F86: 1C75  			RETL @0X75    ;REPORT_SIZE
+000F87: 1C04  			RETL @0X04    ;(4)
+000F88: 1C95  			RETL @0X95    ;REPORT_COUNT
+000F89: 1C01  			RETL @0X01    ;(1)
+000F8A: 1C25  			RETL @0X25    ;LOGICAL_MAX
+000F8B: 1C07  			RETL @0X07    ;(7)
+000F8C: 1C46  			RETL @0X46    ;PHYSICAL_MAX
+000F8D: 1C3B  			RETL @0X3B    ;(315)
+000F8E: 1C01  			RETL @0X01
+000F8F: 1C65  			RETL @0X65    ;UNIT
+000F90: 1C14  			RETL @0X14    ;(Eng Rot:Angular Pos)
+000F91: 1C81  			RETL @0X81    ;INPUT
+000F92: 1C42  			RETL @0X42    ;(Data,Var,Abs,Null)
+000F93: 1C65  			RETL @0X65    ;UNIT
+000F94: 1C00  			RETL @0X00    ;(None)
+000F95: 1C75  			RETL @0X75    ;REPORT_SIZE
+000F96: 1C04  			RETL @0X04    ;(4)
+000F97: 1C95  			RETL @0X95    ;REPORT_COUNT
+000F98: 1C01  			RETL @0X01    ;(1)
+000F99: 1C81  			RETL @0X81    ;INPUT
+000F9A: 1C01  			RETL @0X01    ;(Const,Var,Abs)
+000F9B: 1CC0  			RETL @0XC0    ;END COLLECTION
+000F9C: 1CC0  	RETL @0XC0              ;78;END COLLECTION
+001000: 10E3  	CALL                PAGE4BANK1
+001001: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+001002: 1409  	JMP                 KeyType_Scan
+001003: 0417  	MOV                 A,SystemTimeCNT
+001004: 1DC8  	SUB                 A,@200              ; 200*1ms = 200ms
+001005: 0C03  	JBC                 STATUS,C
+001006: 1409  	JMP                 KeyType_Scan
+001007: 00D7  	CLR                 SystemTimeCNT
+001008: 0AC9  	BS                  LED1_STATUS/16,LED1_STATUS%16
+001009: 1100  	CALL                ConnectKey_Scan
+00100A: 0F1F  	JBS                 KeyScanFinishFlag/16,KeyScanFinishFlag%16
+00100B: 141A  	JMP                 Keystoke_No_Press
+00100C: 091F  	BC                  KeyScanFinishFlag/16,KeyScanFinishFlag%16
+00100D: 0437  	MOV                 A,KEY_NUM
+00100E: 1B02  	XOR                 A,@00000010B
+00100F: 0C83  	JBC                 STATUS,Z
+001010: 1431  	JMP                 Click_Select
+001011: 0437  	MOV                 A,KEY_NUM
+001012: 1B03  	XOR                 A,@00000011B
+001013: 0C83  	JBC                 STATUS,Z
+001014: 143F  	JMP                 Lasting_Press_Select
+001015: 0437  	MOV                 A,KEY_NUM
+001016: 1B04  	XOR                 A,@00000100B
+001017: 0C83  	JBC                 STATUS,Z
+001018: 1442  	JMP                 Dblclick_Select
+001019: 0000  	NOP
+00101A: 0000  	NOP
+00101B: 0D1E  	JBC                 LinkModeFlag/16,LinkModeFlag%16
+00101C: 14CB  	JMP                 Cycle_Waiting_End
+00101D: 10E3  	CALL                PAGE4BANK1
+00101E: 0423  	MOV                 A,CHN_FLAG
+00101F: 1B3F  	XOR                 A,@00111111B             ; 6 Gamepads
+001020: 0E83  	JBS                 STATUS,Z
+001021: 14CB  	JMP                 Cycle_Waiting_End
+001022: 09C3  	PAGE                0
+001023: 0983                BC        0X03,6
+001024: 0943                BC        0X03,5
+001025: 1279  	CALL                SearchLinkMode_Set
+001026: 0BC3  	PAGE                5
+001027: 0983  	          BC        0X03,6
+001028: 0B43  	          BS        0X03,5
+001029: 1287  	CALL                CHANGE_ADDRESS_VALUE
+00102A: 0BC3  	PAGE                4
+00102B: 0983  	          BC        0X03,6
+00102C: 0943  	          BC        0X03,5
+00102D: 10E3  	CALL                PAGE4BANK1
+00102E: 00E3  	CLR                 CHN_FLAG
+00102F: 14CB  	JMP                 Cycle_Waiting_End
+001030: 0000  	NOP
+001031: 08C9  	BC                  LED1_STATUS/16,LED1_STATUS%16
+001032: 0F9E  	JBS                 FccTestModeFlag/16,FccTestModeFlag%16
+001033: 143A  	JMP                 Not_Fcc_TestMode
+001034: 056F  	INC                 FccFreqIndex
+001035: 042F  	MOV                 A,FccFreqIndex
+001036: 1D0F  	SUB                 A,@0X0F
+001037: 0E03  	JBS                 STATUS,C
+001038: 00EF  	CLR                 FccFreqIndex
+001039: 1409  	JMP                 KeyType_Scan
+00103A: 00F7  	CLR                 KEY_NUM
+00103B: 0F5E  	JBS                 ForceLinkModeFlag/16,ForceLinkModeFlag%16
+00103C: 14CB  	JMP                 Cycle_Waiting_End
+00103D: 1422  	JMP                 Quit_Recognise_Scan
+00103E: 0000  	NOP
+00103F: 0B9E  	BS                  FccTestModeFlag/16,FccTestModeFlag%16
+001040: 14CB  	JMP                 Cycle_Waiting_End
+001041: 0000  	NOP
+001042: 0004  	WDTC
+001043: 0AC9  	BS                  LED1_STATUS/16,LED1_STATUS%16
+001044: 10E3  	CALL                PAGE4BANK1
+001045: 1897  	MOV                 A,@RX_IDH_DEFAULT                   ; SYNC ,used default 0X0DB3
+001046: 0061  	MOV                 RX_IDH,A
+001047: 183A  	MOV                 A,@RX_IDL_DEFAULT
+001048: 0062  	MOV                 RX_IDL,A
+001049: 0BC3  	PAGE                5
+00104A: 0983  	          BC        0X03,6
+00104B: 0B43  	          BS        0X03,5
+00104C: 1287  	CALL                CHANGE_ADDRESS_VALUE
+00104D: 09C3  	PAGE                0
+00104E: 0983                BC        0X03,6
+00104F: 0943                BC        0X03,5
+001050: 1287  	CALL                SearchForceLinkMode_Set
+001051: 1168  	CALL                Rand_ID_Function
+001052: 0BC3  	PAGE                4
+001053: 0983  	          BC        0X03,6
+001054: 0943  	          BC        0X03,5
+001055: 0000  	NOP
+001056: 0011  	DISI
+001057: 0000  	NOP
+001058: 0B06  	BS                  SPI_SS/16,SPI_SS%16                 ; Disable EM198810
+001059: 09C3  	mEWEN                                                   ; Enable
+00105A: 0983                BC        0X03,6
+00105B: 0943                BC        0X03,5
+00105C: 1300  	          CALL      ADDRESS%0X400
+00105D: 0BC3  	          BS        0X03,7
+00105E: 0983  	          BC        0X03,6
+00105F: 0943  	          BC        0X03,5
+001060: 1830          MOV     A,@ewen         ;enable erase/write
+001061: 0051          MOV     r_acc1,A
+001062: 1809          MOV     A,@9
+001063: 09C3                BC        0X03,7
+001064: 0983                BC        0X03,6
+001065: 0943                BC        0X03,5
+001066: 130F  	          CALL      ADDRESS%0X400
+001067: 0BC3  	          BS        0X03,7
+001068: 0983  	          BC        0X03,6
+001069: 0943  	          BC        0X03,5
+00106A: 0985          BC      AT93C46_CS/16,AT93C46_CS%16          ;load end bit
+00106B: 0886          BC      SPI_CLK/16,SPI_CLK%16
+00106C: 08C6          BC      SPI_MOSI/16,SPI_MOSI%16
+00106D: 1800  	MOV                 A,@0X00
+00106E: 0055  	MOV                 DataAddressInEEPROM,A
+00106F: 1860  	MOV                 A,@0X60
+001070: 0054  	MOV                 DataAddressInMCU,A
+001071: 09C4   	mWRITE              DataAddressInEEPROM,@0,DataAddressInMCU,@16
+001072: 0984                BC        0X04,6
+001073: 0414          MOV     A,DataAddressInMCU    ;写入数据存放的最低地址为0X24（mCU的地址）
+001074: 0044          MOV     R4,A                   ;存放数据的间接地址
+001075: 1810          MOV     A,@k
+001076: 0053          MOV     r_acc3,A               ;写入93C46的字节数
+001077: 09C3                BC        0X03,7
+001078: 0983                BC        0X03,6
+001079: 0943                BC        0X03,5
+00107A: 1300  	          CALL      ADDRESS%0X400
+00107B: 0BC3  	          BS        0X03,7
+00107C: 0983  	          BC        0X03,6
+00107D: 0943  	          BC        0X03,5
+00107E: 0803          BC      STATUS,C
+00107F: 0615          RRCA    DataAddressInEEPROM
+001080: 1940          OR      A,@write
+001081: 0051          MOV     r_acc1,A               ;高二位为写命令，低六位为地址
+001082: 1808          MOV     A,@8                   ;向93C46写一个字节，控制数
+001083: 09C3                BC        0X03,7
+001084: 0983                BC        0X03,6
+001085: 0943                BC        0X03,5
+001086: 130F  	          CALL      ADDRESS%0X400
+001087: 0BC3  	          BS        0X03,7
+001088: 0983  	          BC        0X03,6
+001089: 0943  	          BC        0X03,5
+00108A: 0886          BC      SPI_CLK/16,SPI_CLK%16
+00108B: 0E15          JBS     DataAddressInEEPROM,0        ;写入8BIT模式时的地址最低位
+00108C: 08C6          BC      SPI_MOSI/16,SPI_MOSI%16
+00108D: 0C15          JBC     DataAddressInEEPROM,0
+00108E: 0AC6          BS      SPI_MOSI/16,SPI_MOSI%16
+00108F: 1490          JMP     $+1
+001090: 0A86          BS      SPI_CLK/16,SPI_CLK%16          ;以上为写入OP和ADDRESS
+001091: 0555          INC     DataAddressInEEPROM
+001092: 0400          MOV     A,R0
+001093: 0051          MOV     r_acc1,A      ;装入要写入的数据
+001094: 0544          INC     R4
+001095: 1808          MOV     A,@8
+001096: 09C3                BC        0X03,7
+001097: 0983                BC        0X03,6
+001098: 0943                BC        0X03,5
+001099: 130F  	          CALL      ADDRESS%0X400
+00109A: 0BC3  	          BS        0X03,7
+00109B: 0983  	          BC        0X03,6
+00109C: 0943  	          BC        0X03,5
+00109D: 149E          JMP     $+1
+00109E: 0985          BC      AT93C46_CS/16,AT93C46_CS%16
+00109F: 0886          BC      SPI_CLK/16,SPI_CLK%16          ;数据写完，写结束位
+0010A0: 08C6          BC      SPI_MOSI/16,SPI_MOSI%16
+0010A1: 14A2          JMP     $+1
+0010A2: 0A86          BS      SPI_CLK/16,SPI_CLK%16
+0010A3: 0B85          BS      AT93C46_CS/16,AT93C46_CS%16          ;完成结束位的写入
+0010A4: 0E06          JBS     SPI_MISO/16,SPI_MISO%16
+0010A5: 14A4          JMP     $-1
+0010A6: 0985          BC      AT93C46_CS/16,AT93C46_CS%16
+0010A7: 05D3          DJZ     r_acc3        ;多字节写入控制
+0010A8: 1477          JMP     $Write_Data
+0010A9: 09C3   	mEWDS                                                   ; disable
+0010AA: 0983                BC        0X03,6
+0010AB: 0943                BC        0X03,5
+0010AC: 1300  	          CALL      ADDRESS%0X400
+0010AD: 0BC3  	          BS        0X03,7
+0010AE: 0983  	          BC        0X03,6
+0010AF: 0943  	          BC        0X03,5
+0010B0: 1800          MOV      A,@ewds         ;禁止写和擦除动作
+0010B1: 0051          MOV      r_acc1,A
+0010B2: 1809          MOV      A,@9
+0010B3: 09C3                BC        0X03,7
+0010B4: 0983                BC        0X03,6
+0010B5: 0943                BC        0X03,5
+0010B6: 130F  	          CALL      ADDRESS%0X400
+0010B7: 0BC3  	          BS        0X03,7
+0010B8: 0983  	          BC        0X03,6
+0010B9: 0943  	          BC        0X03,5
+0010BA: 0985          BC       AT93C46_CS/16,AT93C46_CS%16
+0010BB: 0886          BC       SPI_CLK/16,SPI_CLK%16
+0010BC: 08C6          BC       SPI_MOSI/16,SPI_MOSI%16          ;完成使能写操作指令的写入
+0010BD: 0985  	BC                  AT93C46_CS/16,AT93C46_CS%16         ; Disable 93C46
+0010BE: 0010  	ENI
+0010BF: 10E3   	CALL                PAGE4BANK1
+0010C0: 00DF  	CLR                 GeneralStatusFlag
+0010C1: 00E3  	CLR                 CHN_FLAG
+0010C2: 00F7  	CLR                 KEY_NUM
+0010C3: 00DE  	CLR                 CommuStatusFlag
+0010C4: 0A1E  	BS                  SearchStatusFlag/16,SearchStatusFlag%16
+0010C5: 0B5E  	BS                  ForceLinkModeFlag/16,ForceLinkModeFlag%16    ;
+0010C6: 10E0  	CALL                PAGE4BANK0
+0010C7: 0985  	BC                  AT93C46_CS/16,AT93C46_CS%16                  ; Disable 93C46
+0010C8: 0B06  	BS                  SPI_SS/16,SPI_SS%16                          ; Disable EM198810
+0010C9: 14CB  	JMP                 Cycle_Waiting_End
+0010CA: 0000  	NOP
+0010CB: 10E3  	CALL                PAGE4BANK1
+0010CC: 0573  	INC                 CH_NO
+0010CD: 09C3  	PAGE                3
+0010CE: 0B83  	          BS        0X03,6
+0010CF: 0B43  	          BS        0X03,5
+0010D0: 1275  	CALL                RF_FREQ_SET	
+0010D1: 0BC3  	PAGE                5
+0010D2: 0983  	          BC        0X03,6
+0010D3: 0B43  	          BS        0X03,5
+0010D4: 0433  	MOV                 A,CH_NO
+0010D5: 1D0F  	SUB                 A,@15
+0010D6: 0E03  	JBS                 STATUS,C
+0010D7: 00F3  	CLR                 CH_NO
+0010D8: 0417  	MOV                 A,SystemTimeCNT
+0010D9: 1DFA  	SUB                 A,@250              ; 200*1ms = 200ms
+0010DA: 0E03  	JBS                 STATUS,C
+0010DB: 00D7  	CLR                 SystemTimeCNT
+0010DC: 0423  	MOV                 A,CHN_FLAG
+0010DD: 006E  	MOV                 CHN_FLAG_TEMP,A
+0010DE: 0012  	RET
+0010DF: 0000  	NOP
+0010E0: 09C4  	BC                  0X04,7
+0010E1: 0984  	BC                  0X04,6
+0010E2: 0012  	RET
+0010E3: 09C4  	BC                  0X04,7
+0010E4: 0B84  	BS                  0X04,6
+0010E5: 0012  	RET
+0010E6: 0BC4  	BS                  0X04,7
+0010E7: 0984  	BC                  0X04,6
+0010E8: 0012  	RET
+0010E9: 0BC4  	BS                  0X04,7
+0010EA: 0B84  	BS                  0X04,6
+0010EB: 0012  	RET
+001100: 10E3  	CALL                PAGE4BANK1
+001101: 0000  	NOP
+001102: 0409  	MOV                 A,Port9                   ; Port9_2
+001103: 1A04  	AND                 A,@00000100B
+001104: 0050  	MOV                 TEMP,A
+001105: 1804  	MOV                 A,@00000100B              ; Bit2
+001106: 02F5  	AND                 KeystokeFlag_Befor,A
+001107: 0410  	MOV                 A,TEMP
+001108: 0335  	XOR                 A,KeystokeFlag_Befor      ; bit 3, Check edge
+001109: 0C83  	JBC                 STATUS,Z
+00110A: 1515  	JMP                 Rising_Edge_Judge         ; no edge occur
+00110B: 0410  	MOV                 A,TEMP                    ; Falling edge will change
+00110C: 1B00  	XOR                 A,@00000000B
+00110D: 0E83  	JBS                 STATUS,Z
+00110E: 1515  	JMP                 Rising_Edge_Judge         ; no falling edge
+00110F: 0F9F  	JBS                 KeyScanStatusFlag/16,KeyScanStatusFlag%16        ; scan the first falling edge
+001110: 0A37  	BS                  KEY_NUM,0                            ; Will into key scan, Set leader bit
+001111: 00F6  	CLR                 KeystokeTimeCNT                      ; press times ,recalculate
+001112: 095F  	BC                  KeyStatusFlag/16,KeyStatusFlag%16    ; key status, press(0) or release(1)
+001113: 0B9F  	BS                  KeyScanStatusFlag/16,KeyScanStatusFlag%16	     ; into scan key status
+001114: 1521  	JMP                 Edge_Judge_End
+001115: 0410  	MOV                 A,TEMP
+001116: 0335  	XOR                 A,KeystokeFlag_Befor      ; bit 3, Check edge
+001117: 0C83  	JBC                 STATUS,Z
+001118: 1521  	JMP                 Edge_Judge_End
+001119: 0410  	MOV                 A,TEMP                    ; rising edge will change
+00111A: 1B04  	XOR                 A,@00000100B
+00111B: 0E83  	JBS                 STATUS,Z
+00111C: 1521  	JMP                 Edge_Judge_End
+00111D: 0000  	NOP
+00111E: 1130  	CALL                KeyStatus_Low_Scan        ; rising edge ,check low level time
+00111F: 00F6  	CLR                 KeystokeTimeCNT           ; press times ,recalculate
+001120: 0B5F  	BS                  KeyStatusFlag/16,KeyStatusFlag%16
+001121: 0410  	MOV                 A,TEMP                    ; save currently press key status used for next judge
+001122: 0075  	MOV                 KeystokeFlag_Befor,A
+001123: 0DF7  	JBC                 KEY_NUM,7                                   ; Count overflow
+001124: 00F7  	CLR                 KEY_NUM
+001125: 0436  	MOV                 A,KeystokeTimeCNT
+001126: 1D46  	SUB                 A,@70                                       ; 70*56ms=3920ms(ComuTime=56ms)
+001127: 0C03  	JBC                 STATUS,C
+001128: 0576  	INC                 KeystokeTimeCNT                             ; press times ,recalculate
+001129: 0436  	MOV                 A,KeystokeTimeCNT
+00112A: 1B11  	XOR                 A,@17                                       ; 17*56ms=960ms(ComuTime=56ms)
+00112B: 0E83  	JBS                 STATUS,Z                                    ;
+00112C: 0012  	RET
+00112D: 099F  	BC                  KeyScanStatusFlag/16,KeyScanStatusFlag%16	            ; more than 800ms ,EXIT scan status
+00112E: 0B1F  	BS                  KeyScanFinishFlag/16,KeyScanFinishFlag%16
+00112F: 0012  	RET
+001130: 0436  	MOV                 A,KeystokeTimeCNT
+001131: 1D06  	SUB                 A,@6                       ;6*56ms=320ms(ComuTime=56ms)
+001132: 0C03  	JBC                 STATUS,C                   ;
+001133: 1535  	JMP                 KeyScan_Short_Press	       ;less than 510ms
+001134: 1538  	JMP                 KeyScan_Lasting_Press      ;more than 510ms
+001135: 0803  	BC                  STATUS,C
+001136: 06F7  	RLC                 KEY_NUM
+001137: 0012  	RET
+001138: 0A03  	BS                  STATUS,C
+001139: 06F7  	RLC                 KEY_NUM
+00113A: 0012  	RET
+001150: 0C4C  	JBC                 RC,EP0_BUSY           ;CHECK UDC BUSY OR NOT
+001151: 1550  	JMP                 READ_COMMAND
+001152: 0FCC  	JBS                 RC,EP0_W              ;CHECK EP0 W HAVE DATA OR NOT
+001153: 1550  	JMP                 READ_COMMAND
+001154: 098C  	BC                  RC,EP0_R              ;DISABLE UDC READ
+001155: 1810  	MOV                 A,@0X10
+001156: 004D  	MOV                 RD,A
+001157: 00CE  	CLR                 RE                    ;RESET POINTER & COUNTER
+001158: 00CD  	CLR                 RD
+001159: 040E  	MOV                 A,RE
+00115A: 0060  	MOV                 BYTE0,A
+00115B: 040E  	MOV                 A,RE
+00115C: 0061  	MOV                 BYTE1,A
+00115D: 040E  	MOV                 A,RE
+00115E: 0062  	MOV                 BYTE2,A
+00115F: 040E  	MOV                 A,RE
+001160: 0063  	MOV                 BYTE3,A
+001161: 040E  	MOV                 A,RE
+001162: 0064  	MOV                 BYTE4,A
+001163: 040E  	MOV                 A,RE
+001164: 0065  	MOV                 BYTE5,A
+001165: 040E  	MOV                 A,RE
+001166: 0066  	MOV                 BYTE6,A
+001167: 040E  	MOV                 A,RE
+001168: 0067  	MOV                 BYTE7,A
+001169: 1810  	MOV                 A,@0X10
+00116A: 004D  	MOV                 RD,A
+00116B: 00CE  	CLR                 RE                                             ;RESET POINTER & COUNTER
+00116C: 00CD  	CLR                 RD
+00116D: 09CC  	BC                  RC,EP0_W                                       ;CLEAR EP0_W
+00116E: 08DC  	BC                  SetupDataStageFlag/16,SetupDataStageFlag%16    ;REFRESH EP0_REPORT COMMAND
+00116F: 09DC  	BC                  UsbEP0interruptflag/16,UsbEP0interruptflag%16
+001170: 0420  	MOV                 A,BYTE0				        ;bmRequestType
+001171: 1A60  	AND                 A,@0B01100000
+001172: 0C83  	JBC                 STATUS,Z
+001173: 1578  	JMP                 STANDARD_DEVICE_REQUESTS	;bmRequestType[6,5]=[0,0]
+001174: 1B20  	XOR                 A,@0B00100000
+001175: 0C83  	JBC                 STATUS,Z
+001176: 15D5  	JMP                 CLASS_SPECIFIC_REQUESTS		;bmRequestType[6,5]=[0,1]    [0,1]
+001177: 1597  	JMP                 STALL_STATUS				;bmRequestType[6,5]=[1,0] OR [1,1]
+001178: 1806  	MOV                 A,@0B00000110                  ;0X06
+001179: 0321  	XOR                 A,BYTE1				        ;bRequest (Request Code)
+00117A: 0C83  	JBC                 STATUS,Z
+00117B: 157D  	JMP                 GET_DESCRIPTOR
+00117C: 1597  	JMP                 STALL_STATUS
+00117D: 00D8  	CLR                 TABLE_INDEX
+00117E: 0423  	MOV                 A,BYTE3				        ;wValue (Descriptor Type)
+00117F: 1A60  	AND                 A,@0B01100000
+001180: 0C83  	JBC                 STATUS,Z
+001181: 1586  	JMP                 STANDARD_DESCRIPTOR_TYPE	;wValue[6,5]=[0,0]
+001182: 1B20  	XOR                 A,@0B00100000
+001183: 0C83  	JBC                 STATUS,Z
+001184: 158F  	JMP                 CLASS_DESCRIPTOR_TYPE		;wValue[6,5]=[0,1]
+001185: 1597  	JMP                 STALL_STATUS				;wValue[6,5]=[1,0] OR [1,1]
+001186: 0423  	MOV                 A,BYTE3
+001187: 1D03  	SUB                 A,@0X03
+001188: 0E03  	JBS                 STATUS,C
+001189: 1597  	JMP                 STALL_STATUS
+00118A: 0020  	TBL
+00118B: 15BD  	JMP                 STRING_SET          ;	3
+00118C: 15A2  	JMP                 CONFIG_SET          ;	2
+00118D: 159B  	JMP                 DEVICE_SET          ;	1
+00118E: 1597  	JMP                 STALL_STATUS        ;	0
+00118F: 1821  	MOV                 A,@0X21
+001190: 0323  	XOR                 A,BYTE3
+001191: 0C83  	JBC                 STATUS,2
+001192: 15AA  	JMP                 HID_SET             ; GET HID
+001193: 1822  	MOV                 A,@0X22
+001194: 0323  	XOR                 A,BYTE3
+001195: 0C83  	JBC                 STATUS,2
+001196: 15B4  	JMP                 HID_REPORT_SET      ; GET REPORT
+001197: 0A0C  	BS                  RC,0
+001198: 09CC  	BC                  RC,7
+001199: 084F  	BC                  ISR,EP0IF
+00119A: 160C  	JMP                 BC_EP0_FLAG
+00119B: 00D3  	CLR                 CMD_SELECT
+00119C: 1812  	MOV                 A,@0X12
+00119D: 007D  	MOV                 DataMaxTable1,A
+00119E: 00FE  	CLR                 DataMaxTable2
+00119F: 00FF  	CLR                 DataMaxTable3
+0011A0: 12D1  	CALL                Set_Table1_Select
+0011A1: 15CF  	JMP                 END_DESCRIPTOR
+0011A2: 1801  	MOV                 A,@0X01
+0011A3: 0053  	MOV                 CMD_SELECT,A
+0011A4: 1822  	MOV                 A,@0X22
+0011A5: 007D  	MOV                 DataMaxTable1,A
+0011A6: 00FE  	CLR                 DataMaxTable2
+0011A7: 00FF  	CLR                 DataMaxTable3
+0011A8: 12D1  	CALL                Set_Table1_Select
+0011A9: 15CF  	JMP                 END_DESCRIPTOR
+0011AA: 1801  	MOV                 A,@0X01
+0011AB: 0053  	MOV                 CMD_SELECT,A
+0011AC: 1812  	MOV                 A,@0X12
+0011AD: 0058  	MOV                 TABLE_INDEX,A
+0011AE: 1809  	MOV                 A,@0X09
+0011AF: 007D  	MOV                 DataMaxTable1,A
+0011B0: 00FE  	CLR                 DataMaxTable2
+0011B1: 00FF  	CLR                 DataMaxTable3
+0011B2: 12D1  	CALL                Set_Table1_Select
+0011B3: 15CF  	JMP                 END_DESCRIPTOR
+0011B4: 1802  	MOV                 A,@0X02
+0011B5: 0053  	MOV                 CMD_SELECT,A
+0011B6: 189C  	MOV                 A,@(End_HID_Report_Table1-Begin_HID_Report_Table1)
+0011B7: 007D  	MOV                 DataMaxTable1,A
+0011B8: 189C  	MOV                 A,@(End_HID_Report_Table2-Begin_HID_Report_Table2)
+0011B9: 007E  	MOV                 DataMaxTable2,A
+0011BA: 189C  	MOV                 A,@(End_HID_Report_Table3-Begin_HID_Report_Table3)
+0011BB: 007F  	MOV                 DataMaxTable3,A
+0011BC: 15CF  	JMP                 END_DESCRIPTOR
+0011BD: 1800  	MOV                 A,@0X00
+0011BE: 0322  	XOR                 A,BYTE2
+0011BF: 0C83  	JBC                 STATUS,2
+0011C0: 15C5  	JMP                 STRING0
+0011C1: 1802  	MOV                 A,@0X02
+0011C2: 0322  	XOR                 A,BYTE2
+0011C3: 0C83  	JBC                 STATUS,2
+0011C4: 15CA  	JMP                 STRING2
+0011C5: 1806  	MOV                 A,@0X06
+0011C6: 0053  	MOV                 CMD_SELECT,A
+0011C7: 1804  	MOV                 A,@0X04
+0011C8: 007D  	MOV                 DataMaxTable1,A
+0011C9: 15CF  	JMP                 END_DESCRIPTOR
+0011CA: 1807  	MOV                 A,@0X07
+0011CB: 0053  	MOV                 CMD_SELECT,A
+0011CC: 181E  	MOV                 A,@0X1E
+0011CD: 007D  	MOV                 DataMaxTable1,A
+0011CE: 15CF  	JMP                 END_DESCRIPTOR
+0011CF: 0426  	MOV                 A,BYTE6
+0011D0: 007B  	MOV                 PC_WANT0,A
+0011D1: 0427  	MOV                 A,BYTE7
+0011D2: 007C  	MOV                 PC_WANT1,A
+0011D3: 0ADC  	BS                  SetupDataStageFlag/16,SetupDataStageFlag%16
+0011D4: 160C  	JMP                 BC_EP0_FLAG
+0011D5: 1821  	MOV                 A,@0X21
+0011D6: 0320  	XOR                 A,BYTE0
+0011D7: 0C83  	JBC                 STATUS,Z
+0011D8: 15DE  	JMP                 HID_SET_REQUEST
+0011D9: 18A1  	MOV                 A,@0XA1
+0011DA: 0320  	XOR                 A,BYTE0
+0011DB: 0C83  	JBC                 STATUS,Z
+0011DC: 15F8  	JMP                 HID_GET_REQUEST
+0011DD: 1597  	JMP                 STALL_STATUS
+0011DE: 1809  	MOV                 A,@0X09
+0011DF: 0321  	XOR                 A,BYTE1
+0011E0: 0C83  	JBC                 STATUS,Z
+0011E1: 15EB  	JMP                 SET_REPORT
+0011E2: 180A  	MOV                 A,@0X0A
+0011E3: 0321  	XOR                 A,BYTE1
+0011E4: 0C83  	JBC                 STATUS,Z
+0011E5: 15EC  	JMP                 SET_IDLE
+0011E6: 180B  	MOV                 A,@0X0B
+0011E7: 0321  	XOR                 A,BYTE1
+0011E8: 0C83  	JBC                 STATUS,Z
+0011E9: 15EF  	JMP                 SET_PROTOCOL
+0011EA: 1597  	JMP                 STALL_STATUS
+0011EB: 15F1  	JMP                 SET_RET
+0011EC: 0423  	MOV                 A,BYTE3
+0011ED: 007A  	MOV                 IDLE_TEMP,A
+0011EE: 15F1  	JMP                 SET_RET
+0011EF: 0422  	MOV                 A,BYTE2
+0011F0: 0079  	MOV                 PROTOCOL_TEMP,A
+0011F1: 00D8  	CLR                 TABLE_INDEX
+0011F2: 00FD  	CLR                 DataMaxTable1
+0011F3: 00FB  	CLR                 PC_WANT0
+0011F4: 00FC  	CLR                 PC_WANT1
+0011F5: 0ADC  	BS                  SetupDataStageFlag/16,SetupDataStageFlag%16
+0011F6: 0080  	CLRA
+0011F7: 160C  	JMP                 BC_EP0_FLAG
+0011F8: 0421  	MOV                 A,BYTE1
+0011F9: 1D03  	SUB                 A,@0X03
+0011FA: 0E03  	JBS                 STATUS,C
+0011FB: 1597  	JMP                 STALL_STATUS
+0011FC: 0020  	TBL
+0011FD: 1604  	JMP                 GET_PROTOCOL     ; BYTE1 = 0X03
+0011FE: 1601  	JMP                 GET_IDLE         ; BYTE1 = 0X02
+0011FF: 1607  	JMP                 GET_REPORT       ; BYTE1 = 0X01
+001200: 1597  	JMP                 STALL_STATUS
+001201: 1803  	MOV                 A,@0X03
+001202: 0053  	MOV                 CMD_SELECT,A
+001203: 1609  	JMP                 GET_RET
+001204: 1804  	MOV                 A,@0X04
+001205: 0053  	MOV                 CMD_SELECT,A
+001206: 1609  	JMP                 GET_RET
+001207: 1805  	MOV                 A,@0X05
+001208: 0053  	MOV                 CMD_SELECT,A
+001209: 1801  	MOV                 A,@0X01
+00120A: 007D  	MOV                 DataMaxTable1,A
+00120B: 15CF  	JMP                 END_DESCRIPTOR
+00120C: 084F  	BC                  ISR,EP0IF
+00120D: 09C3  	PAGE                0
+00120E: 0983                BC        0X03,6
+00120F: 0943                BC        0X03,5
+001210: 146B  	JMP                 INT_RET
+001211: 0BCC  	BS                  RC,EP0_W          ;Set 1, when MCU will write data to FIFO
+001212: 0E4C  	JBS                 RC,EP0_BUSY       ;It is '1' while UDC write/read endpoint0 FIFO
+001213: 1616  	JMP                 REPORT_INITIAL
+001214: 09CC  	BC                  RC,EP0_W          ;if EP0 busy go back main loop wait for udc non-busy
+001215: 0012  	RET
+001216: 1810  	MOV                 A,@0X10
+001217: 004D  	MOV                 RD,A       ;set to control pointer & counter
+001218: 00CE  	CLR                 RE         ;clear pointer & counter
+001219: 00CD  	CLR                 RD         ; FIFO adress=base
+00121A: 047D  	MOV                 DataMaxTable1,DataMaxTable1
+00121B: 0E83  	JBS                 STATUS,Z
+00121C: 1623  	JMP                 Load_FIFO_ByteLength	    ;if DataMaxTable1/2/3 = 0  jmp to finish
+00121D: 047E  	MOV                 DataMaxTable2,DataMaxTable2
+00121E: 0E83  	JBS                 STATUS,Z
+00121F: 1623  	JMP                 Load_FIFO_ByteLength
+001220: 047F  	MOV                 DataMaxTable3,DataMaxTable3
+001221: 0C83  	JBC                 STATUS,Z
+001222: 16E9  	JMP                 FINISH
+001223: 1808  	MOV                 A,@0X08
+001224: 005A  	MOV                 DataByteLength,A
+001225: 00CD  	CLR                 RD
+001226: 0413  	MOV                 A,CMD_SELECT
+001227: 0020  	TBL
+001228: 1630  	JMP                 DEVICE_LOOP	;0
+001229: 1639  	JMP                 CONFIG_LOOP	;1
+00122A: 1642  	JMP                 HID_REPORTL	;2
+00122B: 1663  	JMP                 IDLE_LOOP	;3
+00122C: 1665  	JMP                 PROTOCOLL	;4
+00122D: 1667  	JMP                 REPORT_EP0	;5
+00122E: 166E  	JMP                 STRING0L	;6
+00122F: 1677  	JMP                 STRING2L	;8
+001230: 0418  	MOV                 A,TABLE_INDEX
+001231: 09C3  	PAGE                3
+001232: 0B83  	          BS        0X03,6
+001233: 0B43  	          BS        0X03,5
+001234: 1000  	CALL                DEVICE_TABLE
+001235: 0BC3  	PAGE                4
+001236: 0983  	          BC        0X03,6
+001237: 0943  	          BC        0X03,5
+001238: 1682  	JMP                 RLOOP
+001239: 0418  	MOV                 A,TABLE_INDEX
+00123A: 09C3  	PAGE                3
+00123B: 0B83  	          BS        0X03,6
+00123C: 0B43  	          BS        0X03,5
+00123D: 1013  	CALL                CONFIG_TABLE
+00123E: 0BC3  	PAGE                4
+00123F: 0983  	          BC        0X03,6
+001240: 0943  	          BC        0X03,5
+001241: 1682  	JMP                 RLOOP
+001242: 0D1C  	JBC                 TableSelectFlag1/16,TableSelectFlag1%16
+001243: 1648  	JMP                 HID_Table_1st
+001244: 0D5C  	JBC                 TableSelectFlag2/16,TableSelectFlag2%16
+001245: 1651  	JMP                 HID_Table_2nd
+001246: 0D9C  	JBC                 TableSelectFlag3/16,TableSelectFlag3%16
+001247: 165A  	JMP                 HID_Table_3rd
+001248: 0418  	MOV                 A,TABLE_INDEX
+001249: 09C3  	PAGE                3
+00124A: 0B83  	          BS        0X03,6
+00124B: 0B43  	          BS        0X03,5
+00124C: 1100  	CALL                HID_REPORT_TABLE1
+00124D: 0BC3  	PAGE                4
+00124E: 0983  	          BC        0X03,6
+00124F: 0943  	          BC        0X03,5
+001250: 1682  	JMP                 RLOOP
+001251: 0418  	MOV                 A,TABLE_INDEX
+001252: 09C3  	PAGE                3
+001253: 0B83  	          BS        0X03,6
+001254: 0B43  	          BS        0X03,5
+001255: 1200  	CALL                HID_REPORT_TABLE2
+001256: 0BC3  	PAGE                4
+001257: 0983  	          BC        0X03,6
+001258: 0943  	          BC        0X03,5
+001259: 1682  	JMP                 RLOOP
+00125A: 0418  	MOV                 A,TABLE_INDEX
+00125B: 09C3  	PAGE                3
+00125C: 0B83  	          BS        0X03,6
+00125D: 0B43  	          BS        0X03,5
+00125E: 1300  	CALL                HID_REPORT_TABLE3
+00125F: 0BC3  	PAGE                4
+001260: 0983  	          BC        0X03,6
+001261: 0943  	          BC        0X03,5
+001262: 1682  	JMP                 RLOOP
+001263: 043A  	MOV                 A,IDLE_TEMP
+001264: 1682  	JMP                 RLOOP
+001265: 0439  	MOV                 A,PROTOCOL_TEMP
+001266: 1682  	JMP                 RLOOP
+001267: 1810  	MOV                 A,@0X10
+001268: 004D  	MOV                 RD,A		;EP0 POINTER&COUNTER
+001269: 00CE  	CLR                 RE
+00126A: 1800  	MOV                 A,@0X00
+00126B: 004D  	MOV                 RD,A		;EP0 FIFO
+00126C: 12ED  	CALL                SEND_USB_DATA
+00126D: 16E9  	JMP                 FINISH
+00126E: 0418  	MOV                 A,TABLE_INDEX
+00126F: 09C3  	PAGE                3
+001270: 0B83  	          BS        0X03,6
+001271: 0B43  	          BS        0X03,5
+001272: 1036  	CALL                STRING0T
+001273: 0BC3  	PAGE                4
+001274: 0983  	          BC        0X03,6
+001275: 0943  	          BC        0X03,5
+001276: 1682  	JMP                 RLOOP
+001277: 1279  	CALL                STRING_SUB
+001278: 1682  	JMP                 RLOOP
+001279: 0418  	MOV                 A,TABLE_INDEX
+00127A: 1D01  	SUB	                A,@0X01
+00127B: 0C03  	JBC                 STATUS,C
+00127C: 0012  	RET
+00127D: 0C18  	JBC                 TABLE_INDEX,0
+00127E: 1C02  	RETL                @0X02
+00127F: 0618  	RRCA                TABLE_INDEX
+001280: 1F02  	ADD                 A,@0X02
+001281: 0012  	RET
+001282: 004E  	MOV                 RE,A
+001283: 0558  	INC                 TABLE_INDEX
+001284: 01FB  	DEC                 PC_WANT0
+001285: 047B  	MOV                 PC_WANT0,PC_WANT0
+001286: 0C83  	JBC                 STATUS,Z
+001287: 16BE  	JMP                 Null_Data                 ;PC_WANT0 null data
+001288: 047F  	MOV                 DataMaxTable3,DataMaxTable3
+001289: 0E83  	JBS                 STATUS,Z
+00128A: 1691  	JMP                 Continue_Fill_In_8Byte
+00128B: 047E  	MOV                 DataMaxTable2,DataMaxTable2
+00128C: 0E83  	JBS                 STATUS,Z
+00128D: 1691  	JMP                 Continue_Fill_In_8Byte
+00128E: 047D  	MOV                 DataMaxTable1,DataMaxTable1
+00128F: 0C83  	JBC                 STATUS,Z
+001290: 16E9  	JMP                 FINISH
+001291: 05DA  	DJZ                 DataByteLength
+001292: 169B  	JMP                 Fill_In_8Byte_Cycle
+001293: 0D9C  	JBC                 TableSelectFlag3/16,TableSelectFlag3%16
+001294: 01FF  	DEC                 DataMaxTable3
+001295: 0D5C  	JBC                 TableSelectFlag2/16,TableSelectFlag2%16
+001296: 01FE  	DEC                 DataMaxTable2
+001297: 0D1C  	JBC                 TableSelectFlag1/16,TableSelectFlag1%16
+001298: 01FD  	DEC                 DataMaxTable1
+001299: 12C7  	CALL                Set_Table_Select
+00129A: 16C3  	JMP                 END_Fill_In_8Byte_Cycle   ;8 byte full , End this cycle
+00129B: 0D9C  	JBC                 TableSelectFlag3/16,TableSelectFlag3%16
+00129C: 01FF  	DEC                 DataMaxTable3
+00129D: 0D5C  	JBC                 TableSelectFlag2/16,TableSelectFlag2%16
+00129E: 01FE  	DEC                 DataMaxTable2
+00129F: 0D1C  	JBC                 TableSelectFlag1/16,TableSelectFlag1%16
+0012A0: 01FD  	DEC                 DataMaxTable1
+0012A1: 12C7  	CALL                Set_Table_Select
+0012A2: 047F  	MOV                 DataMaxTable3,DataMaxTable3
+0012A3: 0E83  	JBS                 STATUS,Z
+0012A4: 16AC  	JMP                 HID_NOT_END
+0012A5: 047E  	MOV                 DataMaxTable2,DataMaxTable2
+0012A6: 0E83  	JBS                 STATUS,Z
+0012A7: 16AC  	JMP                 HID_NOT_END
+0012A8: 047D  	MOV                 DataMaxTable1,DataMaxTable1
+0012A9: 0E83  	JBS                 STATUS,Z
+0012AA: 16AC  	JMP                 HID_NOT_END
+0012AB: 16C3  	JMP                 END_Fill_In_8Byte_Cycle
+0012AC: 0D1C  	JBC                 TableSelectFlag1/16,TableSelectFlag1%16
+0012AD: 16B2  	JMP                 Table1_Sel
+0012AE: 0D5C  	JBC                 TableSelectFlag2/16,TableSelectFlag2%16
+0012AF: 16B6  	JMP                 Table2_Sel
+0012B0: 0D9C  	JBC                 TableSelectFlag3/16,TableSelectFlag3%16
+0012B1: 16BA  	JMP                 Table3_Sel
+0012B2: 047D  	MOV                 DataMaxTable1,DataMaxTable1
+0012B3: 0C83  	JBC                 STATUS,Z
+0012B4: 16E9  	JMP                 FINISH
+0012B5: 1626  	JMP                 REPORT_LOOP
+0012B6: 047E  	MOV                 DataMaxTable2,DataMaxTable2
+0012B7: 0C83  	JBC                 STATUS,Z
+0012B8: 16E9  	JMP                 FINISH
+0012B9: 1626  	JMP                 REPORT_LOOP
+0012BA: 047F  	MOV                 DataMaxTable3,DataMaxTable3
+0012BB: 0C83  	JBC                 STATUS,Z
+0012BC: 16E9  	JMP                 FINISH
+0012BD: 1626  	JMP                 REPORT_LOOP
+0012BE: 043C  	MOV                 A,PC_WANT1
+0012BF: 0C83  	JBC                 STATUS,Z
+0012C0: 16E9  	JMP                 FINISH
+0012C1: 01FC  	DEC                 PC_WANT1
+0012C2: 1688  	JMP                 To_Continue
+0012C3: 0000  	NOP
+0012C4: 09CC  	BC                  RC,7
+0012C5: 0B8C  	BS                  RC,6
+0012C6: 0012  	RET
+0012C7: 047F  	MOV                 DataMaxTable3,DataMaxTable3
+0012C8: 0E83  	JBS                 STATUS,Z
+0012C9: 12E1  	CALL                Set_Table3_Select
+0012CA: 047E  	MOV                 DataMaxTable2,DataMaxTable2
+0012CB: 0E83  	JBS                 STATUS,Z
+0012CC: 12D9  	CALL                Set_Table2_Select
+0012CD: 047D  	MOV                 DataMaxTable1,DataMaxTable1
+0012CE: 0E83  	JBS                 STATUS,Z
+0012CF: 12D1  	CALL                Set_Table1_Select
+0012D0: 0012  	RET
+0012D1: 0B1C  	BS                  TableSelectFlag1/16,TableSelectFlag1%16
+0012D2: 095C  	BC                  TableSelectFlag2/16,TableSelectFlag2%16
+0012D3: 099C  	BC                  TableSelectFlag3/16,TableSelectFlag3%16
+0012D4: 0418  	MOV                 A,TABLE_INDEX         ;table max mustn't at 8*N,or it will error
+0012D5: 1B9C  	XOR                 A,@(End_HID_Report_Table3-Begin_HID_Report_Table3)
+0012D6: 0C83  	JBC                 STATUS,Z
+0012D7: 00D8  	CLR                 TABLE_INDEX
+0012D8: 0012  	RET
+0012D9: 091C  	BC                  TableSelectFlag1/16,TableSelectFlag1%16
+0012DA: 0B5C  	BS                  TableSelectFlag2/16,TableSelectFlag2%16
+0012DB: 099C  	BC                  TableSelectFlag3/16,TableSelectFlag3%16
+0012DC: 0418  	MOV                 A,TABLE_INDEX         ;table max mustn't at 8*N,or it will error
+0012DD: 1B9C  	XOR                 A,@(End_HID_Report_Table3-Begin_HID_Report_Table3)
+0012DE: 0C83  	JBC                 STATUS,Z
+0012DF: 00D8  	CLR                 TABLE_INDEX
+0012E0: 0012  	RET
+0012E1: 091C  	BC                  TableSelectFlag1/16,TableSelectFlag1%16
+0012E2: 095C  	BC                  TableSelectFlag2/16,TableSelectFlag2%16
+0012E3: 0B9C  	BS                  TableSelectFlag3/16,TableSelectFlag3%16
+0012E4: 0418  	MOV                 A,TABLE_INDEX         ;table max mustn't at 8*N,or it will error
+0012E5: 1B9C  	XOR                 A,@(End_HID_Report_Table3-Begin_HID_Report_Table3)
+0012E6: 0C83  	JBC                 STATUS,Z
+0012E7: 00D8  	CLR                 TABLE_INDEX
+0012E8: 0012  	RET
+0012E9: 09CC  	BC                  RC,7
+0012EA: 0B8C  	BS                  RC,6
+0012EB: 08DC  	BC                  SetupDataStageFlag/16,SetupDataStageFlag%16
+0012EC: 0012  	RET
+0012ED: 1801  	MOV                 A,@0X01
+0012EE: 004E  	MOV                 RE,A			;BYTE1(BTM)
+0012EF: 187F  	MOV                 A,@0X7F
+0012F0: 004E  	MOV                 RE,A			;BYTE2(X)
+0012F1: 004E  	MOV                 RE,A			;BYTE3(Y)
+0012F2: 004E  	MOV                 RE,A			;BYTE4
+0012F3: 004E  	MOV                 RE,A			;BYTE5
+0012F4: 183F  	MOV                 A,@0X3F
+0012F5: 004E  	MOV                 RE,A			;BYTE6(X)
+0012F6: 1800  	MOV                 A,@0X00
+0012F7: 004E  	MOV                 RE,A			;BYTE7(X)
+0012F8: 004E  	MOV                 RE,A			;BYTE8(X)
+0012F9: 0C0D  	JBC                 RD,0		;CHECK EP0 or EP1
+0012FA: 0B4C  	BS                  RC,EP1_R
+0012FB: 0012  	RET
+0012FC: 0DDC  	JBC                 UsbEP0interruptflag/16,UsbEP0interruptflag%16
+0012FD: 0012  	RET
+0012FE: 041B  	MOV                 A,ComuClock    ;8ms
+0012FF: 1D40  	SUB                 A,@0X40
+001300: 0C03  	JBC                 STATUS,C
+001301: 170C  	JMP                 Add_TimeCount
+001302: 0550  	INC                 TEMP
+001303: 00DB  	CLR                 ComuClock
+001304: 0410  	MOV                 A,TEMP
+001305: 1D10  	SUB                 A,@0X10        ;T = 0x10*0X50*ComuClock
+001306: 0C03  	JBC                 STATUS,C
+001307: 170C  	JMP                 Add_TimeCount
+001308: 0000  	NOP
+001309: 00D0  	CLR                 TEMP
+00130A: 0BDC  	BS                  UsbEP0interruptflag/16,UsbEP0interruptflag%16
+00130B: 0012  	RET
+00130C: 0000  	NOP
+00130D: 10E0  	CALL                PAGE4BANK0
+00130E: 0D8C  	JBC                 RC,EP0_R       ;EP0 FIFO READED ；it is auto clear by udc and data send out finish
+00130F: 16FC  	JMP                 USB_MAIN
+001310: 0CDC  	JBC                 SetupDataStageFlag/16,SetupDataStageFlag%16    ;CHECK SETUP TRANSFER DATA STAGE
+001311: 1211  	CALL                EP0_REPORT
+001312: 0000  	NOP
+001313: 16FC  	JMP                 USB_MAIN
+001314: 10E6  	CALL                PAGE4BANK2
+001315: 0D4C  	JBC                 RC,EP1_R         ;CHECK EP1 DATA HAS BEEN READED BY HOST
+001316: 0012  	RET
+001317: 094C  	BC                  RC,EP1_R
+001318: 1811  	MOV                 A,@0X11
+001319: 004D  	MOV                 RD,A		     ;EP1 POINTER&COUNTER
+00131A: 00CE  	CLR                 RE
+00131B: 1801  	MOV                 A,@0X01
+00131C: 004D  	MOV                 RD,A             ;EP1 FIFO
+00131D: 1801  	MOV                 A,@0X01
+00131E: 004E  	MOV                 RE,A             ;BYTE1 (ID)
+00131F: 0420  	MOV                 A,TX1_DATA1
+001320: 004E  	MOV                 RE,A             ;BYTE2 (LX)
+001321: 0421  	MOV                 A,TX1_DATA2
+001322: 004E  	MOV                 RE,A             ;BYTE3 (LY)
+001323: 0422  	MOV                 A,TX1_DATA3
+001324: 004E  	MOV                 RE,A             ;BYTE4 (RX)
+001325: 0423  	MOV                 A,TX1_DATA4
+001326: 004E  	MOV                 RE,A             ;BYTE5 (RY)
+001327: 0424  	MOV                 A,TX1_DATA5
+001328: 004E  	MOV                 RE,A             ;BYTE6 "A_1  B_2  C_3  D_4  L1_5  R1_6  L2_7  R2_8"
+001329: 0425  	MOV                 A,TX1_DATA6
+00132A: 004E  	MOV                 RE,A             ;BYTE7 "SEL_9  START_10  LSW_11  RSW_12  T_13  T_14  MACRO   MODE"
+00132B: 0426  	MOV                 A,TX1_DATA7
+00132C: 004E  	MOV                 RE,A             ;BYTE8 (Hat Switch)
+00132D: 0B4C  	BS                  RC,5
+00132E: 0012  	RET
+00132F: 0000  	NOP
+001330: 10E6  	CALL                PAGE4BANK2
+001331: 0D4C  	JBC                 RC,EP1_R    ;CHECK EP1 DATA HAS BEEN READED BY HOST
+001332: 0012  	RET
+001333: 094C  	BC                  RC,EP1_R
+001334: 1811  	MOV                 A,@0X11
+001335: 004D  	MOV                 RD,A		;EP1 POINTER&COUNTER
+001336: 00CE  	CLR                 RE
+001337: 1801  	MOV                 A,@0X01
+001338: 004D  	MOV                 RD,A        ;EP1 FIFO
+001339: 1802  	MOV                 A,@0X02
+00133A: 004E  	MOV                 RE,A             ;BYTE1 (ID)
+00133B: 0428  	MOV                 A,TX2_DATA1
+00133C: 004E  	MOV                 RE,A             ;BYTE2 (LX)
+00133D: 0429  	MOV                 A,TX2_DATA2
+00133E: 004E  	MOV                 RE,A             ;BYTE3 (LY)
+00133F: 042A  	MOV                 A,TX2_DATA3
+001340: 004E  	MOV                 RE,A             ;BYTE4 (RX)
+001341: 042B  	MOV                 A,TX2_DATA4
+001342: 004E  	MOV                 RE,A             ;BYTE5 (RY)
+001343: 042C  	MOV                 A,TX2_DATA5
+001344: 004E  	MOV                 RE,A             ;BYTE6 "A_1  B_2  C_3  D_4  L1_5  R1_6  L2_7  R2_8"
+001345: 042D  	MOV                 A,TX2_DATA6
+001346: 004E  	MOV                 RE,A             ;BYTE7 "SEL_9  START_10  LSW_11  RSW_12  T_13  T_14  MACRO   MODE"
+001347: 042E  	MOV                 A,TX2_DATA7
+001348: 004E  	MOV                 RE,A             ;BYTE8 (Hat Switch)
+001349: 0B4C  	BS                  RC,5
+00134A: 0012  	RET
+00134B: 10E6  	CALL                PAGE4BANK2
+00134C: 0D4C  	JBC                 RC,EP1_R    ;CHECK EP1 DATA HAS BEEN READED BY HOST
+00134D: 0012  	RET
+00134E: 094C  	BC                  RC,EP1_R
+00134F: 1811  	MOV                 A,@0X11
+001350: 004D  	MOV                 RD,A		;EP1 POINTER&COUNTER
+001351: 00CE  	CLR                 RE
+001352: 1801  	MOV                 A,@0X01
+001353: 004D  	MOV                 RD,A        ;EP1 FIFO
+001354: 1803  	MOV                 A,@0X03
+001355: 004E  	MOV                 RE,A             ;BYTE1 (ID)
+001356: 0430  	MOV                 A,TX3_DATA1
+001357: 004E  	MOV                 RE,A             ;BYTE2 (LX)
+001358: 0431  	MOV                 A,TX3_DATA2
+001359: 004E  	MOV                 RE,A             ;BYTE3 (LY)
+00135A: 0432  	MOV                 A,TX3_DATA3
+00135B: 004E  	MOV                 RE,A             ;BYTE4 (RX)
+00135C: 0433  	MOV                 A,TX3_DATA4
+00135D: 004E  	MOV                 RE,A             ;BYTE5 (RY)
+00135E: 0434  	MOV                 A,TX3_DATA5
+00135F: 004E  	MOV                 RE,A             ;BYTE6 "A_1  B_2  C_3  D_4  L1_5  R1_6  L2_7  R2_8"
+001360: 0435  	MOV                 A,TX3_DATA6
+001361: 004E  	MOV                 RE,A             ;BYTE7 "SEL_9  START_10  LSW_11  RSW_12  T_13  T_14  MACRO   MODE"
+001362: 0436  	MOV                 A,TX3_DATA7
+001363: 004E  	MOV                 RE,A             ;BYTE8 (Hat Switch)
+001364: 0B4C  	BS                  RC,5
+001365: 0012  	RET
+001366: 10E6  	CALL                PAGE4BANK2
+001367: 0D4C  	JBC                 RC,EP1_R    ;CHECK EP1 DATA HAS BEEN READED BY HOST
+001368: 0012  	RET
+001369: 094C  	BC                  RC,EP1_R
+00136A: 1811  	MOV                 A,@0X11
+00136B: 004D  	MOV                 RD,A		;EP1 POINTER&COUNTER
+00136C: 00CE  	CLR                 RE
+00136D: 1801  	MOV                 A,@0X01
+00136E: 004D  	MOV                 RD,A        ;EP1 FIFO
+00136F: 1804  	MOV                 A,@0X04
+001370: 004E  	MOV                 RE,A             ;BYTE1 (ID)
+001371: 0438  	MOV                 A,TX4_DATA1
+001372: 004E  	MOV                 RE,A             ;BYTE2 (LX)
+001373: 0439  	MOV                 A,TX4_DATA2
+001374: 004E  	MOV                 RE,A             ;BYTE3 (LY)
+001375: 043A  	MOV                 A,TX4_DATA3
+001376: 004E  	MOV                 RE,A             ;BYTE4 (RX)
+001377: 043B  	MOV                 A,TX4_DATA4
+001378: 004E  	MOV                 RE,A             ;BYTE5 (RY)
+001379: 043C  	MOV                 A,TX4_DATA5
+00137A: 004E  	MOV                 RE,A             ;BYTE6 "A_1  B_2  C_3  D_4  L1_5  R1_6  L2_7  R2_8"
+00137B: 043D  	MOV                 A,TX4_DATA6
+00137C: 004E  	MOV                 RE,A             ;BYTE7 "SEL_9  START_10  LSW_11  RSW_12  T_13  T_14  MACRO   MODE"
+00137D: 043E  	MOV                 A,TX4_DATA7
+00137E: 004E  	MOV                 RE,A             ;BYTE8 (Hat Switch)
+00137F: 0B4C  	BS                  RC,5
+001380: 0012  	RET
+001381: 10E9  	CALL                PAGE4BANK3
+001382: 0D4C  	JBC                 RC,EP1_R    ;CHECK EP1 DATA HAS BEEN READED BY HOST
+001383: 0012  	RET
+001384: 094C  	BC                  RC,EP1_R
+001385: 1811  	MOV                 A,@0X11
+001386: 004D  	MOV                 RD,A		;EP1 POINTER&COUNTER
+001387: 00CE  	CLR                 RE
+001388: 1801  	MOV                 A,@0X01
+001389: 004D  	MOV                 RD,A        ;EP1 FIFO
+00138A: 1805  	MOV                 A,@0X05
+00138B: 004E  	MOV                 RE,A             ;BYTE1 (ID)
+00138C: 0420  	MOV                 A,TX5_DATA1
+00138D: 004E  	MOV                 RE,A             ;BYTE2 (LX)
+00138E: 0421  	MOV                 A,TX5_DATA2
+00138F: 004E  	MOV                 RE,A             ;BYTE3 (LY)
+001390: 0422  	MOV                 A,TX5_DATA3
+001391: 004E  	MOV                 RE,A             ;BYTE4 (RX)
+001392: 0423  	MOV                 A,TX5_DATA4
+001393: 004E  	MOV                 RE,A             ;BYTE5 (RY)
+001394: 0424  	MOV                 A,TX5_DATA5
+001395: 004E  	MOV                 RE,A             ;BYTE6 "A_1  B_2  C_3  D_4  L1_5  R1_6  L2_7  R2_8"
+001396: 0425  	MOV                 A,TX5_DATA6
+001397: 004E  	MOV                 RE,A             ;BYTE7 "SEL_9  START_10  LSW_11  RSW_12  T_13  T_14  MACRO   MODE"
+001398: 0426  	MOV                 A,TX5_DATA7
+001399: 004E  	MOV                 RE,A             ;BYTE8 (Hat Switch)
+00139A: 0B4C  	BS                  RC,5
+00139B: 0012  	RET
+00139C: 10E9  	CALL                PAGE4BANK3
+00139D: 0D4C  	JBC                 RC,EP1_R    ;CHECK EP1 DATA HAS BEEN READED BY HOST
+00139E: 0012  	RET
+00139F: 094C  	BC                  RC,EP1_R
+0013A0: 1811  	MOV                 A,@0X11
+0013A1: 004D  	MOV                 RD,A		;EP1 POINTER&COUNTER
+0013A2: 00CE  	CLR                 RE
+0013A3: 1801  	MOV                 A,@0X01
+0013A4: 004D  	MOV                 RD,A        ;EP1 FIFO
+0013A5: 1806  	MOV                 A,@0X06
+0013A6: 004E  	MOV                 RE,A             ;BYTE1 (ID)
+0013A7: 0428  	MOV                 A,TX6_DATA1
+0013A8: 004E  	MOV                 RE,A             ;BYTE2 (LX)
+0013A9: 0429  	MOV                 A,TX6_DATA2
+0013AA: 004E  	MOV                 RE,A             ;BYTE3 (LY)
+0013AB: 042A  	MOV                 A,TX6_DATA3
+0013AC: 004E  	MOV                 RE,A             ;BYTE4 (RX)
+0013AD: 042B  	MOV                 A,TX6_DATA4
+0013AE: 004E  	MOV                 RE,A             ;BYTE5 (RY)
+0013AF: 042C  	MOV                 A,TX6_DATA5
+0013B0: 004E  	MOV                 RE,A             ;BYTE6 "A_1  B_2  C_3  D_4  L1_5  R1_6  L2_7  R2_8"
+0013B1: 042D  	MOV                 A,TX6_DATA6
+0013B2: 004E  	MOV                 RE,A             ;BYTE7 "SEL_9  START_10  LSW_11  RSW_12  T_13  T_14  MACRO   MODE"
+0013B3: 042E  	MOV                 A,TX6_DATA7
+0013B4: 004E  	MOV                 RE,A             ;BYTE8 (Hat Switch)
+0013B5: 0B4C  	BS                  RC,5
+0013B6: 0012  	RET
+001400: 03C2  	ADD                 PC,A
+001401: 1C4E  	RETL                @0X4E		;1		01---16M
+001402: 1C02  	RETL                @0X02		;2		10---24M
+001403: 1C4D  	RETL                @0X4D		;3		RESET FIFO
+001404: 1C01  	RETL                @0X01		;4
+001405: 1C42  	RETL                @0X42		;5		24M/1MBPS
+001406: 1C98  	RETL                @0X98		;6
+001407: 1C43  	RETL                @0X43		;7
+001408: 1CC8  	RETL                @0XC8 		;8		;8		;default:C4  Set sync word length，CRC count
+001409: 1C44  	RETL                @0X44		;9		PKT_LEN
+00140A: 1C10  	RETL                @PKT_LEN	;10		24 DATA
+00140B: 1C45  	RETL                @0X45		;11		PKTCNT
+00140C: 1C10  	RETL                @0X10		;12		1 packet
+00140D: 1C46  	RETL                @0X46		;13		BIT3~5	TX AMPLIFIER DELAY 10+5X
+00140E: 1C09  	RETL                @0X09		;14		BIT0~2	PLL DELAY 120+20X
+00140F: 1C47  	RETL                @0X47		;15		BIT4~7  RETRY CNT
+001410: 1C01  	RETL                @0X01		;16		BIT0~3	Slot TIME UNIT 10US
+001411: 1C48  	RETL                @0X48		;17		Slot
+001412: 1C01  	RETL                @0X01		;18
+001413: 1C49  	RETL                @0X49		;19		ACKTOSLOT
+001414: 1C14  	RETL                @0X14 		;20     default: 0X8A
+001415: 1C4A  	RETL                @0X4A		;21		RSSITH
+001416: 1C27  	RETL                @0X27		;22
+001417: 1C4B  	RETL                @0X4B		;23		RF_RSSI
+001418: 1C00  	RETL                @0X00		;24
+001419: 1C4C  	RETL                @0X4C		;25		TD_PLL	IN UNIT 10US
+00141A: 1C06  	RETL                @0X06		;26
+00141B: 1C50  	RETL                @0X50		;27		TXADDR
+00141C: 1C00  	RETL                @TXADDRL	;28
+00141D: 1C51  	RETL                @0X51		;29		TX ADDR
+00141E: 1C11  	RETL                @TXADDRH	;30
+00141F: 1C52  	RETL                @0X52		;31		RX	ADDR1
+001420: 1C22  	RETL                @0X22		;32
+001421: 1C53  	RETL                @0X53		;33		RX	ADDR2
+001422: 1C33  	RETL                @0X33		;34
+001423: 1C54  	RETL                @0X54		;35		RX	ADDR3
+001424: 1C44  	RETL                @0X44		;36
+001425: 1C55  	RETL                @0X55		;37		RX	ADDR4
+001426: 1C55  	RETL                @0X55		;38
+001427: 1C56  	RETL                @0X56		;39		RX	ADDR5
+001428: 1C66  	RETL                @0X66		;40
+001429: 1C57  	RETL                @0X57		;41		RX	ADDR6
+00142A: 1C77  	RETL                @0X77		;42
+00142B: 1C58  	RETL                @0X58		;43
+00142C: 1C08  	RETL                @0X08		;44
+00142D: 1C00  	RETL                @0X00		;45
+00142E: 1CE5  	RETL                @0XE5		;46
+00142F: 1C01  	RETL                @0X01		;47
+001430: 1C84  	RETL                @0X84		;48
+001431: 1C02  	RETL                @0X02		;49
+001432: 1C00  	RETL                @0X00		;50		CHANNEL
+001433: 1C03  	RETL                @0X03		;51
+001434: 1CC6  	RETL                @0XC6		;52
+001435: 1C04  	RETL                @0X04		;53
+001436: 1C00  	RETL                @0X00		;54
+001437: 1C05  	RETL                @0X05		;55
+001438: 1C40  	RETL                @0X40		;56
+001439: 1C06  	RETL                @0X06		;57
+00143A: 1C5D  	RETL                @0X5D		;58
+00143B: 1C07  	RETL                @0X07		;59
+00143C: 1C18  	RETL                @0X18		;60
+00143D: 1C08  	RETL                @0X08		;61
+00143E: 1C40  	RETL                @0X40		;62
+00143F: 1C09  	RETL                @0X09		;63
+001440: 1C18  	RETL                @0X18		;64
+001441: 1C0A  	RETL                @0X0A		;65
+001442: 1C47  	RETL                @0X47		;66
+001443: 1C0B  	RETL                @0X0B		;67
+001444: 1C0B  	RETL                @0X0B		;68
+001445: 1C0C  	RETL                @0X0C		;69
+001446: 1CE0  	RETL                @0XE0		;70
+001447: 1C0D  	RETL                @0X0D		;71
+001448: 1C4F  	RETL                @0X4F		;72
+001449: 1C0E  	RETL                @0X0E		;73
+00144A: 1C11  	RETL                @0X11		;74
+00144B: 1C0F  	RETL                @0X0F		;75
+00144C: 1C1C  	RETL                @0X1C		;76
+00144D: 1C20  	RETL                @0X20		;77
+00144E: 1CAD  	RETL                @0XAD		;78
+00144F: 1C21  	RETL                @0X21		;79
+001450: 1C64  	RETL                @0X64		;80
+001451: 1C22  	RETL                @0X22		;81
+001452: 1C00  	RETL                @0X00		;82
+001453: 1C23  	RETL                @0X23		;83
+001454: 1CC3  	RETL                @0XC3		;84
+001455: 1C24  	RETL                @0X24		;85
+001456: 1CBD  	RETL                @0XBD		;86
+001457: 1C25  	RETL                @0X25		;87
+001458: 1CA2  	RETL                @0XA2		;88
+001459: 1C26  	RETL                @0X26		;89
+00145A: 1C1A  	RETL                @0X1A		;90
+00145B: 1C27  	RETL                @0X27		;91
+00145C: 1C09  	RETL                @0X09		;92
+00145D: 1C28  	RETL                @0X28		;93
+00145E: 1C00  	RETL                @0X00		;94
+00145F: 1C29  	RETL                @0X29		;95
+001460: 1CB8  	RETL                @0XB8		;96
+001461: 1C2A  	RETL                @0X2A		;97
+001462: 1C71  	RETL                @0X71		;98
+001463: 1C2B  	RETL                @0X2B		;99
+001464: 1C06  	RETL                @0X06		;100
+001465: 1C2C  	RETL                @0X2C		;101
+001466: 1C80  	RETL                @0X80		;102
+001467: 1C2D  	RETL                @0X2D		;103
+001468: 1C1A  	RETL                @0X1A		;104
+001469: 1C2E  	RETL                @0X2E		;105
+00146A: 1C09  	RETL                @0X09;03		;106
+00146B: 1C2F  	RETL                @0X2F		;107
+00146C: 1C64  	RETL                @0X64		;108
+00146D: 1C30  	RETL                @0X30		;109
+00146E: 1CC0  	RETL                @0XC0		;110
+00146F: 1C31  	RETL                @0X31		;111
+001470: 1C00  	RETL                @0X00		;112
+001471: 1C32  	RETL                @0X32		;113
+001472: 1C40  	RETL                @0X40		;114
+001473: 1C33  	RETL                @0X33		;115
+001474: 1C3B  	RETL                @0X3B		;116
+001475: 1C00  	RETL                @0X00		;117
+001476: 1CA7  	RETL                @0XA7		;118
+001477: 1C32  	RETL                @0X32		;119
+001478: 1C4A  	RETL                @0X4A		;120
+001479: 1C00  	RETL                @0X00		;121
+00147A: 1CE5  	RETL                @0XE5		;122
+00147B: 1C0E  	RETL                @0X0E		;123
+00147C: 1C91  	RETL                @0X91		;124
+00147D: 1C40  	RETL                @0X40		;125
+00147E: 1C51  	RETL                @0X51		;126
+00147F: 1C41  	RETL                @0X41		;127
+001480: 1CBF  	RETL                @0XBF		;128
+001481: 1C0C  	RETL                @0X0C		;129
+001482: 1CC0  	RETL                @0XC0		;130
+001483: 1C02  	RETL                @0X02		;131
+001484: 1C80  	RETL                @0X80		;132
+001485: 1C04  	RETL                @0X04		;133
+001486: 1C4A  	RETL                @0X4A		;134
+001487: 1C05  	RETL                @0X05		;135
+001488: 1CDA  	RETL                @0XDA		;136
+001489: 1C06  	RETL                @0X06		;137
+00148A: 1CFA  	RETL                @0XFA		;138
+00148B: 1CFF  	RETL                @0XFF
+00148C: 03C2  	ADD                 PC,A
+00148D: 1C4E  	RETL                @0X4E
+00148E: 1C02  	RETL                @0X02
+00148F: 1C43  	RETL                @0X43
+001490: 1CC8  	RETL                @0XC8
+001491: 1C44  	RETL                @0X44
+001492: 1C10  	RETL                @PKT_LEN
+001493: 1C45  	RETL                @0X45
+001494: 1C10  	RETL                @0X10
+001495: 1C48  	RETL                @0X48
+001496: 1C01  	RETL                @0X01
+001497: 1C4C  	RETL                @0X4C
+001498: 1C06   	RETL                @0X06
+001499: 1C50  	RETL                @0X50
+00149A: 1C00  	RETL                @TXADDRL
+00149B: 1C51  	RETL                @0X51
+00149C: 1C11  	RETL                @TXADDRH
+00149D: 1C52  	RETL                @0X52
+00149E: 1C22  	RETL                @0X22
+00149F: 1C53  	RETL                @0X53
+0014A0: 1C33  	RETL                @0X33
+0014A1: 1C54  	RETL                @0X54
+0014A2: 1C44  	RETL                @0X44
+0014A3: 1C55  	RETL                @0X55
+0014A4: 1C55  	RETL                @0X55
+0014A5: 1C56  	RETL                @0X56
+0014A6: 1C66  	RETL                @0X66
+0014A7: 1C57  	RETL                @0X57
+0014A8: 1C77  	RETL                @0X77
+0014A9: 1C58  	RETL                @0X58
+0014AA: 1C08  	RETL                @0X08
+0014AB: 1CFF  	RETL                @0XFF
+0014AC: 03C2  	ADD                 PC,A
+0014AD: 1C1D  	RETL                @29        ;freq:2431 ;@0X1D
+0014AE: 1C04  	RETL                @4         ;freq:2406 ;@0X04
+0014AF: 1C43  	RETL                @67        ;freq:2469 ;@0X43
+0014B0: 1C20  	RETL                @32        ;freq:2434 ;@0X20
+0014B1: 1C07  	RETL                @7         ;freq:2409 ;@0X07
+0014B2: 1C41  	RETL                @65        ;freq:2467 ;@0X41
+0014B3: 1C24  	RETL                @36        ;freq:2438 ;@0X24
+0014B4: 1C0A  	RETL                @10        ;freq:2412 ;@0X0A
+0014B5: 1C3E  	RETL                @62        ;freq:2464 ;@0X3E
+0014B6: 1C26  	RETL                @38        ;freq:2440 ;@0X26
+0014B7: 1C08  	RETL                @8         ;freq:2410 ;@0X08
+0014B8: 1C3B  	RETL                @59        ;freq:2461 ;@0X3B
+0014B9: 1C2D  	RETL                @45        ;freq:2447 ;@0X2D
+0014BA: 1C0C  	RETL                @12        ;freq:2414 ;@0X0C
+0014BB: 1C4C  	RETL                @76        ;freq:2478 ;@0X4C
+0014BC: 1C28  	RETL                @40        ;freq:2442 ;@0X28
+0014BD: 1307  	CALL                PAGE5BANK1
+0014BE: 0846  	BC                  RESET_N/16,RESET_N%16
+0014BF: 181E  	MOV                 A,@30                         ; wating 3ms
+0014C0: 12C0  	CALL                DELAY_X100US
+0014C1: 0A46  	BS                  RESET_N/16,RESET_N%16          ; RESET=1
+0014C2: 1864  	MOV                 A,@100                          ; wating 10ms
+0014C3: 12C0  	CALL                DELAY_X100US
+0014C4: 095D  	BC                  RFTestfailFlag/16,RFTestfailFlag%16
+0014C5: 10D2  	CALL                INIT_FRAMEREG                  ; load	FRAMER TABLE send
+0014C6: 1805  	MOV                 A,@5
+0014C7: 12C0  	CALL                DELAY_X100US
+0014C8: 0000  	NOP
+0014C9: 10E5  	CALL                INIT_RSSI_CALIBRATION
+0014CA: 0000  	NOP
+0014CB: 12C9  	CALL                TEST_INITIAL_RF
+0014CC: 0000  	NOP
+0014CD: 0D5D  	JBC                 RFTestfailFlag/16,RFTestfailFlag%16
+0014CE: 14BD  	JMP                 EM198850_RESET
+0014CF: 123C  	CALL                Enter_StandbyII_Mode
+0014D0: 0B9D  	BS                  RFInitialOKflag/16,RFInitialOKflag%16
+0014D1: 0012  	RET
+0014D2: 1307  	CALL                PAGE5BANK1
+0014D3: 00D8  	CLR                 TABLE_INDEX
+0014D4: 0418  	MOV                 A,TABLE_INDEX
+0014D5: 1000  	CALL                FRAME_TABLE
+0014D6: 0070  	MOV                 ADDR,A
+0014D7: 1BFF  	XOR                 A,@0XFF
+0014D8: 0C83  	JBC                 STATUS,Z
+0014D9: 14E3  	JMP                 Set_Framereg_End
+0014DA: 0558  	INC                 TABLE_INDEX
+0014DB: 0418  	MOV                 A,TABLE_INDEX
+0014DC: 1000  	CALL                FRAME_TABLE
+0014DD: 0000  	NOP
+0014DE: 0071  	MOV                 VALUE,A
+0014DF: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+0014E0: 0000  	NOP
+0014E1: 0558  	INC                 TABLE_INDEX
+0014E2: 14D4  	JMP                 Set_FrameReg
+0014E3: 0000  	NOP
+0014E4: 0012  	RET
+0014E5: 1307  	CALL                PAGE5BANK1
+0014E6: 1805  	MOV                 A,@0X05
+0014E7: 005A  	MOV                 DataByteLength,A
+0014E8: 00F4  	CLR                 RF_RSSI
+0014E9: 184B  	MOV                 A,@0X4B
+0014EA: 0070  	MOV                 ADDR,A
+0014EB: 111B  	CALL                READ_SPI_REG
+0014EC: 0000  	NOP
+0014ED: 0434  	MOV                 A,RF_RSSI
+0014EE: 0131  	SUB                 A,VALUE
+0014EF: 0E03  	JBS                 STATUS,C
+0014F0: 14F3  	JMP                 $+3
+0014F1: 0431  	MOV                 A,VALUE
+0014F2: 0074  	MOV                 RF_RSSI,A
+0014F3: 05DA  	DJZ                 DataByteLength
+0014F4: 14E9  	JMP                 Repeat_Read_RSSI
+0014F5: 1804  	MOV                 A,@0X04
+0014F6: 0174  	SUB                 RF_RSSI,A
+0014F7: 0434  	MOV                 A,RF_RSSI
+0014F8: 0071  	MOV                 VALUE,A
+0014F9: 184A  	MOV                 A,@0X4A
+0014FA: 0070  	MOV                 ADDR,A
+0014FB: 1110  	CALL                WRITE_SPI_REG
+0014FC: 0000  	NOP
+0014FD: 1805  	MOV                 A,@0X05
+0014FE: 0070  	MOV                 ADDR,A
+0014FF: 1840  	MOV                 A,@0X40
+001500: 0071  	MOV                 VALUE,A
+001501: 1110  	CALL                WRITE_SPI_REG
+001502: 0000  	NOP
+001503: 1802  	MOV                 A,@0X02
+001504: 0070  	MOV                 ADDR,A
+001505: 1800  	MOV                 A,@0X00
+001506: 0071  	MOV                 VALUE,A
+001507: 1110  	CALL                WRITE_SPI_REG
+001508: 0000  	NOP
+001509: 180C  	MOV                 A,@0X0C
+00150A: 0070  	MOV                 ADDR,A
+00150B: 18E0  	MOV                 A,@0XE0
+00150C: 0071  	MOV                 VALUE,A
+00150D: 1110  	CALL                WRITE_SPI_REG
+00150E: 0000  	NOP
+00150F: 0012  	RET
+001510: 1304  	CALL                PAGE5BANK0
+001511: 0906  	BC                  SPI_SS/16,SPI_SS%16				;	/SS	=0
+001512: 1307  	CALL                PAGE5BANK1
+001513: 0430  	MOV                 A,ADDR
+001514: 1127  	CALL                SIM_SPI_WRITE
+001515: 0431  	MOV                 A,VALUE
+001516: 1127  	CALL                SIM_SPI_WRITE
+001517: 0886  	BC                  SPI_CLK/16,SPI_CLK%16
+001518: 0000  	NOP
+001519: 0B06  	BS                  SPI_SS/16,SPI_SS%16			;	/SS	=1
+00151A: 0012  	RET
+00151B: 1307  	CALL                PAGE5BANK1
+00151C: 0906  	BC                  SPI_SS/16,SPI_SS%16			;	/SS	=0
+00151D: 0430  	MOV                 A,ADDR
+00151E: 1980  	OR                  A,@0X80
+00151F: 1127  	CALL                SIM_SPI_WRITE
+001520: 0000  	NOP
+001521: 1139  	CALL                SIM_SPI_READ
+001522: 0071  	MOV                 VALUE,A
+001523: 0886  	BC                  SPI_CLK/16,SPI_CLK%16
+001524: 0000  	NOP	
+001525: 0B06  	BS                  SPI_SS/16,SPI_SS%16			;	/SS	=0
+001526: 0012  	RET
+001527: 0050  	MOV                 SPIWB,A
+001528: 1808  	MOV                 A,@8
+001529: 0059  	MOV                 DataShiftCounter,A
+00152A: 0886  	BC                  SPI_CLK/16,SPI_CLK%16
+00152B: 06D0  	RLC                 SPIWB
+00152C: 0C03  	JBC                 STATUS,C
+00152D: 1530  	JMP                 SET_SPI_MOSI
+00152E: 08C6  	BC                  SPI_MOSI/16,SPI_MOSI%16
+00152F: 1531  	JMP                 WRITE_SPI_COUNT_DEC
+001530: 0AC6  	BS                  SPI_MOSI/16,SPI_MOSI%16
+001531: 0A86  	BS                  SPI_CLK/16,SPI_CLK%16
+001532: 0000  	NOP
+001533: 05D9  	DJZ                 DataShiftCounter
+001534: 152A  	JMP                 WRITE_SPI_1
+001535: 0886  	BC                  SPI_CLK/16,SPI_CLK%16
+001536: 0000  	NOP
+001537: 08C6  	BC                  SPI_MOSI/16,SPI_MOSI%16
+001538: 0012  	RET
+001539: 00D0  	CLR                 SPIRB
+00153A: 1808  	MOV                 A,@8
+00153B: 0059  	MOV                 DataShiftCounter,A
+00153C: 0886  	BC                  SPI_CLK/16,SPI_CLK%16
+00153D: 0000  	NOP
+00153E: 0000  	NOP
+00153F: 0000  	NOP
+001540: 0A86  	BS                  SPI_CLK/16,SPI_CLK%16
+001541: 0E06  	JBS                 SPI_MISO/16,SPI_MISO%16
+001542: 1545  	JMP                 CLR_STATUS_C
+001543: 0A03  	BS                  STATUS,C
+001544: 1546  	JMP                 READ_SPI_MISO
+001545: 0803  	BC                  STATUS,C
+001546: 06D0  	RLC                 SPIRB
+001547: 05D9  	DJZ                 DataShiftCounter
+001548: 153C  	JMP                 READ_SPI_1
+001549: 0886  	BC                  SPI_CLK/16,SPI_CLK%16
+00154A: 0410  	MOV                 A,SPIRB
+00154B: 0012  	RET
+00154C: 1820  	MOV                 A,@RX_BUF					;READ DATA START Address
+00154D: 0044  	MOV                 RSR,A
+00154E: 0000  	NOP
+00154F: 0000  	NOP
+001550: 0906  	BC                  SPI_SS/16,SPI_SS%16				;/SS=0
+001551: 18FF  	MOV                 A,@0XFF						;0X7F||0X80 FIFO ADDRESS
+001552: 1127  	CALL                SIM_SPI_WRITE
+001553: 0000  	NOP
+001554: 0000  	NOP
+001555: 1810  	MOV                 A,@PKT_LEN
+001556: 005A  	MOV                 DataByteLength,A
+001557: 1139  	CALL                SIM_SPI_READ	 					;Packet & Device	ID
+001558: 0040  	MOV                 R0, A
+001559: 0544  	INC                 RSR
+00155A: 05DA  	DJZ                 DataByteLength
+00155B: 1557  	JMP                 Read_FIFO_Loop
+00155C: 0000  	NOP
+00155D: 0B06  	BS                  SPI_SS/16,SPI_SS%16				;/SS=1
+00155E: 0012  	RET
+00155F: 0906  	BC                  SPI_SS/16,SPI_SS%16    ;/SS=1
+001560: 187F  	MOV                 A,@0X7F         ;reg0X7F
+001561: 1127  	CALL                SIM_SPI_WRITE   ;use I/O as	SPI	pro
+001562: 0000  	NOP
+001563: 1810  	MOV                 A,@PKT_LEN
+001564: 005A  	MOV                 DataByteLength,A
+001565: 1820  	MOV                 A,@TX_BUF       ;Write DATA START Address
+001566: 0044  	MOV                 RSR,A
+001567: 0400  	MOV                 A,R0
+001568: 1127  	CALL                SIM_SPI_WRITE   ;use I/O as	SPI	pro
+001569: 0000  	NOP
+00156A: 0544  	INC                 RSR
+00156B: 05DA  	DJZ                 DataByteLength
+00156C: 1567  	JMP                 Write_FIFO_Loop
+00156D: 0B06  	BS                  SPI_SS/16,SPI_SS%16    ;/SS=1
+00156E: 0F86  	JBS                 PKT_FLAG/16,PKT_FLAG%16
+00156F: 156E  	JMP                 $-1
+001570: 0012  	RET
+001571: 1307  	CALL                PAGE5BANK1
+001572: 184D  	MOV                 A,@0X4D
+001573: 0070  	MOV                 ADDR,A					;ADDR=0X4D
+001574: 1801  	MOV                 A,@0X01
+001575: 0071  	MOV                 VALUE,A
+001576: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+001577: 1802  	MOV                 A,@0X02
+001578: 12C0  	CALL                DELAY_X100US
+001579: 0012  	RET
+00157A: 1307  	CALL                PAGE5BANK1
+00157B: 1800  	MOV                 A,@0X00
+00157C: 0070  	MOV                 ADDR,A
+00157D: 18E5  	MOV                 A,@0XE5
+00157E: 0071  	MOV                 VALUE,A
+00157F: 1110  	CALL                WRITE_SPI_REG
+001580: 1801  	MOV                 A,@0X01
+001581: 0070  	MOV                 ADDR,A
+001582: 1884  	MOV                 A,@0X84
+001583: 0071  	MOV                 VALUE,A
+001584: 1110  	CALL                WRITE_SPI_REG
+001585: 1841  	MOV                 A,@0X41
+001586: 0070  	MOV                 ADDR,A
+001587: 18BF  	MOV                 A,@0XBF
+001588: 0071  	MOV                 VALUE,A
+001589: 1110  	CALL                WRITE_SPI_REG
+00158A: 1840  	MOV                 A,@0X40
+00158B: 0070  	MOV                 ADDR,A
+00158C: 185E  	MOV                 A,@0X5E
+00158D: 0071  	MOV                 VALUE,A
+00158E: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+00158F: 0012  	RET
+001590: 1307  	CALL                PAGE5BANK1
+001591: 1800  	MOV                 A,@0X00
+001592: 0070  	MOV                 ADDR,A
+001593: 18E5  	MOV                 A,@0XE5
+001594: 0071  	MOV                 VALUE,A
+001595: 1110  	CALL                WRITE_SPI_REG
+001596: 1801  	MOV                 A,@0X01
+001597: 0070  	MOV                 ADDR,A
+001598: 1884  	MOV                 A,@0X84
+001599: 0071  	MOV                 VALUE,A
+00159A: 1110  	CALL                WRITE_SPI_REG
+00159B: 1841  	MOV                 A,@0X41
+00159C: 0070  	MOV                 ADDR,A
+00159D: 18BF  	MOV                 A,@0XBF
+00159E: 0071  	MOV                 VALUE,A
+00159F: 1110  	CALL                WRITE_SPI_REG
+0015A0: 1840  	MOV                 A,@0X40
+0015A1: 0070  	MOV                 ADDR,A
+0015A2: 1856  	MOV                 A,@0X56
+0015A3: 0071  	MOV                 VALUE,A
+0015A4: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+0015A5: 0012  	RET
+0015A6: 1307  	CALL                PAGE5BANK1
+0015A7: 1800  	MOV                 A,@0X00
+0015A8: 0070  	MOV                 ADDR,A
+0015A9: 1885  	MOV                 A,@0X85
+0015AA: 0071  	MOV                 VALUE,A
+0015AB: 1110  	CALL                WRITE_SPI_REG
+0015AC: 1801  	MOV                 A,@0X01
+0015AD: 0070  	MOV                 ADDR,A
+0015AE: 1884  	MOV                 A,@0X84
+0015AF: 0071  	MOV                 VALUE,A
+0015B0: 1110  	CALL                WRITE_SPI_REG
+0015B1: 1841  	MOV                 A,@0X41
+0015B2: 0070  	MOV                 ADDR,A
+0015B3: 18BF  	MOV                 A,@0XBF
+0015B4: 0071  	MOV                 VALUE,A
+0015B5: 1110  	CALL                WRITE_SPI_REG
+0015B6: 1840  	MOV                 A,@0X40
+0015B7: 0070  	MOV                 ADDR,A
+0015B8: 185E  	MOV                 A,@0X5E
+0015B9: 0071  	MOV                 VALUE,A
+0015BA: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+0015BB: 0012  	RET
+0015BC: 1307  	CALL                PAGE5BANK1
+0015BD: 1800  	MOV                 A,@0X00
+0015BE: 0070  	MOV                 ADDR,A
+0015BF: 1885  	MOV                 A,@0X85
+0015C0: 0071  	MOV                 VALUE,A
+0015C1: 1110  	CALL                WRITE_SPI_REG
+0015C2: 1801  	MOV                 A,@0X01
+0015C3: 0070  	MOV                 ADDR,A
+0015C4: 1884  	MOV                 A,@0X84
+0015C5: 0071  	MOV                 VALUE,A
+0015C6: 1110  	CALL                WRITE_SPI_REG
+0015C7: 1841  	MOV                 A,@0X41
+0015C8: 0070  	MOV                 ADDR,A
+0015C9: 18BF  	MOV                 A,@0XBF
+0015CA: 0071  	MOV                 VALUE,A
+0015CB: 1110  	CALL                WRITE_SPI_REG
+0015CC: 1840  	MOV                 A,@0X40
+0015CD: 0070  	MOV                 ADDR,A
+0015CE: 1856  	MOV                 A,@0X56
+0015CF: 0071  	MOV                 VALUE,A
+0015D0: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+0015D1: 0012  	RET
+0015D2: 1307  	CALL                PAGE5BANK1
+0015D3: 1800  	MOV                 A,@0X00
+0015D4: 0070  	MOV                 ADDR,A
+0015D5: 18E5  	MOV                 A,@0XE5
+0015D6: 0071  	MOV                 VALUE,A
+0015D7: 1110  	CALL                WRITE_SPI_REG
+0015D8: 1801  	MOV                 A,@0X01
+0015D9: 0070  	MOV                 ADDR,A
+0015DA: 1884  	MOV                 A,@0X84
+0015DB: 0071  	MOV                 VALUE,A
+0015DC: 1110  	CALL                WRITE_SPI_REG
+0015DD: 1841  	MOV                 A,@0X41
+0015DE: 0070  	MOV                 ADDR,A
+0015DF: 18BF  	MOV                 A,@0XBF
+0015E0: 0071  	MOV                 VALUE,A
+0015E1: 1110  	CALL                WRITE_SPI_REG
+0015E2: 1840  	MOV                 A,@0X40
+0015E3: 0070  	MOV                 ADDR,A
+0015E4: 185D  	MOV                 A,@0X5D
+0015E5: 0071  	MOV                 VALUE,A
+0015E6: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+0015E7: 0000  	NOP
+0015E8: 0012  	RET
+0015E9: 1307  	CALL                PAGE5BANK1
+0015EA: 1800  	MOV                 A,@0X00
+0015EB: 0070  	MOV                 ADDR,A
+0015EC: 18E5  	MOV                 A,@0XE5
+0015ED: 0071  	MOV                 VALUE,A
+0015EE: 1110  	CALL                WRITE_SPI_REG
+0015EF: 1801  	MOV                 A,@0X01
+0015F0: 0070  	MOV                 ADDR,A
+0015F1: 1884  	MOV                 A,@0X84
+0015F2: 0071  	MOV                 VALUE,A
+0015F3: 1110  	CALL                WRITE_SPI_REG
+0015F4: 1841  	MOV                 A,@0X41
+0015F5: 0070  	MOV                 ADDR,A
+0015F6: 18BF  	MOV                 A,@0XBF
+0015F7: 0071  	MOV                 VALUE,A
+0015F8: 1110  	CALL                WRITE_SPI_REG
+0015F9: 1840  	MOV                 A,@0X40
+0015FA: 0070  	MOV                 ADDR,A
+0015FB: 1855  	MOV                 A,@0X55
+0015FC: 0071  	MOV                 VALUE,A
+0015FD: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+0015FE: 0012  	RET
+0015FF: 1307  	CALL                PAGE5BANK1
+001600: 1800  	MOV                 A,@0X00
+001601: 0070  	MOV                 ADDR,A
+001602: 1885  	MOV                 A,@0X85
+001603: 0071  	MOV                 VALUE,A
+001604: 1110  	CALL                WRITE_SPI_REG
+001605: 1801  	MOV                 A,@0X01
+001606: 0070  	MOV                 ADDR,A
+001607: 1884  	MOV                 A,@0X84
+001608: 0071  	MOV                 VALUE,A
+001609: 1110  	CALL                WRITE_SPI_REG
+00160A: 1841  	MOV                 A,@0X41
+00160B: 0070  	MOV                 ADDR,A
+00160C: 18BF  	MOV                 A,@0XBF
+00160D: 0071  	MOV                 VALUE,A
+00160E: 1110  	CALL                WRITE_SPI_REG
+00160F: 1840  	MOV                 A,@0X40
+001610: 0070  	MOV                 ADDR,A
+001611: 185D  	MOV                 A,@0X5D
+001612: 0071  	MOV                 VALUE,A
+001613: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+001614: 0012  	RET
+001615: 1307  	CALL                PAGE5BANK1
+001616: 1800  	MOV                 A,@0X00
+001617: 0070  	MOV                 ADDR,A
+001618: 1885  	MOV                 A,@0X85
+001619: 0071  	MOV                 VALUE,A
+00161A: 1110  	CALL                WRITE_SPI_REG
+00161B: 1801  	MOV                 A,@0X01
+00161C: 0070  	MOV                 ADDR,A
+00161D: 1884  	MOV                 A,@0X84
+00161E: 0071  	MOV                 VALUE,A
+00161F: 1110  	CALL                WRITE_SPI_REG
+001620: 1841  	MOV                 A,@0X41
+001621: 0070  	MOV                 ADDR,A
+001622: 18BF  	MOV                 A,@0XBF
+001623: 0071  	MOV                 VALUE,A
+001624: 1110  	CALL                WRITE_SPI_REG
+001625: 1840  	MOV                 A,@0X40
+001626: 0070  	MOV                 ADDR,A
+001627: 1855  	MOV                 A,@0X55
+001628: 0071  	MOV                 VALUE,A
+001629: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+00162A: 0012  	RET
+00162B: 1307  	CALL                PAGE5BANK1
+00162C: 1800  	MOV                 A,@0X00
+00162D: 0070  	MOV                 ADDR,A
+00162E: 1865  	MOV                 A,@0X65
+00162F: 0071  	MOV                 VALUE,A
+001630: 1110  	CALL                WRITE_SPI_REG
+001631: 1801  	MOV                 A,@0X01
+001632: 0070  	MOV                 ADDR,A
+001633: 188C  	MOV                 A,@0X8C
+001634: 0071  	MOV                 VALUE,A
+001635: 1110  	CALL                WRITE_SPI_REG
+001636: 1840  	MOV                 A,@0X40
+001637: 0070  	MOV                 ADDR,A
+001638: 1850  	MOV                 A,@0X50
+001639: 0071  	MOV                 VALUE,A
+00163A: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+00163B: 0012  	RET
+00163C: 1307  	CALL                PAGE5BANK1
+00163D: 1800  	MOV                 A,@0X00
+00163E: 0070  	MOV                 ADDR,A
+00163F: 18E5  	MOV                 A,@0XE5
+001640: 0071  	MOV                 VALUE,A
+001641: 1110  	CALL                WRITE_SPI_REG
+001642: 1801  	MOV                 A,@0X01
+001643: 0070  	MOV                 ADDR,A
+001644: 1884  	MOV                 A,@0X84
+001645: 0071  	MOV                 VALUE,A
+001646: 1110  	CALL                WRITE_SPI_REG
+001647: 1841  	MOV                 A,@0X41
+001648: 0070  	MOV                 ADDR,A
+001649: 18BF  	MOV                 A,@0XBF
+00164A: 0071  	MOV                 VALUE,A
+00164B: 1110  	CALL                WRITE_SPI_REG
+00164C: 1840  	MOV                 A,@0X40
+00164D: 0070  	MOV                 ADDR,A
+00164E: 1852  	MOV                 A,@0X52
+00164F: 0071  	MOV                 VALUE,A
+001650: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+001651: 0012  	RET
+001652: 1307  	CALL                PAGE5BANK1
+001653: 1800  	MOV                 A,@0X00
+001654: 0070  	MOV                 ADDR,A
+001655: 18C0  	MOV                 A,@0XC0
+001656: 0071  	MOV                 VALUE,A
+001657: 1110  	CALL                WRITE_SPI_REG				;send SPI data to EM198810
+001658: 1801  	MOV                 A,@0X01
+001659: 0070  	MOV                 ADDR,A
+00165A: 188A  	MOV                 A,@0X8A
+00165B: 0071  	MOV                 VALUE,A
+00165C: 1110  	CALL                WRITE_SPI_REG
+00165D: 1304  	CALL                PAGE5BANK0
+00165E: 0846  	BC                  RESET_N/16,RESET_N%16
+00165F: 1307  	CALL                PAGE5BANK1
+001660: 0012  	RET
+001661: 1307  	CALL                PAGE5BANK1
+001662: 1800  	MOV                 A,@0X00
+001663: 0070  	MOV                 ADDR,A
+001664: 18E5  	MOV                 A,@0XE5
+001665: 0071  	MOV                 VALUE,A
+001666: 1110  	CALL                WRITE_SPI_REG
+001667: 0000  	NOP
+001668: 1304  	CALL                PAGE5BANK0
+001669: 0846  	BC                  RESET_N/16,RESET_N%16
+00166A: 1307  	CALL                PAGE5BANK1
+00166B: 0012  	RET
+00166C: 0A46  	BS                  RESET_N/16,RESET_N%16
+00166D: 1800  	MOV                 A,@0X00
+00166E: 0070  	MOV                 ADDR,A
+00166F: 18E5  	MOV                 A, @0XE5
+001670: 0071  	MOV                 VALUE,A
+001671: 1110  	CALL                WRITE_SPI_REG
+001672: 180F  	MOV                 A,@0X0F
+001673: 12C0  	CALL                DELAY_X100US
+001674: 0012  	RET
+001675: 1307  	CALL                PAGE5BANK1
+001676: 1802  	MOV                 A,@0X02
+001677: 0070  	MOV                 ADDR,A
+001678: 0433  	MOV                 A,CH_NO
+001679: 10AC  	CALL                CH_TABLE
+00167A: 0071  	MOV                 VALUE,A
+00167B: 1110  	CALL                WRITE_SPI_REG
+00167C: 0012  	RET
+00167D: 184F  	MOV                 A,@0X4F
+00167E: 0070  	MOV                 ADDR,A
+00167F: 111B  	CALL                READ_SPI_REG
+001680: 0012  	RET
+001681: 184F  	MOV                 A,@0X4F
+001682: 0070  	MOV                 ADDR,A
+001683: 1800  	MOV                 A,@0X00
+001684: 0071  	MOV                 VALUE,A
+001685: 1110  	CALL                WRITE_SPI_REG
+001686: 0012  	RET
+001687: 1307  	CALL                PAGE5BANK1
+001688: 1841  	MOV                 A,@0X41
+001689: 0070  	MOV                 ADDR,A
+00168A: 18BF  	MOV                 A,@0B10111111
+00168B: 0071  	MOV                 VALUE,A
+00168C: 1110  	CALL                WRITE_SPI_REG    ; Enalbe 6 TX
+00168D: 1851  	MOV                 A,@0X51
+00168E: 0070  	MOV                 ADDR,A
+00168F: 0421  	MOV                 A,RX_IDH
+001690: 0071  	MOV                 VALUE,A
+001691: 1110  	CALL                WRITE_SPI_REG
+001692: 1853  	MOV                 A,@0X53
+001693: 0070  	MOV                 ADDR,A
+001694: 0421  	MOV                 A,RX_IDH
+001695: 0071  	MOV                 VALUE,A
+001696: 1110  	CALL                WRITE_SPI_REG
+001697: 0422  	MOV                 A,RX_IDL
+001698: 1AF0  	AND                 A,@0B11110000
+001699: 0054  	MOV                 TEMP4,A
+00169A: 0554  	INC                 TEMP4
+00169B: 1850  	MOV                 A,@0X50
+00169C: 0070  	MOV                 ADDR,A
+00169D: 0414  	MOV                 A,TEMP4
+00169E: 1F00  	ADD                 A,@0
+00169F: 0071  	MOV                 VALUE,A      ; TX_ID1=(RX_IDL&0XF0)|0X01
+0016A0: 1110  	CALL                WRITE_SPI_REG
+0016A1: 1852  	MOV                 A,@0X52
+0016A2: 0070  	MOV                 ADDR,A
+0016A3: 0414  	MOV                 A,TEMP4
+0016A4: 1F01  	ADD                 A,@1
+0016A5: 0071  	MOV                 VALUE,A      ; TX_ID2=(RX_IDL&0XF0)|0X02
+0016A6: 1110  	CALL                WRITE_SPI_REG
+0016A7: 1854  	MOV                 A,@0X54
+0016A8: 0070  	MOV                 ADDR,A
+0016A9: 0414  	MOV                 A,TEMP4
+0016AA: 1F02  	ADD                 A,@2
+0016AB: 0071  	MOV                 VALUE,A      ; TX_ID3=(RX_IDL&0XF0)|0X03
+0016AC: 1110  	CALL                WRITE_SPI_REG
+0016AD: 1855  	MOV                 A,@0X55
+0016AE: 0070  	MOV                 ADDR,A
+0016AF: 0414  	MOV                 A,TEMP4
+0016B0: 1F03  	ADD                 A,@3
+0016B1: 0071  	MOV                 VALUE,A      ; TX_ID4=(RX_IDL&0XF0)|0X04
+0016B2: 1110  	CALL                WRITE_SPI_REG
+0016B3: 1856  	MOV                 A,@0X56
+0016B4: 0070  	MOV                 ADDR,A
+0016B5: 0414  	MOV                 A,TEMP4
+0016B6: 1F04  	ADD                 A,@4
+0016B7: 0071  	MOV                 VALUE,A      ; TX_ID5=(RX_IDL&0XF0)|0X05
+0016B8: 1110  	CALL                WRITE_SPI_REG
+0016B9: 1857  	MOV                 A,@0X57
+0016BA: 0070  	MOV                 ADDR,A
+0016BB: 0414  	MOV                 A,TEMP4
+0016BC: 1F05  	ADD                 A,@5
+0016BD: 0071  	MOV                 VALUE,A      ; TX_ID6=(RX_IDL&0XF0)|0X06
+0016BE: 1110  	CALL                WRITE_SPI_REG
+0016BF: 0012  	RET
+0016C0: 0051  	MOV                 TEMP1,A
+0016C1: 1850  	MOV                 A,@0X50      ;
+0016C2: 0052  	MOV                 TEMP2,A
+0016C3: 0000    	NOP
+0016C4: 05D2  	DJZ                 TEMP2
+0016C5: 16C3  	JMP                 Waiting
+0016C6: 05D1  	DJZ                 TEMP1
+0016C7: 16C1  	JMP                 Delay_Loop
+0016C8: 0012  	RET
+0016C9: 1807  	MOV                 A,@0X07
+0016CA: 0070  	MOV                 ADDR,A
+0016CB: 1858  	MOV                 A,@0X58						;R7[6]=1
+0016CC: 0071  	MOV                 VALUE,A
+0016CD: 1110  	CALL                WRITE_SPI_REG
+0016CE: 0000  	NOP
+0016CF: 180E  	MOV                 A,@0X0E
+0016D0: 0070  	MOV                 ADDR,A
+0016D1: 1811  	MOV                 A,@0X11						;RE[7]=0
+0016D2: 0071  	MOV                 VALUE,A
+0016D3: 1110  	CALL                WRITE_SPI_REG
+0016D4: 0000  	NOP
+0016D5: 182E  	MOV                 A,@0X2E
+0016D6: 0070  	MOV                 ADDR,A
+0016D7: 1823  	MOV                 A,@0X23						;R2E[5]=1
+0016D8: 0071  	MOV                 VALUE,A
+0016D9: 1110  	CALL                WRITE_SPI_REG
+0016DA: 0000  	NOP
+0016DB: 180E  	MOV                 A,@0X0E
+0016DC: 0070  	MOV                 ADDR,A
+0016DD: 1891  	MOV                 A,@0X91						;RE[7]=1
+0016DE: 0071  	MOV                 VALUE,A
+0016DF: 1110  	CALL                WRITE_SPI_REG
+0016E0: 0000  	NOP
+0016E1: 11D2  	CALL                Enter_RX_Buffer_ACK
+0016E2: 0000  	NOP
+0016E3: 1808  	MOV                 A,@8
+0016E4: 12C0  	CALL                DELAY_X100US
+0016E5: 0000  	NOP
+0016E6: 184B  	MOV                 A,@0X4B
+0016E7: 0070  	MOV                 ADDR,A
+0016E8: 111B  	CALL                READ_SPI_REG
+0016E9: 0000  	NOP
+0016EA: 0C31  	JBC                 VALUE,0					;R4B[0]:LD=1,Analog Reg Initial is OK
+0016EB: 16EE  	JMP                 Digit_Reg_Test
+0016EC: 0B5D  	BS                  RFTestfailFlag/16,RFTestfailFlag%16
+0016ED: 1703  	JMP                 RF_TEST_RET
+0016EE: 00D8  	CLR                 TABLE_INDEX
+0016EF: 0418  	MOV                 A,TABLE_INDEX
+0016F0: 108C  	CALL                RF_TABLE
+0016F1: 0000  	NOP
+0016F2: 0070  	MOV                 ADDR,A
+0016F3: 1BFF  	XOR                 A, @0XFF
+0016F4: 0C83  	JBC                 STATUS,Z
+0016F5: 1703  	JMP                 RF_TEST_RET
+0016F6: 111B  	CALL                READ_SPI_REG
+0016F7: 0000  	NOP
+0016F8: 0558  	INC                 TABLE_INDEX
+0016F9: 0418  	MOV                 A,TABLE_INDEX
+0016FA: 108C  	CALL                RF_TABLE
+0016FB: 0000  	NOP
+0016FC: 0331  	XOR                 A,VALUE
+0016FD: 0C83  	JBC                 STATUS,Z
+0016FE: 1701  	JMP                 RF_TABLE_INC
+0016FF: 0B5D  	BS                  RFTestfailFlag/16,RFTestfailFlag%16
+001700: 1703  	JMP                 RF_TEST_RET
+001701: 0558  	INC                 TABLE_INDEX
+001702: 16EF  	JMP                 Check_Digit_Reg
+001703: 0012  	RET
+001704: 09C4  	BC        0X04,7
+001705: 0984  	BC        0X04,6
+001706: 0012  RET
+001707: 09C4  	BC        0X04,7
+001708: 0B84  	BS        0X04,6
+001709: 0012  RET
+00170A: 0BC4  	BS        0X04,7
+00170B: 0984  	BC        0X04,6
+00170C: 0012  RET
+00170D: 0BC4  	BS        0X04,7
+00170E: 0B84  	BS        0X04,6
+00170F: 0012  RET

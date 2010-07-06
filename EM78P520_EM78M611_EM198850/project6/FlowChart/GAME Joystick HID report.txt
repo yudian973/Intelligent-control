@@ -1,0 +1,90 @@
+	;--REPORT DESCRIPTOR--
+	RETL @0X05    ;USAGE PAGE
+	RETL @0X01    ;(GENERIC DESKTOP CONTROL)
+	RETL @0X09    ;USAGE
+	RETL @0X04    ;(JOYSTICK)
+	;{
+		RETL @0XA1    ;COLLECTION
+		RETL @0X01    ;(APPLICATION)
+		;RETL @0X85    ;REPORT ID
+		;RETL @0X01
+		;{
+		;{X,Y,Z,Rz
+			RETL	@0XA1    ;Collection
+			RETL	@0X02    ;Logical
+			RETL	@0X09    ;USAGE
+			RETL	@0X30    ;(X)
+			RETL	@0X09    ;USAGE
+			RETL	@0X31    ;(Y)
+			RETL	@0X09    ;USAGE
+			RETL	@0X35    ;(Rz)
+			RETL	@0X09    ;USAGE
+			RETL	@0X32    ;(Z)
+			RETL	@0X15    ;LOGICAL_MINIMUN
+			RETL	@0X00    ;(0)
+			RETL	@0X26    ;LOGICAL_MAXIMUM
+			RETL	@0XFF    ;(FF)
+			RETL	@0X00
+			RETL	@0X35    ;PHYSICAL MINIMUM
+			RETL	@0X00    ;(0)
+			RETL	@0X46    ;PHYSICAL MAXIMUM
+			RETL	@0XFF    ;(FF)
+			RETL	@0X00
+			RETL	@0X75    ;REPORT_SIZE
+			RETL	@0X08    ;(8)
+			RETL	@0X95    ;REPORT_COUNT
+			RETL	@0X04    ;(4)
+			RETL	@0X81    ;INPUT
+			RETL	@0X02    ;(Data Ary,Abs)
+		;}
+		;{Button
+			RETL @0X05    ;USAGE_PAGE
+			RETL @0X09    ;(Button)
+			RETL @0X19    ;USAGE MINIMUN
+			RETL @0X01    ;(BUTTON 1)
+			RETL @0X29    ;USAGE MAXIMUM
+			RETL @0X10    ;(BUTTON 16)
+			RETL @0X25    ;LOGICAL MAXIMUM
+			RETL @0X01    ;(1)
+			RETL @0X45    ;PHYSICAL MAXIMUM
+			RETL @0X01    ;(1)
+			RETL @0X75    ;REPORT_SIZE
+			RETL @0X01    ;(1)
+			RETL @0X95    ;REPORT_COUNT
+			RETL @0X10    ;(16)
+			RETL @0X81    ;INPUT
+			RETL @0X02    ;(Data Ary,Abs)
+		;}
+		;{Hat Switch
+			RETL @0X06
+			RETL @0X01
+			RETL @0X00
+			RETL @0X09    ;USAGE
+			RETL @0X39    ;(Hat Switch)
+			RETL @0X75    ;REPORT_SIZE
+			RETL @0X04    ;(4)
+			RETL @0X95    ;REPORT_COUNT
+			RETL @0X01    ;(1)
+			RETL @0X25    ;LOGICAL_MAX
+			RETL @0X07    ;(7)
+			RETL @0X46    ;PHYSICAL_MAX
+			RETL @0X3B    ;(315)
+			RETL @0X01
+			RETL @0X65    ;UNIT
+			RETL @0X14    ;(Eng Rot:Angular Pos)
+			RETL @0X81    ;INPUT
+			RETL @0X42    ;(Data,Var,Abs,Null)
+		;}
+		;{Const
+			RETL @0X65    ;UNIT
+			RETL @0X00    ;(None)
+			RETL @0X75    ;REPORT_SIZE
+			RETL @0X04    ;(4)
+			RETL @0X95    ;REPORT_COUNT
+			RETL @0X01    ;(1)
+			RETL @0X81    ;INPUT
+			RETL @0X01    ;(Const,Var,Abs)
+			RETL @0XC0    ;END COLLECTION
+		;}
+	;}
+  RETL @0XC0              ;78;END COLLECTION

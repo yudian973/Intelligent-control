@@ -1,0 +1,2221 @@
+     1                     /*********************************************************************
+     2                     * Filename     :  EM78P520P44TX.ASM
+     3                     * Author       :  yu.wei
+     4                     * Company      :  KEN YEAR
+     5                     * VERSION      :  4.0
+     6                     * CRYSTAL      :  8MHZ
+     7                     * Creat date   :  2010.06.25
+     8                     * tool Ver.    :  eUIDE 1.02.11
+     9                     * Description  :  modify for 2.4G remote control in Intelligen Home
+    10                     **********************************************************************/
+    11                     ;-----------------------------------------------------------------
+    12                     include "EM78P520.H"
+     1            C        ;******************************************************;
+     2            C        ;                                                      ;
+     3            C        ;  Tilte:       EM78x510xx include file                ;
+     4            C        ;  Description: The Definition of EM78x510xx Registers ;
+     5            C        ;  Company:     Elan Electronic Corp.                  ;
+     6            C        ;  Author:      hongxi.tang                            ;
+     7            C        ;  Date:        24/05/2006                             ;
+     8            C        ;  Version:     v1.0                                   ;
+     9            C        ;                                                      ;
+    10            C        ;******************************************************;
+    11            C        ;
+    12            C        ;======================================================;
+    13            C        ; Operational Registers Define                         ;
+    14            C        ;======================================================;
+    15            C        EM78P510.H    EQU    EM78P510.H
+    16            C        EM78P520.H    EQU    EM78P520.H
+    17            C        
+    18            C        ;
+    19            C        ;======================================================;
+    20            C        ; Register R0~R4                                       ;
+    21            C        ;======================================================;
+    22            C        ;
+    23            C        ; Indirect Addressing register
+    24            C        ;
+    25       0000 C         R0     ==    0x00
+    26       0000 C         IAR    ==    0x00
+    27            C        ;
+    28            C        ; Time Clock/Counter
+    29            C        ;
+    30       0001 C         R1     ==    0x01
+    31       0001 C         TCC    ==    0x01    ; TCC Counter Preset
+    32            C        ;
+    33            C        ; Program Counter
+    34            C        ;
+    35       0002 C         R2     ==    0X02
+    36       0002 C         PC     ==    0X02
+    37            C        ;
+    38            C        ; Status Register and Voltage Detect
+    39            C        ;
+    40       0003 C         R3    ==    0X03
+    41       0003 C         SR    ==    0X03
+    42       0003 C         STATUS	==	0x03
+    43            C        ;
+    44            C             ;{
+    45       0007 C             	 LVDEN	==    0x07    ; Voltage Detect Enable Bit
+    46       0006 C                 LVDS1	==    0x06    ; Detect Voltage Select Bit[1]
+    47       0005 C                 LVDS0	==    0x05    ; Detect Voltage Select Bit[0]
+    48            C                                       ;
+    49            C                                       ; |-------|-------|----------------|
+    50            C                                       ; | LVDS1 | LVDS0 | Detect Voltage |
+    51            C                                       ; |-------|-------|----------------|
+    52            C                                       ; |   0   |   0   |      2.4V      |
+    53            C                                       ; |   0   |   1   |      2.7V      |
+    54            C                                       ; |   1   |   0   |      3.3V      |
+    55            C                                       ; |   1   |   1   |      3.9V      |
+    56            C                                       ; |-------|-------|----------------|
+    57            C                                       ;
+    58       0004 C                 T       ==    0x04    ; Time-Out Bit
+    59       0003 C                 P       ==    0x03    ; Power Down Bit
+    60       0002 C                 Z       ==    0x02    ; Zero Flag
+    61       0001 C                 DC      ==    0x01    ; Auxiliary Carry Flag
+    62       0000 C                 C       ==    0x00    ; Carry Flag
+    63            C                                       ;
+    64            C             ;}
+    65            C        ;
+    66            C        ; RAM Select Register (RSR)
+    67            C        ;
+    68       0004 C         R4     ==    0X04
+    69       0004 C         RSR    ==    0X04
+    70            C             ;{
+    71            C                                        ; Bits 5~0 are used to select up to 64 registers in the
+    72            C                                        ; indirect addressing mode.
+    73            C                                        ;
+    74       0007 C                 VDB	  ==    0x07    ; Voltage Detector
+    75       0006 C                 BNC      ==    0x06    ; Bank Control Register
+    76            C                                        ;
+    77       0005 C                 RSR5     ==    0x05    ;
+    78       0004 C                 RSR4     ==    0x04    ;
+    79       0003 C                 RSR3     ==    0x03    ;
+    80       0002 C                 RSR2     ==    0x02    ;
+    81       0001 C                 RSR1     ==    0x01    ;
+    82       0000 C                 RSR0     ==    0x00    ;
+    83            C                                        ;
+    84            C             ;}
+    85            C        ;======================================================;
+    86            C        ; Bank0~6 Register R5~RF                               ;
+    87            C        ;======================================================;
+    88            C        ;
+    89            C        ; Bank0 R5(RAM Bank Select Register)
+    90            C        ;
+    91       0005 C         B0_R5    ==	0X05
+    92       0005 C         BSR      ==    0X05
+    93            C        ;
+    94            C             ;{
+    95            C             				    ; Bit3~7 is "0"
+    96       0002 C                 BS2          ==    0x02    ; RAM Bank Select Register Bits[2]
+    97       0001 C                 BS1          ==    0x01    ; RAM Bank Select Register Bits[1]
+    98       0000 C                 BS0          ==    0x00    ; RAM Bank Select Register Bits[0]
+    99            C             ;}
+   100            C        ;
+   101            C        ; Bank 0 R6(Program Page Select Register)
+   102            C        ;
+   103       0006 C         B0_R6    ==    0X06
+   104       0006 C         PSR      ==    0X06
+   105            C        ;
+   106            C             ;{
+   107            C             			       ; Bit3~7 is "0"
+   108       0002 C                 PS2     ==    0x02    ; Program Page Select Register Bits[2]
+   109       0001 C                 PS1     ==    0x01    ; Program Page Select Register Bits[1]
+   110       0000 C                 PS0     ==    0x00    ; Program Page Select Register Bits[0]
+   111            C             ;}
+   112            C        ;
+   113            C        ; Bank0 R7(Port 7 data Register)
+   114            C        ;
+   115       0007 C         B0_R7    ==    0X07
+   116       0007 C         PORT7    ==    0X07
+   117            C        ;
+   118            C             ;{
+   119       0007 C                 R77     ==    0x07    ; I/O data of P7.7
+   120       0006 C                 R76     ==    0x06    ; I/O data of P7.6
+   121       0005 C                 R75     ==    0x05    ; I/O data of P7.5
+   122       0004 C                 R74     ==    0x04    ; I/O data of P7.4
+   123       0003 C                 R73     ==    0x03    ; I/O data of P7.3
+   124       0002 C                 R72     ==    0x02    ; I/O data of P7.2
+   125       0001 C                 R71     ==    0x01    ; I/O data of P7.1
+   126       0000 C                 R70     ==    0x00    ; I/O data of P7.0
+   127            C             ;}
+   128            C        ;
+   129            C        ; Bank0 R8(Port 8 data Register)
+   130            C        ;
+   131       0008 C         B0_R8    ==    0X08
+   132       0008 C         PORT8    ==    0X08
+   133            C        ;
+   134            C             ;{
+   135       0007 C                 R87     ==    0x07    ; I/O data of P8.7
+   136       0006 C                 R86     ==    0x06    ; I/O data of P8.6
+   137       0005 C                 R85     ==    0x05    ; I/O data of P8.5
+   138       0004 C                 R84     ==    0x04    ; I/O data of P8.4
+   139       0003 C                 R83     ==    0x03    ; I/O data of P8.3
+   140       0002 C                 R82     ==    0x02    ; I/O data of P8.2
+   141       0001 C                 R81     ==    0x01    ; I/O data of P8.1
+   142       0000 C                 R80     ==    0x00    ; I/O data of P8.0
+   143            C             ;}
+   144            C        ;
+   145            C        ; Bank0 R9(PORT 9 Data Register)
+   146            C        ;
+   147       0009 C         B0_R9    ==    0X09
+   148       0009 C         PORT9    ==    0X09
+   149            C        ;
+   150            C             ;{
+   151       0007 C                 R97     ==    0x07    ; I/O data of P9.7
+   152       0006 C                 R96     ==    0x06    ; I/O data of P9.6
+   153       0005 C                 R95     ==    0x05    ; I/O data of P9.5
+   154       0004 C                 R94     ==    0x04    ; I/O data of P9.4
+   155       0003 C                 R93     ==    0x03    ; I/O data of P9.3
+   156       0002 C                 R92     ==    0x02    ; I/O data of P9.2
+   157       0001 C                 R91     ==    0x01    ; I/O data of P9.1
+   158       0000 C                 R90     ==    0X00    ; I/O data of P9.0
+   159            C             ;}
+   160            C        ;
+   161            C        ;  Bank0 RA(PORTA Data Register)
+   162            C        ;
+   163       000A C         B0_RA	  ==	0X0A
+   164       000A C         PORTA	  ==	0X0A
+   165            C        ;
+   166            C        	;{
+   167       0007 C        		RA7	==	0X07	; I/O Data of PA.7
+   168       0006 C        		RA6	==	0X06 	; I/O Data of PA.6
+   169       0005 C        		RA5	==	0X05	; I/O Data of PA.5
+   170       0004 C        		RA4	==	0X04	; I/O Data of PA.4
+   171       0003 C        		RA3	==	0X03	; I/O Data of PA.3
+   172       0002 C        		RA2	==	0X02	; I/O Data of PA.2
+   173       0001 C        		RA1	==	0X01	; I/O Data of PA.1
+   174       0000 C        		RA0	==	0X00	; I/O Data of PA.0
+   175            C        	;}
+   176            C        ;
+   177            C        ;  Bank0 RB(PORT8 Data Register)
+   178            C        ;
+   179       000B C         B0_RB	==	0X0B
+   180       000B C         PORTB	==	0X0B
+   181            C        ;
+   182            C        	;{
+   183       0007 C        		RB7	==	0X07	; I/O Data of PB.7
+   184       0006 C        		RB6	==	0X06 	; I/O Data of PB.6
+   185       0005 C        		RB5	==	0X05	; I/O Data of PB.5
+   186       0004 C        		RB4	==	0X04	; I/O Data of PB.4
+   187       0003 C        		RB3	==	0X03	; I/O Data of PB.3
+   188       0002 C        		RB2	==	0X02	; I/O Data of PB.2
+   189       0001 C        		RB1	==	0X01	; I/O Data of PB.1
+   190       0000 C        		RB0	==	0X00	; I/O Data of PB.0
+   191            C        	;}
+   192            C        ;
+   193            C        ;  Bank0 RC(System Clock Control Register)
+   194            C        ;
+   195       000C C         B0_RC	==	0X0C
+   196       000C C         SCCR	==	0X0C
+   197            C        ;
+   198            C        	;{
+   199            C        				 ; Bit7 is "0"
+   200       0006 C        		CLK2	==  0X06 ;
+   201       0005 C        		CLK1	==  0X05 ;
+   202       0004 C        		CLK0	==  0X04 ; Main Clock Select Bit for PLL Mode
+   203            C        				 ; |------|------|------|------------|---------------|
+   204            C        				 ; | CLK2 | CLK1 | CLK0 | Main Clock | Ex:Fs=32.768k |
+   205            C        				 ; |------|------|------|------------|---------------|
+   206            C        				 ; |  0   |  0   |  0   |   Fs*122   |   3.997 MHz   |
+   207            C        				 ; |------|------|------|------------|---------------|
+   208            C        				 ; |  0   |  0   |  1   |    Fs*61   |   1.998 MHz   |
+   209            C        				 ; |------|------|------|------------|---------------|
+   210            C        				 ; |  0   |  1   |  0   |   Fs*61/2  |   0.999 MHz   |
+   211            C        				 ; |------|------|------|------------|---------------|
+   212            C        				 ; |  0   |  1   |  1   |   Fs*61/4  |   499.7 kHz   |
+   213            C        				 ; |------|------|------|------------|---------------|
+   214            C        				 ; |  1   |  0   |  0   |   Fs*244   |   7.995 MHz   |
+   215            C        				 ; |------|------|------|------------|---------------|
+   216            C        				 ; |  1   |  0   |  1   |   Fs*366   |   11.99 MHz   |
+   217            C        				 ; |------|------|------|------------|---------------|
+   218            C        				 ; |  1   |  1   |  X   |   Fs*488   |   15.99 MHz   |
+   219            C        				 ; |------|------|------|------------|---------------|
+   220       0003 C        		IDLE	==  0X03 ; Idle Mode Enable Bit.
+   221            C        		 		 ; IDLE="0"+SLEP instruction=>sleep mode
+   222            C        		 		 ; IDLE="1"+SLEP instruction=>idle mode
+   223       0002 C        		BF1	==  0x02 ;
+   224       0001 C        		BF0	==  0x01 ; LCD Booster Frequency Select Bit.
+   225            C        				 ; |-----|-----|-------------------|
+   226            C        				 ; | BF1 | BF0 | Booster frequency |
+   227            C        				 ; |-----|-----|-------------------|
+   228            C        				 ; |  0  |  0  |        Fs         |
+   229            C        				 ; |-----|-----|-------------------|
+   230            C        				 ; |  0  |  1  |       Fs/4        |
+   231            C        				 ; |-----|-----|-------------------|
+   232            C        				 ; |  1  |  0  |       Fs/8        |
+   233            C        				 ; |-----|-----|-------------------|
+   234            C        				 ; |  1  |  1  |       Fs/16       |
+   235            C        				 ; |-----|-----|-------------------|
+   236       0000 C        		CPUS	==  0x00 ; CPU Oscillator Source Select.
+   237            C        				 ; 0/1=>sub-oscillator(fs)/main oscillator(fm)
+   238            C        	;}
+   239            C        ;
+   240            C        ; Bank0 RD(TCC and WDT Timer control register)
+   241            C        ;
+   242       000D C         B0_RD	==	0X0D
+   243       000D C         TWTCR	==	0X0D
+   244            C        ;
+   245            C        	;{
+   246       0007 C        		WDTE	==  0X07 ; Watchdog Timer Enable.0/1=>disable/enable
+   247       0006 C        		WPSR2	==  0X06
+   248       0005 C        		WPSR1	==  0X05
+   249       0004 C        		WPSR0	==  0X04 ; WDT Prescaler Bits
+   250            C        				 ; |-----|-----|-----|-----------|
+   251            C        				 ; |WPSR2|WPSR1|WPSR0| Prescaler |
+   252            C        				 ; |-----|-----|-----|-----------|
+   253            C        				 ; |  0  |  0  |  0  |    1:1    |
+   254            C        				 ; |-----|-----|-----|-----------|
+   255            C        				 ; |  0  |  0  |  1  |    1:2    |
+   256            C        				 ; |-----|-----|-----|-----------|
+   257            C        				 ; |  0  |  1  |  0  |    1:4    |
+   258            C        				 ; |-----|-----|-----|-----------|
+   259            C        				 ; |  0  |  1  |  1  |    1:8    |
+   260            C        				 ; |-----|-----|-----|-----------|
+   261            C        				 ; |  1  |  0  |  0  |   1:16    |
+   262            C        				 ; |-----|-----|-----|-----------|
+   263            C        				 ; |  1  |  0  |  1  |   1:32    |
+   264            C        				 ; |-----|-----|-----|-----------|
+   265            C        				 ; |  1  |  1  |  0  |   1:64    |
+   266            C        				 ; |-----|-----|-----|-----------|
+   267            C        				 ; |  1  |  1  |  1  |   1:128   |
+   268            C        				 ; |-----|-----|-----|-----------|
+   269       0003 C        		TCCS	==  0x03 ; TCC Clock Source Select Bit.0/1=>Fm/Fs
+   270       0002 C        		TPSR2	==  0x02
+   271       0001 C        		TPSR1	==  0X01
+   272       0000 C        		TPSR0	==  0X00 ; TCC Prescaler Bits
+   273            C        				 ; |-----|-----|-----|-----------|
+   274            C        				 ; |TPSR2|TPSR1|TPSR0| Prescaler |
+   275            C        				 ; |-----|-----|-----|-----------|
+   276            C        				 ; |  0  |  0  |  0  |    1:2    |
+   277            C        				 ; |-----|-----|-----|-----------|
+   278            C        				 ; |  0  |  0  |  1  |    1:4    |
+   279            C        				 ; |-----|-----|-----|-----------|
+   280            C        				 ; |  0  |  1  |  0  |    1:8    |
+   281            C        				 ; |-----|-----|-----|-----------|
+   282            C        				 ; |  0  |  1  |  1  |   1:16    |
+   283            C        				 ; |-----|-----|-----|-----------|
+   284            C        				 ; |  1  |  0  |  0  |   1:32    |
+   285            C        				 ; |-----|-----|-----|-----------|
+   286            C        				 ; |  1  |  0  |  1  |   1:64    |
+   287            C        				 ; |-----|-----|-----|-----------|
+   288            C        				 ; |  1  |  1  |  0  |   1:128   |
+   289            C        				 ; |-----|-----|-----|-----------|
+   290            C        				 ; |  1  |  1  |  1  |   1:256   |
+   291            C        				 ; |-----|-----|-----|-----------|
+   292            C        	;}
+   293            C        ;
+   294            C        ; Bank0 RE (Interrupt Mask Register)
+   295            C        ;
+   296       000E C         B0_RE	==	0X0E
+   297       000E C         RE	==	0X0E							;ADD
+   298       000E C         IMR	==	0X0E
+   299            C        ;
+   300            C        	;{
+   301       0007 C        		T1IE	==  0X07 ; Timer1 Interrupt Enable Bit
+   302       0006 C        		LVDIE   ==  0X06 ; low Voltage Detect Interrupt Enable Bit
+   303       0005 C        		ADIE	==  0X05 ; A/D convert Interrupt Enable Bit
+   304       0004 C        		SPIE    ==  0X04 ; SPI transfer Interrupt Enable Bit
+   305       0003 C        		URTIE	==  0X03 ; UART transmit Interrupt Enable Bit
+   306       0002 C        		EXIE9	==  0X02 ; External interrupt 9 Enable Bit
+   307       0001 C        		EXIE8	==  0X01 ; External interrupt 8 Enable Bit
+   308       0000 C        		TCIE	==  0X00 ; TCC Overflow Interrupt Enable Bit
+   309            C        	;}
+   310            C        ;
+   311            C        ;  Bank0 RF (Interrupt Status Register)
+   312            C        ;
+   313       000F C         B0_RF	==	0X0F
+   314       000F C         RF     ==  0x0F
+   315       000F C         ISR	==	0X0F
+   316            C        ;
+   317            C        	;{
+   318       0007 C        		T1IF	==  0X07 ; interrupt flag of timer1 interrupt
+   319       0006 C        		LVDIF	==  0X06 ; interrupt flag of low voltage detector interrupt
+   320       0005 C        		ADIF	==  0X05 ; interrupt flag of A/D convert Complete
+   321       0004 C        		SPIF	==  0X04 ; interrupt flag of SPI transfer complete
+   322       0003 C        		URTIF	==  0X03 ; interrupt flag of UART transfer complete
+   323       0002 C        		EXIF9	==  0X02 ; interrupt flag of external interrupt 9 Occur.
+   324       0001 C        		EXIF8	==  0X01 ; interrupt flag of external interrupt 8 Occur.
+   325       0000 C        		TCIF	==  0X00 ; interrupt flag of TCC Overflow
+   326            C        	;}
+   327            C        ;
+   328            C        ;  Bank1 R5 (LCD Control Register)
+   329            C        ;
+   330       0005 C         B1_R5	==	0X05
+   331       0005 C         LCDCR	==	0X05
+   332            C        ;
+   333            C        	;{
+   334       0007 C        		LCDEN	==  0X07 ; lCD Enable Select Bit.0/1=>disable/enable
+   335       0006 C        		LCDTYPE	==  0X06 ; LCD Drive Waveform Type Select Bit
+   336       0005 C        		LBS1	==  0x05
+   337       0004 C        		LBS0	==  0x04 ; LCD Bias Select Bits
+   338            C        				 ; |---|---|---------------|
+   339            C        				 ; |BS1|BS0|LCD Bias Select|
+   340            C        				 ; |---|---|---------------|
+   341            C        				 ; | 0 | 0 |   1/2 Bias    |
+   342            C        				 ; |---|---|---------------|
+   343            C        				 ; | 0 | 1 |   1/3 Bias    |
+   344            C        				 ; |---|---|---------------|
+   345            C        				 ; | 1 | X |   1/4 Bias    |
+   346            C        				 ; |---|---|---------------|
+   347       0003 C        		DS1	==  0x03
+   348       0002 C        		DS0	==  0x02 ; LCD Duty Select Bits
+   349            C        				 ; |---|---|---------------|
+   350            C        				 ; |DS1|DS0|LCD Duty Select|
+   351            C        				 ; |---|---|---------------|
+   352            C        				 ; | 0 | 0 |    Static     |
+   353            C        				 ; |---|---|---------------|
+   354            C        				 ; | 0 | 1 |   1/3 Duty    |
+   355            C        				 ; |---|---|---------------|
+   356            C        				 ; | 1 | 0 |   1/4 Duty    |
+   357            C        				 ; |---|---|---------------|
+   358            C        				 ; | 1 | 1 |   1/8 Duty    |
+   359            C        				 ; |---|---|---------------|
+   360       0001 C        		LCDF1	==  0x01 ;
+   361       0000 C        		LCDF0	==  0x00 ; LCD Frame Frequency Control Bits
+   362            C        				 ; |-----|-----|---------------|---------------|---------------|--------------|
+   363            C        				 ; |LCDF1|LCDF0|     Static    |    1/3 Duty   |    1/4 Duty   |   1/8 Duty   |
+   364            C        				 ; |-----|-----|---------------|---------------|---------------|--------------|
+   365            C        				 ; |  0  |  0  |Fs/(512*1)=64.0|Fs/(172*3)=63.5|Fs/(128*4)=64.0|Fs/(64*8)=64.0|
+   366            C        				 ; |-----|-----|---------------|---------------|---------------|--------------|
+   367            C        				 ; |  0  |  1  |Fs/(560*1)=58.5|Fs/(188*3)=58.0|Fs/(140*4)=58.5|Fs/(70*8)=58.5|
+   368            C        				 ; |-----|-----|---------------|---------------|---------------|--------------|
+   369            C        				 ; |  1  |  0  |Fs/(608*1)=53.9|Fs/(204*3)=53.5|Fs/(152*4)=53.9|Fs/(76*8)=53.9|
+   370            C        				 ; |-----|-----|---------------|---------------|---------------|--------------|
+   371            C        				 ; |  1  |  1  |Fs/(464*1)=70.6|Fs/(156*3)=70.0|Fs/(116*4)=70.6|Fs/(58*8)=70.6|
+   372            C        				 ; |-----|-----|---------------|---------------|---------------|--------------|
+   373            C        	;}
+   374            C        ;
+   375            C        ;  Bank1 R6 (LCD Address Register)
+   376            C        ;
+   377       0006 C         B1_R6	==    0X06
+   378       0006 C         LCDAR	==    0X06
+   379            C        ;
+   380            C        	;{
+   381            C        				 ; Bit5~7 is "0"
+   382       0004 C        		LCD_A4	==  0x04 ; LCD RAM Address:00H~16H
+   383       0003 C        		LCD_A3	==  0x03
+   384       0002 C        		LCD_A2  ==  0x02
+   385       0001 C        		LCD_A1	==  0x01
+   386       0000 C        		LCD_A0	==  0x00
+   387            C        	;}
+   388            C        ;
+   389            C        ; Bank1 R7 (LCD Data Buffer)
+   390            C        ;
+   391       0007 C         B1_R7	==    0X07
+   392       0007 C         LCDBR	==    0X07
+   393            C        ;
+   394            C        	;{
+   395       0007 C        		LCD_D7	==  0x07
+   396       0006 C        		LCD_D6	==  0x06
+   397       0005 C        		LCD_D5	==  0x05
+   398       0004 C        		LCD_D4	==  0x04
+   399       0003 C        		LCD_D3	==  0x03
+   400       0002 C        		LCD_D2	==  0x02
+   401       0001 C        		LCD_D1	==  0x01
+   402       0000 C        		LCD_D0	==  0x00
+   403            C        	;}
+   404            C        ;
+   405            C        ;  Bank1 R8 (LCD Voltage Control Register)
+   406            C        ;
+   407       0008 C         B1_R8	==	0x08
+   408       0008 C         LCDVCR	==	0x08
+   409            C        ;
+   410            C        	;{
+   411            C        				 ; Bit5~6 is "0"
+   412       0004 C        		LCDC1	==  0x04
+   413       0003 C        		LCDC0	==  0x03 ; LCD Clock
+   414            C        				 ; |-----|-----|------|--------|
+   415            C        				 ; |LCDC1|LCDC0|  Fm  |  Flcd  |
+   416            C        				 ; |-----|-----|------|--------|
+   417            C        				 ; |  0  |  0  | 16M  | Fc/2^9 |
+   418            C        				 ; |-----|-----|------|--------|
+   419            C        				 ; |  0  |  1  |  8M  | Fc/2^8 |
+   420            C        				 ; |-----|-----|------|--------|
+   421            C        				 ; |  1  |  0  |  4M  | Fc/2^7 |
+   422            C        				 ; |-----|-----|------|--------|
+   423            C        				 ; |  1  |  1  |  2M  | Fc/2^6 |
+   424            C        				 ; |-----|-----|------|--------|
+   425       0002 C        		LCDVC2	==  0x02
+   426       0001 C        		LCDVC1	==  0x01
+   427       0000 C        		LCDVC0	==  0x00 ; LCD Voltage Control Bits
+   428            C        				 ; |------|------|------|--------------|
+   429            C        				 ; |LCDVC2|LCDVC1|LCDVC0|    Output    |
+   430            C        				 ; |------|------|------|--------------|
+   431            C        				 ; |   0  |   0  |   0  |  0.4VDD~VDD  |
+   432            C        				 ; |------|------|------|--------------|
+   433            C        				 ; |   0  |   0  |   1  | 0.34VDD~VDD  |
+   434            C        				 ; |------|------|------|--------------|
+   435            C        				 ; |   0  |   1  |   0  | 0.26VDD~VDD  |
+   436            C        				 ; |------|------|------|--------------|
+   437            C        				 ; |   0  |   1  |   1  | 0.18VDD~VDD  |
+   438            C        				 ; |------|------|------|--------------|
+   439            C        				 ; |   1  |   0  |   0  | 0.13VDD~VDD  |
+   440            C        				 ; |------|------|------|--------------|
+   441            C        				 ; |   1  |   0  |   1  | 0.07VDD~VDD  |
+   442            C        				 ; |------|------|------|--------------|
+   443            C        				 ; |   1  |   1  |   0  | 0.04VDD~VDD  |
+   444            C        				 ; |------|------|------|--------------|
+   445            C        				 ; |   1  |   1  |   1  |    0V~VDD    |
+   446            C        				 ; |------|------|------|--------------|
+   447            C        	;}
+   448            C        ;
+   449            C        ;  Bank1 R9 (LCD Com Control Register)
+   450            C        ;
+   451       0009 C         B1_R9	==	0x09
+   452       0009 C         LCDCCR	==	0x09
+   453            C        ;
+   454            C        	;{
+   455       0007 C        		COM7	==  0x07 ; 0:I/O Function,1:LCD common driver pin.
+   456       0006 C        		COM6	==  0x06
+   457       0005 C        		COM5	==  0x05
+   458       0004 C        		COM4	==  0x04
+   459       0003 C        		COM3	==  0x03
+   460       0002 C        		COM2	==  0x02
+   461       0001 C        		COM1	==  0x01
+   462       0000 C        		COM0	==  0x00
+   463            C        	;}
+   464            C        ;
+   465            C        ;  Bank1 RA (LCD Segment Control Register0)
+   466            C        ;
+   467       000A C         B1_RA		==	0X0A
+   468       000A C         LCDSCR0	==	0X0A
+   469            C        ;
+   470            C        	;{
+   471       0007 C        		SEG7	==  0X07 ; LCD Segment7 Control Bit.0:I/O,1:LCD Driver pin.
+   472       0006 C        		SEG6	==  0X06 ; LCD Segment6 Control Bit.0:I/O,1:LCD Driver pin.
+   473       0005 C        		SEG5	==  0X05 ; LCD Segment5 Control Bit.0:I/O,1:LCD Driver pin.
+   474       0004 C        		SEG4	==  0X04 ; LCD Segment4 Control Bit.0:I/O,1:LCD Driver pin.
+   475       0003 C        		SEG3	==  0X03 ; LCD Segment3 Control Bit.0:I/O,1:LCD Driver pin.
+   476       0002 C        		SEG2	==  0X02 ; LCD Segment2 Control Bit.0:I/O,1:LCD Driver pin.
+   477       0001 C        		SEG1	==  0X01 ; LCD Segment1 Control Bit.0:I/O,1:LCD Driver pin.
+   478       0000 C        		SEG0	==  0X00 ; LCD Segment0 Control Bit.0:I/O,1:LCD Driver pin.
+   479            C        	;}
+   480            C        ;
+   481            C        ;  Bank1 RB (LCD Segment Control Register1)
+   482            C        ;
+   483       000B C         B1_RB		==	0X0B
+   484       000B C         LCDSCR1	==	0X0B
+   485            C        ;
+   486            C        	;{
+   487       0007 C        		SEG15	==  0X07 ; LCD Segment15 Control Bit.0:I/O,1:LCD Driver pin.
+   488       0006 C        		SEG14	==  0X06 ; LCD Segment14 Control Bit.0:I/O,1:LCD Driver pin.
+   489       0005 C        		SEG13	==  0X05 ; LCD Segment13 Control Bit.0:I/O,1:LCD Driver pin.
+   490       0004 C        		SEG12	==  0X04 ; LCD Segment12 Control Bit.0:I/O,1:LCD Driver pin.
+   491       0003 C        		SEG11	==  0X03 ; LCD Segment11 Control Bit.0:I/O,1:LCD Driver pin.
+   492       0002 C        		SEG10	==  0X02 ; LCD Segment10 Control Bit.0:I/O,1:LCD Driver pin.
+   493       0001 C        		SEG9	==  0X01 ; LCD Segment9 Control Bit.0:I/O,1:LCD Driver pin.
+   494       0000 C        		SEG8	==  0X00 ; LCD Segment8 Control Bit.0:I/O,1:LCD Driver pin.
+   495            C        	;}
+   496            C        ;
+   497            C        ;  Bank1 RC (LCD Segment Control Register2)
+   498            C        ;
+   499       000C C         B1_RC		==	0X0C
+   500       000C C         LCDSCR2	==	0X0C
+   501            C        ;
+   502            C        	;{
+   503            C        				 ; Bit7 not used
+   504       0006 C        		SEG22	==  0X06 ; LCD Segment22 Control Bit.0:I/O,1:LCD Driver pin.
+   505       0005 C        		SEG21	==  0X05 ; LCD Segment21 Control Bit.0:I/O,1:LCD Driver pin.
+   506       0004 C        		SEG20	==  0X04 ; LCD Segment20 Control Bit.0:I/O,1:LCD Driver pin.
+   507       0003 C        		SEG19	==  0X03 ; LCD Segment19 Control Bit.0:I/O,1:LCD Driver pin.
+   508       0002 C        		SEG18	==  0X02 ; LCD Segment18 Control Bit.0:I/O,1:LCD Driver pin.
+   509       0001 C        		SEG17	==  0X01 ; LCD Segment17 Control Bit.0:I/O,1:LCD Driver pin.
+   510       0000 C        		SEG16	==  0X00 ; LCD Segment16 Control Bit.0:I/O,1:LCD Driver pin.
+   511            C        	;}
+   512            C        ;
+   513            C        ;  Bank1 RE (External Interrupt Mask Register)
+   514            C        ;
+   515       000E C         B1_RE	==	0X0E
+   516       000E C         EIMR	==	0X0E
+   517            C        ;
+   518            C        	;{
+   519       0007 C        		EXIE7	==  0x07 ; /INT7 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   520       0006 C        		EXIE6	==  0x06 ; /INT6 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   521       0005 C        		EXIE5	==  0x05 ; /INT5 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   522       0004 C        		EXIE4	==  0x04 ; /INT4 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   523       0003 C        		EXIE3	==  0x03 ; /INT3 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   524       0002 C        		EXIE2	==  0x02 ; /INT2 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   525       0001 C        		EXIE1	==  0x01 ; /INT1 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   526       0000 C        		EXIE0	==  0x00 ; /INT0 Interrupt Enable Control Bit.0/1=>Disalbe/Enable.
+   527            C        	;}
+   528            C        ;
+   529            C        ;  Bank1 RF (External Interrupt Status Register)
+   530            C        ;
+   531       000F C         B1_RF	==	0X0F
+   532       000F C         EISR	==	0X0F
+   533            C        ;
+   534            C        	;{
+   535       0007 C        		EXIF7	==  0x07 ; /INT7 Interrupt Flag Bit.
+   536       0006 C        		EXIF6	==  0x06 ; /INT6 Interrupt Flag Bit.
+   537       0005 C        		EXIF5	==  0x05 ; /INT5 Interrupt Flag Bit.
+   538       0004 C        		EXIF4	==  0x04 ; /INT4 Interrupt Flag Bit.
+   539       0003 C        		EXIF3	==  0x03 ; /INT3 Interrupt Flag Bit.
+   540       0002 C        		EXIF2	==  0x02 ; /INT2 Interrupt Flag Bit.
+   541       0001 C        		EXIF1	==  0x01 ; /INT1 Interrupt Flag Bit.
+   542       0000 C        		EXIF0	==  0x00 ; /INT0 Interrupt Flag Bit.
+   543            C        	;}
+   544            C        ;
+   545            C        ;  Bank2 R5 (Timer1 Control Register)
+   546            C        ;
+   547       0005 C         B2_R5	==	0X05
+   548       0005 C         T1CR	==	0X05
+   549            C        ;
+   550            C        	;{
+   551       0007 C        		T1S1	==  0x07
+   552       0006 C        		T1S0	==  0x06 ; Timer1 and Timer2 Interrupt Type Select Bits.
+   553            C        				 ; |----|----|---------------------------------------|
+   554            C        				 ; |T1S1|T1S0|Timer1 and Timer2 Interrupt Type Select|
+   555            C        				 ; |----|----|---------------------------------------|
+   556            C        				 ; |  0 |  0 |           T1PD underflow              |
+   557            C        				 ; |----|----|---------------------------------------|
+   558            C        				 ; |  0 |  1 |           T1TD underflow              |
+   559            C        				 ; |----|----|---------------------------------------|
+   560            C        				 ; |  1 |  X |      T1PD and T1TD underflow          |
+   561            C        				 ; |----|----|---------------------------------------|
+   562       0005 C        		T1MS2	==  0x05
+   563       0004 C        		T1MS1	==  0x04
+   564       0003 C        		T1MS0	==  0x03 ; Timer1 Operation Mode Select Bits
+   565            C        				 ; |-----|-----|-----|-------------------------|
+   566            C        				 ; |T1MS2|T1MS1|T1MS0|   Timer1 Mode Select    |
+   567            C        				 ; |-----|-----|-----|-------------------------|
+   568            C        				 ; |  0  |  0  |  0  |         Timer1          |
+   569            C        				 ; |-----|-----|-----|-------------------------|
+   570            C        				 ; |  0  |  0  |  1  |        T1OUT Mode       |
+   571            C        				 ; |-----|-----|-----|-------------------------|
+   572            C        				 ; |  0  |  1  |  0  |Capture Mode Rising Edge |
+   573            C        				 ; |-----|-----|-----|-------------------------|
+   574            C        				 ; |  0  |  1  |  1  |Capture Mode Falling Edge|
+   575            C        				 ; |-----|-----|-----|-------------------------|
+   576            C        				 ; |  1  |  0  |  0  |UART Baud Rate Generator |
+   577            C        				 ; |-----|-----|-----|-------------------------|
+   578            C        				 ; |  1  |  0  |  1  |                         |
+   579            C        				 ; |-----|-----|-----|                         |
+   580            C        				 ; |  1  |  1  |  0  |          PWM1           |
+   581            C        				 ; |-----|-----|-----|                         |
+   582            C        				 ; |  1  |  1  |  1  |                         |
+   583            C        				 ; |-----|-----|-----|-------------------------|
+   584       0002 C        		T1P2	==  0x02
+   585       0001 C        		T1P1	==  0x01
+   586       0000 C        		T1P0	==  0x00 ; Timer1 Prescaler Bits
+   587            C        				 ; |-----|-----|-----|-----------------|
+   588            C        				 ; | T1P2| T1P1| T1P0|   Prescalaer    |
+   589            C        				 ; |-----|-----|-----|-----------------|
+   590            C        				 ; |  0  |  0  |  0  |      1:2        |
+   591            C        				 ; |-----|-----|-----|-----------------|
+   592            C        				 ; |  0  |  0  |  1  |      1:4        |
+   593            C        				 ; |-----|-----|-----|-----------------|
+   594            C        				 ; |  0  |  1  |  0  |	    1:8        |
+   595            C        				 ; |-----|-----|-----|-----------------|
+   596            C        				 ; |  0  |  1  |  1  |      1:16       |
+   597            C        				 ; |-----|-----|-----|-----------------|
+   598            C        				 ; |  1  |  0  |  0  |      1:32       |
+   599            C        				 ; |-----|-----|-----|-----------------|
+   600            C        				 ; |  1  |  0  |  1  |      1:64       |
+   601            C        				 ; |-----|-----|-----|-----------------|                         |
+   602            C        				 ; |  1  |  1  |  0  |      1:128      |
+   603            C        				 ; |-----|-----|-----|-----------------|
+   604            C        				 ; |  1  |  1  |  1  |      1:256      |
+   605            C        				 ; |-----|-----|-----|-----------------|
+   606            C        	;}
+   607            C        ;
+   608            C        ;  Bank2 R6 (Timer Status Register)
+   609            C        ;
+   610       0006 C         B2_R6	==	0X06
+   611       0006 C         TSR	==	0X06
+   612            C        ;
+   613            C        	;{
+   614       0007 C        		T1MOD	==  0X07 ; Timer Operates Mode Select Bit.
+   615       0006 C        		TRCB	==  0x06 ; Timer1,2 Read Control Bit.
+   616       0005 C        		T1CSS1	==  0x05 ;
+   617       0004 C        		T1CSS0	==  0x04 ; Timer1 Clock Source Select Bits
+   618            C        				 ; |------|------|--------------------------|
+   619            C        				 ; |T1CSS1|T1CSS0|Timer1 Clock Source select|
+   620            C        				 ; |------|------|--------------------------|
+   621            C        				 ; |  0   |  0   |            Fm            |
+   622            C        				 ; |------|------|--------------------------|
+   623            C        				 ; |  0   |  1   |            Fs            |
+   624            C        				 ; |------|------|--------------------------|
+   625            C        				 ; |  1   |  X   |           T1CK           |
+   626            C        				 ; |------|------|--------------------------|
+   627       0003 C        		T2CSS	==  0x03 ; Timer2 Clock Source Select Bit.0/1=>Fm/Fs.
+   628       0002 C        		T1EN	==  0x02 ; Timer1 Start Bit.
+   629       0001 C        		T1OMS	==  0x01 ; Timer1 Output Mode Select Bit.0/1=>repeating/on-shot.
+   630       0000 C        		T1OC	==  0x00 ; Timer1 Output Flip-Flop Control Bit.
+   631            C        	;}
+   632            C        ;
+   633            C        ;  Bank2 R7 (Timer1 Period Buffer)
+   634            C        ;
+   635       0007 C         B2_R7	==	0X07
+   636       0007 C         T1PD	==	0X07
+   637            C        ;
+   638            C        ;  Bank2 R8 (Timer1 Duty Buffer)
+   639            C        ;
+   640       0008 C         B2_R8	==	0X08
+   641       0008 C         T1TD	==	0X08
+   642            C        ;
+   643            C        ;  Bank2 R9 (Timer2 Control Register)
+   644            C        ;
+   645       0009 C         B2_R9	==	0X09
+   646       0009 C         T2CR	==	0X09
+   647            C        ;
+   648            C        	;{
+   649       0007 C        		T2IF	==  0X07 ; Interrupt Flag of Timer2 Interrupt
+   650       0006 C        		T2IE	==  0X06 ; Timer2 Interrupt Mask Bit
+   651       0005 C        		T2EN	==  0X05 ; Timer2 Start Bit
+   652       0005 C        		T2S     ==  0x05 ;
+   653       0004 C        		T2MS1	==  0X04 ;
+   654       0003 C        		T2MS0	==  0X03 ; Timer2 Operation Mode Select Bits.
+   655            C        				 ; |-----|-----|-----------------------|
+   656            C        				 ; |T2MS1|T2MS0|   Timer2 Mode Select  |
+   657            C        				 ; |-----|-----|-----------------------|
+   658            C        				 ; |  0  |  0  |        Timer2         |
+   659            C        				 ; |-----|-----|-----------------------|
+   660            C        				 ; |  0  |  1  |SPI Baud Rate Generator|
+   661            C        				 ; |-----|-----|-----------------------|
+   662            C        				 ; |  1  |  0  |                       |
+   663            C        				 ; |-----|-----|         PWM2          |
+   664            C        				 ; |  1  |  0  |                       |
+   665            C        				 ; |-----|-----|-----------------------|
+   666       0002 C        		T2P2	==  0x02
+   667       0001 C        		T2P1	==  0x01
+   668       0000 C        		T2P0	==  0x00 ; Timer2 Prescaler Bits
+   669            C        				 ; |-----|-----|-----|-----------------|
+   670            C        				 ; | T2P2| T2P1| T2P0|   Prescalaer    |
+   671            C        				 ; |-----|-----|-----|-----------------|
+   672            C        				 ; |  0  |  0  |  0  |      1:2        |
+   673            C        				 ; |-----|-----|-----|-----------------|
+   674            C        				 ; |  0  |  0  |  1  |      1:4        |
+   675            C        				 ; |-----|-----|-----|-----------------|
+   676            C        				 ; |  0  |  1  |  0  |	    1:8        |
+   677            C        				 ; |-----|-----|-----|-----------------|
+   678            C        				 ; |  0  |  1  |  1  |      1:16       |
+   679            C        				 ; |-----|-----|-----|-----------------|
+   680            C        				 ; |  1  |  0  |  0  |      1:32       |
+   681            C        				 ; |-----|-----|-----|-----------------|
+   682            C        				 ; |  1  |  0  |  1  |      1:64       |
+   683            C        				 ; |-----|-----|-----|-----------------|                         |
+   684            C        				 ; |  1  |  1  |  0  |      1:128      |
+   685            C        				 ; |-----|-----|-----|-----------------|
+   686            C        				 ; |  1  |  1  |  1  |      1:256      |
+   687            C        				 ; |-----|-----|-----|-----------------|
+   688            C        	;}
+   689            C        ;
+   690            C        ;  Bank2 RA (Timer2 Period Buffer)
+   691            C        ;
+   692       000A C         B2_RA	==	0X0A
+   693       000A C         T2PD	==	0X0A
+   694            C        ;
+   695            C        ; Bank2 RB (Timer Duty Buffer)
+   696            C        ;
+   697       000B C         B2_RB	==	0X0B
+   698       000B C         T2TD	==	0X0B
+   699            C        ;
+   700            C        ;  Bank2 RC (SPI Status Register)
+   701            C        ;
+   702       000C C         B2_RC	==	0X0C
+   703       000C C         SPIS	==	0X0C
+   704            C        ;
+   705            C        	;{
+   706       0007 C        		DORD	==  0X07 ; Data Shift Control Bit.0/1=>left/right
+   707       0006 C        		TD1	==  0X06 ;
+   708       0005 C        		TD0	==  0X05 ; SDO Status Output Delay Times Options
+   709            C        				 ; |---|---|----------|
+   710            C        				 ; |TD1|TD0|Delay Time|
+   711            C        				 ; |---|---|----------|
+   712            C        				 ; | 0 | 0 |   8 CLK  |
+   713            C        				 ; |---|---|----------|
+   714            C        				 ; | 0 | 1 |  16 CLK  |
+   715            C        				 ; |---|---|----------|
+   716            C        				 ; | 1 | 0 |  24 CLK  |
+   717            C        				 ; |---|---|----------|
+   718            C        				 ; | 1 | 1 |  32 CLK  |
+   719            C        				 ; |---|---|----------|
+   720            C        				 ; Bit4 Reserved
+   721       0003 C        		OD3	==  0X03 ; Open-Drain Control Bit
+   722       0002 C        		OD4	==  0X02 ;
+   723            C        				 ; Bi1 Reserved
+   724       0000 C        		RIBF	==  0X00 ; Read Buffer Full Flag
+   725            C        	;}
+   726            C        ;
+   727            C        ;  Bank2 RD (SPI Control Register)
+   728            C        ;
+   729       000D C         B2_RD	==	0X0D
+   730       000D C         SPIC	==	0X0D
+   731            C        ;
+   732            C        	;{
+   733       0007 C        		CES	==  0X07 ; Clock Edge Select Bit
+   734       0006 C        		SPIEB	==  0X06 ; SPI Enable Bit
+   735       0005 C        		SRO	==  0X05 ; SPI Read Overflow Bit
+   736       0004 C        		SSE	==  0X04 ; SPI Shift Enable Bit
+   737       0003 C        		SDOC	==  0X03 ; SDO Output Status Control Bit
+   738       0002 C        		SBRS2	==  0X02
+   739       0001 C        		SBRS1	==  0X01
+   740       0000 C        		SBRS0	==  0X00 ; SPI Baud Rate Select Bits
+   741            C        				 ; |-----|-----------|--------|-------------------|
+   742            C        				 ; |SBRS2|SBRS1|SBRS0|  Mode  |   SPI Baud Rate   |
+   743            C        				 ; |-----|-----------|--------|-------------------|
+   744            C        				 ; |  0  |  0  |  0  | Master |       Fcsc/2      |
+   745            C        				 ; |-----|-----------|--------|-------------------|
+   746            C        				 ; |  0  |  0  |  1  | Master |       Fcsc/4      |
+   747            C        				 ; |-----|-----------|--------|-------------------|
+   748            C        				 ; |  0  |  1  |  0  | Master |       Fcsc/8      |
+   749            C        				 ; |-----|-----------|--------|-------------------|
+   750            C        				 ; |  0  |  1  |  1  | Master |      Fcsc/16      |
+   751            C        				 ; |-----|-----------|--------|-------------------|
+   752            C        				 ; |  1  |  0  |  0  | Master |      Fcsc/32      |
+   753            C        				 ; |-----|-----------|--------|-------------------|
+   754            C        				 ; |  1  |  0  |  1  | Master |       Timer2      |
+   755            C        				 ; |-----|-----------|--------|-------------------|
+   756            C        				 ; |  1  |  1  |  0  | Slave  |     /SS enable    |
+   757            C        				 ; |-----|-----------|--------|-------------------|
+   758            C        				 ; |  1  |  1  |  1  | Slave  |     /SS enable    |
+   759            C        				 ; |-----|-----------|--------|-------------------|
+   760            C        	;}
+   761            C        ;
+   762            C        ;  Bank2 RE (SPI Read Buffer)
+   763            C        ;
+   764       000E C         B2_RE	==	0X0E
+   765       000E C         SPIR	==	0X0E
+   766            C        ;
+   767            C        ;  Bank2 RF (SPI Write Buffer)
+   768            C        ;
+   769       000F C         B2_RF	==	0X0F
+   770       000F C         SPIW	==	0X0F
+   771            C        ;
+   772            C        ;  Bank3 R5 (UART Control Register)
+   773            C        ;
+   774       0005 C         B3_R5	==	0X05
+   775       0005 C         URC	==	0X05
+   776            C        ;
+   777            C        	;{
+   778       0007 C        		URTD8	==  0X07 ; Transmission Data Bit8
+   779       0006 C        		UMODE1	==  0X06
+   780       0005 C        		UM0DE0	==  0X05 ; UART Transmission Mode Select Bit
+   781            C        				 ; |------|------|-----------|
+   782            C        				 ; |UMODE1|UMODE0| UART Mode |
+   783            C        				 ; |  0   |   0  |Mode1:7-Bit|
+   784            C        				 ; |------|------|-----------|
+   785            C        				 ; |  0   |   1  |Mode1:8-Bit|
+   786            C        				 ; |------|------|-----------|
+   787            C        				 ; |  1   |   0  |Mode1:9-Bit|
+   788            C        				 ; |------|------|-----------|
+   789            C        				 ; |  1   |   1  | Reserved  |
+   790            C        				 ; |------|------|-----------|
+   791       0004 C        		BRATE2	==  0X04
+   792       0003 C        		BRATE1	==  0X03
+   793       0002 C        		BRATE0	==  0X02 ; Transmit Baud Rate Select(Tuart=Fc/16)
+   794            C        				 ; |------|------|------|-------------|-------------|
+   795            C        				 ; |BRATE2|BRATE1|BRATE0|  Baud Rate  | e.g.FC=8Mhz |
+   796            C        				 ; |------|------|------|-------------|-------------|
+   797            C        				 ; |  0   |  0   |  0   |   Tuart/13  |    38400    |
+   798            C        				 ; |------|------|------|-------------|-------------|
+   799            C        				 ; |  0   |  0   |  1   |   Tuart/26  |    19200    |
+   800            C        				 ; |------|------|------|-------------|-------------|
+   801            C        				 ; |  0   |  1   |  0   |   Tuart/52  |     9600    |
+   802            C        				 ; |------|------|------|-------------|-------------|
+   803            C        				 ; |  0   |  1   |  1   |  Tuart/104  |     4800    |
+   804            C        				 ; |------|------|------|-------------|-------------|
+   805            C        				 ; |  1   |  0   |  0   |  Tuart/208  |     2400    |
+   806            C        				 ; |------|------|------|-------------|-------------|
+   807            C        				 ; |  1   |  0   |  1   |  Tuart/416  |     1200    |
+   808            C        				 ; |------|------|------|---------------------------|
+   809            C        				 ; |  1   |  1   |  0   |            Timer1         |
+   810            C        				 ; |------|------|------|---------------------------|
+   811            C        				 ; |  1   |  1   |  1   |           Reserved        |
+   812            C        				 ; |------|------|------|---------------------------|
+   813       0001 C        		UTBE ==  0X01
+   814       0000 C        		TXE	 ==  0X00 ; Enable transmission
+   815            C        	;}
+   816            C        ;
+   817            C        ;  Bank 3 R6 (UART Status)
+   818            C        ;
+   819       0006 C         B3_R6	==  0X06
+   820       0006 C         URS	==  0X06
+   821            C        ;
+   822            C        	;{
+   823       0007 C        		URRD8	==  0X07 	; Receiving Data Bit8
+   824       0006 C        		EVEN	==  0X06 	; Select Parity Check
+   825       0005 C        		PRE		==  0X05	; Enable Parity Check
+   826       0004 C        		PRERR	==  0X04 	; Parity Error Flag
+   827       0003 C        		OVERR	==  0X03 	; Over Running Error Flag
+   828       0002 C        		FMERR	==  0X02 	; Framing Error Flag
+   829       0001 C        		URBF	==  0X01 	; UART Read Buffer Full Flag
+   830       0000 C        		RXE	==  0X00 		; Enable Receiving
+   831            C        	;}
+   832            C        ;
+   833            C        ;  Bank3 R7 (UART_RD Data Buffer)
+   834            C        ;
+   835       0007 C         B3_R7	==	0X07
+   836       0007 C         URRD	==	0X07
+   837            C        ;
+   838            C        ;  Bank3 R8 (UART_TD Data Buffer)
+   839            C        ;
+   840       0008 C         B3_R8	==	0X08
+   841       0008 C         URTD	==	0X08
+   842            C        ;
+   843            C        ;  Bank3 R9 (A/D Control Register)
+   844            C        ;
+   845       0009 C         B3_R9	==	0X09
+   846       0009 C         ADCR	==	0X09
+   847            C        ;
+   848            C        	;{
+   849       0007 C        		ADRUN	==  0X07 ; AD Conversion Start
+   850       0006 C        		ADP	==  0X06 ; A/D Power Control
+   851       0005 C        		ADCK1	==  0X05
+   852       0004 C        		ADCK0	==  0X04 ; A/D Input Select Bits
+   853            C        				 ; |-----|-----|------------|---------------------------|
+   854            C        				 ; |ADCK1|ADCK0|Clock Source|Max.Operating Frequency(Fc)|
+   855            C        				 ; |-----|-----|------------|---------------------------|
+   856            C        				 ; |  0	 |  0  |    Fc/4    |           1MHz            |
+   857            C        				 ; |-----|-----|------------|---------------------------|
+   858            C        				 ; |  0	 |  1  |   Fc/16    |           4MHz            |
+   859            C        				 ; |-----|-----|------------|---------------------------|
+   860            C        				 ; |  1	 |  0  |   Fc/32    |           8MHz            |
+   861            C        				 ; |-----|-----|------------|---------------------------|
+   862            C        				 ; |  1	 |  1  |   Fc/64    |          16MHz            |
+   863            C        				 ; |-----|-----|------------|---------------------------|
+   864       0003 C        		ADIS3	==  0X03
+   865       0002 C        		ADIS2	==  0X02
+   866       0001 C        		ADIS1	==  0X01
+   867       0000 C        		ADIS0	==  0X00 ; A/D Input Select Bits
+   868            C        				 ; |-----|-----|-----|----------------------|
+   869            C        				 ; |ADIS3|ADIS2|ADIS1|ADIS0|Analog Input Pin|
+   870            C        				 ; |-----|-----|-----|----------------------|
+   871            C        				 ; |  0  |  0  |  0  |  0  |      AD0       |
+   872            C        				 ; |-----|-----|-----|----------------------|
+   873            C        				 ; |  0  |  0  |  0  |  1  |      AD1       |
+   874            C        				 ; |-----|-----|-----|----------------------|
+   875            C        				 ; |  0  |  0  |  1  |  0  |      AD2       |
+   876            C        				 ; |-----|-----|-----|----------------------|
+   877            C        				 ; |  0  |  0  |  1  |  1  |      AD3       |
+   878            C        				 ; |-----|-----|-----|----------------------|
+   879            C        				 ; |  0  |  1  |  0  |  0  |      AD4       |
+   880            C        				 ; |-----|-----|-----|----------------------|
+   881            C        				 ; |  0  |  1  |  0  |  1  |      AD5       |
+   882            C        				 ; |-----|-----|-----|----------------------|
+   883            C        				 ; |  0  |  1  |  1  |  0  |      AD6       |
+   884            C        				 ; |-----|-----|-----|----------------------|
+   885            C        				 ; |  0  |  1  |  1  |  1  |      AD7       |
+   886            C        				 ; |-----|-----|-----|----------------------|
+   887            C        				 ; |  1  |  0  |  0  |  0  |      AD8       |
+   888            C        				 ; |-----|-----|-----|----------------------|
+   889            C        				 ; |  1  |  0  |  0  |  1  |      AD9       |
+   890            C        				 ; |-----|-----|-----|----------------------|
+   891            C        				 ; |  1  |  0  |  1  |  0  |      AD10      |
+   892            C        				 ; |-----|-----|-----|----------------------|
+   893            C        				 ; |  1  |  0  |  1  |  1  |      AD11      |
+   894            C        				 ; |-----|-----|-----|----------------------|
+   895            C        	;}
+   896            C        ;
+   897            C        ;  Bank3 RA (A/D Input Control Register)
+   898            C        ;
+   899       000A C         B3_RA	==	0X0A
+   900       000A C         ADICH	==	0X0A
+   901            C        ;
+   902            C        	;{
+   903       0007 C        		CALI	==  0X07 ; Calibration Enable Bit for A/D Offset
+   904       0006 C        		ADREF	==  0X06 ; AD Reference Voltage Input Select
+   905            C        				 ; Bit4~5:Reserved
+   906       0003 C        		ADE11	==  0X03 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   907       0002 C        		ADE10	==  0X02 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   908       0001 C        		ADE9	==  0x01 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   909       0000 C        		ADE8	==  0X00 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   910            C        	;}
+   911            C        ;
+   912            C        ;  Bank3 RB (A/D Input Control Register)
+   913            C        ;
+   914       000B C         B3_RB	==	0X0B
+   915       000B C         ADICL	==	0X0B
+   916            C        ;
+   917            C        	;{
+   918       0007 C        		ADE7	==  0X07 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   919       0006 C        		ADE6	==  0X06 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   920       0005 C        		ADE5	==  0x05 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   921       0004 C        		ADE4	==  0X04 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   922       0003 C        		ADE3	==  0X03 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   923       0002 C        		ADE2	==  0X02 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   924       0001 C        		ADE1	==  0x01 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   925       0000 C        		ADE0	==  0X00 ; AD Input Pin Enalbe Control.0//1=>I/O//Analog.
+   926            C        	;}
+   927            C        ;
+   928            C        ;  Bank3 RC (A/D High 8-bits Data Buffer)
+   929            C        ;
+   930       000C C         B3_RC	==	0X0C
+   931       000C C         ADDH	==	0X0C
+   932            C        ;
+   933            C        ;  Bank3 RD (A/D Low 4-bits Data Buffer)
+   934            C        ;
+   935       000D C         B3_RD	==	0X0D
+   936       000D C         ADDL	==	0X0D
+   937            C        ;
+   938            C        	;{
+   939       0007 C        		SIGN	==  0X07 ; Polarity Bit of Offset Voltage.0/1=>Negative/Positive
+   940       0006 C        		VOF2	==  0X06
+   941       0005 C        		VOF1	==  0X05
+   942       0004 C        		VOF0	==  0X04 ; Offset Voltage Bits.
+   943            C        				 ; |----|----|----|---------|
+   944            C        				 ; |VOF2|VOF1|VOF0|EM78P510N|
+   945            C        				 ; |----|----|----|---------|
+   946            C        				 ; |  0 |  0 |  0 |   0LSB  |
+   947            C        				 ; |----|----|----|---------|
+   948            C        				 ; |  0 |  0 |  1 |   2LSB  |
+   949            C        				 ; |----|----|----|---------|
+   950            C        				 ; |  0 |  1 |  0 |   4LSB  |
+   951            C        				 ; |----|----|----|---------|
+   952            C        				 ; |  0 |  1 |  1 |   6LSB  |
+   953            C        				 ; |----|----|----|---------|
+   954            C        				 ; |  1 |  0 |  0 |   8LSB  |
+   955            C        				 ; |----|----|----|---------|
+   956            C        				 ; |  1 |  0 |  1 |  10LSB  |
+   957            C        				 ; |----|----|----|---------|
+   958            C        				 ; |  1 |  1 |  0 |  12LSB  |
+   959            C        				 ; |----|----|----|---------|
+   960            C        				 ; |  1 |  1 |  1 |  14LSB  |
+   961            C        				 ; |----|----|----|---------|
+   962       0003 C        		ADD3	==  0X03
+   963       0002 C        		ADD2	==  0X02
+   964       0001 C        		ADD1	==  0X01
+   965       0000 C        		ADD0	==  0X00
+   966            C        	;}
+   967            C        ;
+   968            C        ;  Bank3 RE (External Interrupt Edge Select Control Register High Byte)
+   969            C        ;
+   970       000E C         B3_RE	==	0X0E
+   971       000E C         EIESH	==	0X0E
+   972            C        ;
+   973            C        	;{
+   974       0007 C        		EIES7	==  0X07 ; External Interrupt 7 Edge Select Bit.0/1=>Falling/Rising
+   975       0006 C        		EIES6	==  0X06 ; External Interrupt 6 Edge Select Bit.0/1=>Falling/Rising
+   976       0005 C        		EIES5	==  0X05 ; External Interrupt 5 Edge Select Bit.0/1=>Falling/Rising
+   977       0004 C        		EIES4	==  0X04 ; External Interrupt 4 Edge Select Bit.0/1=>Falling/Rising
+   978       0003 C        		EIES3	==  0X03 ; External Interrupt 3 Edge Select Bit.0/1=>Falling/Rising
+   979       0002 C        		EIES2	==  0X02 ; External Interrupt 2 Edge Select Bit.0/1=>Falling/Rising
+   980       0001 C        		EIES1	==  0X01 ; External Interrupt 1 Edge Select Bit.0/1=>Falling/Rising
+   981       0000 C        		EIES0	==  0X00 ; External Interrupt 0 Edge Select Bit.0/1=>Falling/Rising
+   982            C        	;}
+   983            C        ;
+   984            C        ;  Bank3 RF (External Interrupt Edge Select Control Register Low Byte)
+   985            C        ;
+   986       000F C         B3_RF	==	0X0F
+   987       000F C         EIESL	==	0X0F
+   988            C        ;
+   989            C        	;{
+   990            C        				 ;Bit4~7 is "0"
+   991       0004 C        		ADWK	==  0X04 ; A/D Converter Wake Up Function Enable Bit
+   992       0003 C        		INTWK9	==  0X03 ; External Interrupt 9 Wake Up Function Enable Bit
+   993       0002 C        		INTWK8	==  0X02 ; External Interrupt 8 Wake Up Function Enable Bit
+   994       0001 C        		EIES9	==  0X01 ; External Interrupt 9 Edge Select Bit
+   995       0000 C        		EIES8	==  0x00 ; External Interrupt 8 Edge Select Bit
+   996            C        	;}
+   997            C        ;
+   998            C        ;  Bank4 R5 (LED Drive Control Register)
+   999            C        ;
+  1000       0005 C         B4_R5	==	0X05
+  1001       0005 C         LEDDCR	==	0X05
+  1002            C        ;
+  1003            C        	;{
+  1004       0007 C        		LEDD7	==  0X07 ; 0:P9.7 as normal I/O,1:P9.7 as LED direct drive I/O.
+  1005       0006 C        		LEDD6	==  0X06 ; 0:P9.6 as normal I/O,1:P9.6 as LED direct drive I/O.
+  1006       0005 C        		LEDD5	==  0X05 ; 0:P9.5 as normal I/O,1:P9.5 as LED direct drive I/O.
+  1007       0004 C        		LEDD4	==  0X04 ; 0:P9.4 as normal I/O,1:P9.4 as LED direct drive I/O.
+  1008       0003 C        		LEDD3	==  0X03 ; 0:P9.3 as normal I/O,1:P9.3 as LED direct drive I/O.
+  1009       0002 C        		LEDD2	==  0X02 ; 0:P9.2 as normal I/O,1:P9.2 as LED direct drive I/O.
+  1010       0001 C        		LEDD1	==  0X01 ; 0:P9.1 as normal I/O,1:P9.1 as LED direct drive I/O.
+  1011       0000 C        		LEDD0	==  0X00 ; 0:P9.0 as normal I/O,1:P9.0 as LED direct drive I/O.
+  1012            C        	;}
+  1013            C        ;
+  1014            C        ;  Bank4 R6 (Watch Timer and Buzzer Control Register)
+  1015            C        ;
+  1016       0006 C         B4_R6	==	0X06
+  1017       0006 C         WBCR	==	0X06
+  1018            C        ;
+  1019            C        	;{
+  1020       0007 C        		WTCS	==  0X07 ; Watch Timer and Buzzer Clock Source Select Bit.
+  1021       0006 C        		WTIE	==  0X06 ; Watch Timer Enable Bit and Interrupt Mask
+  1022       0005 C        		WTIF	==  0X05 ; Watch Timer Interrupt Flag
+  1023       0004 C        		WTSSB1	==  0X04 ;
+  1024       0003 C        		WTSSB0  ==  0X03 ; Watch Timer Interval Select Bits
+  1025            C        				 ; |------|------|-----------------------------------|
+  1026            C        				 ; |WTSSB1|WTSSB0|Watch Timer Interval Select(WTCS=1)|
+  1027            C        				 ; |  0   |   0  |                1.0S               |
+  1028            C        				 ; |------|------|-----------------------------------|
+  1029            C        				 ; |  0   |   1  |                0.5S               |
+  1030            C        				 ; |------|------|-----------------------------------|
+  1031            C        				 ; |  1   |   0  |               0.25S               |
+  1032            C        				 ; |------|------|-----------------------------------|
+  1033            C        				 ; |  1   |   1  |              3.91MS               |
+  1034            C        				 ; |------|------|-----------------------------------|
+  1035       0002 C        		BUZE	==  0X02 ; Buzzer Enable and PORT91 as Buzzer Output Pin
+  1036       0001 C        		BSSB1	==  0X01
+  1037       0000 C        		BSSB0	==  0X00 ; Buzzer Output Frequency Select Bits
+  1038            C        				 ; |-----|-----|----------------------------|
+  1039            C        				 ; |BSSB1|BSSB0|Buzzer Signal Select(WTCS=1)|
+  1040            C        				 ; |-----|-----|----------------------------|
+  1041            C        				 ; |  0  |  0  |           0.5KHz           |
+  1042            C        				 ; |-----|-----|----------------------------|
+  1043            C        				 ; |  0  |  1  |           1.0KHz           |
+  1044            C        				 ; |-----|-----|----------------------------|
+  1045            C        				 ; |  1  |  0  |           2.0KHz           |
+  1046            C        				 ; |-----|-----|----------------------------|
+  1047            C        				 ; |  1  |  1  |           4.0KHz           |
+  1048            C        				 ; |-----|-----|----------------------------|
+  1049            C        	;}
+  1050            C        ;
+  1051            C        ;  Bank4 R7 (PORT7 I/O Control Register)
+  1052            C        ;
+  1053       0007 C         B4_R7	==	0X07
+  1054       0007 C         IOC7	==	0X07
+  1055       0007 C         P7IOCR	==	0X07
+  1056            C        ;
+  1057            C        ;  Bank4 R8 (PORT8 I/O Control Register)
+  1058            C        ;
+  1059       0008 C         B4_R8	==	0X08
+  1060       0008 C         IOC8	==	0X08
+  1061       0008 C         P8IOCR	==	0X08
+  1062            C        ;
+  1063            C        ;  Bank4 R9 (PORT9 I/O Control Register)
+  1064            C        ;
+  1065       0009 C         B4_R9	==	0X09
+  1066       0009 C         IOC9	==	0X09
+  1067       0009 C         P9IOCR	==	0X09
+  1068            C        ;
+  1069            C        ;  Bank4 RA (PORTA I/O Control Register)
+  1070            C        ;
+  1071       000A C         B4_RA	==	0X0A
+  1072       000A C         IOCA	==	0X0A
+  1073       000A C         PAIOCR	==	0X0A
+  1074            C        ;
+  1075            C        ;  Bank4 RB (PORTB I/O Control Register)
+  1076            C        ;
+  1077       000B C         B4_RB	==	0X0B
+  1078       000B C         IOCB	==	0X0B
+  1079       000B C         PBIOCR	==	0X0B
+  1080            C        ;
+  1081            C        ;  Bank4 RC (PORTC I/O Control Register)
+  1082            C        ;
+  1083       000C C         B4_RC	==	0X0C
+  1084       000C C         IOCC	==	0X0C
+  1085       000C C         PCIOCR	==	0X0C
+  1086            C        ;
+  1087            C        ;  Bank4 RF (Wake Up Control Register)
+  1088            C        ;
+  1089       000F C         B4_RF	==	0X0F
+  1090       000F C         WKCR	==	0X0F
+  1091            C        ;
+  1092            C        	;{
+  1093       0007 C        		INTWK7	==  0X07 ; External Interrupt 7 Wake Up Function Enable Bit.
+  1094       0006 C        		INTWK6	==  0X06 ; External Interrupt 6 Wake Up Function Enable Bit.
+  1095       0005 C        		INTWK5	==  0X05 ; External Interrupt 5 Wake Up Function Enable Bit.
+  1096       0004 C        		INTWK4	==  0X04 ; External Interrupt 4 Wake Up Function Enable Bit.
+  1097       0003 C        		INTWK3	==  0X03 ; External Interrupt 3 Wake Up Function Enable Bit.
+  1098       0002 C        		INTWK2	==  0X02 ; External Interrupt 2 Wake Up Function Enable Bit.
+  1099       0001 C        		INTWK1	==  0X01 ; External Interrupt 1 Wake Up Function Enable Bit.
+  1100       0000 C        		INTWK0	==  0X00 ; External Interrupt 0 Wake Up Function Enable Bit.
+  1101            C        	;}
+  1102            C        ;
+  1103            C        ;  Bank4 R6 (UART Control Register 2)
+  1104            C        ;
+  1105       0006 C         B5_R6	==	0X06
+  1106       0006 C         UARC2	==	0X06
+  1107            C        ;
+  1108            C        	;{
+  1109       0005 C        		UARTE	==  0X05  ; UART Function Enable
+  1110       0003 C        		UINVEN	==  0X03  ; Enable UART TX and RX Port Inverse Ouput
+  1111            C        				  ; other Bits is "0"
+  1112            C        	;}
+  1113            C        ;
+  1114            C        ; Bank5 R7 (PORT7 Pull High Control Register)
+  1115            C        ;
+  1116       0007 C         B5_R7	==	0X07
+  1117       0007 C         P7PHCR	==	0X07
+  1118            C        ;
+  1119            C        	;{
+  1120       0007 C        		PH77	==  0X07 ;
+  1121       0006 C        		PH76	==  0X06 ;
+  1122       0005 C        		PH75	==  0X05 ;
+  1123       0004 C        		PH74	==  0X04 ;
+  1124       0003 C        		PH73	==  0X03 ;
+  1125       0002 C        		PH72	==  0X02 ;
+  1126       0001 C        		PH71	==  0X01 ;
+  1127       0000 C        		PH70	==  0X00 ;
+  1128            C        	;}
+  1129            C        ;
+  1130            C        ; Bank5 R8 (PORT8 Pull High Control Register)
+  1131            C        ;
+  1132       0008 C         B5_R8	==	0X08
+  1133       0008 C         P8PHCR	==	0X08
+  1134            C        ;
+  1135            C        	;{
+  1136       0007 C        		PH87	==  0X07 ;
+  1137       0006 C        		PH86	==  0X06 ;
+  1138       0005 C        		PH85	==  0X05 ;
+  1139       0004 C        		PH84	==  0X04 ;
+  1140       0003 C        		PH83	==  0X03 ;
+  1141       0002 C        		PH82	==  0X02 ;
+  1142       0001 C        		PH81	==  0X01 ;
+  1143       0000 C        		PH80	==  0X00 ;
+  1144            C        	;}
+  1145            C        ;
+  1146            C        ; Bank5 R9 (PORT9 Pull High Control Register)
+  1147            C        ;
+  1148       0009 C         B5_R9	==	0X09
+  1149       0009 C         P9PHCR	==	0X09
+  1150            C        ;
+  1151            C        	;{
+  1152       0007 C        		PH97	==  0X07 ;
+  1153       0006 C        		PH96	==  0X06 ;
+  1154       0005 C        		PH95	==  0X05 ;
+  1155       0004 C        		PH94	==  0X04 ;
+  1156       0003 C        		PH93	==  0X03 ;
+  1157       0002 C        		PH92	==  0X02 ;
+  1158       0001 C        		PH91	==  0X01 ;
+  1159       0000 C        		PH90	==  0X00 ;
+  1160            C        	;}
+  1161            C        ;
+  1162            C        ; Bank5 RA (PORTA Pull High Control Register)
+  1163            C        ;
+  1164       000A C         B5_RA	==	0X0A
+  1165       000A C         PAPHCR	==	0X0A
+  1166            C        ;
+  1167            C        	;{
+  1168       0007 C        		PHA7	==  0X07 ;
+  1169       0006 C        		PHA6	==  0X06 ;
+  1170       0005 C        		PHA5	==  0X05 ;
+  1171       0004 C        		PHA4	==  0X04 ;
+  1172       0003 C        		PHA3	==  0X03 ;
+  1173       0002 C        		PHA2	==  0X02 ;
+  1174       0001 C        		PHA1	==  0X01 ;
+  1175       0000 C        		PHA0	==  0X00 ;
+  1176            C        	;}
+  1177            C        ;
+  1178            C        ; Bank5 RB (PORTB Pull High Control Register)
+  1179            C        ;
+  1180       000B C         B5_RB	==	0X0B
+  1181       000B C         PBPHCR	==	0X0B
+  1182            C        ;
+  1183            C        	;{
+  1184       0007 C        		PHB7	==  0X07 ;
+  1185       0006 C        		PHB6	==  0X06 ;
+  1186       0005 C        		PHB5	==  0X05 ;
+  1187       0004 C        		PHB4	==  0X04 ;
+  1188       0003 C        		PHB3	==  0X03 ;
+  1189       0002 C        		PHB2	==  0X02 ;
+  1190       0001 C        		PHB1	==  0X01 ;
+  1191       0000 C        		PHB0	==  0X00 ;
+  1192            C        	;}
+  1193            C        ;
+  1194            C        ; Bank5 RC (PORTC Pull High Control Register)
+  1195            C        ;
+  1196       000C C         B5_RC	==	0X0C
+  1197       000C C         PCPHCR	==	0X0C
+  1198            C        ;
+  1199            C        	;{
+  1200       0003 C        		PHC3	==  0X03 ;
+  1201       0002 C        		PHC2	==  0X02 ;
+  1202       0001 C        		PHC1	==  0X01 ;
+  1203       0000 C        		PHC0	==  0X00 ;
+  1204            C        				 ; Other Bits is "0"
+  1205            C        	;}
+  1206            C        ;
+  1207            C        ;  Bank6 R6 (Low Voltage Reset Control Register)
+  1208            C        ;
+  1209       0006 C         B6_R6  ==  0x06
+  1210       0006 C         LVRCR  ==  0x06
+  1211            C        ;
+  1212            C            ;{
+  1213       0002 C                LVREN   ==  0x02 ;
+  1214       0001 C                LVRS1   ==  0x01 ;
+  1215       0000 C                LVRS0   ==  0x00 ;
+  1216            C            ;}
+  1217            C        
+  1218            C        ;  Bank6 R7 (PORT7 Open Drain Control Reister)
+  1219            C        ;
+  1220       0007 C         B6_R7	==	0X07
+  1221       0007 C         P7ODCR	==	0X07
+  1222            C        ;
+  1223            C        	;{
+  1224       0007 C        		P7OD7	==  0X07 ;
+  1225       0006 C        		P7OD6	==  0X06 ;
+  1226       0005 C        		P7OD5	==  0X05 ;
+  1227       0004 C        		P7OD4	==  0X04 ;
+  1228       0003 C        		P7OD3	==  0X03 ;
+  1229       0002 C        		P7OD2	==  0X02 ;
+  1230       0001 C        		P7OD1	==  0X01 ;
+  1231       0000 C        		P7OD0	==  0X00 ;
+  1232            C        	;}
+  1233            C        ;
+  1234            C        ;  Bank6 R8 (PORT8 Open Drain Control Reister)
+  1235            C        ;
+  1236       0008 C         B6_R8	==	0X08
+  1237       0008 C         P8ODCR	==	0X08
+  1238            C        ;
+  1239            C        	;{
+  1240       0007 C        		P8OD7	==  0X07 ;
+  1241       0006 C        		P8OD6	==  0X06 ;
+  1242       0005 C        		P8OD5	==  0X05 ;
+  1243       0004 C        		P8OD4	==  0X04 ;
+  1244       0003 C        		P8OD3	==  0X03 ;
+  1245       0002 C        		P8OD2	==  0X02 ;
+  1246       0001 C        		P8OD1	==  0X01 ;
+  1247       0000 C        		P8OD0	==  0X00 ;
+  1248            C        	;}
+  1249            C        ;
+  1250            C        ;  Bank6 R9 (PORT9 Open Drain Control Reister)
+  1251            C        ;
+  1252       0009 C         B6_R9	==	0X09
+  1253       0009 C         P9ODCR	==	0X09
+  1254            C        ;
+  1255            C        	;{
+  1256       0007 C        		P9OD7	==  0X07 ;
+  1257       0006 C        		P9OD6	==  0X06 ;
+  1258       0005 C        		P9OD5	==  0X05 ;
+  1259       0004 C        		P9OD4	==  0X04 ;
+  1260       0003 C        		P9OD3	==  0X03 ;
+  1261       0002 C        		P9OD2	==  0X02 ;
+  1262       0001 C        		P9OD1	==  0X01 ;
+  1263       0000 C        		P9OD0	==  0X00 ;
+  1264            C        	;}
+  1265            C        ;
+  1266            C        ;  Bank6 RA (PORTA Open Drain Control Reister)
+  1267            C        ;
+  1268       000A C         B6_RA	==	0X0A
+  1269       000A C         PAODCR	==	0X0A
+  1270            C        ;
+  1271            C        	;{
+  1272       0007 C        		PAOD7	==  0X07 ;
+  1273       0006 C        		PAOD6	==  0X06 ;
+  1274       0005 C        		PAOD5	==  0X05 ;
+  1275       0004 C        		PAOD4	==  0X04 ;
+  1276       0003 C        		PAOD3	==  0X03 ;
+  1277       0002 C        		PAOD2	==  0X02 ;
+  1278       0001 C        		PAOD1	==  0X01 ;
+  1279       0000 C        		PAOD0	==  0X00 ;
+  1280            C        	;}
+  1281            C        ;
+  1282            C        ;  Bank6 RB (PORTB Open Drain Control Reister)
+  1283            C        ;
+  1284       000B C         B6_RB	==	0X0B
+  1285       000B C         PBODCR	==	0X0B
+  1286            C        ;
+  1287            C        	;{
+  1288       0007 C        		PBOD7	==  0X07 ;
+  1289       0006 C        		PBOD6	==  0X06 ;
+  1290       0005 C        		PBOD5	==  0X05 ;
+  1291       0004 C        		PBOD4	==  0X04 ;
+  1292       0003 C        		PBOD3	==  0X03 ;
+  1293       0002 C        		PBOD2	==  0X02 ;
+  1294       0001 C        		PBOD1	==  0X01 ;
+  1295       0000 C        		PBOD0	==  0X00 ;
+  1296            C        	;}
+  1297            C        ;
+  1298            C        ;  Bank6 RC (PORTC Open Drain Control Reister)
+  1299            C        ;
+  1300       000C C         B6_RC	==	0X0C
+  1301       000C C         PORTC	==	0X0C
+  1302            C        ;
+  1303            C        	;{
+  1304            C        				 ; Other
+  1305       0003 C        		PCOD3	==  0X03 ;
+  1306       0002 C        		PCOD2	==  0X02 ;
+  1307       0001 C        		PCOD1	==  0X01 ;
+  1308       0000 C        		PCOD0	==  0X00 ;
+  1309            C        	;}
+  1310            C        ;
+  1311            C        ;======================================================;
+  1312            C        ; Register R10~R3F                                     ;
+  1313            C        ;======================================================;
+  1314            C        ;
+  1315            C        ; (R10 ~ R3F): General Purpose Register
+  1316            C        ;
+  1317       0010 C         R10    ==    0x10
+  1318       0011 C         R11    ==    0x11
+  1319       0012 C         R12    ==    0x12
+  1320       0013 C         R13    ==    0x13
+  1321       0014 C         R14    ==    0x14
+  1322       0015 C         R15    ==    0x15
+  1323       0016 C         R16    ==    0x16
+  1324       0017 C         R17    ==    0x17
+  1325       0018 C         R18    ==    0x18
+  1326       0019 C         R19    ==    0x19
+  1327       001A C         R1A    ==    0x1A
+  1328       001B C         R1B    ==    0x1B
+  1329       001C C         R1C    ==    0x1C
+  1330       001D C         R1D    ==    0x1D
+  1331       001E C         R1E    ==    0x1E
+  1332       001F C         R1F    ==    0x1F
+  1333            C        ;
+  1334       0020 C         R20    ==    0x20
+  1335       0021 C         R21    ==    0x21
+  1336       0022 C         R22    ==    0x22
+  1337       0023 C         R23    ==    0x23
+  1338       0024 C         R24    ==    0x24
+  1339       0025 C         R25    ==    0x25
+  1340       0026 C         R26    ==    0x26
+  1341       0027 C         R27    ==    0x27
+  1342       0028 C         R28    ==    0x28
+  1343       0029 C         R29    ==    0x29
+  1344       002A C         R2A    ==    0x2A
+  1345       002B C         R2B    ==    0x2B
+  1346       002C C         R2C    ==    0x2C
+  1347       002D C         R2D    ==    0x2D
+  1348       002E C         R2E    ==    0x2E
+  1349       002F C         R2F    ==    0x2F
+  1350            C        ;
+  1351       0030 C         R30    ==    0x30
+  1352       0031 C         R31    ==    0x31
+  1353       0032 C         R32    ==    0x32
+  1354       0033 C         R33    ==    0x33
+  1355       0034 C         R34    ==    0x34
+  1356       0035 C         R35    ==    0x35
+  1357       0036 C         R36    ==    0x36
+  1358       0037 C         R37    ==    0x37
+  1359       0038 C         R38    ==    0x38
+  1360       0039 C         R39    ==    0x39
+  1361       003A C         R3A    ==    0x3A
+  1362       003B C         R3B    ==    0x3B
+  1363       003C C         R3C    ==    0x3C
+  1364       003D C         R3D    ==    0x3D
+  1365       003E C         R3E    ==    0x3E
+  1366       003F C         R3F    ==    0x3F
+  1367            C        
+    13                     include "config.h"
+     1            C        /*********************************************************************
+     2            C        * Filename     :  EM78P520P44TX.ASM
+     3            C        * Author       :  yu.wei
+     4            C        * Company      :  KEN YEAR
+     5            C        * VERSION      :  4.0
+     6            C        * CRYSTAL      :  8MHZ
+     7            C        * Creat date   :  2010.06.25
+     8            C        * tool Ver.    :  eUIDE 1.02.11
+     9            C        * Description  :  modify for 2.4G remote control in Intelligen Home 
+    10            C        
+    11            C        * ---------------------- note ------------------------------
+    12            C        2010-6-25 15:01:47    creat project file £¬1.1.1.100625_Alpha
+    13            C        
+    14            C        
+    15            C        **********************************************************************/
+    16            C        ;-------------------------------------------------------------------------
+    17            C        config.h   EQU    config.h
+    18            C        
+    19            C        ;-------------------------------------------------------------------------
+    20       0001 C        DebugDisplay                    EQU     1     ; debug switch
+    21       0000 C        MassageDisplay                  EQU     0     ; massage display switch
+    22       0020 C        DataBufferBase                  EQU     0x20  ; address:0x20 ,bit6:select all bank
+    23       0004 C        SetComuSyncTime                 EQU     4     ; 2ms sync header time
+    24       0004 C        SetComuTime                     EQU     4     ; 4ms Communicte System
+    25       00FA C        SetSleepTime                    EQU     250   ; Into sleep Time=(SetSleepTime+1)*2s, default=250
+    26       009D C        RX_IDH_DEFAULT                  EQU     0X9D  ; 0XD6  ; 0X9D
+    27       00CB C        RX_IDL_DEFAULT                  EQU     0XCB  ; 0XAC  ; 0XCB  ; Adress_default = [RX_IDH_DEFAULT,RX_IDL_DEFAULT&0x0f]
+    28       0032 C        LEDTwinklingFreq                EQU     50    ; T=LEDTwinklingFreq*(ComuSyncTime+n*SetComuTime), default=50(400ms)
+    29       0012 C        SetChecksumH                    EQU     0X12  ; transmitter cheaksum high byte
+    30       0034 C        SetChecksumL                    EQU     0X34  ; transmitter cheaksum low byte
+    31            C        
+    32            C        
+    33            C        
+    34            C        
+    14                     include "P520txP44.H"
+     1            C        /*********************************************************************
+     2            C        * Filename     :  EM78P520P44TX.ASM
+     3            C        * Author       :  yu.wei
+     4            C        * Company      :  KEN YEAR
+     5            C        * VERSION      :  4.0
+     6            C        * CRYSTAL      :  8MHZ
+     7            C        * Creat date   :  2010.06.25
+     8            C        * tool Ver.    :  eUIDE 1.02.11
+     9            C        * Description  :  modify for 2.4G remote control in Intelligen Home 
+    10            C        **********************************************************************/
+    11            C        ;  Description: PAGE0(0X0000-0X03FF): MCU initial
+    12            C        ;               PAGE1(0X0400-0X07FF): searchmode
+    13            C        ;               PAGE2(0X0800-0X0BFF): normalmode
+    14            C        ;               PAGE3(0X0C00-0X0FFF): RF driver
+    15            C        ;               PAGE4(0X1000-0X13FF): key scan driver
+    16            C        ;               PAGE5(0X1400-0X17FF): CMOS driver
+    17            C        ;               PAGE6(0X1800-0X1BFF): CMOS/GS driver
+    18            C        ;               PAGE7(0X1C00-0X1FFF): Kalman Filter arithmetic
+    19            C        
+    20            C        ;========================================================================
+    21            C        P520txP44.H                     EQU     P520txP44.H
+    22            C        
+    23            C        
+    24            C        ;--------------------------- function config ----------------------------
+    25       0001 C        TCC_T_DEBUG                     EQU     1
+    26       0001 C        TIME1_T_DEBUG                   EQU     1
+    27       0000 C        TIME2_T_DEBUG                   EQU     0
+    28            C        
+    29       0001 C        UART_FUNCTION                   EQU     1 ; disable uart function
+    30       0001 C        SPI_FUNCTION                    EQU     1 ; enable spi function
+    31            C        
+    32            C        ;===========================================================================
+    33            C        ;============================ register config ==============================
+    34            C        ;===========================================================================
+    35       0010 C        TEMP                            EQU     0X10
+    36       0011 C        TEMP1                           EQU     0X11
+    37       0012 C        TEMP2                           EQU     0X12
+    38       0013 C        TEMP3                           EQU     0X13
+    39       0014 C        TEMP4                           EQU     0X14
+    40       0015 C        TEMP5                           EQU     0X15
+    41       0016 C        TEMP6                           EQU     0X16
+    42            C        
+    43       0017 C        ComuClock                       EQU     0X17  ;communicateion clock
+    44       0018 C        ComuCycleNum                    EQU     0X18  ;communicateion time
+    45       0019 C        ComuEndNum                      EQU     0X19  ;communicateion end time
+    46       001A C        Databytelength                  EQU     0X1A  ;FIFO READ/WRITE DATA LENGTH
+    47       001B C        DataShiftCNT                    EQU     0X1B  ;data counter
+    48       001C C        SleepCNT                        EQU     0X1C  ;data conunter
+    49            C        
+    50       001D C        GeneralStatusFlag1              EQU     0X1D
+    51       00EF C        	RFInitialFailFlag           ==      GeneralStatusFlag1*8+7 ;
+    52       00EE C        	RFInitialOKFlag             ==      GeneralStatusFlag1*8+6
+    53       00ED C        	RFTestFailFlag              ==      GeneralStatusFlag1*8+5
+    54       00EC C        	ReadLengthError             ==      GeneralStatusFlag1*8+4
+    55       00EB C        	CmosInitFinishFlag          ==      GeneralStatusFlag1*8+3   ; DESCRIPTOR FINISH(1) OR NOT(USB)
+    56       00EA C        	IOtoADCcheckFlag            ==      GeneralStatusFlag1*8+2
+    57       00E9 C        	IntoSleepFlag               ==      GeneralStatusFlag1*8+1
+    58       00E8 C        	ToWakeupFlag                ==      GeneralStatusFlag1*8+0
+    59            C        
+    60       001E C        GeneralStatusFlag2              EQU     0X1E
+    61            C        	;System2sFlag                ==      GeneralStatusFlag2*8+7
+    62       00F6 C        	System16msFlag              ==      GeneralStatusFlag2*8+6
+    63       00F5 C        	System8msFlag               ==      GeneralStatusFlag2*8+5
+    64       00F3 C        	KeyScanFinishFlag           ==      GeneralStatusFlag2*8+3
+    65       00F2 C        	KeyStatusFlag               ==      GeneralStatusFlag2*8+2
+    66       00F1 C        	KeyScanStatusFlag           ==      GeneralStatusFlag2*8+1
+    67       00F0 C        	KeyScanInitFlag             ==      GeneralStatusFlag2*8+0
+    68            C        
+    69       001F C        CommuStatusFlag                 EQU     0X1F
+    70       00FF C        	MotorStatusFlag             ==      CommuStatusFlag*8+7
+    71       00FE C        	FccTestModeFlag             ==      CommuStatusFlag*8+6
+    72       00FD C        	ForceLinkModeFlag           ==      CommuStatusFlag*8+5   ; force link flag
+    73       00FC C        	LinkModeFlag                ==      CommuStatusFlag*8+4   ; link flag
+    74       00FB C        	EEpromWRStatusFlag          ==      CommuStatusFlag*8+3
+    75       00FA C        	LoseFrameStatusFlag         ==      CommuStatusFlag*8+2   ; lose frequency and search mode flag
+    76       00F9 C        	NormalStatusFlag            ==      CommuStatusFlag*8+1   ; Normal mode Flag
+    77       00F8 C        	SearchStatusFlag            ==      CommuStatusFlag*8+0   ; Search mode flag
+    78            C        
+    79            C        ;------------------------------------------------------------------
+    80       0011 C        r_acc1                          EQU     TEMP1
+    81       0012 C        r_acc2                          EQU     TEMP2
+    82       0013 C        r_acc3                          EQU     TEMP3
+    83       0014 C        DataAddressInMCU                EQU     TEMP4         ;93C46
+    84       0015 C        DataAddressInEEPROM             EQU     TEMP5
+    85            C        
+    86       0014 C        A_TEMP                          EQU     TEMP4  ;used for PUSH1 and POP1
+    87       0015 C        RSR_TEMP                        EQU     TEMP5
+    88       0016 C        STATUS_TEMP                     EQU     TEMP6
+    89            C        
+    90            C        ;------------------------------------------------------------------
+    91       0019 C        FccFreqIndex                    EQU     ComuEndNum    ;FCC TEST
+    92            C        
+    93            C        
+    94            C        ;========================= I/O Port Define ==============================
+    95       0057 C        SPI_SS                          ==      PortA*8+7 ;PA7    EM198810/EM198850 enable select
+    96       0056 C        SPI_CLK                         ==      PortA*8+6 ;PA6
+    97       0055 C        SPI_MOSI                        ==      PortA*8+5 ;PA5
+    98       0054 C        SPI_MISO                        ==      PortA*8+4 ;PA4
+    99       0053 C        RESET_N                         ==      PortA*8+3 ;PA3
+   100       0052 C        FIFO_FLAG                       ==      PortA*8+2 ;PB1
+   101       0058 C        PKT_FLAG                        ==      PortB*8+0 ;PB0
+   102            C        
+   103       0051 C        CMOS_RST                        ==      PortA*8+1 ;PA1
+   104       0050 C        CMOS_SS                         ==      PortA*8+0 ;PA0
+   105            C        
+   106       003B C        AT93C46_CS                      ==      Port7*8+3 ;4  93c46 enable select
+   107            C        
+   108       0044 C        MOTOR_STATUS                    ==      PORT8*8+4 ;MOTOR CONTROL
+   109       0042 C        LED2_STATUS                     ==      PORT8*8+2 ;LED initial status view
+   110       0041 C        LED1_STATUS                     ==      PORT8*8+1 ;LED running Status view
+   111            C        
+   112            C        
+   113            C        ;======================= BANK 0 (Data Buffer)============================
+   114            C        ; bank0 20-3f used for data exchange section
+   115            C        ; such as read or write EEPROM and RF,it used for data buffer
+   116            C        
+   117            C        ;------------------------- header code --------------------------------
+   118       0020 C        PID_DATA_Buffer                 EQU     0X20 ; PID DATA, not used
+   119       0021 C        RX_IDH_Buffer                   EQU     0X21 ; Master IDH
+   120       0022 C        RX_IDL_Buffer                   EQU     0X22 ; Master IDL
+   121       0023 C        CHN_FLAG_Buffer                 EQU     0X23 ; Channel flag, gamepad status
+   122       0024 C        GamePadsSum_Buffer              EQU     0X24 ; Communication trsmitter direction
+   123       0025 C        CommuStatusFlag_Buffer          EQU     0X25
+   124       0026 C        CH_NO_Buffer                    EQU     0X26 ; N_CHN= ((TotalGamepads<<4) & 0xF0)|(CH_NO & 0x0F)
+   125            C        
+   126            C        ;----------------------- search and connect ---------------------------
+   127       0027 C        TX1_ID_Buffer                   EQU     0X27 ;
+   128       0028 C        TX2_ID_Buffer                   EQU     0X28 ;
+   129       0029 C        TX3_ID_Buffer                   EQU     0X29 ;
+   130       002A C        TX4_ID_Buffer                   EQU     0X2A ;
+   131       002B C        TX5_ID_Buffer                   EQU     0X2B ;
+   132       002C C        TX6_ID_Buffer                   EQU     0X2C ;
+   133            C        ;------------------------ Transmitter data ----------------------------
+   134       0027 C        TX_ID_Buffer                    EQU     0X27 ; repeat package data
+   135       0028 C        DataA_Buffer                    EQU     0X28 ;rocker, left-x(left-right) data
+   136       0029 C        DataB_Buffer                    EQU     0X29 ;rocker, left-y(up-down) data
+   137       002A C        DataC_Buffer                    EQU     0X2A ;rocker, right-x(left-right) data
+   138       002B C        DataD_Buffer                    EQU     0X2B ;rocker, right-y(up-down) data
+   139       002C C        DataE_Buffer                    EQU     0X2C ;A,B,C,D,L1,R1,L2,R2
+   140       002D C        DataF_Buffer                    EQU     0X2D ;Select,start,LSW,RSW,MODE,MACRO,TEST1,TEST2
+   141       002E C        DataG_Buffer                    EQU     0X2E ;000:00¡¯001:45¡¯010:90¡¯011:135¡¯100:180¡¯101:225¡¯110:270¡¯111:315¡¯
+   142            C        
+   143       002F C        CMOS_xAxisL_Buffer              EQU     0X2F
+   144       0030 C        CMOS_yAxisL_Buffer              EQU     0X30
+   145       0031 C        CMOS_yxsAxisH_Buffer            EQU     0X31
+   146            C        
+   147       0032 C        GS_xAxisL_Buffer                EQU     0X32
+   148       0033 C        GS_yAxisL_Buffer                EQU     0X33
+   149       0034 C        GS_zAxisL_Buffer                EQU     0X34
+   150       0035 C        GS_xyzAxisH_Buffer              EQU     0X35
+   151            C        ;------------------------- receive data --------------------------------
+   152       0027 C        MOTOR_ID_Buffer                 EQU     0X27
+   153       013D C        	Motor6CtrlFlag              ==      MOTOR_ID_Buffer*8+5
+   154       013C C        	Motor5CtrlFlag              ==      MOTOR_ID_Buffer*8+4
+   155       013B C        	Motor4CtrlFlag              ==      MOTOR_ID_Buffer*8+3
+   156       013A C        	Motor3CtrlFlag              ==      MOTOR_ID_Buffer*8+2
+   157       0139 C        	Motor2CtrlFlag              ==      MOTOR_ID_Buffer*8+1
+   158       0138 C        	Motor1CtrlFlag              ==      MOTOR_ID_Buffer*8+0
+   159       0028 C        MOTOR1_VibrInten_Buffer         EQU     0X28    ; Motor1 vibration Intensity byte
+   160       0029 C        MOTOR2_VibrInten_Buffer         EQU     0X29    ; Motor2 vibration Intensity byte
+   161       002A C        MOTOR3_VibrInten_Buffer         EQU     0X2A    ; Motor3 vibration Intensity byte
+   162       002B C        MOTOR4_VibrInten_Buffer         EQU     0X2B    ; Motor4 vibration Intensity byte
+   163       002C C        MOTOR5_VibrInten_Buffer         EQU     0X2C    ; Motor5 vibration Intensity byte
+   164       002D C        MOTOR6_VibrInten_Buffer         EQU     0X2D    ; Motor6 vibration Intensity byte
+   165            C        ;--------------------------- CMOS data --------------------------------
+   166       0020 C        CMOS1_xAxisL_Buffer             EQU     0X20    ; Point1 x axis[7..0]
+   167       0021 C        CMOS1_yAxisL_Buffer             EQU     0X21    ; Point1 y axis[7..0]
+   168       0022 C        CMOS1_yxsAxisH_Buffer           EQU     0X22    ; Point1 yAxis[9..8],xAxis[9..8],size[3..0]
+   169       0023 C        CMOS2_xAxisL_Buffer             EQU     0X23    ; Point2 x axis[7..0]
+   170       0024 C        CMOS2_yAxisL_Buffer             EQU     0X24    ; Point2 y axis[7..0]
+   171       0025 C        CMOS2_yxsAxisH_Buffer           EQU     0X25    ; Point2 yAxis[9..8],xAxis[9..8],size[3..0]
+   172       0026 C        CMOS3_xAxisL_Buffer             EQU     0X26    ; Point3 x axis[7..0]
+   173       0027 C        CMOS3_yAxisL_Buffer             EQU     0X27    ; Point3 y axis[7..0]
+   174       0028 C        CMOS3_yxsAxisH_Buffer           EQU     0X28    ; Point3 yAxis[9..8],xAxis[9..8],size[3..0]
+   175       0029 C        CMOS4_xAxisL_Buffer             EQU     0X29    ; Point4 x axis[7..0]
+   176       002A C        CMOS4_yAxisL_Buffer             EQU     0X2A    ; Point4 y axis[7..0]
+   177       002B C        CMOS4_yxsAxisH_Buffer           EQU     0X2B    ; Point4 yAxis[9..8],xAxis[9..8],size[3..0]
+   178            C        ;--------------------------- GS data ----------------------------------
+   179       0020 C        GS1_xAxisL_Buffer               EQU     0X20    ; x axis low byte
+   180       0021 C        GS1_yAxisL_Buffer               EQU     0X21    ; y axis low byte
+   181       0022 C        GS1_zAxisL_Buffer               EQU     0X22    ; z axis low byte
+   182       0023 C        GS1_xyzAxisH_Buffer             EQU     0X23    ; xAxis[9..8],yAxis[9..8],zAxis[3..0]
+   183            C        
+   184            C        ;---------------------------- checksum --------------------------------
+   185       003E C        ChecksumH                       EQU     0X3E
+   186       003F C        ChecksumL                       EQU     0X3F
+   187            C        
+   188            C        
+   189            C        ;======================= BANK 1 (RF variable)============================
+   190       0020 C        PID_DATA                EQU     0X20
+   191       0021 C        RX_IDH                  EQU     0X21    ; master ID
+   192       0022 C        RX_IDL                  EQU     0X22
+   193       0023 C        CHN_FLAG                EQU     0X23    ; Channel flag, gamepad status
+   194       0024 C        GamepadsSum             EQU     0X24    ; gamepads sum
+   195       0025 C        CH_NO                   EQU     0X25    ; Current frequency table index
+   196       0026 C        TX_ID                   EQU     0X26    ;
+   197            C        
+   198            C        ;-----------------------------------------------------------------------
+   199       0030 C        ADDR                    EQU     0X30 ;in/out Data Address
+   200       0031 C        VALUE                   EQU     0X31 ;in/out Data
+   201       0032 C        LossframeCNT            EQU     0X32
+   202       0033 C        TABLE_INDEX             EQU     0x33  ;descriptor table's start position
+   203       0034 C        RF_RSSI                 EQU     0X34
+   204            C        
+   205            C        
+   206            C        ;======================= BANK 2 (key data)==============================
+   207       0020 C        DataA                   EQU     0X20 ;rocker left-x(left-right)  RF transmitter data
+   208       0021 C        DataB                   EQU     0X21 ;rocker left-y(up-down)     RF transmitter data
+   209       0022 C        DataC                   EQU     0X22 ;rocker right-x(left-right) RF transmitter data
+   210       0023 C        DataD                   EQU     0X23 ;rocker right-y(up-down)    RF transmitter data
+   211       0024 C        DataE                   EQU     0x24 ;DataA(s10-s5):
+   212            C                                ;bit7  bit6  Bit5  Bit4  Bit3  bit2  bit1  bit0
+   213            C                                ;A_1   B_2   C_3   D_4   L1_5  R1_6  L2_7  R2_8
+   214       0025 C        DataF                   EQU     0x25 ;DataB(s4-s1):
+   215            C                                ;bit7      bit6      Bit5      Bit4   Bit3  bit2    bit1    bit0
+   216            C                                ;SELECT_9  START_10  TEST2_14  MACRO  MODE  RSW_12  LSW_11  TEST1_13
+   217            C                                ;MODE: 1:DealWithDigital  0:DealWithAnalog (default:1)
+   218       0026 C        DataG                   EQU     0X26 ;bit[7..4]Hat Switch, bit[3..0]reserve.
+   219            C                                ;000:00¡¯001:45¡¯010:90¡¯011:135¡¯100:180¡¯101:225¡¯110:270¡¯111:315¡¯
+   220            C        
+   221       002A C        IOcheckRefValue         EQU     0X2A    ; used for Store refrence value
+   222       002B C        KeyCheckBakup           EQU     0X2B
+   223       002C C        ComSystemTimeCNT        EQU     0X2C
+   224       002D C        IOcheckTimeCNT          EQU     0X2D    ; used for count check time
+   225       002E C        KeySystemTimeCNT        EQU     0x2E    ; key scan time
+   226       002F C        LEDSystemTimeCNT        EQU     0X2F
+   227            C        
+   228       0030 C        KEY_LEFT_X              EQU     0X30 ;rocker,AD convert result left-x(left-right) data
+   229       0031 C        KEY_LEFT_Y              EQU     0X31 ;rocker,AD convert result left-y(up-down) data
+   230       0032 C        KEY_RIGHT_X             EQU     0X32 ;rocker,AD convert result right-x(left-right) data
+   231       0033 C        KEY_RIGHT_Y             EQU     0X33 ;rocker,AD convert result right-y(up-down) data
+   232            C        
+   233            C        
+   234            C        ;       Click                     Dblclick                    Lasting_Press
+   235            C        ;________    _______.__________    ______    _______.___________         ____________
+   236            C        ;        |__|                  |__|      |__|                   |_______|
+   237            C        ;___________                       _________                             ____________
+   238            C        ;           |_______._____________|         |________.__________________|
+   239            C        
+   240       0036 C        KeystokeFlag_Befor      EQU     0X36
+   241       0037 C        KeystokeTimeCNT         EQU     0X37
+   242       0038 C        KEY_NUM                 EQU     0X38
+   243            C        ;F_MODE                  EQU     0X32 ;Analog jugde falg
+   244            C        ;F_MODE_BEFOR            EQU     0X33 ;Store keyboard select
+   245       0039 C        KeyTempFlag             EQU     0X39 ;Store LINE4_KEY_INPUT TEMP
+   246       01CC C        	ModeSelFlag         ==      KeyTempFlag*8+4 ;1:analog  0:digital(default 0)
+   247       01CD C        	MacroFlag           ==      KeyTempFlag*8+5
+   248       01CE C        	Test1Flag           ==      KeyTempFlag*8+6
+   249       01CF C        	Test2Flag           ==      KeyTempFlag*8+7
+   250            C        
+   251       003A C        KeyTempBakupFlag        EQU     0X3A
+   252       01D4 C        	ModeSelBakupFlag    ==      KeyTempBakupFlag*8+4 ;1:analog  0:digital(default 0)
+   253       01D5 C        	MacroBakupFlag      ==      KeyTempBakupFlag*8+5
+   254       01D6 C        	Test1BakupFlag      ==      KeyTempBakupFlag*8+6
+   255       01D7 C        	Test2BakupFlag      ==      KeyTempBakupFlag*8+7
+   256            C        
+   257       003B C        LINE1_KEY_INPUT_CACHE   EQU     0X3B ;line 1,direction data
+   258       003C C        LINE2_KEY_INPUT_CACHE   EQU     0X3C ;line 2,X_LINE2 output
+   259       003D C        LINE3_KEY_INPUT_CACHE   EQU     0X3D ;line 3,X_LINE3 output
+   260       003E C        LINE4_KEY_INPUT_CACHE   EQU     0X3E ;line 4,X_LINE4 output
+   261       003F C        LINE5_KEY_INPUT_CACHE   EQU     0X3F ;line 5,X_LINE5 output
+   262            C        
+   263            C        ;======================= BANK 3 (motor)===============================
+   264       0020 C        MotorVibrInten          EQU     0X20    ; vibration Intensity byte
+   265            C        ;MotorVibrDura           EQU     0X21    ; vibration duration byte
+   266            C        
+   267            C        
+   268            C        ;======================= BANK 4 (Push data)=============================
+   269       0020 C        ATcc_TEMP               EQU     0X20  ;used for TCC and POP3
+   270       0021 C        RSRTcc_TEMP             EQU     0X21
+   271       0022 C        StatusTcc_TEMP          EQU     0X22
+   272            C        
+   273       0023 C        AExt_TEMP               EQU     0X23  ;used for External and POP3
+   274       0024 C        RSRExt_TEMP             EQU     0X24
+   275       0025 C        StatusExt_TEMP          EQU     0X25
+   276            C        
+   277       0026 C        A1_TEMP                 EQU     0X26  ;used for time1 and POP1
+   278       0027 C        RSR1_TEMP               EQU     0X27
+   279       0028 C        STATUS1_TEMP            EQU     0X28
+   280            C        
+   281       0029 C        A2_TEMP                 EQU     0X29  ;used for time2 and POP2
+   282       002A C        RSR2_TEMP               EQU     0X2A
+   283       002B C        STATUS2_TEMP            EQU     0X2B
+   284            C        
+   285            C        ;-----------------------------------------------------------
+   286       0030 C        SPIS_TEMP               EQU     0X30
+   287       0031 C        SPIC_TEMP               EQU     0X31
+   288            C        
+   289            C        ;======================= BANK 5 (CMOS status reg)============================
+   290       0020 C        CMOS_PARAMETER          EQU     0X20
+   291       0021 C        CMOS_STATUS             EQU     0X21
+   292       0108 C        	CMOSInitFlag        ==      CMOS_STATUS*8+0
+   293       0109 C        	CMOSSleepFlag       ==      CMOS_STATUS*8+1
+   294       010A C        	CMOSGetDataFlag     ==      CMOS_STATUS*8+2
+   295            C        
+   296            C        ;CMOS1_Covariance        EQU     0X30
+   297            C        ;CMOS2_Covariance        EQU     0X31
+   298            C        ;CMOS3_Covariance        EQU     0X32
+   299            C        ;CMOS4_Covariance        EQU     0X33
+   300            C        
+   301       002D C        CMOS_xAxisH             EQU     0X2D    ; x axis[9..8] high byte,[1..0]
+   302       002E C        CMOS_yAxisH             EQU     0X2E    ; y axis[9..8] high byte,[1..0]
+   303       002F C        CMOS_yxsAxisH           EQU     0X2F    ; yAxis[9..8],xAxis[9..8],size[3..0]
+   304       003D C        CMOS_xAxisL             EQU     0X3D    ; x axis[7..0]
+   305       003E C        CMOS_yAxisL             EQU     0X3E    ; y axis[7..0]
+   306       003F C        CMOS_Size               EQU     0X3F    ; size[3..0] high byte,[3..0]
+   307            C        
+   308            C        ;======================= BANK 6 (CMOS Data)============================
+   309       0020 C        CMOS1_xAxisH            EQU     0X20    ; x axis[9..8] high byte,[1..0]
+   310       0021 C        CMOS1_yAxisH            EQU     0X21    ; y axis[9..8] high byte,[1..0]
+   311       0022 C        CMOS1_yxsAxisH          EQU     0X22    ; yAxis[9..8],xAxis[9..8],size[3..0]
+   312       0030 C        CMOS1_xAxisL            EQU     0X30    ; x axis[7..0]
+   313       0031 C        CMOS1_yAxisL            EQU     0X31    ; y axis[7..0]
+   314       0032 C        CMOS1_Size              EQU     0X32    ; size[3..0] high byte,[3..0]
+   315            C        
+   316       0023 C        CMOS2_xAxisH            EQU     0X23    ; x axis[9..8] high byte,[1..0]
+   317       0024 C        CMOS2_yAxisH            EQU     0X24    ; y axis[9..8] high byte,[1..0]
+   318       0025 C        CMOS2_yxsAxisH          EQU     0X25    ; yAxis[9..8],xAxis[9..8],size[3..0]
+   319       0033 C        CMOS2_xAxisL            EQU     0X33    ; x axis[7..0]
+   320       0034 C        CMOS2_yAxisL            EQU     0X34    ; y axis[7..0]
+   321       0035 C        CMOS2_Size              EQU     0X35    ; size[3..0] high byte,[3..0]
+   322            C        
+   323       0026 C        CMOS3_xAxisH            EQU     0X26    ; x axis[9..8] high byte,[1..0]
+   324       0027 C        CMOS3_yAxisH            EQU     0X27    ; y axis[9..8] high byte,[1..0]
+   325       0028 C        CMOS3_yxsAxisH          EQU     0X28    ; yAxis[9..8],xAxis[9..8],size[3..0]
+   326       0036 C        CMOS3_xAxisL            EQU     0X36    ; x axis[7..0]
+   327       0037 C        CMOS3_yAxisL            EQU     0X37    ; y axis[7..0]
+   328       0038 C        CMOS3_Size              EQU     0X38    ; size[3..0] high byte,[3..0]
+   329            C        
+   330       0029 C        CMOS4_xAxisH            EQU     0X29    ; x axis[9..8] high byte,[1..0]
+   331       002A C        CMOS4_yAxisH            EQU     0X2A    ; y axis[9..8] high byte,[1..0]
+   332       002B C        CMOS4_yxsAxisH          EQU     0X2B    ; yAxis[9..8],xAxis[9..8],size[3..0]
+   333       0039 C        CMOS4_xAxisL            EQU     0X39    ; x axis[7..0]
+   334       003A C        CMOS4_yAxisL            EQU     0X3A    ; y axis[7..0]
+   335       003B C        CMOS4_Size              EQU     0X3B    ; size[3..0] high byte,[3..0]
+   336            C        
+   337            C        ;======================= BANK 7 (GS Data)============================
+   338       0020 C        GS_PARAMETER            EQU     0X20
+   339       0021 C        GS_STATUS               EQU     0X21
+   340       0108 C        	GSInitFlag          ==      GS_STATUS*8+0
+   341       0109 C        	GSSleepFlag         ==      GS_STATUS*8+1
+   342       010A C        	GSGetDataFlag       ==      GS_STATUS*8+2
+   343            C        
+   344            C        
+   345       0030 C        GS_xAxisL               EQU     0X30    ; x axis low byte
+   346       0031 C        GS_yAxisL               EQU     0X31    ; y axis low byte
+   347       0032 C        GS_zAxisL               EQU     0X32    ; z axis low byte
+   348       0033 C        GS_xyzAxisH             EQU     0X33    ; xAxis[9..8],yAxis[9..8],zAxis[3..0]
+   349            C        
+   350       0034 C        GS_xAxisH               EQU     0X34    ; x axis[9..8] high byte,[1..0]
+   351       0035 C        GS_yAxisH               EQU     0X35    ; y axis[9..8] high byte,[1..0]
+   352       0036 C        GS_zAxisH               EQU     0X36    ; z axis[9..8] high byte,[1..0]
+   353            C        
+   354            C        
+    15                     
+    16                     
+    17                     
+    18                     
+    19                     ;=======================================================================
+    20                     ;-------------------------- Program start ---------------------------
+    21                     ;=======================================================================
+    22                     	ORG                 0X0000
+    23 00000 1EB0          	LJMP                INITIAL
+    23 00001 0118          	LJMP                INITIAL
+***     Warning A053:The call/jmp address is not over page.
+    24                     	ORG                 0X0003
+    25 00003 1EB0          	LJMP                TCC_INT
+    25 00004 0100          	LJMP                TCC_INT
+***     Warning A053:The call/jmp address is not over page.
+    26                     	ORG                 0X0006
+    27 00006 1EB0          	LJMP                EXTERNAL_INT
+    27 00007 010A          	LJMP                EXTERNAL_INT
+***     Warning A053:The call/jmp address is not over page.
+    28                     	ORG                 0X0009
+    29 00009 1EB0          	LJMP                WDT_INT
+    29 0000A 010D          	LJMP                WDT_INT
+***     Warning A053:The call/jmp address is not over page.
+    30                     	ORG                 0X000C
+    31 0000C 1EB0          	LJMP                TIMER1_INT
+    31 0000D 010F          	LJMP                TIMER1_INT
+***     Warning A053:The call/jmp address is not over page.
+    32                     	ORG                 0X000F
+    33 0000F 1EB0          	LJMP                TIMER2_INT
+    33 00010 0114          	LJMP                TIMER2_INT
+***     Warning A053:The call/jmp address is not over page.
+    34                     	ORG                 0X0012
+    35 00012 1EB0          	LJMP                AD_INT
+    35 00013 010E          	LJMP                AD_INT
+***     Warning A053:The call/jmp address is not over page.
+    36                     	ORG                 0X0015
+    37 00015 1EB0          	LJMP                UART_INT
+    37 00016 0115          	LJMP                UART_INT
+***     Warning A053:The call/jmp address is not over page.
+    38                     	ORG                 0X0018
+    39 00018 1EB0          	LJMP                SPI_INT
+    39 00019 0116          	LJMP                SPI_INT
+***     Warning A053:The call/jmp address is not over page.
+    40                     	ORG                 0X001B
+    41 0001B 1EB0          	LJMP                LVD_INT
+    41 0001C 0117          	LJMP                LVD_INT
+***     Warning A053:The call/jmp address is not over page.
+    42                     
+    43                     
+    44                     ;=========================================================================
+    45                     ; Program code
+    46                     ;=========================================================================
+    47                     	ORG                 0X100
+    48                     ;========================= TCC Interrupt Service =========================
+    49 00100               TCC_INT:
+    50 00100 1E00          	BANK                0
+    51 00101 080F          	BC                  ISR,TCIF               ;clear TCC interrupt flag
+    52                     
+    53 00102 1807          	MOV                 A,@0B00000111
+    54 00103 004D          	MOV                 TWTCR,A         ; N=128,P=256,f=8MHz ==> T=4ms
+    55 00104 1880          	MOV                 A,@(256-128)    ; load initial value
+    56 00105 0041          	MOV                 TCC,A
+    57                     
+    58 00106 1E00          	BANK                0
+    59 00107 1820          	MOV                 A,@0B00100000          ; (test)P85 exchange when intrrupt
+    60 00108 0348          	XOR                 PORT8,A
+    61                     
+    62 00109 0013          	RETI
+    63                     
+    64 0010A               EXTERNAL_INT:
+    65 0010A 1E01          	BANK                1
+    66 0010B 00CF          	CLR                 EISR               ;clear the external interrupt flag
+    67 0010C 0013          	RETI
+    68                     
+    69 0010D               WDT_INT:
+    70 0010D 0013          	RETI
+    71                     
+    72 0010E               AD_INT:
+    73 0010E 0013          	RETI
+    74                     
+    75 0010F               TIMER1_INT:
+    76 0010F 1E00          	BANK                0
+    77 00110 09CF          	BC                  ISR,T1IF
+    78 00111 1820          	MOV                 A,@0B00100000          ; (test)P85 exchange when intrrupt
+    79 00112 0348          	XOR                 PORT8,A
+    80 00113 0013          	RETI
+    81                     
+    82 00114               TIMER2_INT:
+    83 00114 0013          	RETI
+    84 00115               UART_INT:
+    85 00115 0013          	RETI
+    86 00116               SPI_INT:
+    87 00116 0013          	RETI
+    88 00117               LVD_INT:
+    89 00117 0013          	RETI
+    90                     
+    91                     ;==========================================================================
+    92                     ;=========================================================================
+    93 00118               INITIAL:
+    94 00118 0000          	NOP
+    95 00119 0000          	NOP
+    96 0011A 0000          	NOP
+    97 0011B 0000          	NOP
+    98 0011C 0000          	NOP
+    99 0011D 0000          	NOP
+   100 0011E 0000          	NOP
+   101 0011F 0011          	DISI
+   102 00120 0000          	NOP
+   103 00121 0000          	NOP
+   104 00122 0000          	NOP
+   105 00123 0011          	DISI
+   106 00124 0000          	NOP
+   107 00125 0000          	NOP
+   108 00126 0000          	NOP
+   109 00127 0011          	DISI
+   110 00128 0000          	NOP
+   111 00129 0000          	NOP
+   112 0012A 0004          	WDTC
+   113                     	
+   114 0012B 18D0          	MOV                 A,@0XD0
+   115 0012C 0044          	MOV                 RSR,A
+   116                       ;$_CLRLOOP:  
+   117 0012D 00C0          	CLR                 R0
+   118 0012E 0544          	INC                 RSR
+   119 0012F 0404          	MOV                 A,RSR
+   120 00130 1A3F          	AND                 A,@0X3F
+   121 00131 0E83          	JBS                 STATUS,Z
+   122 00132 152D          	JMP                 $-5             ;$_CLRLOOP
+   123 00133 0545          	INC                 BSR
+   124 00134 0B44          	BS                  RSR,5
+   125 00135 1807          	MOV                 A,@0X07
+   126 00136 02C5          	AND                 BSR,A
+   127 00137 0B84          	BS                  RSR,6
+   128 00138 0E83          	JBS                 STATUS,Z
+   129 00139 152D          	JMP                 $-12            ;$_CLRLOOP
+   130                     
+   131 0013A 0000          	NOP
+   132 0013B 0000          	NOP
+   133 0013C 1167          	CALL                IO_INITIAL
+   134 0013D 0000          	NOP
+   135                     
+   136                     ;==============================================================================
+   137 0013E               Start_Up:
+   138 0013E 0000          	NOP
+   139 0013F 0000          	NOP
+   140                     
+   141 00140 1E00          	BANK                0
+   142 00141 00CF          	CLR                 ISR              ; clear interrupt flag
+   143 00142 09C9          	BC                  T2CR,T2IF        ; Clear timer2 intrrupt flag
+   144 00143 0010          	ENI
+   145 00144 1E00          	BANK                0
+   146 00145 00D7          	CLR                 ComuClock
+   147 00146 00D8          	CLR                 ComuCycleNum
+   148 00147 00D9          	CLR                 ComuEndNum
+   149 00148 08C7          	BC                  AT93C46_CS/8,AT93C46_CS%8              ; Disable 93C46
+   150 00149 0BCA          	BS                  SPI_SS/8,SPI_SS%8                      ; Disable EM198810
+   151                     
+   152 0014A 00DC          	CLR                 SleepCNT
+   153 0014B 00DF          	CLR                 CommuStatusFlag
+   154 0014C 00DD          	CLR                 GeneralStatusFlag1
+   155 0014D 00DE          	CLR                 GeneralStatusFlag2
+   156 0014E 00E3          	CLR                 CHN_FLAG
+   157 0014F 0A48          	BS                  LED1_STATUS/8,LED1_STATUS%8		       ; PORT81,LED
+   158 00150 0888          	BC                  LED2_STATUS/8,LED2_STATUS%8
+   159                     
+   160 00151 1E02          	BANK                2
+   161 00152 18FF          	MOV                 A,@0XFF
+   162 00153 0076          	MOV                 KeystokeFlag_Befor,A
+   163 00154 0077          	MOV                 KeystokeTimeCNT,A
+   164                     ;-----------------------------------------------------------------
+   165                     	;CALL                SearchLinkMode_Set
+   166 00155 081F          	BC                  SearchStatusFlag/8,SearchStatusFlag%8            ;set search mode
+   167 00156 0A5F          	BS                  NormalStatusFlag/8,NormalStatusFlag%8            ;Clear normal mode
+   168 00157 089F          	BC                  LoseFrameStatusFlag/8,LoseFrameStatusFlag%8      ;Clear LoseFreq mode
+   169 00158 08DF          	BC                  EEpromWRStatusFlag/8,EEpromWRStatusFlag%8
+   170 00159 0B1F          	BS                  LinkModeFlag/8,LinkModeFlag%8
+   171 0015A 095F          	BC                  ForceLinkModeFlag/8,ForceLinkModeFlag%8
+   172 0015B 099F          	BC                  FccTestModeFlag/8,FccTestModeFlag%8
+   173                     ;-----------------------------------------------------------------
+   174 0015C 0000          	NOP
+   175 0015D 0000          	NOP
+   176                     
+   177                     ;=============================================================================
+   178 0015E               MAIN:
+   179 0015E 0000          	NOP
+   180 0015F 0000          	NOP
+   181 00160 1805          	MOV                 A,@5
+   182 00161 11EA          	CALL                DELAY_8MHz_X20MS
+   183 00162 0000          	NOP
+   184                     
+   185 00163 11D2          	CALL                Enter_Sleep_Status
+   186                     
+   187 00164 0000          	NOP
+   188 00165 0000          	NOP
+   189 00166 155E          	JMP                 MAIN
+   190                     
+   191                     
+   192                     ;*****************************************************************
+   193                     ;Function:    IO INITIAL SET
+   194                     ;Input:       None
+   195                     ;Output:      None
+   196                     ;*****************************************************************
+   197 00167               IO_INITIAL:
+   198                     ;==========================PORT 7/8/9 INITIAL===============================
+   199 00167 1E06          	BANK                6
+   200 00168 00C7          	CLR                 P7ODCR          ;Disable Open Drain
+   201 00169 00C8          	CLR                 P8ODCR
+   202 0016A 00C9          	CLR                 P9ODCR
+   203 0016B 1E04          	BANK                4
+   204 0016C 18FF          	MOV                 A,@0B11111111
+   205 0016D 0047          	MOV                 IOC7,A          ;Set Input
+   206 0016E 18FF          	MOV                 A,@0B11111111
+   207 0016F 0048          	MOV                 IOC8,A          ;Set Input
+   208 00170 18FF          	MOV                 A,@0B11111111
+   209 00171 0049          	MOV                 IOC9,A          ;P97-P94:Input; P93-P90:Input
+   210 00172 1E05          	BANK                5
+   211 00173 1800          	MOV                 A,@0B00000000
+   212 00174 0047          	MOV                 P7PHCR,A		;Disable PULL UP
+   213 00175 1800          	MOV                 A,@0B00000000
+   214 00176 0048          	MOV                 P8PHCR,A		;Disable PULL UP
+   215 00177 18F0          	MOV                 A,@0B11110000
+   216 00178 0049          	MOV                 P9PHCR,A		;SET PULL UP
+   217                     
+   218 00179 1E04          	BANK                4
+   219 0017A 1800          	MOV                 A,@0B00000000
+   220 0017B 0047          	MOV                 IOC7,A          ;Set Output
+   221 0017C 1800          	MOV                 A,@0B00000000
+   222 0017D 0048          	MOV                 IOC8,A          ;Set Output
+   223 0017E 18F0          	MOV                 A,@0B11110000
+   224 0017F 0049          	MOV                 IOC9,A          ;P97-P94:Input; P93-P90:Output
+   225 00180 1E01          	BANK                1
+   226 00181 1800          	MOV                 A,@0B00000000	;Disable LCD common dirver pin
+   227 00182 004A          	MOV                 LCDSCR0,A
+   228 00183 004B          	MOV                 LCDSCR1,A
+   229 00184 004C          	MOV                 LCDSCR2,A
+   230 00185 1E00          	BANK                0
+   231 00186 00C7          	CLR                 PORT7           ; Port7 output logic "0"
+   232 00187 00C8          	CLR                 PORT8           ; Port8 output logic "0"
+   233 00188 00C9          	CLR                 PORT9
+   234                     
+   235                     ;==============================PORT A/B======================================
+   236 00189 1E04          	BANK                4
+   237 0018A 18FF          	MOV                 A,@0B11111111
+   238 0018B 004A          	MOV                 PAIOCR,A        ; PA As Input
+   239 0018C 18FF          	MOV                 A,@0B11111111
+   240 0018D 004B          	MOV                 PBIOCR,A       	; PB As Input
+   241 0018E 1E05          	BANK                5
+   242 0018F 1800          	MOV                 A,@0B00000000
+   243 00190 004A          	MOV                 PAPHCR,A        ; PA4(MISO) PULL HIGH
+   244 00191 1837          	MOV                 A,@0B00110111
+   245 00192 004B          	MOV                 PBPHCR,A	    ; PB0 PB1 PB2 PB4 PB5 Enable Pull High
+   246 00193 1E04          	BANK                4
+   247 00194 1810          	MOV                 A,@0B00010000	; Set PA4 (MISO) as input pin
+   248 00195 004A          	MOV                 PAIOCR,A        ; SO,SCK output pin
+   249 00196 1837          	MOV                 A,@0B00110111	; PB0 PB1 PB2 PB4 PB5 PB1AS INPUT
+   250 00197 004B          	MOV                 PBIOCR,A       	; PKT FIFO input Pin
+   251 00198 1E00          	BANK                0
+   252 00199 00CA          	CLR                 PORTA           ; PortA output logic "0"
+   253 0019A 00CB          	CLR                 PORTB           ; PortB output logic "0"
+   254                     ;------------------------------------------------------------------
+   255                     
+   256 0019B 1E02          	BANK                2
+   257 0019C 1800          	MOV                 A,@00000000B   ; Shift left, SDO delay time: 16clk,
+   258 0019D 004C          	MOV                 SPIS, A        ; disable open-drain
+   259 0019E 18C9          	MOV                 A,@11001001B   ; Data shift out rising edge, is on hold during low
+   260 0019F 004D          	MOV                 SPIC,A         ; Enable SPI mode, after data output SDO remain low
+   261                                                            ; SPI Baud Rate: 001->Fosc/4
+   262                     
+   263                     ;============================ TCC config ====================================
+   264 001A0 1E00          	BANK                0
+   265 001A1 1807          	MOV                 A,@0B00000111
+   266 001A2 004D          	MOV                 TWTCR,A         ; N=125,P=256,f=8MHz ==> T=4ms
+   267 001A3 1883          	MOV                 A,@(256-125)    ; load initial value
+   268 001A4 0041          	MOV                 TCC,A
+   269 001A5 0A0E          	BS                  IMR,TCIE        ; set   TCIE=1  tcc enable interrupt
+   270 001A6 00CF          	CLR                 ISR             ; clear interrupt flag
+   271 001A7 1E01          	BANK                1
+   272 001A8 00CF          	CLR                 EISR            ; Clear External Interrupt Status Register
+   273 001A9 00CE          	CLR                 EIMR            ; Clear External Interrupt Mask  Register
+   274                     
+   275                     ;============================ Timer 1 config ===================================
+   276 001AA 1E00          	BANK                0
+   277 001AB 09CE          	BC                  IMR,T1IE         ; Disable Timier1
+   278 001AC 09CF          	BC                  ISR,T1IF         ; Clear timer1 intrrupt flag
+   279 001AD 1E02          	BANK                2
+   280 001AE 1807          	MOV                 A,@0B00000111
+   281 001AF 0045          	MOV                 T1CR,A           ; N=128, P=256, T=1s
+   282 001B0 1880          	MOV                 A,@128
+   283 001B1 0047          	MOV                 T1PD,A           ; N=128, Auto reload
+   284 001B2 1810          	MOV                 A,@0B00010000
+   285 001B3 0046          	MOV                 TSR,A            ; 8 bit counter ,f=32.768KHz
+   286 001B4 0886          	BC                  TSR,T1EN         ; Start/stop timer1
+   287                     
+   288 001B5 0012          	RET
+   289                     
+   290                     ;*****************************************************************
+   291                     ;Function:    MCU SLEEP SET
+   292                     ;Input:       None
+   293                     ;Output:      None
+   294                     ;*****************************************************************
+   295 001B6               MCU_EnterIdle_Set:
+   296                     ;======================== Save power ==============================
+   297 001B6 1E03          	BANK                3
+   298 001B7 0989          	BC                  ADCR,ADP                    ; Disable ADC Function
+   299 001B8 1E01          	BANK                1
+   300 001B9 0ACC          	BS                  SCCR,IDLE                   ; Set IDLE=1(IDLE MODE)
+   301 001BA 1E00          	BANK                0
+   302 001BB 0BCA          	BS                  SPI_SS/8,SPI_SS%8           ; Disable EM198810
+   303 001BC 08C7          	BC                  AT93C46_CS/8,AT93C46_CS%8   ; Disable 93C46
+   304 001BD 0A0A          	BS                  CMOS_SS/8,CMOS_SS%8         ; Disable CMOS
+   305                     	
+   306                     ;========================== Set Timers ==================================
+   307 001BE 0004          	WDTC
+   308 001BF 180F          	MOV                 A,@0B00001111               ; Disable WDTC /Set Prescale max.
+   309 001C0 004D          	MOV                 TWTCR,A                     ; N=128,P=256,f=32768Hz ==> T=1s
+   310 001C1 1880          	MOV                 A,@(256-128)                ; load initial value
+   311 001C2 0041          	MOV                 TCC,A
+   312 001C3 0A0E          	BS                  IMR,TCIE                    ; set   TCIE=1  tcc enable interrupt	
+   313 001C4 00CF          	CLR                 ISR
+   314 001C5 0012          	RET
+   315                     
+   316                     ;*****************************************************************
+   317                     ;Function:    MCU wakeup SET
+   318                     ;Input:       None
+   319                     ;Output:      None
+   320                     ;*****************************************************************
+   321 001C6               MCU_WakeUp_Set:
+   322 001C6 1E00          	BANK                0
+   323 001C7 00CF          	CLR                 ISR
+   324 001C8 0004          	WDTC
+   325 001C9 08CD          	BC                  TWTCR,TCCS	
+   326 001CA 1807          	MOV                 A,@0B00000111               ; Disable WDTC /Set Prescale max.
+   327 001CB 004D          	MOV                 TWTCR,A                     ; N=256,P=256,f=8MHz ==> T=4ms
+   328 001CC 1883          	MOV                 A,@(256-125)                ; load initial value
+   329 001CD 0041          	MOV                 TCC,A
+   330                     
+   331 001CE 0BCA          	BS                  SPI_SS/8,SPI_SS%8           ; Disable EM198810
+   332 001CF 08C7          	BC                  AT93C46_CS/8,AT93C46_CS%8   ; Disable 93C46
+   333 001D0 0A0A          	BS                  CMOS_SS/8,CMOS_SS%8         ; Disable CMOS
+   334 001D1 0012          	RET
+   335                     
+   336                     
+   337                     ;*****************************************************************
+   338                     ;Function:    sleep function
+   339                     ;Input:       None
+   340                     ;Output:      None
+   341                     ;description: all device into save power status
+   342                     ;*****************************************************************
+   343 001D2               Enter_Sleep_Status:
+   344                     
+   345 001D2 11B6          	CALL                MCU_EnterIdle_Set
+   346 001D3 0000          	NOP
+   347 001D4 0000          	NOP
+   348 001D5 0000          	NOP
+   349 001D6 0003          	SLEP                                               ; Enter Sleep mode
+   350 001D7 0000          	NOP
+   351 001D8 0000          	NOP
+   352 001D9 0000          	NOP
+   353 001DA 0000          	NOP
+   354 001DB 0000          	NOP
+   355 001DC 0000          	NOP
+   356 001DD 11C6          	CALL                MCU_WakeUp_Set
+   357 001DE 0000          	NOP
+   358 001DF 0000          	NOP
+   359 001E0 0012          	RET
+   360 001E1 0000          	NOP
+   361                     
+   362                     
+   363                     ;===============================================
+   364                     ; Function: Delay 100us
+   365                     ; Input:    None
+   366                     ; Output:   None
+   367                     ; Crystal:  8MHz
+   368                     ;===============================================
+   369 001E2               DELAY_8MHz_X100US:
+   370 001E2 0051          	MOV                 TEMP1,A
+   371 001E3                 Delay_Loop_X100US:
+   372 001E3 18C4          	MOV                 A,@196     ;
+   373 001E4 0052          	MOV                 TEMP2,A
+   374 001E5                 Waiting_X100US:
+   375 001E5 05D2          	DJZ                 TEMP2
+   376 001E6 15E5          	JMP                 Waiting_X100US
+   377 001E7 05D1          	DJZ                 TEMP1
+   378 001E8 15E3          	JMP                 Delay_Loop_X100US
+   379 001E9 0012          	RET
+   380                     
+   381                     
+   382                     ;===============================================
+   383                     ; Function: Delay 20ms
+   384                     ; Input:    ACC
+   385                     ; Output:   None
+   386                     ; Crystal:  8MHz
+   387                     ;===============================================
+   388 001EA               DELAY_8MHz_X20MS:
+   389 001EA 0052          	MOV                 TEMP2, A
+   390 001EB                 Delay_Loop_X20MS:
+   391 001EB 18C8          	MOV                 A,@200
+   392 001EC 0051          	MOV                 TEMP1, A
+   393 001ED                 Waiting_X20MS:
+   394 001ED 18C6          	MOV                 A,@198
+   395 001EE 0050          	MOV                 TEMP,A
+   396 001EF 05D0          	DJZ                 TEMP
+   397 001F0 15EF          	JMP                 $-1
+   398 001F1 05D1          	DJZ                 TEMP1
+   399 001F2 15ED          	JMP                 Waiting_X20MS
+   400 001F3 05D2          	DJZ                 TEMP2
+   401 001F4 15EB          	JMP                 Delay_Loop_X20MS
+   402 001F5 0012          	RET
+   403                     	
+   404                     	
+   405                     	org  0x400
+   406 00400               testt:
+   407 00400 0000          	nop
+   408 00401 0000          	nop
+   409 00402 0000          	nop
+   410 00403 0000          	nop
+   411 00404 0000          	nop
+   412 00405 0000          	nop
+   413 00406 0000          	nop
+   414 00407 0000          	nop
+   415 00408 0000          	nop
+   416 00409 0000          	nop
+   417 0040A 0000          	nop
+   418 0040B 0000          	nop
+   419 0040C 0000          	nop
+   420 0040D 0000          	nop
+   421 0040E 0000          	nop
+   422 0040F 0000          	nop
+   423 00410 0000          	nop
+   424 00411 0000          	nop
+   425 00412 0000          	nop
+   426 00413 0000          	nop
+   427 00414 0000          	nop
+   428 00415 0000          	nop
+   429 00416 0000          	nop
+   430 00417 0000          	nop	
+   431 00418 0000          	nop
+   432 00419 0000          	nop
+   433 0041A 0000          	nop
+   434 0041B 0000          	nop
+   435 0041C 0000          	nop
+   436 0041D 0000          	nop
+   437 0041E 0000          	nop
+   438 0041F 0000          	nop
+   439 00420 0000          	nop
+   440 00421 0000          	nop
+   441 00422 0000          	nop
+   442 00423 0000          	nop
+   443                     	END	
+   444                     	
+   445                     	
+  0 Error(s), 10 Warning(s), 0 User Message(s)

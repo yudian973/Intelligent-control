@@ -1,0 +1,15 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+[Files]
+0=P520ksP44.H
+1=uartcomu.asm
+2=uartcomu.h
+3=CONFIG.H
+4=keyscan.asm
+5=keyscan.h
+6=P520ksP44.ASM
+[Backup]
+LastComment=

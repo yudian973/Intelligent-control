@@ -1,0 +1,65 @@
+;*********************************************************
+;功能:定时器1作为8位定时器,采用中断方式实现250ms定时
+;利用P90输出控制LED，以确定Timer1产生中断
+;*********************************************************
+;MCU：EM78P520N	
+;Oscillator： Fm：4MHz ；Fs：32.768KHz
+;Clock：2
+;WDT：Disable
+;编译软件：WicePlus Version 2.5080723
+
+INCLUDE"EM78P520N.INC"		;EM78P520N头文件
+	R4_TEMP	== 0X10			;用于进入中断时保存R4
+	ORG 	0X0000			;复位向量
+	JMP 	INITIAL
+	ORG 	0X000C			;定时器1中断向量
+	NOP
+	LJMP 	TMR1_INT		;跳转进入中断子程序使用"LJMP"
+;-----------------------------------------------------------------
+	ORG     0X020
+TMR1_INT:
+	MOV 	A, R4			;进入中断服务子程序先保存R4
+	MOV 	R4_TEMP, A
+	BANK	0
+	MOV 	A, @0B10000000
+	XOR 	ISR, A			;清定时器1中断标志
+	MOV 	A, @0X01
+	XOR 	PORT9, A
+	MOV 	A, R4_TEMP		;中断返回前还原R4
+	MOV 	R4, A	
+	RETI
+;-----------------------------------------------------------------
+INITIAL:
+	DISI					;关闭全局中断
+	CALL	SUB_RINIT		;调用定时器1初始化子程序
+	ENI						;使能中断
+;-----------------------------------------------------------------
+MAIN:
+	NOP 			;
+	NOP
+	JMP 	MAIN
+;-----------------------------------------------------------------	           
+SUB_RINIT:
+	MOV     A, @0X00
+	MOV     TWTCR, A		;禁止WDT
+	CLR 	PORT9			;Port9输出逻辑"0"
+	MOV 	A, @0X80             
+	MOV 	IMR, A			;使能定时器1中断
+	MOV 	A, @0X00
+	MOV 	ISR, A			;清除中断标志位T1IF 
+	BANK	2
+	MOV 	A, T1CR
+	AND 	A, @0X0C7		;选择定时器模式
+	OR  	A, @0X05		;定时器1预分频比设置为(1:64)
+	MOV 	T1CR, A
+	MOV 	A, @0X10
+	MOV 	TSR, A			;设置T1CSS1/T1CSS0=0:1(Fs),T1MOD=0(8BIT)
+	MOV 	A, @127
+	MOV 	T1PD, A			;定时时间：(1/32.768KHz)*(127+1)*64=250ms
+	BS  	T1EN			;定时器1启动
+	BANK	4					
+	CLR 	P9IOCR			;设置Port9为输出引脚
+	BANK	0    
+	RET 
+	END                              
+              

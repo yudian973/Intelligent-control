@@ -1,0 +1,50 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=ProjectFileName~EM78P510_EM78M611_EM198810.PrjPCB|ReportField=ProjectFullPath~D:\EP78P520_EM198850\project3\schematic3\AltiumProj\EM78P510_EM78M611_EM198810.PrjPCB|ReportField=Title~Bill of Materials For Project [EM78P510_EM78M611_EM198810.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~77|ReportField=ReportTime~10:08:26|ReportField=ReportDate~2009-11-4|ReportField=ReportDateTime~2009-11-4 10:08:26|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2009-11-4|ReportField=CurrentTime~10:08:24|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\EP78P520_EM198850\project3\schematic3\AltiumProj\EM78M611RX.SchDoc|ReportField=DocumentName~EM78M611RX.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2009-9-9|ReportField=Organization~|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~EM78P510_EM78M611_EM198810.PrjPCB|ReportField=DataSourceFullPath~D:\EP78P520_EM198850\project3\schematic3\AltiumProj\EM78P510_EM78M611_EM198810.PrjPCB
+Motor|Motor, General Kind|B1|sip2|Motor|1
+Cap Pol1|Polarized Capacitor (Radial)|C1, C14|c1206-2|Cap Pol1|2
+Cap|Capacitor|C2, C3, C4, C5, C6, C7, C10, C11, C13, C16|c0805|Cap|10
+Cap Pol1|Polarized Capacitor (Radial)|C8, C15|RB5|Cap Pol1|2
+Cap|Capacitor|C9|CAPL|Cap|1
+4148|Default Diode|D1|d1407|Diode|1
+LED1|Typical INFRARED GaAs LED|D2|led-3|LED0|1
+LED2|Typical INFRARED GaAs LED|D3|led-3|LED0|1
+LED|Typical INFRARED GaAs LED|D4|led-3|LED0|1
+353576-1|USB 1.1, Right Angle, SMT, A Type, Receptacle, 4 Position, White|J1|USBSD|353576-1|1
+HEADER 6||JP1, JP2, JP3, JP4|SIP6|HEADER 6|4
+HEADER 5||JP5|SIP5|HEADER 5|1
+Header 12|Header, 12-Pin|JP6, P2|SIP12|Header 12|2
+HEADER 7||JP7|CON5|HEADER 7|1
+Header 9H|Header, 9-Pin, Right Angle|P1, P7|rfm|Header 9H|2
+L1L2|Header, 4-Pin|P3, P5|SIP4|Header 4|2
+R1R2|Header, 4-Pin|P4, P6|SIP4|Header 4|2
+POWER|Header, 2-Pin|P8|SIP2|Header 2|1
+8050|NPN Bipolar Transistor|Q1|sot-23|NPN|1
+Res2|Resistor|R1, R2, R3, R4, R5, R8, R9|r0805|Res2|7
+Res2|Resistor|R6, R7|AXIAL0.4|Res2|2
+Rocker|jostick rocker|RP1, RP2|Rocker|Rocker|2
+Y|Switch|S1|KeyPad1|SW-PB|1
+X|Switch|S2|KeyPad1|SW-PB|1
+A|Switch|S3|KeyPad1|SW-PB|1
+B|Switch|S4|KeyPad1|SW-PB|1
+L1-5|Switch|S5|KeyPad1|SW-PB|1
+R1-6|Switch|S6|KeyPad1|SW-PB|1
+L2-7|Switch|S7|KeyPad1|SW-PB|1
+R2-8|Switch|S8|KeyPad1|SW-PB|1
+SELECT-9|Switch|S9|KeyPad2|SW-PB|1
+START-10|Switch|S10|KeyPad2|SW-PB|1
+MACRO|Switch|S11|KeyPad2|SW-PB|1
+MODE|Switch|S12|KeyPad2|SW-PB|1
+LSW1|Switch|S13|KeyPad1|SW-PB|1
+RSW2|Switch|S14|KeyPad1|SW-PB|1
+UP|Switch|S15|KeyPad1|SW-PB|1
+RIGHT|Switch|S16|KeyPad1|SW-PB|1
+DOWN|Switch|S17|KeyPad1|SW-PB|1
+LEFT|Switch|S18|KeyPad1|SW-PB|1
+RES|Switch|S19|SW-PB|SW-PB|1
+EM78P510||U1, U2||EM78P510-32, EM78P510-44|2
+BA020||U3|lcc12|BA020|1
+93C46||U4, U7|sop8|93C46|2
+EM78M611||U5|DIP24|EM78M611-24|1
+24C02||U6|sop8|24C02|1
+4M|Crystal Oscillator|Y1|XTAL1|XTAL|1
+32768|Crystal Oscillator|Y2|XTAL2|XTAL|1
+6M|Crystal Oscillator|Y3|CRY|XTAL|1

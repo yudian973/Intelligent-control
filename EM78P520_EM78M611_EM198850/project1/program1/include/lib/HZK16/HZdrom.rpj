@@ -1,0 +1,30 @@
+[Project]
+ProjectName=D:\EPD3331_EPH1610\program1\drom\HZdrom.rpj
+BODY=?
+Internal Data ROM=524288
+External Data ROM=524288
+[LastOpenFiles]
+File Num=2
+File0=D:\EPD3331_EPH1610\program1\drom\HZrom.dat
+File1=D:\EPD3331_EPH1610\program1\LcdDisplay.ASM
+[Source Files in Project(Internal)]
+File Num=1
+File0=D:\EPD3331_EPH1610\program1\drom\HZrom.dat
+[Source Files in Project(External)]
+File Num=0
+[Map Files in Project]
+File Num=2
+File0=D:\EPD3331_EPH1610\program1\drom\HZdrom_I.hdr
+File1=D:\EPD3331_EPH1610\program1\drom\HZdrom_E.hdr
+[D:\EPD3331_EPH1610\program1\drom\HZdrom_I.hdr]
+Rectangle=0227 0005 0758 0361
+Iconized=0
+Maximized=0
+[D:\EPD3331_EPH1610\program1\drom\HZrom.dat]
+Rectangle=0010 0029 0546 0331
+Iconized=0
+Maximized=0
+[D:\EPD3331_EPH1610\program1\LcdDisplay.ASM]
+Rectangle=0088 0116 0805 0483
+Iconized=0
+Maximized=0

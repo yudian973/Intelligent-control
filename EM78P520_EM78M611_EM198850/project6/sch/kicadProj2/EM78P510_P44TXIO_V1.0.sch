@@ -1,0 +1,624 @@
+EESchema Schematic File Version 2  date 2009-12-21 16:40:34
+LIBS:power,device,transistors,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,opto,atmel,contrib,valves,elan,.\EM78P510_P44TXIO_V1.0.cache
+EELAYER 24  0
+EELAYER END
+$Descr A4 11700 8267
+Sheet 1 1
+Title "noname.sch"
+Date "15 jun 2009"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	5475 725  5475 1225
+Wire Wire Line
+	5275 725  5275 1225
+Wire Wire Line
+	4575 725  4575 1225
+Wire Wire Line
+	5175 5425 5175 4525
+Wire Wire Line
+	1750 975  1750 1525
+Wire Wire Line
+	4675 5425 4675 4525
+Wire Wire Line
+	4500 7050 6300 7050
+Wire Wire Line
+	2450 975  2450 1525
+Wire Wire Line
+	1550 1425 1550 1525
+Connection ~ 5300 7050
+Wire Wire Line
+	5300 7250 5300 7050
+Wire Wire Line
+	3425 3175 3075 3175
+Wire Wire Line
+	7125 3375 6725 3375
+Wire Wire Line
+	7125 3175 6725 3175
+Wire Wire Line
+	1725 4125 3425 4125
+Wire Wire Line
+	3425 3075 2325 3075
+Wire Wire Line
+	2325 3075 2325 3725
+Wire Wire Line
+	3425 4125 3425 4325
+Wire Wire Line
+	3425 3725 3425 3375
+Wire Wire Line
+	5575 5425 5575 4525
+Wire Wire Line
+	5375 5425 5375 4525
+Wire Wire Line
+	3425 2775 3075 2775
+Wire Wire Line
+	2975 2675 3425 2675
+Wire Wire Line
+	2975 2475 3425 2475
+Connection ~ 6750 4800
+Wire Wire Line
+	6750 4700 6750 4800
+Wire Wire Line
+	6950 5200 6500 5200
+Wire Wire Line
+	5000 6150 5000 6850
+Wire Wire Line
+	5350 6150 5350 6850
+Wire Wire Line
+	3025 7150 3025 5050
+Wire Wire Line
+	1825 7150 1825 5050
+Wire Wire Line
+	1375 6500 3225 6500
+Wire Wire Line
+	1375 5700 3225 5700
+Wire Wire Line
+	2650 975  2650 1525
+Wire Wire Line
+	2250 975  2250 1525
+Wire Wire Line
+	2050 975  2050 1525
+Wire Wire Line
+	1950 975  1950 1525
+Wire Wire Line
+	2150 975  2150 1525
+Wire Wire Line
+	2550 975  2550 1525
+Wire Wire Line
+	1375 6100 3225 6100
+Wire Wire Line
+	1375 6900 3225 6900
+Wire Wire Line
+	2225 7150 2225 5050
+Wire Wire Line
+	2625 7150 2625 5050
+Wire Wire Line
+	4300 6850 4300 6150
+Wire Wire Line
+	4650 6150 4650 6850
+Wire Wire Line
+	6950 4800 6500 4800
+Wire Wire Line
+	6750 5350 6750 5200
+Connection ~ 6750 5200
+Wire Wire Line
+	2975 2375 3425 2375
+Wire Wire Line
+	2975 2575 3425 2575
+Wire Wire Line
+	3425 2875 3225 2875
+Wire Wire Line
+	4875 5425 4875 4525
+Wire Wire Line
+	5275 5425 5275 4525
+Wire Wire Line
+	5475 5425 5475 4525
+Wire Wire Line
+	3425 3275 2825 3275
+Wire Wire Line
+	2825 3275 2825 3725
+Wire Wire Line
+	3425 2975 1725 2975
+Wire Wire Line
+	1725 2975 1725 3725
+Wire Wire Line
+	7125 3075 6725 3075
+Wire Wire Line
+	7125 3275 6725 3275
+Wire Wire Line
+	4575 4525 4575 5425
+Wire Wire Line
+	1650 1425 1650 1525
+Wire Wire Line
+	2350 975  2350 1525
+Wire Wire Line
+	5850 5750 5850 6150
+Wire Wire Line
+	6300 5750 6300 6150
+Wire Wire Line
+	1850 975  1850 1525
+Wire Wire Line
+	5075 5425 5075 4525
+Wire Wire Line
+	4675 725  4675 1225
+Wire Wire Line
+	5375 725  5375 1225
+Wire Wire Line
+	5175 725  5175 1225
+NoConn ~ 4775 1225
+NoConn ~ 4875 1225
+NoConn ~ 5075 1225
+Text Label 4575 1225 1    60   ~ 0
+TX
+Text Label 4675 1225 1    60   ~ 0
+RX
+$Comp
+L CONN_12 P2
+U 1 1 4A76C03F
+P 2100 1875
+F 0 "P2" V 2050 1875 60  0000 C CNN
+F 1 "CONN_12" V 2150 1875 60  0000 C CNN
+	1    2100 1875
+	0    -1   1    0   
+$EndComp
+NoConn ~ 4975 4525
+Text Label 5175 5425 1    60   ~ 0
+ReferResis
+Text Label 5075 5425 1    60   ~ 0
+LeakResis
+Text Label 1750 1425 1    50   ~ 0
+LeakResis
+Text Label 1850 1425 1    50   ~ 0
+ReferResis
+Text Label 4675 5425 1    50   ~ 0
+P82_LED2
+Text Label 6300 6150 1    50   ~ 0
+P82_LED2
+$Comp
+L DIODE D3
+U 1 1 4A4F22D1
+P 6300 6850
+F 0 "D3" H 6300 6950 40  0000 C CNN
+F 1 "LED" H 6300 6750 40  0000 C CNN
+	1    6300 6850
+	0    1    1    0   
+$EndComp
+$Comp
+L R R5
+U 1 1 4A4F22BF
+P 6300 6400
+F 0 "R5" V 6380 6400 50  0000 C CNN
+F 1 "471" V 6300 6400 50  0000 C CNN
+	1    6300 6400
+	1    0    0    -1  
+$EndComp
+Text HLabel 7850 7425 0    50   Input ~ 0
+EM78P510 airui kescan v1.0
+NoConn ~ 4775 4525
+$Comp
+L SW_PUSH_SMALL SW12
+U 1 1 4A35E07E
+P 1925 6800
+F 0 "SW12" H 2075 6910 30  0000 C CNN
+F 1 "LSW1" H 1925 6721 30  0000 C CNN
+	1    1925 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW3
+U 1 1 4A35E074
+P 3125 5600
+F 0 "SW3" H 3275 5710 30  0000 C CNN
+F 1 "RSW2" H 3125 5521 30  0000 C CNN
+	1    3125 5600
+	1    0    0    -1  
+$EndComp
+Text Label 2150 1425 1    50   ~ 0
+LSW1_P77
+Text Label 2650 1425 1    50   ~ 0
+RSW2_P94
+$Comp
+L R R4
+U 1 1 4A35C3B7
+P 5850 6400
+F 0 "R4" V 5930 6400 50  0000 C CNN
+F 1 "471" V 5850 6400 50  0000 C CNN
+	1    5850 6400
+	1    0    0    -1  
+$EndComp
+Text Label 4575 5425 1    50   ~ 0
+P81_LED1
+NoConn ~ 4975 1225
+$Comp
+L VDD #PWR7
+U 1 1 4A09129A
+P 3075 3175
+F 0 "#PWR7" H 3075 3275 30  0001 C CNN
+F 1 "VDD" H 3075 3285 30  0000 C CNN
+	1    3075 3175
+	0    -1   -1   0   
+$EndComp
+Text Label 4875 5425 1    50   ~ 0
+P84_MOTOR
+$Comp
+L DGND #PWR11
+U 1 1 4A08EC41
+P 3425 4325
+F 0 "#PWR11" H 3425 4325 40  0001 C CNN
+F 1 "DGND" H 3425 4255 40  0000 C CNN
+	1    3425 4325
+	1    0    0    -1  
+$EndComp
+$Comp
+L VDD #PWR5
+U 1 1 4A08EA41
+P 3075 2775
+F 0 "#PWR5" H 3075 2875 30  0001 C CNN
+F 1 "VDD" H 3075 2885 30  0000 C CNN
+	1    3075 2775
+	0    -1   -1   0   
+$EndComp
+$Comp
+L DGND #PWR6
+U 1 1 4A08EA28
+P 3225 2875
+F 0 "#PWR6" H 3225 2875 40  0001 C CNN
+F 1 "DGND" H 3225 2805 40  0000 C CNN
+	1    3225 2875
+	0    1    1    0   
+$EndComp
+$Comp
+L EM78P510_44PIN U2
+U 1 1 4A08E769
+P 5075 2875
+F 0 "U2" H 3835 4235 60  0000 C CNN
+F 1 "EM78P510_44PIN" H 5075 2875 60  0000 C CNN
+	1    5075 2875
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED D2
+U 1 1 49DEB5D5
+P 5850 6850
+F 0 "D2" H 5850 6750 40  0000 C CNN
+F 1 "LED" H 5850 6950 40  0000 C CNN
+	1    5850 6850
+	0    -1   1    0   
+$EndComp
+Text Label 5850 6150 1    50   ~ 0
+P81_LED1
+Text Label 5000 6550 1    50   ~ 0
+PB1_LEFT
+Text Label 4650 6550 1    50   ~ 0
+PB2_DOWN
+Text Label 5350 6550 1    50   ~ 0
+PB0_RIGHT
+Text Label 4300 6550 1    50   ~ 0
+PB3_UP
+Text Label 5175 1225 1    50   ~ 0
+PB3_UP
+Text Label 5475 1225 1    50   ~ 0
+PB0_RIGHT
+Text Label 5375 1225 1    50   ~ 0
+PB1_LEFT
+Text Label 5275 1225 1    50   ~ 0
+PB2_DOWN
+$Comp
+L VDD #PWR14
+U 1 1 49C20311
+P 6750 4700
+F 0 "#PWR14" H 6750 4800 30  0001 C CNN
+F 1 "VDD" H 6750 4810 30  0000 C CNN
+	1    6750 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR17
+U 1 1 49C202F8
+P 6750 5350
+F 0 "#PWR17" H 6750 5350 30  0001 C CNN
+F 1 "GND" H 6750 5280 30  0001 C CNN
+	1    6750 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C8
+U 1 1 49C202BE
+P 6950 5000
+F 0 "C8" H 7000 5100 50  0000 L CNN
+F 1 "4.7uF" H 7000 4900 50  0000 L CNN
+	1    6950 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C7
+U 1 1 49C202B1
+P 6500 5000
+F 0 "C7" H 6550 5100 50  0000 L CNN
+F 1 "104" H 6550 4900 50  0000 L CNN
+	1    6500 5000
+	1    0    0    -1  
+$EndComp
+Text Label 2975 2675 0    50   ~ 0
+P77
+Text Label 2975 2575 0    50   ~ 0
+P76
+Text Label 2975 2475 0    50   ~ 0
+P75
+Text Label 2975 2375 0    50   ~ 0
+P74
+Text Label 1375 6900 0    60   ~ 0
+P77
+Text Label 1375 6500 0    60   ~ 0
+P76
+Text Label 1375 6100 0    60   ~ 0
+P75
+$Comp
+L GND #PWR18
+U 1 1 49C20019
+P 5300 7250
+F 0 "#PWR18" H 5300 7250 30  0001 C CNN
+F 1 "GND" H 5300 7180 30  0001 C CNN
+	1    5300 7250
+	1    0    0    -1  
+$EndComp
+Text Label 6725 3375 0    60   ~ 0
+P94
+Text Label 6725 3275 0    60   ~ 0
+P95
+Text Label 6725 3175 0    60   ~ 0
+P96
+Text Label 6725 3075 0    60   ~ 0
+P97
+Text Label 1375 5700 0    60   ~ 0
+P74
+Text Label 3025 5250 1    60   ~ 0
+P94
+Text Label 2625 5250 1    60   ~ 0
+P95
+Text Label 2225 5250 1    60   ~ 0
+P96
+Text Label 1825 5250 1    60   ~ 0
+P97
+$Comp
+L SW_PUSH_SMALL SW15
+U 1 1 49C1F8B5
+P 4400 6950
+F 0 "SW15" H 4550 7060 30  0000 C CNN
+F 1 "up" H 4400 6871 30  0000 C CNN
+	1    4400 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW16
+U 1 1 49C1F898
+P 5450 6950
+F 0 "SW16" H 5600 7060 30  0000 C CNN
+F 1 "right" H 5450 6871 30  0000 C CNN
+	1    5450 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW17
+U 1 1 49C1F853
+P 4750 6950
+F 0 "SW17" H 4900 7060 30  0000 C CNN
+F 1 "down" H 4750 6871 30  0000 C CNN
+	1    4750 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW18
+U 1 1 49C1F84B
+P 5100 6950
+F 0 "SW18" H 5250 7060 30  0000 C CNN
+F 1 "left" H 5100 6871 30  0000 C CNN
+	1    5100 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW14
+U 1 1 49C1F811
+P 3125 6800
+F 0 "SW14" H 3275 6910 30  0000 C CNN
+F 1 "D_4" H 3125 6721 30  0000 C CNN
+	1    3125 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW13
+U 1 1 49C1F80C
+P 2325 6800
+F 0 "SW13" H 2475 6910 30  0000 C CNN
+F 1 "start_10" H 2325 6721 30  0000 C CNN
+	1    2325 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW11
+U 1 1 49C1F802
+P 3125 6400
+F 0 "SW11" H 3275 6510 30  0000 C CNN
+F 1 "MACRO" H 3125 6321 30  0000 C CNN
+	1    3125 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW10
+U 1 1 49C1F7FF
+P 2725 6400
+F 0 "SW10" H 2875 6510 30  0000 C CNN
+F 1 "C_3" H 2725 6321 30  0000 C CNN
+	1    2725 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW9
+U 1 1 49C1F7FB
+P 2325 6400
+F 0 "SW9" H 2475 6510 30  0000 C CNN
+F 1 "R1_6" H 2325 6321 30  0000 C CNN
+	1    2325 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW8
+U 1 1 49C1F7F7
+P 1925 6400
+F 0 "SW8" H 2075 6510 30  0000 C CNN
+F 1 "select_9" H 1925 6321 30  0000 C CNN
+	1    1925 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW7
+U 1 1 49C1F7F0
+P 3125 6000
+F 0 "SW7" H 3275 6110 30  0000 C CNN
+F 1 "R2_8" H 3125 5921 30  0000 C CNN
+	1    3125 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW6
+U 1 1 49C1F7EC
+P 2725 6000
+F 0 "SW6" H 2875 6110 30  0000 C CNN
+F 1 "MODE" H 2725 5921 30  0000 C CNN
+	1    2725 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW5
+U 1 1 49C1F7E4
+P 2325 6000
+F 0 "SW5" H 2475 6110 30  0000 C CNN
+F 1 "B_2" H 2325 5921 30  0000 C CNN
+	1    2325 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW4
+U 1 1 49C1F7DD
+P 1925 6000
+F 0 "SW4" H 2075 6110 30  0000 C CNN
+F 1 "L1_5" H 1925 5921 30  0000 C CNN
+	1    1925 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW2
+U 1 1 49C1F7CB
+P 2725 5600
+F 0 "SW2" H 2875 5710 30  0000 C CNN
+F 1 "L2_7" H 2725 5521 30  0000 C CNN
+	1    2725 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH_SMALL SW1
+U 1 1 49C1F7B3
+P 1925 5600
+F 0 "SW1" H 2075 5710 30  0000 C CNN
+F 1 "A_1" H 1925 5521 30  0000 C CNN
+	1    1925 5600
+	1    0    0    -1  
+$EndComp
+Text Label 5275 5425 1    50   ~ 0
+LY_P90/AD3
+Text Label 5375 5425 1    50   ~ 0
+LX_P91/AD2
+Text Label 5475 5425 1    50   ~ 0
+RY_P92/AD1
+Text Label 5575 5425 1    50   ~ 0
+RX_P93/AD0
+$Comp
+L GND #PWR15
+U 1 1 49C1F594
+P 1550 1425
+F 0 "#PWR15" H 1550 1425 30  0001 C CNN
+F 1 "GND" H 1550 1355 30  0001 C CNN
+	1    1550 1425
+	-1   0    0    1   
+$EndComp
+$Comp
+L VDD #PWR16
+U 1 1 49C1F588
+P 1650 1425
+F 0 "#PWR16" H 1650 1525 30  0001 C CNN
+F 1 "VDD" H 1650 1535 30  0000 C CNN
+	1    1650 1425
+	1    0    0    -1  
+$EndComp
+Text Label 2550 1425 1    50   ~ 0
+RSW2_P74
+Text Label 2250 1425 1    50   ~ 0
+LSW1_P97
+Text Label 2350 1425 1    50   ~ 0
+RY_P92/AD1
+Text Label 2450 1425 1    50   ~ 0
+RX_P93/AD0
+Text Label 1950 1425 1    50   ~ 0
+LY_P90/AD3
+Text Label 2050 1425 1    50   ~ 0
+LX_P91/AD2
+$Comp
+L C C6
+U 1 1 49C1DD20
+P 3425 3925
+F 0 "C6" V 3525 4075 50  0000 C CNN
+F 1 "40P" V 3525 3775 50  0000 C CNN
+	1    3425 3925
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C5
+U 1 1 49C1DD1C
+P 2825 3925
+F 0 "C5" V 2925 4075 50  0000 C CNN
+F 1 "40P" V 2925 3775 50  0000 C CNN
+	1    2825 3925
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C4
+U 1 1 49C1DD15
+P 2325 3925
+F 0 "C4" V 2425 4075 50  0000 C CNN
+F 1 "30P" V 2425 3775 50  0000 C CNN
+	1    2325 3925
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C3
+U 1 1 49C1DD0E
+P 1725 3925
+F 0 "C3" V 1825 4075 50  0000 C CNN
+F 1 "30P" V 1825 3775 50  0000 C CNN
+	1    1725 3925
+	-1   0    0    1   
+$EndComp
+$Comp
+L CRYSTAL X2
+U 1 1 49C1DCE2
+P 3125 3725
+F 0 "X2" H 3125 3875 60  0000 C CNN
+F 1 "32.768KHz" H 3125 3575 60  0000 C CNN
+	1    3125 3725
+	-1   0    0    1   
+$EndComp
+$Comp
+L CRYSTAL X1
+U 1 1 49C1DCD3
+P 2025 3725
+F 0 "X1" H 2025 3875 60  0000 C CNN
+F 1 "4MHz/8MHz" H 2025 3575 60  0000 C CNN
+	1    2025 3725
+	-1   0    0    1   
+$EndComp
+$EndSCHEMATC

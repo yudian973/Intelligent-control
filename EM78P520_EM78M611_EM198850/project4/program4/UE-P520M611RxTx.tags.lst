@@ -1,0 +1,977 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+$Data_H_L	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^$Data_H_L:$/;"	l
+$Data_H_L	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^$Data_H_L:$/;"	l
+$Read_Data1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^$Read_Data1:$/;"	l
+$Read_Data1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^$Read_Data1:$/;"	l
+$Read_Data2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^$Read_Data2:$/;"	l
+$Read_Data2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^$Read_Data2:$/;"	l
+$Write_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^$Write_Data:$/;"	l
+$Write_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^$Write_Data:$/;"	l
+ADCJUDGE_DONE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  ADCJUDGE_DONE:$/;"	l
+ADCJUDGE_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  ADCJUDGE_LOOP:$/;"	l
+ADC_Rocker_KeyScan	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^ADC_Rocker_KeyScan:$/;"	l
+AD_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^AD_INT:$/;"	l
+Add_TimeCount	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^ Add_TimeCount:$/;"	l
+Analog_Reg_Test	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Analog_Reg_Test:$/;"	l
+Analog_Reg_Test	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Analog_Reg_Test:$/;"	l
+AreaJudge_Button	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^AreaJudge_Button:$/;"	l
+AreaJudge_direction	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^AreaJudge_direction:$/;"	l
+ArithmeticIns	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^  ArithmeticIns:$/;"	l
+B00100000	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^TX_BUF                  EQU     0B00100000  ;0x20(bank 0)$/;"	v
+BC_EP0_FLAG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  BC_EP0_FLAG:$/;"	l
+BSTART	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^BSTART:$/;"	l
+BSTOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^BSTOP:$/;"	l
+Back_Discharge	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Back_Discharge:$/;"	l
+Begin_HID_Report_Table1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^	Begin_HID_Report_Table1:$/;"	l
+Begin_HID_Report_Table2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^	Begin_HID_Report_Table2:$/;"	l
+Begin_HID_Report_Table3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^	Begin_HID_Report_Table3:$/;"	l
+CHANGE_ADDRESS_VALUE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^CHANGE_ADDRESS_VALUE:$/;"	l
+CHANGE_ADDRESS_VALUE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^CHANGE_ADDRESS_VALUE:$/;"	l
+CHN_FLAG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+CHN_FLAG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+CHN_FLAG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+CH_NO	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+CH_NO	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+CH_NO	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+CH_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^CH_TABLE:$/;"	l
+CH_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^CH_TABLE:$/;"	l
+CH_TABLE_END	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  CH_TABLE_END:$/;"	l
+CH_TABLE_START	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  CH_TABLE_START:$/;"	l
+CLASS_DESCRIPTOR_TYPE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  CLASS_DESCRIPTOR_TYPE:$/;"	l
+CLASS_SPECIFIC_REQUESTS	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^CLASS_SPECIFIC_REQUESTS:$/;"	l
+CLR_PKTLOSTCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^CLR_PKTLOSTCNT:$/;"	l
+CLR_PKTLOSTCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^CLR_PKTLOSTCNT:$/;"	l
+CLR_STATUS_C	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  CLR_STATUS_C:$/;"	l
+CMOSSensor_Function	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOSSensor_Function:$/;"	l
+CMOS_GetData	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_GetData:$/;"	l
+CMOS_Init	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_Init:$/;"	l
+CMOS_Init_Exit	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  CMOS_Init_Exit:$/;"	l
+CMOS_PowerDown	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_PowerDown:$/;"	l
+CMOS_SPI_READ	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_SPI_READ:$/;"	l
+CMOS_SPI_READ_WRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_SPI_READ_WRITE:$/;"	l
+CMOS_SPI_WRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_SPI_WRITE:$/;"	l
+CMOS_Sleep_Exit	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  CMOS_Sleep_Exit:$/;"	l
+CMOS_Uart_Transmit	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  CMOS_Uart_Transmit:$/;"	l
+CMOS_WakeUP	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^CMOS_WakeUP:$/;"	l
+CMOS_WakeUp_Exit	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  CMOS_WakeUp_Exit:$/;"	l
+CONFIG_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  CONFIG_LOOP:$/;"	l
+CONFIG_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  CONFIG_SET:$/;"	l
+CONFIG_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^CONFIG_TABLE:$/;"	l
+CONTROL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^FIFO_PTR                EQU     82          ;FIFO POINTER CONTROL=REG 82$/;"	v
+CONTROL	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^FIFO_PTR                EQU     82              ; FIFO POINTER CONTROL=REG 82$/;"	v
+COmmAND	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_For_EM78M611.H	/^;  93C46 INSTRUCTION  COmmAND$/;"	v
+COmmAND	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_For_EM78P520.H	/^;  93C46 INSTRUCTION  COmmAND$/;"	v
+CheakAreaFinish_Left	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakAreaFinish_Left:$/;"	l
+CheakAreaFinish_Right_x	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakAreaFinish_Right_x:$/;"	l
+CheakAreaFinish_Right_y	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakAreaFinish_Right_y:$/;"	l
+CheakBottom_Left	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakBottom_Left:$/;"	l
+CheakBottom_Right_x	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakBottom_Right_x:$/;"	l
+CheakBottom_Right_y	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakBottom_Right_y:$/;"	l
+CheakMiddle_Left	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakMiddle_Left:$/;"	l
+CheakMiddle_Right_x	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakMiddle_Right_x:$/;"	l
+CheakMiddle_Right_y	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakMiddle_Right_y:$/;"	l
+CheakTop_Left	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakTop_Left:$/;"	l
+CheakTop_Right_x	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakTop_Right_x:$/;"	l
+CheakTop_Right_y	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  CheakTop_Right_y:$/;"	l
+Check_Digit_Reg	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Check_Digit_Reg:$/;"	l
+Check_Digit_Reg	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Check_Digit_Reg:$/;"	l
+Clear_RX1_LossframeCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Clear_RX1_LossframeCNT:$/;"	l
+Clear_RX2_LossframeCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Clear_RX2_LossframeCNT:$/;"	l
+Click_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Click_Select:$/;"	l
+Click_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Click_Select:$/;"	l
+Cmos_UartDebug_Function	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^Cmos_UartDebug_Function:$/;"	l
+CommTypeScan_Func	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^CommTypeScan_Func:$/;"	l
+CommuStatusFlag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+CommuStatusFlag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+CommuStatusFlag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+Commu_Status_Inital	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^  Commu_Status_Inital:$/;"	l
+Communicating_CHN_FLAG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^  Communicating_CHN_FLAG:$/;"	l
+ComuCycleNum_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^ComuCycleNum_End:$/;"	l
+ComuCycleNum_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^ComuCycleNum_Loop:$/;"	l
+ComuEndNum_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^ComuEndNum_Loop:$/;"	l
+ConnectKey_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^ConnectKey_Scan:$/;"	l
+ConnectKey_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^ConnectKey_Scan:$/;"	l
+Continue_Fill_In_8Byte	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Continue_Fill_In_8Byte:$/;"	l
+Conversion_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Conversion_Data:$/;"	l
+Creat_TX_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^  Creat_TX_ID:$/;"	l
+Cycle_Waiting_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Cycle_Waiting_End:$/;"	l
+DATA	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^PID_DATA_Buffer                 EQU     0X20 ; PID DATA, not used$/;"	v
+DATA	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^PID_DATA_Buffer                 EQU     0X20 ; PID DATA, not used$/;"	v
+DECODE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^DECODE:$/;"	l
+DELAY_8MHz_X100US	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^DELAY_8MHz_X100US:$/;"	l
+DELAY_8MHz_X10US	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^DELAY_8MHz_X10US:$/;"	l
+DELAY_X100US	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^DELAY_X100US:$/;"	l
+DELAY_X10US	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^DELAY_X10US:$/;"	l
+DEVICE_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  DEVICE_LOOP:$/;"	l
+DEVICE_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  DEVICE_SET:$/;"	l
+DEVICE_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^DEVICE_TABLE:$/;"	l
+DataG_0	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_0:$/;"	l
+DataG_135	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_135:$/;"	l
+DataG_180	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_180:$/;"	l
+DataG_225	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_225:$/;"	l
+DataG_270	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_270:$/;"	l
+DataG_315	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_315:$/;"	l
+DataG_45	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_45:$/;"	l
+DataG_90	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DataG_90:$/;"	l
+DataShiftCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^reg_acc             EQU        DataShiftCNT$/;"	v
+Dblclick_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Dblclick_Select:                                            ; Into Forcelink Mode:$/;"	l
+Dblclick_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Dblclick_Select:                                  ; Into Forcelink Mode:$/;"	l
+DealWith_ADC_Analog	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DealWith_ADC_Analog:$/;"	l
+DealWith_ADC_Digital	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  DealWith_ADC_Digital:$/;"	l
+DealWith_Direction_Digital	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^DealWith_Direction_Digital:$/;"	l
+DealWith_HatSwitch_Analog	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^DealWith_HatSwitch_Analog:$/;"	l
+Default	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CmosSensorTypeSelect    EQU     0      ; select type,Default=0(MM0200DA)$/;"	v
+Delay_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^  Delay_Loop:$/;"	l
+Delay_Loop_X100US	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Delay_Loop_X100US:$/;"	l
+Delay_Loop_X10US	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Delay_Loop_X10US:$/;"	l
+Delay_Loop_X10US	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^  Delay_Loop_X10US:$/;"	l
+Detected_Connect_Key	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Detected_Connect_Key:$/;"	l
+Digit_Reg_Test	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Digit_Reg_Test:$/;"	l
+Digit_Reg_Test	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Digit_Reg_Test:$/;"	l
+DirectionCtrl	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+DirectionCtrl	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+DirectionCtrl	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+Direction_KeyCheck	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Direction_KeyCheck:$/;"	l
+Disable_ALLdevice	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^Disable_ALLdevice:$/;"	l
+ELAN	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.h	/^; Company      :  ELAN$/;"	v
+ELAN	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; Company      :  ELAN$/;"	v
+ELAN	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^; Company       : ELAN$/;"	v
+EM198850_RESET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^EM198850_RESET:$/;"	l
+EM198850_RESET	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^EM198850_RESET:$/;"	l
+EM78M611	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.h	/^; Filename     :  EM78M611$/;"	v
+EM78M611	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; Filename     :  EM78M611$/;"	v
+END_DESCRIPTOR	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  END_DESCRIPTOR:$/;"	l
+END_Fill_In_8Byte_Cycle	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  END_Fill_In_8Byte_Cycle:$/;"	l
+ENTER_IDLE_MODE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^ENTER_IDLE_MODE:$/;"	l
+ENTER_IDLE_MODE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^ENTER_IDLE_MODE:$/;"	l
+ENTER_RF_SLEEP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^ENTER_RF_SLEEP:$/;"	l
+ENTER_TX_BUFFER_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^ENTER_TX_BUFFER_ACK:$/;"	l
+ENTER_TX_BUFFER_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^ENTER_TX_BUFFER_ACK:$/;"	l
+ENTER_TX_BUFFER_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^ENTER_TX_BUFFER_NACK:$/;"	l
+EP0_REPORT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^EP0_REPORT:$/;"	l
+EP1_REPORT_RX1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  EP1_REPORT_RX1:$/;"	l
+EP1_REPORT_RX2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  EP1_REPORT_RX2:$/;"	l
+EP1_Report_1st	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^EP1_Report_1st:$/;"	l
+EP1_Report_2nd	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^EP1_Report_2nd:$/;"	l
+EP1_Report_Default	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^EP1_Report_Default:$/;"	l
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^MassageDisplay                  EQU     0     ; massage display switch$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^RetryCNT                        EQU     0     ; transmit 0 Times Retry$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^SetComuSyncTime                 EQU     4     ; 4ms sync header time$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^SetComuTime                     EQU     4     ; 4ms Communicte System$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^USED_PID_FUNCTION               EQU     0     ; 1:used this function; 0:not used$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^FIFO_REG                EQU     80          ;FIFO POINTER=REG 80$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.h	/^COMMU_T_DEBUG                   EQU     1$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^RX2                             EQU     1     ; CHN_FLAG[1]$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^RX6                             EQU     5     ; CHN_FLAG[5]$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^MassageDisplay                  EQU     0     ; massage display switch$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^SetComuSyncTime                 EQU     4     ; 2ms sync header time$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^SetComuTime                     EQU     4     ; 4ms Communicte System$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^SetSleepTime                    EQU     250   ; Into sleep Time=(SetSleepTime+1)*2s, default=250$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CMOS_DEBUG             EQU     0       ; CMOS function debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CMOS_I2C_FUNCTION      EQU     0       ; Enable cmos I2C function$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CMOS_SPI_FUNCTION      EQU     1       ; Enable cmos SPI function$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CMOS_T_DEBUG           EQU     0       ; CMOS time test debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CMOS_UART_DEBUG        EQU     1       ; CMOS function debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CMOS_UART_T_DEBUG      EQU     1       ; CMOS time test debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CmosScanTimeCtrl       EQU     0       ; T=(KeyScanTimeCtrl+1)*8ms             KeyScanTimeCtrl≥0$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^FIFO_REG                EQU     80              ; FIFO POINTER=REG 80$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^DelayTime               EQU     2     ; Delay Time$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^EEPROM_DEBUG            EQU     0     ; enable eeprom debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^REEPROM_T_DEBUG         EQU     0     ; Dispaley read eeprom debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^RetryCNT                EQU     0     ; transmit 0 Times$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^SLEEP_DEBUG             EQU     0     ; sleep function debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^SLEEP_T_DEBUG           EQU     0     ; slepp time test debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.h	/^WEEPROM_T_DEBUG         EQU     0     ; Dispaley write eeprom debug$/;"	v
+EQU	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^SPI_FUNCTION                    EQU     1 ; enable spi function$/;"	v
+EXIT_CMOS_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  EXIT_CMOS_FUNCTION:$/;"	l
+EXIT_IDLE_MODE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^EXIT_IDLE_MODE:$/;"	l
+EXTERNAL_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^EXTERNAL_INT:$/;"	l
+Edge_Judge_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^Edge_Judge_End:$/;"	l
+Edge_Judge_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  Edge_Judge_End:$/;"	l
+End_HID_Report_Table1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^	End_HID_Report_Table1:$/;"	l
+End_HID_Report_Table2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^	End_HID_Report_Table2:$/;"	l
+End_HID_Report_Table3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^	End_HID_Report_Table3:$/;"	l
+Enter_RX_Buffer_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_RX_Buffer_ACK:$/;"	l
+Enter_RX_Buffer_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_RX_Buffer_ACK:$/;"	l
+Enter_RX_Buffer_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_RX_Buffer_NACK:$/;"	l
+Enter_RX_Buffer_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_RX_Buffer_NACK:$/;"	l
+Enter_RX_Direct_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_RX_Direct_ACK:$/;"	l
+Enter_RX_Direct_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_RX_Direct_ACK:$/;"	l
+Enter_RX_Direct_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_RX_Direct_NACK:$/;"	l
+Enter_RX_Direct_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_RX_Direct_NACK:$/;"	l
+Enter_Sleep_Status	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^Enter_Sleep_Status:$/;"	l
+Enter_StandbyII_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_StandbyII_Mode:$/;"	l
+Enter_StandbyII_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_StandbyII_Mode:$/;"	l
+Enter_StandbyI_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_StandbyI_Mode:$/;"	l
+Enter_StandbyI_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_StandbyI_Mode:$/;"	l
+Enter_TX_Buffer_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_TX_Buffer_NACK:$/;"	l
+Enter_TX_Direct_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_TX_Direct_ACK:$/;"	l
+Enter_TX_Direct_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_TX_Direct_ACK:$/;"	l
+Enter_TX_Direct_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^Enter_TX_Direct_NACK:$/;"	l
+Enter_TX_Direct_NACK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^Enter_TX_Direct_NACK:$/;"	l
+Exit_RSSI_Check	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Exit_RSSI_Check:$/;"	l
+Exit_RSSI_Check	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Exit_RSSI_Check:$/;"	l
+FINISH	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  FINISH:$/;"	l
+FOR_EM78P520	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^; descripition  : FOR_EM78P520,$/;"	v
+FRAME_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^FRAME_TABLE:$/;"	l
+FRAME_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^FRAME_TABLE:$/;"	l
+Falling_Edge_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^Falling_Edge_Judge:$/;"	l
+Falling_Edge_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  Falling_Edge_Judge:$/;"	l
+FccSearchLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^FccSearchLinkMode_Set:      ;0X41$/;"	l
+Fill_In_8Byte_Cycle	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Fill_In_8Byte_Cycle:$/;"	l
+Flag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^	;FRAMER_CONFIG_ERROR         ==      GeneralStatusFlag1*8+1 ; Framer Compare Bit Error Flag$/;"	v
+ForceLink_Mode_Task	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^ForceLink_Mode_Task:$/;"	l
+Function	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;               PAGE4(0X1000-0X13FF): Communicate_USB_Function Function$/;"	v
+GET_DESCRIPTOR	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  GET_DESCRIPTOR:$/;"	l
+GET_IDLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  GET_IDLE:$/;"	l
+GET_PROTOCOL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  GET_PROTOCOL:$/;"	l
+GET_REPORT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  GET_REPORT:$/;"	l
+GET_RET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  GET_RET:$/;"	l
+HAT_SWITCH_END	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  HAT_SWITCH_END:$/;"	l
+HID_GET_REQUEST	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_GET_REQUEST:$/;"	l
+HID_NOT_END	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_NOT_END:$/;"	l
+HID_REPORTL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_REPORTL:$/;"	l
+HID_REPORT_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_REPORT_SET:$/;"	l
+HID_REPORT_TABLE1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^HID_REPORT_TABLE1:$/;"	l
+HID_REPORT_TABLE2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^HID_REPORT_TABLE2:$/;"	l
+HID_REPORT_TABLE3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^HID_REPORT_TABLE3:$/;"	l
+HID_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_SET:$/;"	l
+HID_SET_REQUEST	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_SET_REQUEST:$/;"	l
+HID_Table_1st	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_Table_1st:$/;"	l
+HID_Table_2nd	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_Table_2nd:$/;"	l
+HID_Table_3rd	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  HID_Table_3rd:$/;"	l
+I2C_ACK	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_ACK:$/;"	l
+I2C_BIt0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_BIt0:$/;"	l
+I2C_CLK1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_CLK1:$/;"	l
+I2C_RLP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_RLP:$/;"	l
+I2C_RX	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_RX:$/;"	l
+I2C_RXBB	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_RXBB:$/;"	l
+I2C_RX_LP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_RX_LP:$/;"	l
+I2C_TLP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_TLP:$/;"	l
+I2C_TX	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_TX:$/;"	l
+I2C_TX_LP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^I2C_TX_LP:$/;"	l
+IDLE_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  IDLE_LOOP:$/;"	l
+INITIAL	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^INITIAL:$/;"	l
+INIT_FRAMEREG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^INIT_FRAMEREG:$/;"	l
+INIT_FRAMEREG	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^INIT_FRAMEREG:$/;"	l
+INIT_RSSI_CALIBRATION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^INIT_RSSI_CALIBRATION:$/;"	l
+INIT_RSSI_CALIBRATION	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^INIT_RSSI_CALIBRATION:$/;"	l
+INT_RET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^INT_RET:$/;"	l
+IO_93C46_INITIAL	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^IO_93C46_INITIAL:$/;"	l
+IO_93C46_QUIT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^IO_93C46_QUIT:$/;"	l
+IO_INITIAL	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^IO_INITIAL:$/;"	l
+IO_Rocker_KeyScan	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^IO_Rocker_KeyScan:$/;"	l
+Increase_RX1_LossframeCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Increase_RX1_LossframeCNT:$/;"	l
+Increase_RX2_LossframeCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Increase_RX2_LossframeCNT:$/;"	l
+Interface	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^                                       ; 0: MM0200DA (SPI Interface)$/;"	v
+Interface	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^                                       ; 1: MM0200BA (I2C Interface)$/;"	v
+JudgeDown	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeDown:$/;"	l
+JudgeDown_1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeDown_1:$/;"	l
+JudgeDown_2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeDown_2:$/;"	l
+JudgeDown_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeDown_End:$/;"	l
+JudgeLeft	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeLeft:$/;"	l
+JudgeLeft_1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeLeft_1:$/;"	l
+JudgeLeft_2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeLeft_2:$/;"	l
+JudgeLeft_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeLeft_End:$/;"	l
+JudgeRight	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeRight:$/;"	l
+JudgeRight_1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeRight_1:$/;"	l
+JudgeRight_2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeRight_2:$/;"	l
+JudgeRight_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeRight_End:$/;"	l
+JudgeUp	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeUp:$/;"	l
+JudgeUp_1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeUp_1:$/;"	l
+JudgeUp_2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeUp_2:$/;"	l
+JudgeUp_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  JudgeUp_End:$/;"	l
+KEY_DELAY	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^KEY_DELAY:$/;"	l
+KF1_A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF1_A                   EQU    @1$/;"	d
+KF1_B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF1_B                   EQU    @1$/;"	d
+KF1_H	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF1_H                   EQU    @1$/;"	d
+KF2_A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF2_A:$/;"	l
+KF2_B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF2_B:$/;"	l
+KF2_H	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF2_H:$/;"	l
+KF3_A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF3_A:$/;"	l
+KF3_B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF3_B:$/;"	l
+KF3_H	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KF3_H:$/;"	l
+KalmanFilter_1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KalmanFilter_1:$/;"	l
+KalmanFilter_2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KalmanFilter_2:$/;"	l
+KalmanFilter_3	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^KalmanFilter_3:$/;"	l
+KeyPort_Check	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^KeyPort_Check:$/;"	l
+KeyScan_Lasting_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^KeyScan_Lasting_Press:$/;"	l
+KeyScan_Lasting_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  KeyScan_Lasting_Press:$/;"	l
+KeyScan_Short_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^KeyScan_Short_Press:$/;"	l
+KeyScan_Short_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  KeyScan_Short_Press:$/;"	l
+KeyStatus_Low_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^KeyStatus_Low_Scan:     ; rising edge ,check low level time$/;"	l
+KeyStatus_Low_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^KeyStatus_Low_Scan:     ; rising edge ,check low level time$/;"	l
+KeyType_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^KeyType_Scan:$/;"	l
+Key_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Key_Scan:$/;"	l
+Key_Scan_startup	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Key_Scan_startup:$/;"	l
+KeystokeScan_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^KeystokeScan_End:                                                   ; a cycle scan end$/;"	l
+KeystokeScan_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  KeystokeScan_End:                                                ; a cycle scan end$/;"	l
+Keystoke_No_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Keystoke_No_Press:$/;"	l
+Keystoke_No_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Keystoke_No_Press:$/;"	l
+LED_End_Control	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^  LED_End_Control:$/;"	l
+LED_ForcelinkSearch	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^LED_ForcelinkSearch:$/;"	l
+LED_NormalSearch	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^LED_NormalSearch:$/;"	l
+LEFT_RIGHT_KEY	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^LEFT_RIGHT_KEY:$/;"	l
+LVD_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^LVD_INT:$/;"	l
+Lasting_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;       Click                     Dblclick                    Lasting_Press$/;"	v
+Lasting_Press	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;       Click                     Dblclick                    Lasting_Press$/;"	v
+Lasting_Press_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Lasting_Press_Select:                                     	; Fcc Test$/;"	l
+Lasting_Press_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Lasting_Press_Select:$/;"	l
+Leakresis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^Leakresis           ==         6          ;port86$/;"	v
+LeftXAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^LeftXAxis           ==         1          ;port91  LX$/;"	v
+LeftYAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^LeftYAxis           ==         0          ;port90  LY$/;"	v
+Left_Right_Finsh	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  Left_Right_Finsh:$/;"	l
+Load_FIFO_ByteLength	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Load_FIFO_ByteLength:$/;"	l
+Loading_Communication_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Loading_Communication_Data:$/;"	l
+Loading_Data_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Loading_Data_End:$/;"	l
+Loading_Forcelink_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Loading_Forcelink_Data:$/;"	l
+LoseFrameForceLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^LoseFrameForceLinkMode_Set: ;0X25$/;"	l
+LoseFrameLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^LoseFrameLinkMode_Set:      ;0X16$/;"	l
+LoseFrameStatus_RXID_Error	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^LoseFrameStatus_RXID_Error:$/;"	l
+LoseFrameStatus_RxTxID1_Error	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  LoseFrameStatus_RxTxID1_Error:$/;"	l
+LoseFrameStatus_RxTxID2_Error	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  LoseFrameStatus_RxTxID2_Error:$/;"	l
+LoseFrameStatus_Timeout	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^LoseFrameStatus_Timeout:$/;"	l
+LoseFrame_Status_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^	LoseFrame_Status_Mode:$/;"	l
+LoseFreqStatus_Timeout	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^LoseFreqStatus_Timeout:$/;"	l
+MAIN	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^MAIN:$/;"	l
+MAIN	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^MAIN:$/;"	l
+MCU_EnterSleep_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^MCU_EnterSleep_Set:$/;"	l
+MCU_RESET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^MCU_RESET:$/;"	l
+MCU_WakeUp_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^MCU_WakeUp_Set:$/;"	l
+MHZ	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.h	/^; CRYSTAL      :  6MHZ$/;"	v
+MHZ	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; CRYSTAL      :  6MHZ$/;"	v
+MHZ	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^; CRYSTAL       : 8MHZ$/;"	v
+MODE_NOCHANGE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  MODE_NOCHANGE:$/;"	l
+NormalFccLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^NormalFccLinkMode_Set: ;0x42$/;"	l
+NormalLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^NormalLinkMode_Set: ;0x12$/;"	l
+NormalLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^NormalLinkMode_Set:         ;0X12$/;"	l
+NormalSleep_Status_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^NormalSleep_Status_Judge:$/;"	l
+NormalSleep_Status_Judge_End1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^  NormalSleep_Status_Judge_End1:$/;"	l
+NormalSleep_Status_Judge_End2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^  NormalSleep_Status_Judge_End2:$/;"	l
+Normal_Communicate	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Normal_Communicate:$/;"	l
+Normal_Status_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^	Normal_Status_Mode:$/;"	l
+Not_Fcc_TestMode	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Not_Fcc_TestMode:$/;"	l
+Null_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Null_Data:$/;"	l
+PAGE0BANK0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^	PAGE0BANK0:$/;"	l
+PAGE0BANK1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^	PAGE0BANK1:$/;"	l
+PAGE0BANK2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^	PAGE0BANK2:$/;"	l
+PAGE0BANK3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^	PAGE0BANK3:$/;"	l
+PAGE1BANK0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE1BANK0:$/;"	l
+PAGE1BANK1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE1BANK1:$/;"	l
+PAGE1BANK2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE1BANK2:$/;"	l
+PAGE1BANK3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE1BANK3:$/;"	l
+PAGE2BANK0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE2BANK0:$/;"	l
+PAGE2BANK1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE2BANK1:$/;"	l
+PAGE2BANK2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE2BANK2:$/;"	l
+PAGE2BANK3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^	PAGE2BANK3:$/;"	l
+PAGE4BANK0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^PAGE4BANK0:$/;"	l
+PAGE4BANK1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^PAGE4BANK1:$/;"	l
+PAGE4BANK2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^PAGE4BANK2:$/;"	l
+PAGE4BANK3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^PAGE4BANK3:$/;"	l
+PAGE5BANK0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^PAGE5BANK0:$/;"	l
+PAGE5BANK1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^PAGE5BANK1:$/;"	l
+PAGE5BANK2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^PAGE5BANK2:$/;"	l
+PAGE5BANK3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^PAGE5BANK3:$/;"	l
+POINTER	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^FIFO_REG                EQU     80          ;FIFO POINTER=REG 80$/;"	v
+POINTER	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^FIFO_REG                EQU     80              ; FIFO POINTER=REG 80$/;"	v
+PROTOCOLL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  PROTOCOLL:$/;"	l
+Pre_Discharge	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Pre_Discharge:$/;"	l
+Protocol	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^PROTOCOL_TEMP                   EQU     0X31 ; BYTE 2 , (0)Boot Protocol,(1)Report Protocol$/;"	v
+Quit_Recognise_Scan	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Quit_Recognise_Scan:                             ; Exit ID scan$/;"	l
+RAND_DATA_LOOP1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^  RAND_DATA_LOOP1:$/;"	l
+RAND_FUCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^RAND_FUCTION:$/;"	l
+RAND_SEED_LOOP1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^  RAND_SEED_LOOP1:$/;"	l
+READ_COMMAND	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^READ_COMMAND:$/;"	l
+READ_FIFO_RAM	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^READ_FIFO_RAM:$/;"	l
+READ_FIFO_RAM	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^READ_FIFO_RAM:$/;"	l
+READ_PKTLOSTCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^READ_PKTLOSTCNT:$/;"	l
+READ_PKTLOSTCNT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^READ_PKTLOSTCNT:$/;"	l
+READ_SPI_1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  READ_SPI_1:$/;"	l
+READ_SPI_MISO	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  READ_SPI_MISO:$/;"	l
+READ_SPI_REG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^READ_SPI_REG:$/;"	l
+READ_SPI_REG	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^READ_SPI_REG:$/;"	l
+REG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^READ_MASK               EQU     0X80        ;READ REG,MSB SET TO 1$/;"	v
+REG	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^READ_MASK               EQU     0X80            ; READ REG,MSB SET TO 1$/;"	v
+REPORT_EP0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  REPORT_EP0:$/;"	l
+REPORT_INITIAL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  REPORT_INITIAL:	                   ;clear pointer and counter$/;"	l
+REPORT_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  REPORT_LOOP:$/;"	l
+REPORT_PROTOCOL_DATA	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  REPORT_PROTOCOL_DATA:$/;"	l
+REPORT_START	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  REPORT_START:$/;"	l
+RESET_RF_FIFO	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^RESET_RF_FIFO:$/;"	l
+RESET_RF_FIFO	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^RESET_RF_FIFO:$/;"	l
+RETURN	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  RETURN:$/;"	l
+RF	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; such as read or write EEPROM and RF,it used for data buffer$/;"	v
+RF	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^; such as read or write EEPROM and RF,it used for data buffer$/;"	v
+RF_CYCLE_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^RF_CYCLE_INT:$/;"	l
+RF_FREQ_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^RF_FREQ_SET:$/;"	l
+RF_FREQ_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^RF_FREQ_SET:$/;"	l
+RF_RSSI_CHECK	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^RF_RSSI_CHECK:$/;"	l
+RF_SLEEP	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^RF_SLEEP:$/;"	l
+RF_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^RF_TABLE:			;LENGTH 30$/;"	l
+RF_TABLE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^RF_TABLE:			;LENGTH 30$/;"	l
+RF_TABLE_INC	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  RF_TABLE_INC:$/;"	l
+RF_TABLE_INC	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  RF_TABLE_INC:$/;"	l
+RF_TEST_RET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  RF_TEST_RET:$/;"	l
+RF_TEST_RET	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  RF_TEST_RET:$/;"	l
+RF_WAKEUP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^RF_WAKEUP:$/;"	l
+RF_WAKEUP	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^RF_WAKEUP:$/;"	l
+RLOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^RLOOP:$/;"	l
+RSSI_TEST_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^RSSI_TEST_FUNCTION:        ; RF_RSSI_CHECK:$/;"	l
+RX	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^RightXAxis          ==         3          ;port93  RX$/;"	v
+RX1_DETECT_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  RX1_DETECT_LOOP:$/;"	l
+RX1_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^RX1_FUNCTION:$/;"	l
+RX1_Over_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  RX1_Over_Judge:$/;"	l
+RX2_DETECT_LOOP	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  RX2_DETECT_LOOP:$/;"	l
+RX2_Detect_Timeout	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  RX2_Detect_Timeout:$/;"	l
+RX2_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^RX2_FUNCTION:$/;"	l
+RX2_Over_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  RX2_Over_Judge:$/;"	l
+RX3_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^RX3_FUNCTION:$/;"	l
+RX4_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^RX4_FUNCTION:$/;"	l
+RX4_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;               PAGE1(0X0400-0X07FF): RX1_FUNCTION \/ RX2_FUNCTION \/ RX3_FUNCTION \/ RX4_FUNCTION$/;"	v
+RX5_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^RX5_FUNCTION:$/;"	l
+RX6_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^RX6_FUNCTION:$/;"	l
+RX8_FUNCTION	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;               PAGE2(0X0800-0X0BFF): RX5_FUNCTION \/ RX6_FUNCTION \/ RX7_FUNCTION \/ RX8_FUNCTION$/;"	v
+RX_IDH	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+RX_IDH	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+RX_IDH	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+RX_IDL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+RX_IDL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+RX_IDL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+Rand_ID_Function	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^Rand_ID_Function:$/;"	l
+Read_Exit	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Read_Exit:$/;"	l
+Read_FIFO_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Read_FIFO_Loop:$/;"	l
+Read_FIFO_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Read_FIFO_Loop:$/;"	l
+Read_Sensor_Buffer	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Read_Sensor_Buffer:$/;"	l
+Registers	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.h	/^;  Description: The Definition of EM78M198810 for EM78612 Registers ;$/;"	v
+Repeat_Read_RSSI	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Repeat_Read_RSSI:$/;"	l
+Repeat_Read_RSSI	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Repeat_Read_RSSI:$/;"	l
+RightXAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^RightXAxis          ==         3          ;port93  RX$/;"	v
+RightYAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^RightYAxis          ==         2          ;port92  RY$/;"	v
+Rising_Edge_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^Rising_Edge_Judge:$/;"	l
+Rising_Edge_Judge	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  Rising_Edge_Judge:$/;"	l
+Rl_Comd	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^Rl_Comd:$/;"	l
+Rl_Comd	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^Rl_Comd:$/;"	l
+Rl_Comd1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^Rl_Comd1:$/;"	l
+Rl_Comd1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^Rl_Comd1:$/;"	l
+RockerCheakFinish	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  RockerCheakFinish:$/;"	l
+Rocker_KeyScan	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^Rocker_KeyScan:$/;"	l
+Run_Start	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^Run_Start:$/;"	l
+Rx1_Detect_Timeout	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^  Rx1_Detect_Timeout:$/;"	l
+SELECT_9	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^SELECT_9            ==         0    ;DataF$/;"	v
+SEND_USB_DATA	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^SEND_USB_DATA:$/;"	l
+SET_IDLE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  SET_IDLE:$/;"	l
+SET_PROTOCOL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  SET_PROTOCOL:$/;"	l
+SET_REPORT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  SET_REPORT:$/;"	l
+SET_RET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  SET_RET:$/;"	l
+SET_SPI_MOSI	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  SET_SPI_MOSI:$/;"	l
+SET_VR_STATUS_0	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  SET_VR_STATUS_0:$/;"	l
+SET_VR_STATUS_1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  SET_VR_STATUS_1:$/;"	l
+SET_VR_STATUS_END	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  SET_VR_STATUS_END:$/;"	l
+SIM_SPI_READ	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^SIM_SPI_READ:$/;"	l
+SIM_SPI_READ	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^SIM_SPI_READ:$/;"	l
+SIM_SPI_READ_WRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^SIM_SPI_READ_WRITE:$/;"	l
+SIM_SPI_WRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^SIM_SPI_WRITE:$/;"	l
+SIM_SPI_WRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^SIM_SPI_WRITE:$/;"	l
+SPI_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^SPI_INT:$/;"	l
+STALL_STATUS	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STALL_STATUS:$/;"	l
+STANDARD_DESCRIPTOR_TYPE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STANDARD_DESCRIPTOR_TYPE:$/;"	l
+STANDARD_DEVICE_REQUESTS	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^STANDARD_DEVICE_REQUESTS:$/;"	l
+STRING0	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STRING0:$/;"	l
+STRING0L	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STRING0L:$/;"	l
+STRING0T	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDescData.asm	/^STRING0T:$/;"	l
+STRING2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STRING2:$/;"	l
+STRING2L	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STRING2L:$/;"	l
+STRING_SET	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STRING_SET:$/;"	l
+STRING_SUB	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  STRING_SUB:$/;"	l
+SUB_ADC	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SUB_ADC:$/;"	l
+SUB_ADJ	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SUB_ADJ:$/;"	l
+SUB_RINIT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SUB_RINIT:$/;"	l
+SYNC_COM_TX	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^SYNC_COM_TX:$/;"	l
+SYNC_COM_TX	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;  Description: PAGE0(0X0000-0X03FF): EM78M611 initial \/ EEprom setting \/ SYNC_COM_TX$/;"	v
+SampingLxTiming	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SampingLxTiming:$/;"	l
+SampingLyTiming	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SampingLyTiming:$/;"	l
+SampingRefTiming	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SampingRefTiming:$/;"	l
+SampingRxTiming	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SampingRxTiming:$/;"	l
+SampingRyTiming	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^SampingRyTiming:$/;"	l
+Sampling_Task	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Sampling_Task:$/;"	l
+Scan_Clean_Channel	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Scan_Clean_Channel:$/;"	l
+Scan_Clean_Channel	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Scan_Clean_Channel:$/;"	l
+SearchComu_Cycle_work	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^SearchComu_Cycle_work:$/;"	l
+SearchForceLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^SearchForceLinkMode_Set: ;0x21$/;"	l
+SearchForceLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^SearchForceLinkMode_Set:    ;0X24$/;"	l
+SearchLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^SearchLinkMode_Set: ;0x11$/;"	l
+SearchLinkMode_Set	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^SearchLinkMode_Set:         ;0X11$/;"	l
+SearchSleep_Status_Judge_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^SearchSleep_Status_Judge_End:$/;"	l
+SearchSleep_Status_Judge_End1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^  SearchSleep_Status_Judge_End1:$/;"	l
+SearchSleep_Status_Judge_End2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^  SearchSleep_Status_Judge_End2:$/;"	l
+Search_Detect_Timeout	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Search_Detect_Timeout:$/;"	l
+Search_Equipment	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Search_Equipment:$/;"	l
+Search_Start_up	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Search_Start_up:$/;"	l
+Search_Status_Mode	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^	Search_Status_Mode:$/;"	l
+Set_FrameReg	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Set_FrameReg:$/;"	l
+Set_FrameReg	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Set_FrameReg:$/;"	l
+Set_Framereg_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Set_Framereg_End:$/;"	l
+Set_Framereg_End	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Set_Framereg_End:$/;"	l
+Set_Init	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Set_Init:$/;"	l
+Set_Power_Down	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Set_Power_Down:$/;"	l
+Set_Read_Command	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Set_Read_Command:$/;"	l
+Set_Table1_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Set_Table1_Select:$/;"	l
+Set_Table2_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Set_Table2_Select:$/;"	l
+Set_Table3_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Set_Table3_Select:$/;"	l
+Set_Table_Select	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Set_Table_Select:$/;"	l
+Sleep_Status_Judeg	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^  Sleep_Status_Judeg:$/;"	l
+Start_Bit	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^Start_Bit:$/;"	l
+Start_Bit	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^Start_Bit:$/;"	l
+Start_Up	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^Start_Up:$/;"	l
+Switch	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataG                   EQU     0X26 ;bit[7..4]Hat Switch, bit[3..0]reserve.$/;"	v
+TCC_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^TCC_INT:$/;"	l
+TCC_INT_END	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^TCC_INT_END:$/;"	l
+TCC_INT_STATE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^TCC_INT_STATE:$/;"	l
+TEMP1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^r_acc1                          EQU     TEMP1    ; TEMP1 - TEMP5 used for EEPROM$/;"	v
+TEMP4	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^A_TEMP                          EQU     TEMP4    ; TEMP4 - TEMP6 used for PUSH and POP$/;"	v
+TEMP4	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^A_TEMP                          EQU     TEMP4  ;used for PUSH1 and POP1$/;"	v
+TEMP6	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^STATUS_TEMP                     EQU     TEMP6$/;"	v
+TEST	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^FccFreqIndex                    EQU     ComuEndNum    ;FCC TEST$/;"	v
+TEST1_13	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^                        ;SELECT_9  START_10  TEST2_14  MACRO  MODE  RSW_12  LSW_11  TEST1_13$/;"	v
+TEST2_16	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^TEST2_16            ==         7$/;"	v
+TEST_INITIAL_RF	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^TEST_INITIAL_RF:$/;"	l
+TEST_INITIAL_RF	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^TEST_INITIAL_RF:$/;"	l
+TIMER1_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^TIMER1_INT:$/;"	l
+TIMER2_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^TIMER2_INT:$/;"	l
+TX1_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+TX2_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+TX3_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+TX4_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+TX5_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+TX6_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; sync timing:             RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TX1_ID,TX2_ID,TX3_ID,TX4_ID,TX5_ID,TX6_ID$/;"	v
+TXx_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses answer timing: RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID$/;"	v
+TXx_ID	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+Table1_Sel	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Table1_Sel:$/;"	l
+Table2_Sel	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Table2_Sel:$/;"	l
+Table3_Sel	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  Table3_Sel:$/;"	l
+Time	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^SetSleepTime                    EQU     250   ; Into sleep Time=(SetSleepTime+1)*2s, default=250$/;"	v
+To_Continue	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^  To_Continue:$/;"	l
+TransformCmosData	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^TransformCmosData:$/;"	l
+UART_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^UART_INT:$/;"	l
+UP_DOWN_Finsh	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^  UP_DOWN_Finsh:$/;"	l
+UP_DOWN_KEY	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^UP_DOWN_KEY:$/;"	l
+USB_EP0_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^USB_EP0_INT:$/;"	l
+USB_MAIN	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^USB_MAIN:$/;"	l
+USB_RESET_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^USB_RESET_INT:$/;"	l
+USB_SUSPEND_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^USB_SUSPEND_INT:                     ; USB bus terminated intrrupt$/;"	l
+Uart_Transmit_Data	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Uart_Transmit_Data:$/;"	l
+Uart_Transmit_Frame	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^  Uart_Transmit_Frame:$/;"	l
+Used_Default_Sync	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^Used_Default_Sync:$/;"	l
+WDT_INT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^WDT_INT:$/;"	l
+WRITE_FIFO_RAM	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^WRITE_FIFO_RAM:$/;"	l
+WRITE_FIFO_RAM	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^WRITE_FIFO_RAM:$/;"	l
+WRITE_SPI_1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  WRITE_SPI_1:$/;"	l
+WRITE_SPI_COUNT_DEC	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  WRITE_SPI_COUNT_DEC:$/;"	l
+WRITE_SPI_REG	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^WRITE_SPI_REG:$/;"	l
+WRITE_SPI_REG	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^WRITE_SPI_REG:$/;"	l
+Waiting	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^  Waiting:$/;"	l
+Waiting_For_NormalData_arrive	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Waiting_For_NormalData_arrive:$/;"	l
+Waiting_For_SearchData_Arrive	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Waiting_For_SearchData_Arrive:$/;"	l
+Waiting_X100US	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Waiting_X100US:$/;"	l
+Waiting_X10US	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^  Waiting_X10US:$/;"	l
+Waiting_X10US	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^  Waiting_X10US:$/;"	l
+Write_EEprom_Task	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^Write_EEprom_Task:                                          ; Write EEprom Task$/;"	l
+Write_EEprom_Task	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^Write_EEprom_Task:$/;"	l
+Write_FIFO_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^ Write_FIFO_Loop:$/;"	l
+Write_FIFO_Loop	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^  Write_FIFO_Loop:$/;"	l
+X10	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TEMP                            EQU     0X10        ; used for rock-bottom RF initial$/;"	v
+X16	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TEMP6                           EQU     0X16        ;$/;"	v
+X18	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^ComuCycleNum                    EQU     0X18  ;communicateion time$/;"	v
+X19	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataShiftCounter                EQU     0X19        ; data counter$/;"	v
+X19	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^ComuEndNum                      EQU     0X19  ;communicateion end time$/;"	v
+X1A	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataByteLength                  EQU     0X1A		; READ\/WRITE DATA LENGTH$/;"	v
+X1A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^Databytelength                  EQU     0X1A  ;FIFO READ\/WRITE DATA LENGTH$/;"	v
+X1B	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^ComuClock                       EQU     0X1B        ; Communication clock$/;"	v
+X1B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataShiftCNT                    EQU     0X1B  ;data counter$/;"	v
+X1C	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TRANSFER                        EQU     0X1C		     ;$/;"	v
+X1C	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^SleepCNT                        EQU     0X1C  ;data conunter$/;"	v
+X1E	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GeneralStatusFlag2              EQU     0X1E$/;"	v
+X20	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^NoiseStrobe             EQU     0X20        ;dirty:0x08-0x0A, neatness:0x28-0x2A$/;"	v
+X20	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^PKT_LEN                 EQU     0X20        ;DataByteLength = 32$/;"	v
+X20	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^PKT_LEN                 EQU     0X20            ; DataByteLength = 32$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^RX_IDH_Buffer                   EQU     0X21 ; Master IDH$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;MotorVibrDura           EQU     0X21    ; vibration duration byte$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yAxisH            EQU     0X21    ; y axis[9..8] high byte,[1..0]$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yAxisL_Buffer             EQU     0X21    ; Point1 y axis[7..0]$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataB                   EQU     0X21 ;rocker left-y(up-down)     RF transmitter data$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS1_yAxisL_Buffer               EQU     0X21    ; y axis low byte$/;"	v
+X21	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^RX_IDH_Buffer                   EQU     0X21 ; Master IDH$/;"	v
+X22	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^RX_IDL_Buffer                   EQU     0X22 ; Master IDL$/;"	v
+X22	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yxsAxisH          EQU     0X22    ; yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X22	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yxsAxisH_Buffer           EQU     0X22    ; Point1 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X22	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataC                   EQU     0X22 ;rocker right-x(left-right) RF transmitter data$/;"	v
+X22	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS1_zAxisL_Buffer               EQU     0X22    ; z axis low byte$/;"	v
+X22	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^RX_IDL_Buffer                   EQU     0X22 ; Master IDL$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^CHN_FLAG                        EQU     0X23    ; Channel flag, gamepad status$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^CHN_FLAG_Buffer                 EQU     0X23 ; Channel flag, gamepad status$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^AExt_TEMP               EQU     0X23  ;used for External and POP3$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CHN_FLAG                EQU     0X23    ; Channel flag, gamepad status$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CHN_FLAG_Buffer                 EQU     0X23 ; Channel flag, gamepad status$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_xAxisH            EQU     0X23    ; x axis[9..8] high byte,[1..0]$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_xAxisL_Buffer             EQU     0X23    ; Point2 x axis[7..0]$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataD                   EQU     0X23 ;rocker right-y(up-down)    RF transmitter data$/;"	v
+X23	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS1_xyzAxisH_Buffer             EQU     0X23    ; xAxis[9..8],yAxis[9..8],zAxis[3..0]$/;"	v
+X24	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^GamePadsSum_Buffer              EQU     0X24 ; Communication trsmitter direction$/;"	v
+X24	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^GamepadsSum                     EQU     0X24    ; gamepads sum$/;"	v
+X24	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yAxisH            EQU     0X24    ; y axis[9..8] high byte,[1..0]$/;"	v
+X24	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yAxisL_Buffer             EQU     0X24    ; Point2 y axis[7..0]$/;"	v
+X24	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GamePadsSum_Buffer              EQU     0X24 ; Communication trsmitter direction$/;"	v
+X24	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GamepadsSum             EQU     0X24    ; gamepads sum$/;"	v
+X25	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^CH_NO                           EQU     0X25    ; Current frequency table index$/;"	v
+X25	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CH_NO                   EQU     0X25    ; Current frequency table index$/;"	v
+X25	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yxsAxisH          EQU     0X25    ; yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X25	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yxsAxisH_Buffer           EQU     0X25    ; Point2 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^CH_NO_Buffer                    EQU     0X26 ; N_CHN= ((TotalGamepads<<4) & 0xF0)|(CH_NO & 0x0F)$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX_ID                           EQU     0X26    ;$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^A1_TEMP                 EQU     0X26  ;used for time1 and POP1$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CH_NO_Buffer                    EQU     0X26 ; N_CHN= ((TotalGamepads<<4) & 0xF0)|(CH_NO & 0x0F)$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_xAxisH            EQU     0X26    ; x axis[9..8] high byte,[1..0]$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_xAxisL_Buffer             EQU     0X26    ; Point3 x axis[7..0]$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataG                   EQU     0X26 ;bit[7..4]Hat Switch, bit[3..0]reserve.$/;"	v
+X26	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TX_ID                   EQU     0X26    ;$/;"	v
+X27	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX1_ID                          EQU     0X27     ;$/;"	v
+X27	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yAxisH            EQU     0X27    ; y axis[9..8] high byte,[1..0]$/;"	v
+X27	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yAxisL_Buffer             EQU     0X27    ; Point3 y axis[7..0]$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataA_Buffer                    EQU     0X28 ; rocker, left-x(left-right) data$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX2_ID                          EQU     0X28     ;$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX2_ID_Buffer                   EQU     0X28 ;$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yxsAxisH          EQU     0X28    ; yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yxsAxisH_Buffer           EQU     0X28    ; Point3 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataA_Buffer                    EQU     0X28 ;rocker, left-x(left-right) data$/;"	v
+X28	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TX2_ID_Buffer                   EQU     0X28 ;$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataB_Buffer                    EQU     0X29 ; rocker, left-y(up-down) data$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^MOTOR2_VibrInten_Buffer         EQU     0X29    ; Motor2 vibration Intensity byte$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX3_ID                          EQU     0X29     ;$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX3_ID_Buffer                   EQU     0X29 ;$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^A2_TEMP                 EQU     0X29  ;used for time2 and POP2$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_xAxisH            EQU     0X29    ; x axis[9..8] high byte,[1..0]$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_xAxisL_Buffer             EQU     0X29    ; Point4 x axis[7..0]$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataB_Buffer                    EQU     0X29 ;rocker, left-y(up-down) data$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MOTOR2_VibrInten_Buffer         EQU     0X29    ; Motor2 vibration Intensity byte$/;"	v
+X29	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TX3_ID_Buffer                   EQU     0X29 ;$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataC_Buffer                    EQU     0X2A ; rocker, right-x(left-right) data$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^MOTOR3_VibrInten_Buffer         EQU     0X2A    ; Motor3 vibration Intensity byte$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX4_ID                          EQU     0X2A     ;$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX4_ID_Buffer                   EQU     0X2A ;$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yAxisH            EQU     0X2A    ; y axis[9..8] high byte,[1..0]$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yAxisL_Buffer             EQU     0X2A    ; Point4 y axis[7..0]$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataC_Buffer                    EQU     0X2A ;rocker, right-x(left-right) data$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^IOcheckRefValue         EQU     0X2A    ; used for Store refrence value$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MOTOR3_VibrInten_Buffer         EQU     0X2A    ; Motor3 vibration Intensity byte$/;"	v
+X2A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TX4_ID_Buffer                   EQU     0X2A ;$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataD_Buffer                    EQU     0X2B ; rocker, right-y(up-down) data$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^MOTOR4_VibrInten_Buffer         EQU     0X2B    ; Motor4 vibration Intensity byte$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX5_ID                          EQU     0X2B     ;$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX5_ID_Buffer                   EQU     0X2B ;$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yxsAxisH          EQU     0X2B    ; yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yxsAxisH_Buffer           EQU     0X2B    ; Point4 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataD_Buffer                    EQU     0X2B ;rocker, right-y(up-down) data$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MOTOR4_VibrInten_Buffer         EQU     0X2B    ; Motor4 vibration Intensity byte$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^STATUS2_TEMP            EQU     0X2B$/;"	v
+X2B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TX5_ID_Buffer                   EQU     0X2B ;$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataE_Buffer                    EQU     0X2C ; A,B,C,D,L1,R1,L2,R2$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^MOTOR5_VibrInten_Buffer         EQU     0X2C    ; Motor5 vibration Intensity byte$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX6_ID                          EQU     0X2C     ;$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TX6_ID_Buffer                   EQU     0X2C ;$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataE_Buffer                    EQU     0X2C ;A,B,C,D,L1,R1,L2,R2$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MOTOR5_VibrInten_Buffer         EQU     0X2C    ; Motor5 vibration Intensity byte$/;"	v
+X2C	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TX6_ID_Buffer                   EQU     0X2C ;$/;"	v
+X2D	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataF_Buffer                    EQU     0X2D ; Select,start,LSW,RSW,MODE,MACRO,TEST1,TEST2$/;"	v
+X2D	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^MOTOR6_VibrInten_Buffer         EQU     0X2D    ; Motor6 vibration Intensity byte$/;"	v
+X2D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_xAxisH             EQU     0X2D    ; x axis[9..8] high byte,[1..0]$/;"	v
+X2D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataF_Buffer                    EQU     0X2D ;Select,start,LSW,RSW,MODE,MACRO,TEST1,TEST2$/;"	v
+X2D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^IOcheckTimeCNT          EQU     0X2D    ; used for count check time$/;"	v
+X2D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MOTOR6_VibrInten_Buffer         EQU     0X2D    ; Motor6 vibration Intensity byte$/;"	v
+X2E	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataG_Buffer                    EQU     0X2E ; 000:00’001:45’010:90’011:135’100:180’101:225’110:270’111:315’$/;"	v
+X2E	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_yAxisH             EQU     0X2E    ; y axis[9..8] high byte,[1..0]$/;"	v
+X2E	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataG_Buffer                    EQU     0X2E ;000:00’001:45’010:90’011:135’100:180’101:225’110:270’111:315’$/;"	v
+X2F	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^FccFreqIndex                    EQU     0X2F$/;"	v
+X2F	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_yxsAxisH           EQU     0X2F    ; yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+X30	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;CMOS1_Covariance        EQU     0X30$/;"	v
+X30	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_xAxisL            EQU     0X30    ; x axis[7..0]$/;"	v
+X30	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^KEY_LEFT_X              EQU     0X30 ;rocker,AD convert result left-x(left-right) data$/;"	v
+X31	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^VALUE                           EQU     0X31 ;OUTPUT DATA HIGH$/;"	v
+X31	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;CMOS2_Covariance        EQU     0X31$/;"	v
+X31	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yAxisL            EQU     0X31    ; y axis[7..0]$/;"	v
+X31	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_yAxisL               EQU     0X31    ; y axis low byte$/;"	v
+X31	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^KEY_LEFT_Y              EQU     0X31 ;rocker,AD convert result left-y(up-down) data$/;"	v
+X31	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^VALUE                   EQU     0X31 ;in\/out Data$/;"	v
+X32	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^IDLE_TEMP                       EQU     0X32 ; BYTE 3$/;"	v
+X32	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;CMOS3_Covariance        EQU     0X32$/;"	v
+X32	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;F_MODE                  EQU     0X32 ;Analog jugde falg$/;"	v
+X32	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_Size              EQU     0X32    ; size[3..0] high byte,[3..0]$/;"	v
+X32	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_zAxisL               EQU     0X32    ; z axis low byte$/;"	v
+X32	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^KEY_RIGHT_X             EQU     0X32 ;rocker,AD convert result right-x(left-right) data$/;"	v
+X33	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^PC_WANT0                        EQU     0X33 ; BYTE 6$/;"	v
+X33	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;F_MODE_BEFOR            EQU     0X33 ;Store keyboard select$/;"	v
+X33	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_xAxisL            EQU     0X33    ; x axis[7..0]$/;"	v
+X33	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_xyzAxisH             EQU     0X33    ; xAxis[9..8],yAxis[9..8],zAxis[3..0]$/;"	v
+X33	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^KEY_RIGHT_Y             EQU     0X33 ;rocker,AD convert result right-y(up-down) data$/;"	v
+X34	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^PC_WANT1                        EQU     0X34 ; BYTE 7$/;"	v
+X34	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^RF_RSSI                         EQU     0X34$/;"	v
+X34	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^SetChecksumL                    EQU     0X34  ; transmitter cheaksum low byte$/;"	v
+X34	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yAxisL            EQU     0X34    ; y axis[7..0]$/;"	v
+X34	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_xAxisH               EQU     0X34    ; x axis[9..8] high byte,[1..0]$/;"	v
+X34	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^RF_RSSI                 EQU     0X34$/;"	v
+X35	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataMaxTable1                   EQU     0X35 ; descriptor table's data length (table 1)$/;"	v
+X35	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^GS_xyzAxisH_Buffer              EQU     0X35$/;"	v
+X35	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_Size              EQU     0X35    ; size[3..0] high byte,[3..0]$/;"	v
+X35	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_xyzAxisH_Buffer              EQU     0X35$/;"	v
+X35	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_yAxisH               EQU     0X35    ; y axis[9..8] high byte,[1..0]$/;"	v
+X36	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataMaxTable2                   EQU     0X36 ; descriptor table's data length (table 2)$/;"	v
+X36	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_xAxisL            EQU     0X36    ; x axis[7..0]$/;"	v
+X36	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_zAxisH               EQU     0X36    ; z axis[9..8] high byte,[1..0]$/;"	v
+X37	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataMaxTable3                   EQU     0X37 ; descriptor table's data length (table 3)$/;"	v
+X37	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yAxisL            EQU     0X37    ; y axis[7..0]$/;"	v
+X38	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_Size              EQU     0X38    ; size[3..0] high byte,[3..0]$/;"	v
+X39	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_xAxisL            EQU     0X39    ; x axis[7..0]$/;"	v
+X39	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^KeyTempFlag             EQU     0X39 ;Store LINE4_KEY_INPUT TEMP$/;"	v
+X3A	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yAxisL            EQU     0X3A    ; y axis[7..0]$/;"	v
+X3B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_Size              EQU     0X3B    ; size[3..0] high byte,[3..0]$/;"	v
+X3B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LINE1_KEY_INPUT_CACHE   EQU     0X3B ;line 1,direction data$/;"	v
+X3C	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LINE2_KEY_INPUT_CACHE   EQU     0X3C ;line 2,X_LINE2 output$/;"	v
+X3D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_xAxisL             EQU     0X3D    ; x axis[7..0]$/;"	v
+X3D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LINE3_KEY_INPUT_CACHE   EQU     0X3D ;line 3,X_LINE3 output$/;"	v
+X3E	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_yAxisL             EQU     0X3E    ; y axis[7..0]$/;"	v
+X3E	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LINE4_KEY_INPUT_CACHE   EQU     0X3E ;line 4,X_LINE4 output$/;"	v
+X3F	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^RX6_LossframeCNT                EQU     0X3F$/;"	v
+X3F	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_Size               EQU     0X3F    ; size[3..0] high byte,[3..0]$/;"	v
+X3F	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LINE5_KEY_INPUT_CACHE   EQU     0X3F ;line 5,X_LINE5 output$/;"	v
+X80	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.H	/^RX_MASK                 EQU     0X80        ;ENABLE RX$/;"	v
+X80	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^RX_MASK                 EQU     0X80            ; ENABLE RX$/;"	v
+XAC	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^RX_IDL_DEFAULT                  EQU     0XAC  ; 0XCB  ; Adress_default = [RX_IDH_DEFAULT,RX_IDL_DEFAULT&0x0f]$/;"	v
+XCB	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^RX_IDL_DEFAULT                  EQU     0XCB  ; 0XAC  ; 0XCB  ; Adress_default = [RX_IDH_DEFAULT,RX_IDL_DEFAULT&0x0f]$/;"	v
+XD6	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^RX_IDH_DEFAULT                  EQU     0XD6  ; 0X9D$/;"	v
+XEF	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^SetChecksumL                    EQU     0XEF  ; host computer cheaksum low byte$/;"	v
+_B	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_B                  ==         6    ;Port96$/;"	v
+_C	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_C                  ==         5    ;Port95$/;"	v
+_D	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_D                  ==         4    ;Port94$/;"	v
+_DOWN	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_DOWN               ==         2    ;PortB2$/;"	v
+_L1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_L1                 ==         7    ;Port97$/;"	v
+_L2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_L2                 ==         5    ;Port95$/;"	v
+_LEFT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_LEFT               ==         1    ;PortB1$/;"	v
+_LSW	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_LSW                ==         7    ;Port97$/;"	v
+_MACRO	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_MACRO              ==         4    ;Port94$/;"	v
+_MODE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_MODE               ==         5    ;Port95$/;"	v
+_R1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_R1                 ==         6    ;Port96$/;"	v
+_R2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_R2                 ==         4    ;Port94$/;"	v
+_RIGHT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_RIGHT              ==         4    ;PortB4$/;"	v
+_RSW	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_RSW                ==         4    ;Port94$/;"	v
+_SELECT	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_SELECT             ==         7    ;Port97$/;"	v
+_START	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_START              ==         6    ;Port96$/;"	v
+_TEST1	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_TEST1              ==         6    ;Port96$/;"	v
+_TEST2	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_TEST2              ==         5    ;Port95$/;"	v
+_UP	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^_UP                 ==         5    ;PortB5$/;"	v
+_______	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;        |__|                    |__|      |__|                     |_______|$/;"	v
+_______	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;        |__|                  |__|      |__|                   |_______|$/;"	v
+____________	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;___________                         _________                               ____________$/;"	v
+____________	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;___________                       _________                             ____________$/;"	v
+arithmetic	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;               PAGE7(0X1C00-0X1FFF): Kalman Filter arithmetic$/;"	v
+bit0	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^                        ;bit7      bit6      Bit5      Bit4   Bit3  bit2    bit1    bit0$/;"	v
+bit0	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^                        ;bit7  bit6  Bit5  Bit4  Bit3  bit2  bit1  bit0$/;"	v
+buffer	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; such as read or write EEPROM and RF,it used for data buffer$/;"	v
+buffer	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^; such as read or write EEPROM and RF,it used for data buffer$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^MOTOR6_VibrInten_Buffer         EQU     0X2D    ; Motor6 vibration Intensity byte$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;MotorVibrDura           EQU     0X21    ; vibration duration byte$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_Size              EQU     0X32    ; size[3..0] high byte,[3..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_xAxisH            EQU     0X20    ; x axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yAxisH            EQU     0X21    ; y axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_Size              EQU     0X35    ; size[3..0] high byte,[3..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_xAxisH            EQU     0X23    ; x axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yAxisH            EQU     0X24    ; y axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_Size              EQU     0X38    ; size[3..0] high byte,[3..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_xAxisH            EQU     0X26    ; x axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yAxisH            EQU     0X27    ; y axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_Size              EQU     0X3B    ; size[3..0] high byte,[3..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_xAxisH            EQU     0X29    ; x axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yAxisH            EQU     0X2A    ; y axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_Size               EQU     0X3F    ; size[3..0] high byte,[3..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_xAxisH             EQU     0X2D    ; x axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS_yAxisH             EQU     0X2E    ; y axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_xAxisH               EQU     0X34    ; x axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_yAxisH               EQU     0X35    ; y axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^GS_zAxisH               EQU     0X36    ; z axis[9..8] high byte,[1..0]$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MOTOR6_VibrInten_Buffer         EQU     0X2D    ; Motor6 vibration Intensity byte$/;"	v
+byte	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^MotorVibrInten          EQU     0X20    ; vibration Intensity byte$/;"	v
+conformity	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.h	/^; Description  :  modify for code conformity,multi-1v2 CMOS project$/;"	v
+conformity	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; Description  :  modify for code conformity,multi-1v2 CMOS project$/;"	v
+data1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; responses data timing:   RX_IDH,RX_IDL,CHN_FLAG,CommuStatusFlag,DirectionCtrl,CH_NO,TXx_ID,data1,data2......data16,data17(version NO.)$/;"	v
+date	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.h	/^; Creat date   :  2009\/11\/4$/;"	v
+date	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^; Creat date   :  2009\/11\/4$/;"	v
+date	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.h	/^; Creat date    : 2009\/11\/4$/;"	v
+driver	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;               PAGE3(0X0C00-0X0FFF): RF driver$/;"	v
+driver	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;               PAGE4(0X1000-0X13FF): key scan driver$/;"	v
+driver	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;               PAGE5(0X1400-0X17FF): CMOS driver$/;"	v
+driver	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;               PAGE6(0X1800-0X1BFF): CMOS\/GS driver$/;"	v
+else	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^else$/;"	l
+elseif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^elseif CmosSensorTypeSelect == 1$/;"	l
+elseif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^elseif CmosSensorTypeSelect == 2$/;"	l
+elseif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^elseif CmosSensorTypeSelect == 3$/;"	l
+elseif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^elseif CmosSensorTypeSelect == 4$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^endif/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^endif$/;"	l
+endif	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^endif$/;"	l
+falg	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;F_MODE                  EQU     0X32 ;Analog jugde falg$/;"	v
+file	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.h	/^;  Tilte:       EM78M198810 include file		;$/;"	v
+flag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^	SearchStatusFlag            ==      CommuStatusFlag*8+0   ; Search mode flag$/;"	v
+flag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^CHN_FLAG                        EQU     0X23    ; Channel flag, gamepad status$/;"	v
+flag	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^CHN_FLAG_Buffer                 EQU     0X23 ; Channel flag, gamepad status$/;"	v
+flag	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^	SearchStatusFlag            ==      CommuStatusFlag*8+0   ; Search mode flag$/;"	v
+flag	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CHN_FLAG                EQU     0X23    ; Channel flag, gamepad status$/;"	v
+flag	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CHN_FLAG_Buffer                 EQU     0X23 ; Channel flag, gamepad status$/;"	v
+function	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^USED_PID_FUNCTION               EQU     0     ; 1:used this function; 0:not used$/;"	v
+function	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;               PAGE5(0X1400-0X17FF): RF initial function$/;"	v
+function	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^USED_PID_FUNCTION       EQU     0               ; 1:used this function; 0:not used$/;"	v
+function	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^SPI_FUNCTION                    EQU     1 ; enable spi function$/;"	v
+host	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^	JudgeHandFlag1              ==      TRANSFER*8+0    ; judge which hand send to host,BYTE0$/;"	v
+host	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^	JudgeHandFlag2              ==      TRANSFER*8+1    ; judge which hand send to host,BYTE1$/;"	v
+host	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^	JudgeHandFlag3              ==      TRANSFER*8+2    ; judge which hand send to host,BYTE2$/;"	v
+if	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^if CmosSensorTypeSelect == 0$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^ifndef EM198850_For_EM78M611.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^ifndef M611rxP40.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^ifndef XX93C46_For_EM78M611.ASM$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^ifndef M611rxP40.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^ifndef M611rxP40.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^ifndef XX93C46_For_EM78M611.ASM$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^ifndef XX93C46_For_EM78M611.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^ifndef KalmanFilter.asm$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^ifndef EM198850_For_EM78P520.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^ifndef EM78Math.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^ifndef keyscan.asm$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^ifndef CmosSensorDev.ASM$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^ifndef EM78CtrlIns.H$/;"	l
+ifndef	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^ifndef EM78Math.H$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\EM198850_FOR_EM78M611.ASM	/^include	"EM198850_For_EM78M611.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^include "EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\Keyscan.asm	/^include "Keyscan.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^include "EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^include "Keyscan.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^include "M611rxP40.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611ManageFunc.asm	/^include "XX93C46_For_EM78M611.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^include "EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^include "M611ManageFunc.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^include "M611SkipFreqFunc.h"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611SkipFreqFunc.asm	/^include "M611rxP40.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^include "EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^include "M611USBDescData.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611USBDriver.asm	/^include "M611rxP40.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "D:\\include\\EM78xx\\inc\\EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "D:\\include\\EM78xx\\inc\\EM78M611E.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "D:\\include\\EM78xx\\inc\\EM78Math.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "EM198850_For_EM78M611.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "M611SkipFreqFunc.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "M611USBDriver.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "M611rxP40.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "XX93C46_For_EM78M611.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.asm	/^include "config.h"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^include "XX24C04.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^include "EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^include "XX93C46_For_EM78M611.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^include "CmosSensorDev.h"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^include "D:\\include\\EM78xx\\inc\\EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.asm	/^include "KalmanFilter.asm"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.ASM	/^include "EM198850_For_EM78P520.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^include "D:\\include\\EM78xx\\Arithmetic\\KalmanFilter.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^include "D:\\include\\EM78xx\\inc\\EM78CtrlIns.h"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\KalmanFilter.asm	/^include "D:\\include\\EM78xx\\inc\\EM78Math.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^include "D:\\include\\EM78xx\\inc\\EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^include "P520SkipFreqFunc.h"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520SkipFreqFunc.asm	/^include "keyscan.asm"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "CmosSensorDev.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "D:\\include\\EM78xx\\inc\\EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "D:\\include\\EM78xx\\inc\\EM78Math.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "D:\\include\\EM78xx\\inc\\EM78P520.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "EM198850_For_EM78P520.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "P520SkipFreqFunc.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "P520txP44.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "XX93C46_For_EM78P520.ASM"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.asm	/^include "config.h"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^include "EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^include "XX93C46_For_EM78P520.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^include "D:\\include\\EM78xx\\EM78CtrlIns.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^include "D:\\include\\EM78xx\\EM78Math.H"$/;"	l
+include	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\keyscan.asm	/^include "keyscan.H"$/;"	l
+initial	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^;  Description: PAGE0(0X0000-0X03FF): MCU initial$/;"	v
+mERAL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mERAL   MACRO   $/;"	m
+mERAL	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mERAL   MACRO$/;"	m
+mERASE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mERASE  MACRO    DataAddressInEEPROM,k$/;"	m
+mERASE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mERASE  MACRO    DataAddressInEEPROM,k$/;"	m
+mEWDS	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mEWDS   MACRO     $/;"	m
+mEWDS	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mEWDS   MACRO$/;"	m
+mEWEN	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mEWEN   MACRO   $/;"	m
+mEWEN	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mEWEN   MACRO$/;"	m
+mI2C_RX	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mI2C_RX MACRO$/;"	m
+mI2C_RX_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mI2C_RX_End:$/;"	l
+mI2C_TX	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mI2C_TX MACRO$/;"	m
+mI2C_TX_End	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mI2C_TX_End:$/;"	l
+mRBYTE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mRBYTE  Macro   Address, I2C_DATA0$/;"	m
+mREAD	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mREAD   MACRO   DataAddressInEEPROM,@BankSel,DataAddressInMCU,@k$/;"	m
+mREAD	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mREAD   MACRO   DataAddressInEEPROM,@BankSel,DataAddressInMCU,@k$/;"	m
+mRPAGE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mRPAGE  Macro   m, Address, I2C_DATA0$/;"	m
+mWBYTE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mWBYTE  Macro   Address, I2C_DATA0$/;"	m
+mWPAGE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^mWPAGE  Macro   m, Address, I2C_DATA0$/;"	m
+mWRAL	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mWRAL   MACRO   @DataAddressInMCU$/;"	m
+mWRAL	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mWRAL   MACRO   @DataAddressInMCU$/;"	m
+mWRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX93C46_FOR_EM78M611.ASM	/^mWRITE  MACRO   DataAddressInEEPROM,@BankSel,DataAddressInMCU,@k$/;"	m
+mWRITE	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\XX93C46_FOR_EM78P520.ASM	/^mWRITE  MACRO   DataAddressInEEPROM,@BankSel,DataAddressInMCU,@k$/;"	m
+mro_tt1	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^        mro_tt1 EQU 1$/;"	d
+mro_tt2	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^        mro_tt2 EQU 1$/;"	d
+mro_tt3	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^        mro_tt3 EQU 1$/;"	d
+mro_tt4	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.ASM	/^        mro_tt4 EQU 1$/;"	d
+output	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LINE5_KEY_INPUT_CACHE   EQU     0X3F ;line 5,X_LINE5 output$/;"	v
+size	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yxsAxisH_Buffer           EQU     0X2B    ; Point4 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+table	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^;               PAGE3(0X0C00-0X0FFF): Communicate_USB_Function table$/;"	v
+table	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^DataMaxTable3                   EQU     0X37 ; descriptor table's data length (table 3)$/;"	v
+type	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CmosSensorDev.h	/^CmosSensorTypeSelect    EQU     0      ; select type,Default=0(MM0200DA)$/;"	v
+used	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\EM198850_FOR_EM78P520.H	/^USED_PID_FUNCTION       EQU     0               ; 1:used this function; 0:not used$/;"	v
+view	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^LED1_STATUS                     ==      PORT8*8+1 ;LED running Status view$/;"	v
+x18	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\M611rxP40.H	/^TABLE_INDEX                     EQU     0x18        ; descriptor table's start position$/;"	v
+x20	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\CONFIG.H	/^DataBufferBase                  EQU     0x20  ; Address:0x20 ,bit6:select all bank$/;"	v
+x20	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.H	/^I2C_TXBUF   ==      0x20        ; 传送字节缓冲器$/;"	v
+x20	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\CONFIG.H	/^DataBufferBase                  EQU     0x20  ; address:0x20 ,bit6:select all bank$/;"	v
+x21	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.H	/^I2C_RXBUF   ==      0x21        ; 接收字节缓冲器$/;"	v
+x22	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.H	/^I2C_COUNT   ==      0x22        ; 传送位计数$/;"	v
+x23	D:\EM78P520_EM78M611_EM198850\project4\program4\M611M850RX\XX24C04.H	/^I2C_BYTES   ==      0x23        ; 传送字节数/;"	v
+x24	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataE                   EQU     0x24 ;DataA(s10-s5):$/;"	v
+x25	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^DataF                   EQU     0x25 ;DataB(s4-s1):$/;"	v
+x2E	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^KeySystemTimeCNT        EQU     0x2E    ; key scan time$/;"	v
+x33	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^TABLE_INDEX             EQU     0x33  ;descriptor table's start position$/;"	v
+xAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yxsAxisH_Buffer           EQU     0X22    ; Point1 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+xAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yxsAxisH_Buffer           EQU     0X25    ; Point2 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+xAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yxsAxisH_Buffer           EQU     0X28    ; Point3 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+xAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yxsAxisH_Buffer           EQU     0X2B    ; Point4 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+yAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS1_yxsAxisH_Buffer           EQU     0X22    ; Point1 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+yAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS2_yxsAxisH_Buffer           EQU     0X25    ; Point2 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+yAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS3_yxsAxisH_Buffer           EQU     0X28    ; Point3 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v
+yAxis	D:\EM78P520_EM78M611_EM198850\project4\program4\P520M850TX\P520txP44.H	/^CMOS4_yxsAxisH_Buffer           EQU     0X2B    ; Point4 yAxis[9..8],xAxis[9..8],size[3..0]$/;"	v

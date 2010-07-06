@@ -1,0 +1,14 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+[Files]
+0=P520txP44.asm
+1=P520txP44.H
+2=CmosSensorDev.asm
+3=CmosSensorDev.h
+4=CONFIG.H
+5=P520SkipFreqFunc.asm
+6=..\..\..\..\include\EM78xx\Arithmetic\KalmanFilter.asm
+7=..\..\..\..\include\EM78xx\Arithmetic\KalmanFilter.h

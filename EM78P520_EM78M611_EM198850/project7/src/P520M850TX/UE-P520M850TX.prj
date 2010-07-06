@@ -1,0 +1,17 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+[Files]
+0=CONFIG.H
+1=EM198850_FOR_EM78P520.ASM
+2=EM198850_FOR_EM78P520.H
+3=keyscan.asm
+4=keyscan.h
+5=P520SkipFreqFunc.asm
+6=P520SkipFreqFunc.h
+7=P520txP44.asm
+8=P520txP44.H
+9=XX93C46_FOR_EM78P520.ASM
+10=XX93C46_For_EM78P520.H
