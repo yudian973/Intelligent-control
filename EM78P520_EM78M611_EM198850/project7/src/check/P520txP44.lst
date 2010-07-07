@@ -1777,43 +1777,43 @@
     22                     	ORG                 0X0000
     23 00000 1EB0          	LJMP                INITIAL
     23 00001 0118          	LJMP                INITIAL
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     24                     	ORG                 0X0003
     25 00003 1EB0          	LJMP                TCC_INT
     25 00004 0100          	LJMP                TCC_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     26                     	ORG                 0X0006
     27 00006 1EB0          	LJMP                EXTERNAL_INT
     27 00007 010A          	LJMP                EXTERNAL_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     28                     	ORG                 0X0009
     29 00009 1EB0          	LJMP                WDT_INT
     29 0000A 010D          	LJMP                WDT_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     30                     	ORG                 0X000C
     31 0000C 1EB0          	LJMP                TIMER1_INT
     31 0000D 010F          	LJMP                TIMER1_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     32                     	ORG                 0X000F
     33 0000F 1EB0          	LJMP                TIMER2_INT
     33 00010 0114          	LJMP                TIMER2_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     34                     	ORG                 0X0012
     35 00012 1EB0          	LJMP                AD_INT
     35 00013 010E          	LJMP                AD_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     36                     	ORG                 0X0015
     37 00015 1EB0          	LJMP                UART_INT
     37 00016 0115          	LJMP                UART_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     38                     	ORG                 0X0018
     39 00018 1EB0          	LJMP                SPI_INT
     39 00019 0116          	LJMP                SPI_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     40                     	ORG                 0X001B
     41 0001B 1EB0          	LJMP                LVD_INT
     41 0001C 0117          	LJMP                LVD_INT
-***     Warning A053:The call/jmp address is not over page.
+***     Warning A053: The target address of 'lcall' or 'ljmp' instruction is not over page (1K).
     42                     
     43                     
     44                     ;=========================================================================
